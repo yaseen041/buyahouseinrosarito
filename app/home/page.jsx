@@ -126,7 +126,7 @@ const HomePage = () => {
 
     return (
         <>
-            <Scripts />
+            {/* <Scripts /> */}
             < div id="wrapper">
                 <div id="page" className="">
                     <Header1 />

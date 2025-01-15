@@ -11,10 +11,13 @@
   "dependencies": {
     "@builder.io/partytown": "^0.10.3",
     "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
+    "mmenu-js": "^9.3.0",
     "next": "15.1.4",
     "nouislider": "^15.8.1",
     "react": "^19.0.0",
+    "react-bootstrap": "^2.10.7",
     "react-dom": "^19.0.0",
     "swiper": "^11.2.1",
     "wow.js": "^1.2.2"

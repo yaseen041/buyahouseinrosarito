@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Link from 'next/link';
 const Property = () => {
   const [openFilter, setOpenFilter] = React.useState(false)
   const toggleFilter = () => setOpenFilter(!openFilter)
@@ -513,7 +514,7 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">Archer House</a>
+                              <Link href="/property/property-single">Archer House</Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>

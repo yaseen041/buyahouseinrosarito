@@ -74,7 +74,7 @@ const Footer = () => {
             </div>
         </div>
     </div>
-    <div className="progress-wrap active-progress">
+    {/* <div className="progress-wrap active-progress">
   <svg
     className="progress-circle svg-content"
     width="100%"
@@ -90,7 +90,7 @@ const Footer = () => {
       }}
     />
   </svg>
-</div>
+</div> */}
 
 </footer>
   )
