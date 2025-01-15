@@ -1,6 +1,8 @@
 'use client';
 import React from 'react'
 import Header3 from '@/app/components/header3'
+import Footer from '@/app/components/footer';
+import Link from 'next/link';
 const DetailPage = () => {
   return (
     <div>
@@ -23,7 +25,7 @@ const DetailPage = () => {
               <div className="flex items-center justify-between gap30 flex-wrap pt-30 pb-30">
                 <ul className="breadcrumbs style-1 justify-start">
                   <li>
-                    <a href="index.html">Home</a>
+                    <Link href="index.html">Home</Link>
                   </li>
                   <li>/</li>
                   <li>Property List</li>
@@ -61,56 +63,56 @@ const DetailPage = () => {
             <div className="col-12">
               <div className="wrap-gallery-image">
                 <div className="list-tags type-1">
-                  <a href="#" className="tags-item for-sell">
+                  <Link href="#" className="tags-item for-sell">
                     FOR RENT
-                  </a>
-                  <a href="#" className="tags-item featured">
+                  </Link>
+                  <Link href="#" className="tags-item featured">
                     FEATURED
-                  </a>
+                  </Link>
                 </div>
-                <a
+                <Link
                   href="/assets/images/house/property-detail-1.jpg"
                   className="item-1"
                   data-fancybox="gallery"
                 >
                   <img src="/assets/images/house/property-detail-1.jpg" alt="" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/assets/images/house/property-detail-2.jpg"
                   className="item-2"
                   data-fancybox="gallery"
                 >
                   <img src="/assets/images/house/property-detail-2.jpg" alt="" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/assets/images/house/property-detail-3.jpg"
                   className="item-3"
                   data-fancybox="gallery"
                 >
                   <img src="/assets/images/house/property-detail-3.jpg" alt="" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/assets/images/house/property-detail-4.jpg"
                   className="item-4"
                   data-fancybox="gallery"
                 >
                   <img src="/assets/images/house/property-detail-4.jpg" alt="" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/assets/images/house/property-detail-5.jpg"
                   className="item-5"
                   data-fancybox="gallery"
                 >
                   <img src="/assets/images/house/property-detail-5.jpg" alt="" />
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/assets/images/house/property-detail-3.jpg"
                   className="more-photos"
                   data-fancybox="gallery"
                 >
                   <i className="flaticon-gallery" />
                   <p>42 Photos</p>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="col-xl-8">
@@ -190,10 +192,10 @@ const DetailPage = () => {
                 <div className="address">
                   <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                     <h4 className="mb-0">Address</h4>
-                    <a href="#" className="tf-button-green">
+                    <Link href="#" className="tf-button-green">
                       <i className="flaticon-location" />
                       Open On Google Maps
-                    </a>
+                    </Link>
                   </div>
                   <div className="list-item">
                     <div className="item wow fadeInUp">
@@ -225,7 +227,7 @@ const DetailPage = () => {
                 <div className="attachments">
                   <h4 className="wow fadeInUp">Property Attachments</h4>
                   <div className="wrap-file-item wow fadeInUp">
-                    <a href="#" className="file-item">
+                    <Link href="#" className="file-item">
                       <div className="icon">
                         <img src="/assets/images/image-box/file-pdf.svg" alt="" />
                       </div>
@@ -233,8 +235,8 @@ const DetailPage = () => {
                         <div className="name">Ultra-Demo-PDF File</div>
                         <div className="size">140.56 kb</div>
                       </div>
-                    </a>
-                    <a href="#" className="file-item">
+                    </Link>
+                    <Link href="#" className="file-item">
                       <div className="icon">
                         <img src="/assets/images/image-box/file-pdf.svg" alt="" />
                       </div>
@@ -242,7 +244,7 @@ const DetailPage = () => {
                         <div className="name">Ultra-Demo-PDF File</div>
                         <div className="size">140.56 kb</div>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="details">
@@ -925,9 +927,9 @@ const DetailPage = () => {
                 <div className="contact-info">
                   <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                     <h4 className="mb-0">Contact Information</h4>
-                    <a href="#" className="tf-button-green">
+                    <Link href="#" className="tf-button-green">
                       View Listing
-                    </a>
+                    </Link>
                   </div>
                   <div className="person wow fadeInUp">
                     <div className="image">
@@ -935,7 +937,7 @@ const DetailPage = () => {
                     </div>
                     <div className="content">
                       <div className="name">
-                        <a href="#">Jane Cooper</a>
+                        <Link href="#">Jane Cooper</Link>
                       </div>
                       <p>sale@justhome.com</p>
                       <p>3-596 95 38 12</p>
@@ -1046,14 +1048,14 @@ const DetailPage = () => {
                   <h4 className="wow fadeInUp">Video</h4>
                   <div className="video-wrap">
                     <img src="/assets/images/image-box/video-2.jpg" alt="" />
-                    <a
+                    <Link
                       href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                       className="popup-youtube"
                     >
                       <div className="icon">
                         <i className="flaticon-play" />
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="map">
@@ -1314,9 +1316,9 @@ const DetailPage = () => {
                 <div className="reviews-wrap">
                   <div className="flex justify-between items-center mb-40 wow fadeInUp">
                     <h4 className="mb-0">4 Reviews</h4>
-                    <a href="#" className="tf-button-green">
+                    <Link href="#" className="tf-button-green">
                       Leave a Review
-                    </a>
+                    </Link>
                   </div>
                   <ul>
                     <li className="wow fadeInUp">
@@ -1332,7 +1334,7 @@ const DetailPage = () => {
                           <i className="flaticon-star-1" />
                         </div>
                         <div className="name">
-                          <a href="#">Jane Cooper</a>
+                          <Link href="#">Jane Cooper</Link>
                         </div>
                         <div className="time">April 06, 2024 at 7:55 pm</div>
                         <p>
@@ -1355,7 +1357,7 @@ const DetailPage = () => {
                           <i className="flaticon-star-1" />
                         </div>
                         <div className="name">
-                          <a href="#">Jane Cooper</a>
+                          <Link href="#">Jane Cooper</Link>
                         </div>
                         <div className="time">April 06, 2024 at 7:55 pm</div>
                         <p>
@@ -1462,12 +1464,12 @@ const DetailPage = () => {
                       <div className="box-dream has-border wow fadeInUp">
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR RENT
-                            </a>
-                            <a href="#" className="tags-item featured">
+                            </Link>
+                            <Link href="#" className="tags-item featured">
                               FEATURED
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -1519,9 +1521,9 @@ const DetailPage = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">
+                              <Link href="/property/property-single">
                                 Home Pitt Street
-                              </a>
+                              </Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -1555,9 +1557,9 @@ const DetailPage = () => {
                       >
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -1609,9 +1611,9 @@ const DetailPage = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">
+                              <Link href="/property/property-single">
                                 Luxury Mansion
-                              </a>
+                              </Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -1649,17 +1651,17 @@ const DetailPage = () => {
                     Request a tour as early as <br />
                     <span>Today at 11:00AM</span>
                   </div>
-                  <a href="#" className="tf-button-primary w-full">
+                  <Link href="#" className="tf-button-primary w-full">
                     Schedule a Tour
                     <i className="icon-arrow-right-add" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="tf-button-primary w-full style-bg-white"
                   >
                     Contact an agent
                     <i className="icon-arrow-right-add" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -1670,172 +1672,7 @@ const DetailPage = () => {
     </div>
     {/* /main-content */}
     {/* footer */}
-    <footer className="footer">
-      <div className="footer-inner">
-        <div className="footer-inner-wrap">
-          <div className="top-footer">
-            <div className="logo-footer">
-              <a href="index.html">
-                <img
-                  id="logo-footer"
-                  src="/assets/images/logo/logo-footer.svg"
-                  alt="images"
-                />
-              </a>
-            </div>
-            <div className="wg-social">
-              <span>Follow Us</span>
-              <ul className="list-social">
-                <li>
-                  <a href="#">
-                    <i className="icon-facebook" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="icon-twitter" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="icon-instagram" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i className="icon-linkedin2" />
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="center-footer">
-            <div className="footer-cl-1">
-              <div className="ft-title">Subscribe</div>
-              <form className="form-subscribe style-line-bottom">
-                <fieldset className="email">
-                  <input
-                    type="email"
-                    placeholder="Your e-mail"
-                    className="style-1"
-                    name="email"
-                    tabIndex={2}
-                    defaultValue=""
-                    aria-required="true"
-                    required=""
-                  />
-                </fieldset>
-                <div className="button-submit style-absolute-right">
-                  <button className="tf-button-bg" type="submit">
-                    Send <i className="icon-arrow-right-add" />
-                  </button>
-                </div>
-              </form>
-              <div className="text">
-                Subscribe to our newsletter to receive our weekly feed.
-              </div>
-            </div>
-            <div className="footer-cl-2">
-              <div className="ft-title">Discover</div>
-              <ul className="navigation-menu-footer">
-                <li>
-                  <a href="property-map-v1.html">Miami</a>
-                </li>
-                <li>
-                  <a href="property-map-v1.html">New York</a>
-                </li>
-                <li>
-                  <a href="property-map-v1.html">Chicago</a>
-                </li>
-                <li>
-                  <a href="property-map-v1.html">Sacramento</a>
-                </li>
-                <li>
-                  <a href="#">Los Angeles</a>
-                </li>
-                <li>
-                  <a href="#">San Francisco</a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-cl-3">
-              <div className="ft-title">Quick Links</div>
-              <ul className="navigation-menu-footer">
-                <li>
-                  <a href="about.html">About</a>
-                </li>
-                <li>
-                  <a href="contact.html">Contact</a>
-                </li>
-                <li>
-                  <a href="faq.html">Faq</a>
-                </li>
-                <li>
-                  <a href="blog-list-v1.html">Blog</a>
-                </li>
-                <li>
-                  <a href="pricing.html">Pricing Plans</a>
-                </li>
-                <li>
-                  <a href="#">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#">Terms &amp; Conditions</a>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-cl-4">
-              <div className="ft-title">Contact Us</div>
-              <ul className="navigation-menu-footer">
-                <li>
-                  <div className="text">hi@justhome.com (123) 456-7890</div>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-cl-5">
-              <div className="ft-title">Our Address</div>
-              <ul className="navigation-menu-footer">
-                <li>
-                  <div className="text">
-                    90 Fifth Avenue, 3rd Floor San Francisco, CA 1980
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="footer-cl-6">
-              <div className="ft-title">Get the app</div>
-              <ul className="ft-download">
-                <li>
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-appleinc" />
-                    </div>
-                    <div className="app">
-                      <div>Download on the</div>
-                      <div>Apple Store</div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div className="icon">
-                      <i className="icon-ch-play" />
-                    </div>
-                    <div className="app">
-                      <div>Get in on</div>
-                      <div>Google Play</div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="bottom-footer">
-            <div className="text">Copyright © 2024. JustHome</div>
-          </div>
-        </div>
-      </div>
-    </footer>
+   <Footer />
     {/* /footer */}
   </div>
   {/* /#page */}

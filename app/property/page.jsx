@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
+import Footer from '../components/footer';
 const Property = () => {
   const [openFilter, setOpenFilter] = React.useState(false)
   const toggleFilter = () => setOpenFilter(!openFilter)
@@ -33,7 +34,7 @@ const Property = () => {
                     </h2>
                     <ul className="breadcrumbs wow fadeInUp">
                       <li>
-                        <a href="index.html">Home</a>
+                        <Link href="index.html">Home</Link>
                       </li>
                       <li>/</li>
                       <li>Property List</li>
@@ -447,12 +448,12 @@ const Property = () => {
                       <div className="box-dream has-border wow fadeInUp">
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR RENT
-                            </a>
-                            <a href="#" className="tags-item featured">
+                            </Link>
+                            <Link href="#" className="tags-item featured">
                               FEATURED
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -548,9 +549,9 @@ const Property = () => {
                       >
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -612,9 +613,9 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">
+                              <Link href="/property/property-single">
                                 Villa One Hyde Park
-                              </a>
+                              </Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -645,9 +646,9 @@ const Property = () => {
                       <div className="box-dream has-border wow fadeInUp">
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -709,7 +710,7 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">Home Pitt Street</a>
+                              <Link href="/property/property-single">Home Pitt Street</Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -743,9 +744,9 @@ const Property = () => {
                       >
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -807,7 +808,7 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">Relaxing Villa</a>
+                              <Link href="/property/property-single">Relaxing Villa</Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -838,9 +839,9 @@ const Property = () => {
                       <div className="box-dream has-border wow fadeInUp">
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -902,7 +903,7 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">Luxury Mansion</a>
+                              <Link href="/property/property-single">Luxury Mansion</Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -936,9 +937,9 @@ const Property = () => {
                       >
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -1001,9 +1002,9 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">
+                              <Link href="/property/property-single">
                                 Home in Merrick Way
-                              </a>
+                              </Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -1034,9 +1035,9 @@ const Property = () => {
                       <div className="box-dream has-border wow fadeInUp">
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -1098,9 +1099,9 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">
+                              <Link href="/property/property-single">
                                 Villa in Coral Gables
-                              </a>
+                              </Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -1134,9 +1135,9 @@ const Property = () => {
                       >
                         <div className="image">
                           <div className="list-tags">
-                            <a href="#" className="tags-item for-sell">
+                            <Link href="#" className="tags-item for-sell">
                               FOR SELL
-                            </a>
+                            </Link>
                           </div>
                           <div className="button-heart">
                             <i className="flaticon-heart-1" />
@@ -1198,9 +1199,9 @@ const Property = () => {
                         <div className="content">
                           <div className="head">
                             <div className="title">
-                              <a href="property-single-v1.html">
+                              <Link href="/property/property-single">
                                 Modern House in Greenville
-                              </a>
+                              </Link>
                             </div>
                             <div className="price">$815,000</div>
                           </div>
@@ -1230,32 +1231,32 @@ const Property = () => {
                   </div>
                   <ul className="wg-pagination justify-center wow fadeInUp">
                     <li>
-                      <a href="#">
+                      <Link href="#">
                         <i className="icon-keyboard_arrow_left" />
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#">1</a>
+                      <Link href="#">1</Link>
                     </li>
                     <li className="active">
-                      <a href="#">2</a>
+                      <Link href="#">2</Link>
                     </li>
                     <li>
-                      <a href="#">3</a>
+                      <Link href="#">3</Link>
                     </li>
                     <li>
-                      <a href="#">4</a>
+                      <Link href="#">4</Link>
                     </li>
                     <li>
-                      <a href="#">...</a>
+                      <Link href="#">...</Link>
                     </li>
                     <li>
-                      <a href="#">20</a>
+                      <Link href="#">20</Link>
                     </li>
                     <li>
-                      <a href="#">
+                      <Link href="#">
                         <i className="icon-keyboard_arrow_right" />
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -1266,19 +1267,19 @@ const Property = () => {
                       <div className="sidebar-title">Property Types</div>
                       <ul>
                         <li>
-                          <a href="#">Apartment</a>
+                          <Link href="#">Apartment</Link>
                         </li>
                         <li className="active">
-                          <a href="#">Office</a>
+                          <Link href="#">Office</Link>
                         </li>
                         <li>
-                          <a href="#">Single Family</a>
+                          <Link href="#">Single Family</Link>
                         </li>
                         <li>
-                          <a href="#">Shop</a>
+                          <Link href="#">Shop</Link>
                         </li>
                         <li>
-                          <a href="#">Villa</a>
+                          <Link href="#">Villa</Link>
                         </li>
                       </ul>
                     </div>
@@ -1310,12 +1311,12 @@ const Property = () => {
                             <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1">
                               <div className="image">
                                 <div className="list-tags">
-                                  <a href="#" className="tags-item for-sell">
+                                  <Link href="#" className="tags-item for-sell">
                                     FOR RENT
-                                  </a>
-                                  <a href="#" className="tags-item featured">
+                                  </Link>
+                                  <Link href="#" className="tags-item featured">
                                     FEATURED
-                                  </a>
+                                  </Link>
                                 </div>
                                 <img
                                   className="w-full"
@@ -1327,9 +1328,9 @@ const Property = () => {
                                 <div className="price">$815,000</div>
                                 <div className="head">
                                   <div className="title">
-                                    <a href="property-single-v1.html">
+                                    <Link href="/property/property-single">
                                       Archer House
-                                    </a>
+                                    </Link>
                                   </div>
                                 </div>
                                 <div className="location">
@@ -1361,12 +1362,12 @@ const Property = () => {
                             <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1">
                               <div className="image">
                                 <div className="list-tags">
-                                  <a href="#" className="tags-item for-sell">
+                                  <Link href="#" className="tags-item for-sell">
                                     FOR RENT
-                                  </a>
-                                  <a href="#" className="tags-item featured">
+                                  </Link>
+                                  <Link href="#" className="tags-item featured">
                                     FEATURED
-                                  </a>
+                                  </Link>
                                 </div>
                                 <img
                                   className="w-full"
@@ -1378,9 +1379,9 @@ const Property = () => {
                                 <div className="price">$815,000</div>
                                 <div className="head">
                                   <div className="title">
-                                    <a href="property-single-v1.html">
+                                    <Link href="/property/property-single">
                                       Archer House
-                                    </a>
+                                    </Link>
                                   </div>
                                 </div>
                                 <div className="location">
@@ -1412,12 +1413,12 @@ const Property = () => {
                             <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1">
                               <div className="image">
                                 <div className="list-tags">
-                                  <a href="#" className="tags-item for-sell">
+                                  <Link href="#" className="tags-item for-sell">
                                     FOR RENT
-                                  </a>
-                                  <a href="#" className="tags-item featured">
+                                  </Link>
+                                  <Link href="#" className="tags-item featured">
                                     FEATURED
-                                  </a>
+                                  </Link>
                                 </div>
                                 <img
                                   className="w-full"
@@ -1429,9 +1430,9 @@ const Property = () => {
                                 <div className="price">$815,000</div>
                                 <div className="head">
                                   <div className="title">
-                                    <a href="property-single-v1.html">
+                                    <Link href="/property/property-single">
                                       Archer House
-                                    </a>
+                                    </Link>
                                   </div>
                                 </div>
                                 <div className="location">
@@ -1471,7 +1472,7 @@ const Property = () => {
                           </div>
                           <div className="content">
                             <div className="name">
-                              <a href="#">Jane Cooper</a>
+                              <Link href="#">Jane Cooper</Link>
                             </div>
                             <p>sale@justhome.com</p>
                             <p>3-596 95 38 12</p>
@@ -1483,7 +1484,7 @@ const Property = () => {
                           </div>
                           <div className="content">
                             <div className="name">
-                              <a href="#">Marvin McKinney</a>
+                              <Link href="#">Marvin McKinney</Link>
                             </div>
                             <p>sale@justhome.com</p>
                             <p>3-596 95 38 12</p>
@@ -1495,7 +1496,7 @@ const Property = () => {
                           </div>
                           <div className="content">
                             <div className="name">
-                              <a href="#">Cameron Williamson</a>
+                              <Link href="#">Cameron Williamson</Link>
                             </div>
                             <p>sale@justhome.com</p>
                             <p>3-596 95 38 12</p>
@@ -1511,7 +1512,7 @@ const Property = () => {
           {/* /property-grid */}
         </div>
         {/* /main-content */}
-
+                        <Footer />
       </div>
       {/* /#page */}
     </div>

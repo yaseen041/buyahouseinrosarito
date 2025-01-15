@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
             {/* <Script src="/assets/js/nouislider.min.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/rangle-slider.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/mmenu.js" strategy="afterInteractive" /> */}
-            {/* <Script src="/assets/js/wow.min.js" strategy="afterInteractive" /> */}
+            <Script src="/assets/js/wow.min.js" strategy="afterInteractive" />
             {/* <Script src="/assets/js/scrollmagic.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/main.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/maps.js" strategy="afterInteractive" /> */}

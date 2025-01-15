@@ -2,10 +2,11 @@
 import Link from 'next/link'
 import React from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { usePathname } from 'next/navigation';
 const Header3 = () => {
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [openMenu,setOpenMenu] = React.useState(false)
-
+const pathname = usePathname()
 const handleClose = () => setOpenMenu(false);
   const handleShow = () => setOpenMenu(true);
 
@@ -30,107 +31,37 @@ const handleClose = () => setOpenMenu(false);
                 <div className="header-inner">
                     <div className="header-inner-wrap">
                         <div id="site-logo">
-                            <a href="index.html" rel="home">
+                            <Link href="/" rel="home">
                                 <img
                                     className="d-block"
                                     id="logo-header"
                                     src="/assets/images/logo/logo.svg"
                                     alt=""
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <nav className="main-menu">
                             <ul className="navigation">
-                                <li className="">
+                                <li className={pathname==="/"?"current":""}>
                                     <Link href="/">Home</Link>
                                    
                                 </li>
-                                <li className=" current">
+                                <li className={pathname==="/property"?"current":""}>
                                     <Link href="/property">Property</Link>
                                    
                                 </li>
-                                <li className="has-children">
-                                    <a href="javascript:void(0);">Realtor</a>
-                                    <ul>
-                                        <li>
-                                            <a href="agent-list.html">Agent List</a>
-                                        </li>
-                                        <li>
-                                            <a href="agent-single.html">Agent Single</a>
-                                        </li>
-                                        <li>
-                                            <a href="agency-list.html">Agency List</a>
-                                        </li>
-                                        <li>
-                                            <a href="agency-single.html">Agency Single</a>
-                                        </li>
-                                    </ul>
+                                <li className={pathname==="/about"?"current":""}>
+                                    <Link href="/about">About</Link>
+                                  
                                 </li>
-                                <li className="has-children">
-                                    <a href="javascript:void(0);">Pages</a>
-                                    <ul>
-                                        <li>
-                                            <a href="about.html">About Us</a>
-                                        </li>
-                                        <li>
-                                            <a href="compare.html">Compare</a>
-                                        </li>
-                                        <li>
-                                            <a href="pricing.html">Pricing Packages</a>
-                                        </li>
-                                        <li>
-                                            <a href="faq.html">FAQ Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="404.html">404 Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="ui-elements.html">UI Elements</a>
-                                        </li>
-                                        <li>
-                                            <a href="dashboard.html">Dashboard</a>
-                                        </li>
-                                    </ul>
+                                
+                               
+                                <li className={pathname==="/blog"?"current":""}>
+                                    <Link href="/blog">Blog</Link>
+                                   
                                 </li>
-                                <li className="has-children">
-                                    <a href="javascript:void(0);">Shop</a>
-                                    <ul>
-                                        <li>
-                                            <a href="shop-list.html">Shop List</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-single.html">Shop Single</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-cart.html">Shop Cart</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-checkout.html">Shop Checkout</a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-order.html">Shop Order</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="has-children">
-                                    <a href="javascript:void(0);">Blog</a>
-                                    <ul>
-                                        <li>
-                                            <a href="blog-list-v1.html">Blog List 01</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-list-v2.html">Blog List 02</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-list-v3.html">Blog List 03</a>
-                                        </li>
-                                        <li>
-                                            <a href="blog-single.html">Blog Single</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
+                                <li className={pathname==="/contact"?"current":""} >
+                                    <Link href="/contact">Contact</Link>
                                 </li>
                             </ul>
                         </nav>
@@ -151,7 +82,7 @@ const handleClose = () => setOpenMenu(false);
                                 </div>
                             </div>
                             <div className="header-btn">
-                                <a href="dashboard-add-properties.html" className="tf-button-default">
+                                <a href="#" className="tf-button-default">
                                     Add Listing
                                 </a>
                             </div>
@@ -198,46 +129,34 @@ const handleClose = () => setOpenMenu(false);
                   </Link>
                 </li>
                 <li className="mm-listitem" id="mm-14" data-mm-child="mm-15">
-                  <a
+                  <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
-                    href="#mm-15"
+                    href="/about"
                   >
-                    Realtor
-                  </a>
+                    About
+                  </Link>
                 </li>
                 <li className="mm-listitem" id="mm-16" data-mm-child="mm-17">
-                  <a
+                  <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
-                    href="#mm-17"
-                  >
-                    Pages
-                  </a>
-                </li>
-                <li className="mm-listitem" id="mm-18" data-mm-child="mm-19">
-                  <a
-                    className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
-                    aria-label="Open submenu"
-                    href="#mm-19"
-                  >
-                    Shop
-                  </a>
-                </li>
-                <li className="mm-listitem" id="mm-20" data-mm-child="mm-21">
-                  <a
-                    className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
-                    aria-label="Open submenu"
-                    href="#mm-21"
+                    href="/blog"
                   >
                     Blog
-                  </a>
+                  </Link>
                 </li>
-                <li className="mm-listitem">
-                  <a href="contact.html" className="mm-listitem__text">
+                <li className="mm-listitem" id="mm-18" data-mm-child="mm-19">
+                  <Link
+                    className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
+                    aria-label="Open submenu"
+                    href="/contact"
+                  >
                     Contact
-                  </a>
+                  </Link>
                 </li>
+              
+               
               </ul>
             </div>
             <div
