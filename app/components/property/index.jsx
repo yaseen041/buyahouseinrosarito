@@ -73,7 +73,7 @@ const PropertyComponent = () => {
                                         <div>
                                           <div className="image">
                                             <img
-                                              src="/assets/images/author/avatar-8.png"
+                                              src="/elrealestate/assets/images/author/avatar-8.png"
                                               alt=""
                                             />
                                           </div>
@@ -87,7 +87,7 @@ const PropertyComponent = () => {
                                         <div>
                                           <div className="image">
                                             <img
-                                              src="/assets/images/author/avatar-7.png"
+                                              src="/elrealestate/assets/images/author/avatar-7.png"
                                               alt=""
                                             />
                                           </div>
@@ -101,7 +101,7 @@ const PropertyComponent = () => {
                                         <div>
                                           <div className="image">
                                             <img
-                                              src="/assets/images/author/avatar-9.png"
+                                              src="/elrealestate/assets/images/author/avatar-9.png"
                                               alt=""
                                             />
                                           </div>
@@ -115,7 +115,7 @@ const PropertyComponent = () => {
                                         <div>
                                           <div className="image">
                                             <img
-                                              src="/assets/images/author/avatar-10.png"
+                                              src="/elrealestate/assets/images/author/avatar-10.png"
                                               alt=""
                                             />
                                           </div>
@@ -473,7 +473,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-1.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-1.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -484,7 +484,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -495,7 +495,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -506,7 +506,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -571,7 +571,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -582,7 +582,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -593,7 +593,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -604,7 +604,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -668,7 +668,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -679,7 +679,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -690,7 +690,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -701,7 +701,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -766,7 +766,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -777,7 +777,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -788,7 +788,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -799,7 +799,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -861,7 +861,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-5.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-5.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -872,7 +872,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -883,7 +883,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -894,7 +894,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -960,7 +960,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-6.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-6.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -971,7 +971,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -982,7 +982,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -993,7 +993,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1057,7 +1057,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-7.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-7.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1068,7 +1068,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1079,7 +1079,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1090,7 +1090,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1157,7 +1157,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-8.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-8.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1168,7 +1168,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-2.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-2.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1179,7 +1179,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-3.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-3.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1190,7 +1190,7 @@ const PropertyComponent = () => {
                                 <div className="">
                                   <img
                                     className=""
-                                    src="/assets/images/house/property-listing-4.jpg"
+                                    src="/elrealestate/assets/images/house/property-listing-4.jpg"
                                     alt=""
                                   />
                                 </div>
@@ -1323,7 +1323,7 @@ const PropertyComponent = () => {
                                 </div>
                                 <img
                                   className="w-full"
-                                  src="/assets/images/sidebar/img-1.jpg"
+                                  src="/elrealestate/assets/images/sidebar/img-1.jpg"
                                   alt=""
                                 />
                               </div>
@@ -1374,7 +1374,7 @@ const PropertyComponent = () => {
                                 </div>
                                 <img
                                   className="w-full"
-                                  src="/assets/images/sidebar/img-1.jpg"
+                                  src="/elrealestate/assets/images/sidebar/img-1.jpg"
                                   alt=""
                                 />
                               </div>
@@ -1425,7 +1425,7 @@ const PropertyComponent = () => {
                                 </div>
                                 <img
                                   className="w-full"
-                                  src="/assets/images/sidebar/img-1.jpg"
+                                  src="/elrealestate/assets/images/sidebar/img-1.jpg"
                                   alt=""
                                 />
                               </div>
@@ -1471,7 +1471,7 @@ const PropertyComponent = () => {
                       <ul>
                         <li>
                           <div className="image">
-                            <img src="/assets/images/sidebar/agent-1.png" alt="" />
+                            <img src="/elrealestate/assets/images/sidebar/agent-1.png" alt="" />
                           </div>
                           <div className="content">
                             <div className="name">
@@ -1483,7 +1483,7 @@ const PropertyComponent = () => {
                         </li>
                         <li>
                           <div className="image">
-                            <img src="/assets/images/sidebar/agent-2.png" alt="" />
+                            <img src="/elrealestate/assets/images/sidebar/agent-2.png" alt="" />
                           </div>
                           <div className="content">
                             <div className="name">
@@ -1495,7 +1495,7 @@ const PropertyComponent = () => {
                         </li>
                         <li>
                           <div className="image">
-                            <img src="/assets/images/sidebar/agent-3.png" alt="" />
+                            <img src="/elrealestate/assets/images/sidebar/agent-3.png" alt="" />
                           </div>
                           <div className="content">
                             <div className="name">
@@ -1520,7 +1520,7 @@ const PropertyComponent = () => {
       {/* /#page */}
     </div>
     <CustomScript
-          src="/assets/js/jquery.min.js"
+          src="/elrealestate/assets/js/jquery.min.js"
           strategy="lazyOnload" // Load it after the page load
           onLoad={() => {
             if (window.jQuery) {
@@ -1533,11 +1533,10 @@ const PropertyComponent = () => {
      
      
       
-      <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-      {/* <CustomScript src="/assets/js/maps-2.js"  /> */}
-      <CustomScript src="/assets/js/main.js"  />
-      <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/main.js"  />
     </>
 
   )

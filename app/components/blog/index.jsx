@@ -43,7 +43,7 @@ const BlogComponent = () => {
                                 {/* list-blog */}
                                 <div className="wg-blog style-row wow fadeInUp">
                                     <div className="image">
-                                        <img src="/assets/images/blog/blog-list-1.jpg" alt="" />
+                                        <img src="/elrealestate/assets/images/blog/blog-list-1.jpg" alt="" />
                                     </div>
                                     <div className="content">
                                         <div className="sub-blog">
@@ -69,7 +69,7 @@ const BlogComponent = () => {
                                 </div>
                                 <div className="wg-blog style-row wow fadeInUp">
                                     <div className="image">
-                                        <img src="/assets/images/blog/blog-list-2.jpg" alt="" />
+                                        <img src="/elrealestate/assets/images/blog/blog-list-2.jpg" alt="" />
                                     </div>
                                     <div className="content">
                                         <div className="sub-blog">
@@ -94,7 +94,7 @@ const BlogComponent = () => {
                                 </div>
                                 <div className="wg-blog style-row wow fadeInUp">
                                     <div className="image">
-                                        <img src="/assets/images/blog/blog-list-3.jpg" alt="" />
+                                        <img src="/elrealestate/assets/images/blog/blog-list-3.jpg" alt="" />
                                     </div>
                                     <div className="content">
                                         <div className="sub-blog">
@@ -119,7 +119,7 @@ const BlogComponent = () => {
                                 </div>
                                 <div className="wg-blog style-row wow fadeInUp">
                                     <div className="image">
-                                        <img src="/assets/images/blog/blog-list-4.jpg" alt="" />
+                                        <img src="/elrealestate/assets/images/blog/blog-list-4.jpg" alt="" />
                                     </div>
                                     <div className="content">
                                         <div className="sub-blog">
@@ -222,7 +222,7 @@ const BlogComponent = () => {
                                         <ul>
                                             <li>
                                                 <div className="image">
-                                                    <img src="/assets/images/blog/blog-list-1.jpg" alt="" />
+                                                    <img src="/elrealestate/assets/images/blog/blog-list-1.jpg" alt="" />
                                                 </div>
                                                 <div className="content">
                                                     <div className="name">
@@ -233,7 +233,7 @@ const BlogComponent = () => {
                                             </li>
                                             <li>
                                                 <div className="image">
-                                                    <img src="/assets/images/blog/blog-list-3.jpg" alt="" />
+                                                    <img src="/elrealestate/assets/images/blog/blog-list-3.jpg" alt="" />
                                                 </div>
                                                 <div className="content">
                                                     <div className="name">
@@ -244,7 +244,7 @@ const BlogComponent = () => {
                                             </li>
                                             <li>
                                                 <div className="image">
-                                                    <img src="/assets/images/blog/blog-list-2.jpg" alt="" />
+                                                    <img src="/elrealestate/assets/images/blog/blog-list-2.jpg" alt="" />
                                                 </div>
                                                 <div className="content">
                                                     <div className="name">
@@ -289,7 +289,7 @@ const BlogComponent = () => {
         </div>
  
         <CustomScript
-          src="/assets/js/jquery.min.js"
+          src="/elrealestate/assets/js/jquery.min.js"
           strategy="lazyOnload" // Load it after the page load
           onLoad={() => {
             if (window.jQuery) {
@@ -302,10 +302,10 @@ const BlogComponent = () => {
      
      
      
-      <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-      <CustomScript src="/assets/js/main.js"  />
-      <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/main.js"  />
     </>
     )
 }

@@ -104,27 +104,27 @@ const AboutComponent = () => {
 
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/assets/images/slider/slider-about-1.jpg" alt="" />
+                        <img src="/elrealestate/assets/images/slider/slider-about-1.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/assets/images/slider/slider-about-2.jpg" alt="" />
+                        <img src="/elrealestate/assets/images/slider/slider-about-2.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/assets/images/slider/slider-about-3.jpg" alt="" />
+                        <img src="/elrealestate/assets/images/slider/slider-about-3.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/assets/images/slider/slider-about-4.jpg" alt="" />
+                        <img src="/elrealestate/assets/images/slider/slider-about-4.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/assets/images/slider/slider-about-1.jpg" alt="" />
+                        <img src="/elrealestate/assets/images/slider/slider-about-1.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -244,7 +244,7 @@ const AboutComponent = () => {
               <div className="row justify-between">
                 <div className="col-md-6">
                   <div className="image wow fadeInLeft">
-                    <img src="/assets/images/section/luxury-home-4.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/section/luxury-home-4.jpg" alt="" />
                     <div className="box">
                       <div className="icon">
                         <i className="flaticon-customer" />
@@ -415,7 +415,7 @@ const AboutComponent = () => {
                           <div className="testimonials-item">
                             <div className="head">
                               <div className="image wow fadeInLeft">
-                                <img src="/assets/images/author/author-1.png" alt="" />
+                                <img src="/elrealestate/assets/images/author/author-1.png" alt="" />
                               </div>
                               <div>
                                 <div className="title wow fadeInUp">
@@ -491,7 +491,7 @@ const AboutComponent = () => {
                           <div className="testimonials-item">
                             <div className="head">
                               <div className="image">
-                                <img src="/assets/images/author/author-1.png" alt="" />
+                                <img src="/elrealestate/assets/images/author/author-1.png" alt="" />
                               </div>
                               <div>
                                 <div className="title">
@@ -629,7 +629,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-1.png"
+                                src="/elrealestate/assets/images/image-box/brand-1.png"
                                 alt="images"
                               />
                             </a>
@@ -641,7 +641,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-2.png"
+                                src="/elrealestate/assets/images/image-box/brand-2.png"
                                 alt="images"
                               />
                             </a>
@@ -653,7 +653,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-3.png"
+                                src="/elrealestate/assets/images/image-box/brand-3.png"
                                 alt="images"
                               />
                             </a>
@@ -665,7 +665,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-4.png"
+                                src="/elrealestate/assets/images/image-box/brand-4.png"
                                 alt="images"
                               />
                             </a>
@@ -677,7 +677,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-5.png"
+                                src="/elrealestate/assets/images/image-box/brand-5.png"
                                 alt="images"
                               />
                             </a>
@@ -689,7 +689,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-6.png"
+                                src="/elrealestate/assets/images/image-box/brand-6.png"
                                 alt="images"
                               />
                             </a>
@@ -701,7 +701,7 @@ const AboutComponent = () => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/assets/images/image-box/brand-1.png"
+                                src="/elrealestate/assets/images/image-box/brand-1.png"
                                 alt="images"
                               />
                             </a>
@@ -758,7 +758,7 @@ const AboutComponent = () => {
                     <div className="swiper-slide">
                         <div className="experts-item wow fadeInUp">
                           <div className="image">
-                            <img src="/assets/images/image-box/experts-1.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/image-box/experts-1.jpg" alt="" />
                             <ul className="wg-social-1">
                               <li>
                                 <a href="#">
@@ -796,7 +796,7 @@ const AboutComponent = () => {
                           data-wow-delay="0.1s"
                         >
                           <div className="image">
-                            <img src="/assets/images/image-box/experts-2.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/image-box/experts-2.jpg" alt="" />
                             <ul className="wg-social-1">
                               <li>
                                 <a href="#">
@@ -834,7 +834,7 @@ const AboutComponent = () => {
                           data-wow-delay="0.2s"
                         >
                           <div className="image">
-                            <img src="/assets/images/image-box/experts-3.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/image-box/experts-3.jpg" alt="" />
                             <ul className="wg-social-1">
                               <li>
                                 <a href="#">
@@ -872,7 +872,7 @@ const AboutComponent = () => {
                           data-wow-delay="0.3s"
                         >
                           <div className="image">
-                            <img src="/assets/images/image-box/experts-4.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/image-box/experts-4.jpg" alt="" />
                             <ul className="wg-social-1">
                               <li>
                                 <a href="#">
@@ -907,7 +907,7 @@ const AboutComponent = () => {
                     <div className="swiper-slide">
                         <div className="experts-item">
                           <div className="image">
-                            <img src="/assets/images/image-box/experts-1.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/image-box/experts-1.jpg" alt="" />
                             <ul className="wg-social-1">
                               <li>
                                 <a href="#">

@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        nextScriptWorkers: true,
-      },
+  basePath:"/elrealestate"
 };
 
 export default nextConfig;

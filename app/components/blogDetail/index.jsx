@@ -20,7 +20,7 @@ const BlogDetail = () => {
       <div className="blog-single-wrap">
         {/* image-head */}
         <div className="image-head">
-          <img src="/assets/images/blog/blog-detail-1.jpg" alt="" />
+          <img src="/elrealestate/assets/images/blog/blog-detail-1.jpg" alt="" />
         </div>
         {/* /image-head */}
         {/* blog-single-inner */}
@@ -161,14 +161,14 @@ const BlogDetail = () => {
                 </p>
                 <div className="grid-image mt-20">
                   <div className="image">
-                    <img src="/assets/images/blog/blog-detail-2.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-detail-2.jpg" alt="" />
                   </div>
                   <div className="right">
                     <div className="image">
-                      <img src="/assets/images/blog/blog-detail-3.jpg" alt="" />
+                      <img src="/elrealestate/assets/images/blog/blog-detail-3.jpg" alt="" />
                     </div>
                     <div className="image">
-                      <img src="/assets/images/blog/blog-detail-4.jpg" alt="" />
+                      <img src="/elrealestate/assets/images/blog/blog-detail-4.jpg" alt="" />
                     </div>
                   </div>
                 </div>
@@ -203,11 +203,11 @@ const BlogDetail = () => {
                 </div>
                 <div className="grid-image-1 mt-20">
                   <div className="image wow fadeInUp">
-                    <img src="/assets/images/blog/blog-detail-5.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-detail-5.jpg" alt="" />
                     <p>Donec purus posuere nullam lacus aliquam.</p>
                   </div>
                   <div className="image wow fadeInUp" data-wow-delay="0.1s">
-                    <img src="/assets/images/blog/blog-detail-6.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-detail-6.jpg" alt="" />
                     <p>Donec purus posuere nullam lacus aliquam.</p>
                   </div>
                 </div>
@@ -256,7 +256,7 @@ const BlogDetail = () => {
                 </div>
                 <div className="box-admin wow fadeInUp">
                   <div className="image">
-                    <img src="/assets/images/author/author-4.png" alt="" />
+                    <img src="/elrealestate/assets/images/author/author-4.png" alt="" />
                   </div>
                   <div className="content">
                     <div className="name">
@@ -324,7 +324,7 @@ const BlogDetail = () => {
                   <ul>
                     <li className="wow fadeInUp">
                       <div className="image">
-                        <img src="/assets/images/author/author-5.png" alt="" />
+                        <img src="/elrealestate/assets/images/author/author-5.png" alt="" />
                       </div>
                       <div className="content">
                         <div className="ratings">
@@ -347,7 +347,7 @@ const BlogDetail = () => {
                     </li>
                     <li className="wow fadeInUp">
                       <div className="image">
-                        <img src="/assets/images/author/author-6.png" alt="" />
+                        <img src="/elrealestate/assets/images/author/author-6.png" alt="" />
                       </div>
                       <div className="content">
                         <div className="ratings">
@@ -477,7 +477,7 @@ const BlogDetail = () => {
               <div className="col-xl-3 col-lg-6 col-12">
                 <div className="wg-blog wow fadeInUp">
                   <div className="image">
-                    <img src="/assets/images/blog/blog-grid-1.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-grid-1.jpg" alt="" />
                   </div>
                   <div className="content">
                     <div className="sub-blog">
@@ -500,7 +500,7 @@ const BlogDetail = () => {
               <div className="col-xl-3 col-lg-6 col-12">
                 <div className="wg-blog wow fadeInUp" data-wow-delay="0.1s">
                   <div className="image">
-                    <img src="/assets/images/blog/blog-grid-2.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-grid-2.jpg" alt="" />
                   </div>
                   <div className="content">
                     <div className="sub-blog">
@@ -522,7 +522,7 @@ const BlogDetail = () => {
               <div className="col-xl-3 col-lg-6 col-12">
                 <div className="wg-blog wow fadeInUp" data-wow-delay="0.2s">
                   <div className="image">
-                    <img src="/assets/images/blog/blog-grid-3.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-grid-3.jpg" alt="" />
                   </div>
                   <div className="content">
                     <div className="sub-blog">
@@ -544,7 +544,7 @@ const BlogDetail = () => {
               <div className="col-xl-3 col-lg-6 col-12">
                 <div className="wg-blog wow fadeInUp" data-wow-delay="0.3s">
                   <div className="image">
-                    <img src="/assets/images/blog/blog-grid-4.jpg" alt="" />
+                    <img src="/elrealestate/assets/images/blog/blog-grid-4.jpg" alt="" />
                   </div>
                   <div className="content">
                     <div className="sub-blog">
@@ -579,7 +579,7 @@ const BlogDetail = () => {
   {/* /#page */}
 </div>
 <CustomScript
-          src="/assets/js/jquery.min.js"
+          src="/elrealestate/assets/js/jquery.min.js"
           strategy="lazyOnload" // Load it after the page load
           onLoad={() => {
             if (window.jQuery) {
@@ -592,10 +592,10 @@ const BlogDetail = () => {
      
      
      
-      <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-      <CustomScript src="/assets/js/main.js"  />
-      <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+      <CustomScript src="/elrealestate/assets/js/main.js"  />
     </>
   )
 }

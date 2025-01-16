@@ -3,7 +3,6 @@ import React from 'react';
 import Header1 from '../header1';
 import Footer from '../footer';
 import CustomScript from '@/app/scripts';
-import $ from "jquery";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import WOW from "wow.js";
@@ -13,7 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay"
-
+import Link from 'next/link';
 
 const HomeComponent = () => {
     const [openFilter, setOpenFilter] = React.useState(false)
@@ -29,7 +28,7 @@ const HomeComponent = () => {
     return (
         <>
 
-            {/* <Scripts /> */}
+           
             < div id="wrapper">
                 <div id="page" className="">
                     <Header1 />
@@ -104,7 +103,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-8.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-8.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -118,7 +117,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-7.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-7.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -132,7 +131,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-9.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-9.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -146,7 +145,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-10.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-10.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -477,7 +476,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-8.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-8.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -491,7 +490,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-7.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-7.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -505,7 +504,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-9.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-9.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -519,7 +518,7 @@ const HomeComponent = () => {
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/assets/images/author/avatar-10.png"
+                                                                                                    src="/elrealestate/assets/images/author/avatar-10.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -829,66 +828,66 @@ const HomeComponent = () => {
                                     <div className="col-12">
                                         <div className="wrap">
                                             <div className="cities-item style-3 wow fadeInUp">
-                                                <img src="/assets/images/house/our-properties-1.jpg" alt="" />
+                                                <img src="/elrealestate/assets/images/house/our-properties-1.jpg" alt="" />
                                                 <div className="content">
                                                     <h4>Town House</h4>
                                                     <p>17 Properties</p>
                                                 </div>
-                                                <a href="property-map-v1.html" className="button-arrow-right">
+                                                <Link href="/property/this-is-new" className="button-arrow-right">
                                                     <i className="icon-arrow-right-add" />
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div
                                                 className="cities-item style-3 wow fadeInUp"
                                                 data-wow-delay="0.1s"
                                             >
-                                                <img src="/assets/images/house/our-properties-2.jpg" alt="" />
+                                                <img src="/elrealestate/assets/images/house/our-properties-2.jpg" alt="" />
                                                 <div className="content">
                                                     <h4>Modern Villa</h4>
                                                     <p>17 Properties</p>
                                                 </div>
-                                                <a href="property-map-v1.html" className="button-arrow-right">
+                                                <Link href="/property/this-is-new" className="button-arrow-right">
                                                     <i className="icon-arrow-right-add" />
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div
                                                 className="cities-item style-3 wow fadeInUp"
                                                 data-wow-delay="0.15s"
                                             >
-                                                <img src="/assets/images/house/our-properties-3.jpg" alt="" />
+                                                <img src="/elrealestate/assets/images/house/our-properties-3.jpg" alt="" />
                                                 <div className="content">
                                                     <h4>Apartment</h4>
                                                     <p>17 Properties</p>
                                                 </div>
-                                                <a href="property-map-v1.html" className="button-arrow-right">
+                                                <Link href="/property/this-is-new" className="button-arrow-right">
                                                     <i className="icon-arrow-right-add" />
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div
                                                 className="cities-item style-3 wow fadeInUp"
                                                 data-wow-delay="0.2s"
                                             >
-                                                <img src="/assets/images/house/our-properties-4.jpg" alt="" />
+                                                <img src="/elrealestate/assets/images/house/our-properties-4.jpg" alt="" />
                                                 <div className="content">
                                                     <h4>Single Family</h4>
                                                     <p>17 Properties</p>
                                                 </div>
-                                                <a href="property-map-v1.html" className="button-arrow-right">
+                                                <Link href="/property/this-is-new" className="button-arrow-right">
                                                     <i className="icon-arrow-right-add" />
-                                                </a>
+                                                </Link>
                                             </div>
                                             <div
                                                 className="cities-item style-3 wow fadeInUp"
                                                 data-wow-delay="0.25s"
                                             >
-                                                <img src="/assets/images/house/our-properties-5.jpg" alt="" />
+                                                <img src="/elrealestate/assets/images/house/our-properties-5.jpg" alt="" />
                                                 <div className="content">
                                                     <h4>Office</h4>
                                                     <p>17 Properties</p>
                                                 </div>
-                                                <a href="property-map-v1.html" className="button-arrow-right">
+                                                <Link href="/property/this-is-new" className="button-arrow-right">
                                                     <i className="icon-arrow-right-add" />
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
@@ -1043,12 +1042,12 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 wow fadeInUp">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR RENT
-                                                                </a>
-                                                                <a href="#" className="tags-item featured">
+                                                                </Link>
+                                                                <Link href="#" className="tags-item featured">
                                                                     FEATURED
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -1068,7 +1067,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1079,7 +1078,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1090,7 +1089,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1101,7 +1100,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1114,7 +1113,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -1152,9 +1151,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -1172,7 +1171,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1183,7 +1182,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1194,7 +1193,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1205,7 +1204,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/home-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/home-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1217,9 +1216,9 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">
+                                                                    <Link href="/property/property-single">
                                                                         Villa One Hyde Park
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -1260,9 +1259,9 @@ const HomeComponent = () => {
                                                         >
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <a href="#" className="tags-item for-sell">
+                                                                    <Link href="#" className="tags-item for-sell">
                                                                         FOR SELL
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                                 <div className="button-heart">
                                                                     <i className="flaticon-heart-1" />
@@ -1280,7 +1279,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-3.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-3.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1291,7 +1290,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-1.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-1.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1302,7 +1301,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-2.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-2.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1313,7 +1312,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-4.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-4.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1325,9 +1324,9 @@ const HomeComponent = () => {
                                                             <div className="content">
                                                                 <div className="head">
                                                                     <div className="title">
-                                                                        <a href="property-single-v1.html">
+                                                                        <Link href="/property/property-single">
                                                                             Home Pitt Street
-                                                                        </a>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                                 <div className="location">
@@ -1371,9 +1370,9 @@ const HomeComponent = () => {
                                                         >
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <a href="#" className="tags-item for-sell">
+                                                                    <Link href="#" className="tags-item for-sell">
                                                                         FOR SELL
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                                 <div className="button-heart">
                                                                     <i className="flaticon-heart-1" />
@@ -1391,7 +1390,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-3.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-3.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1402,7 +1401,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-1.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-1.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1413,7 +1412,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-2.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-2.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1424,7 +1423,7 @@ const HomeComponent = () => {
                                                                             <div className="w-full">
                                                                                 <img
                                                                                     className="w-full"
-                                                                                    src="/assets/images/house/home-4.jpg"
+                                                                                    src="/elrealestate/assets/images/house/home-4.jpg"
                                                                                     alt=""
                                                                                 />
                                                                             </div>
@@ -1436,9 +1435,9 @@ const HomeComponent = () => {
                                                             <div className="content">
                                                                 <div className="head">
                                                                     <div className="title">
-                                                                        <a href="property-single-v1.html">
+                                                                        <Link href="/property/property-single">
                                                                             Home Pitt Street
-                                                                        </a>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
                                                                 <div className="location">
@@ -1521,7 +1520,7 @@ const HomeComponent = () => {
                                                     <div className="swiper-slide">
                                                         <div className="cities-item style-1 wow fadeInUp">
                                                             <div className="image">
-                                                                <img src="/assets/images/image-box/cities-1.jpg" alt="" />
+                                                                <img src="/elrealestate/assets/images/image-box/cities-1.jpg" alt="" />
                                                             </div>
                                                             <div className="content">
                                                                 <p>13 Properties</p>
@@ -1537,7 +1536,7 @@ const HomeComponent = () => {
                                                             data-wow-delay="0.1s"
                                                         >
                                                             <div className="image">
-                                                                <img src="/assets/images/image-box/cities-2.jpg" alt="" />
+                                                                <img src="/elrealestate/assets/images/image-box/cities-2.jpg" alt="" />
                                                             </div>
                                                             <div className="content">
                                                                 <p>13 Properties</p>
@@ -1553,7 +1552,7 @@ const HomeComponent = () => {
                                                             data-wow-delay="0.15s"
                                                         >
                                                             <div className="image">
-                                                                <img src="/assets/images/image-box/cities-3.jpg" alt="" />
+                                                                <img src="/elrealestate/assets/images/image-box/cities-3.jpg" alt="" />
                                                             </div>
                                                             <div className="content">
                                                                 <p>13 Properties</p>
@@ -1569,7 +1568,7 @@ const HomeComponent = () => {
                                                             data-wow-delay="0.2s"
                                                         >
                                                             <div className="image">
-                                                                <img src="/assets/images/image-box/cities-4.jpg" alt="" />
+                                                                <img src="/elrealestate/assets/images/image-box/cities-4.jpg" alt="" />
                                                             </div>
                                                             <div className="content">
                                                                 <p>13 Properties</p>
@@ -1585,7 +1584,7 @@ const HomeComponent = () => {
                                                             data-wow-delay="0.25s"
                                                         >
                                                             <div className="image">
-                                                                <img src="/assets/images/image-box/cities-5.jpg" alt="" />
+                                                                <img src="/elrealestate/assets/images/image-box/cities-5.jpg" alt="" />
                                                             </div>
                                                             <div className="content">
                                                                 <p>13 Properties</p>
@@ -1601,7 +1600,7 @@ const HomeComponent = () => {
                                                             data-wow-delay="0.3s"
                                                         >
                                                             <div className="image">
-                                                                <img src="/assets/images/image-box/cities-4.jpg" alt="" />
+                                                                <img src="/elrealestate/assets/images/image-box/cities-4.jpg" alt="" />
                                                             </div>
                                                             <div className="content">
                                                                 <p>13 Properties</p>
@@ -1659,12 +1658,12 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 type-small wow fadeInUp">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR RENT
-                                                                </a>
-                                                                <a href="#" className="tags-item featured">
+                                                                </Link>
+                                                                <Link href="#" className="tags-item featured">
                                                                     FEATURED
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -1682,7 +1681,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1693,7 +1692,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1704,7 +1703,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1715,7 +1714,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1727,7 +1726,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -1765,9 +1764,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -1785,7 +1784,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1796,7 +1795,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1807,7 +1806,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1818,7 +1817,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1831,9 +1830,9 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">
+                                                                    <Link href="/property/property-single">
                                                                         Villa One Hyde Park
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -1871,9 +1870,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -1891,7 +1890,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1902,7 +1901,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1913,7 +1912,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1924,7 +1923,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -1937,9 +1936,9 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">
+                                                                    <Link href="/property/property-single">
                                                                         Home Pitt Street
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -1977,9 +1976,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -1997,7 +1996,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2008,7 +2007,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2019,7 +2018,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2030,7 +2029,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2042,7 +2041,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2077,9 +2076,9 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 type-small">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2098,7 +2097,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2109,7 +2108,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2120,7 +2119,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2131,7 +2130,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2143,7 +2142,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2178,9 +2177,9 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 type-small">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2198,7 +2197,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2209,7 +2208,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2220,7 +2219,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2231,7 +2230,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/rent-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2243,7 +2242,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2320,12 +2319,12 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 type-small wow fadeInUp">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR RENT
-                                                                </a>
-                                                                <a href="#" className="tags-item featured">
+                                                                </Link>
+                                                                <Link href="#" className="tags-item featured">
                                                                     FEATURED
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2343,7 +2342,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2354,7 +2353,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2365,7 +2364,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2376,7 +2375,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2388,7 +2387,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2426,9 +2425,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2445,7 +2444,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2456,7 +2455,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2467,7 +2466,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2478,7 +2477,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2491,9 +2490,9 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">
+                                                                    <Link href="/property/property-single">
                                                                         Villa One Hyde Park
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2531,9 +2530,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2550,7 +2549,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2561,7 +2560,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2572,7 +2571,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2583,7 +2582,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2597,9 +2596,9 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">
+                                                                    <Link href="/property/property-single">
                                                                         Home Pitt Street
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2637,9 +2636,9 @@ const HomeComponent = () => {
                                                     >
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2656,7 +2655,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2667,7 +2666,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2678,7 +2677,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2689,7 +2688,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2701,7 +2700,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2736,9 +2735,9 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 type-small">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2755,7 +2754,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2766,7 +2765,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2777,7 +2776,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2788,7 +2787,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2800,7 +2799,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2835,9 +2834,9 @@ const HomeComponent = () => {
                                                     <div className="box-dream style-2 type-small">
                                                         <div className="image">
                                                             <div className="list-tags">
-                                                                <a href="#" className="tags-item for-sell">
+                                                                <Link href="#" className="tags-item for-sell">
                                                                     FOR SELL
-                                                                </a>
+                                                                </Link>
                                                             </div>
                                                             <div className="button-heart">
                                                                 <i className="flaticon-heart-1" />
@@ -2854,7 +2853,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-3.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2865,7 +2864,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-1.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2876,7 +2875,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-2.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2887,7 +2886,7 @@ const HomeComponent = () => {
                                                                         <div className="w-full">
                                                                             <img
                                                                                 className="w-full"
-                                                                                src="/assets/images/house/sale-properties-4.jpg"
+                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
                                                                                 alt=""
                                                                             />
                                                                         </div>
@@ -2899,7 +2898,7 @@ const HomeComponent = () => {
                                                         <div className="content">
                                                             <div className="head">
                                                                 <div className="title">
-                                                                    <a href="property-single-v1.html">Archer House</a>
+                                                                    <Link href="/property/property-single">Archer House</Link>
                                                                 </div>
                                                             </div>
                                                             <div className="location">
@@ -2958,9 +2957,9 @@ const HomeComponent = () => {
                                                     <i className="flaticon-house" />
                                                 </div>
                                                 <div className="content">
-                                                    <a href="#" className="title">
+                                                    <Link href="#" className="title">
                                                         Find Real Estate
-                                                    </a>
+                                                    </Link>
                                                     <p>
                                                         Sumo petentium ut per, at his wisim utinam adipiscing. Est
                                                         ei graeco Lorem ipsum dolor sit amet, consectetur
@@ -2973,9 +2972,9 @@ const HomeComponent = () => {
                                                     <i className="flaticon-online-meeting" />
                                                 </div>
                                                 <div className="content">
-                                                    <a href="#" className="title">
+                                                    <Link href="#" className="title">
                                                         Meet Relator
-                                                    </a>
+                                                    </Link>
                                                     <p>
                                                         Sumo petentium ut per, at his wisim utinam adipiscing. Est
                                                         ei graeco Lorem ipsum dolor sit amet, consectetur
@@ -2988,9 +2987,9 @@ const HomeComponent = () => {
                                                     <i className="flaticon-rental" />
                                                 </div>
                                                 <div className="content">
-                                                    <a href="#" className="title">
+                                                    <Link href="#" className="title">
                                                         Take The Keys
-                                                    </a>
+                                                    </Link>
                                                     <p>
                                                         Sumo petentium ut per, at his wisim utinam adipiscing. Est
                                                         ei graeco Lorem ipsum dolor sit amet, consectetur
@@ -3004,22 +3003,22 @@ const HomeComponent = () => {
                                         <div className="widget-content-tab">
                                             <div className="widget-content-inner active">
                                                 <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="" />
                                                 </div>
                                             </div>
                                             <div className="widget-content-inner">
                                                 <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="" />
                                                 </div>
                                             </div>
                                             <div className="widget-content-inner">
                                                 <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="" />
                                                 </div>
                                             </div>
                                         </div>
                                         {/* <div class="img-right">
-                              <img src="/assets/images/section/works-step-1.jpg" alt="">
+                              <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="">
                           </div> */}
                                     </div>
                                 </div>
@@ -3036,13 +3035,13 @@ const HomeComponent = () => {
                                     Pellentesque egestas elementum egestas faucibus sem.
                                     <br /> Velit nunc egestas ut morbi. Leo diam diam{" "}
                                 </div>
-                                <a
+                                <Link
                                     href="#"
                                     className="tf-button-primary style-green m-auto wow fadeInUp"
                                 >
                                     View Properties
                                     <i className="icon-arrow-right-add" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         {/* /parallax */}
@@ -3052,7 +3051,7 @@ const HomeComponent = () => {
                                 <div className="row justify-between">
                                     <div className="col-md-6">
                                         <div className="image wow fadeInLeft">
-                                            <img src="/assets/images/section/luxury-home-2.jpg" alt="" />
+                                            <img src="/elrealestate/assets/images/section/luxury-home-2.jpg" alt="" />
                                             <div className="box">
                                                 <div className="icon">
                                                     <i className="flaticon-customer" />
@@ -3091,13 +3090,13 @@ const HomeComponent = () => {
                                                     </p>
                                                 </li>
                                             </ul>
-                                            <a
+                                            <Link
                                                 href="#"
                                                 className="tf-button-primary style-green wow fadeInUp"
                                             >
                                                 Learn More
                                                 <i className="icon-arrow-right-add" />
-                                            </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -3147,84 +3146,84 @@ const HomeComponent = () => {
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-1.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-1.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-2.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-2.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-3.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-3.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-4.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-4.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-5.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-5.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-6.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-6.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
                                                 <SwiperSlide>
                                                     <div className="swiper-slide">
                                                         <div className="slogan-logo">
-                                                            <a href="#">
+                                                            <Link href="#">
                                                                 <img
-                                                                    src="/assets/images/image-box/brand-1.png"
+                                                                    src="/elrealestate/assets/images/image-box/brand-1.png"
                                                                     alt="images"
                                                                 />
-                                                            </a>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                 </SwiperSlide>
@@ -3255,11 +3254,11 @@ const HomeComponent = () => {
             <div className="modal fade modalCenter" id="modallogin">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content modal-sm">
-                        <a href="#" className="btn-hide-modal" data-bs-dismiss="modal">
+                        <Link href="#" className="btn-hide-modal" data-bs-dismiss="modal">
                             <i className="icon-close" />
-                        </a>
+                        </Link>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -3297,9 +3296,9 @@ const HomeComponent = () => {
                                             <span className="btn-checkbox" />
                                         </label>
                                     </div>
-                                    <a href="#" className="lost-password">
+                                    <Link href="#" className="lost-password">
                                         Lost your password?
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="button-submit w-full">
                                     <button className="tf-button-primary w-full" type="submit">
@@ -3310,7 +3309,7 @@ const HomeComponent = () => {
                             </form>
                             <div className="flex items-center justify-center">
                                 <p>Not a member?</p>
-                                <a
+                                <Link
                                     href="#"
                                     className="btn-show-register"
                                     data-bs-dismiss="modal"
@@ -3318,23 +3317,23 @@ const HomeComponent = () => {
                                     data-bs-target="#modalregister"
                                 >
                                     Register here
-                                </a>
+                                </Link>
                             </div>
                             <ul className="wg-social-1">
                                 <li>
-                                    <a href="#">
+                                    <Link href="#">
                                         <i className="flaticon-google" />
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <Link href="#">
                                         <i className="flaticon-twitter" />
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <Link href="#">
                                         <i className="flaticon-facebook" />
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -3344,11 +3343,11 @@ const HomeComponent = () => {
             <div className="modal fade modalCenter" id="modalregister">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content modal-sm">
-                        <a href="#" className="btn-hide-modal" data-bs-dismiss="modal">
+                        <Link href="#" className="btn-hide-modal" data-bs-dismiss="modal">
                             <i className="icon-close" />
-                        </a>
+                        </Link>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -3420,7 +3419,7 @@ const HomeComponent = () => {
                             </form>
                             <div className="flex items-center justify-center">
                                 <p>Have an account?</p>
-                                <a
+                                <Link
                                     href="#"
                                     className="btn-show-register"
                                     data-bs-dismiss="modal"
@@ -3428,18 +3427,23 @@ const HomeComponent = () => {
                                     data-bs-target="#modallogin"
                                 >
                                     Log in
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
            
-
-            <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-            <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-            <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
-            <CustomScript src="/assets/js/main.js" />
+            <CustomScript
+          src="/elrealestate/assets/js/jquery.min.js"
+          strategy="lazyOnload" // Load it after the page load
+         
+          onError={(e) => console.error("Failed to load jQuery:", e)}
+        />
+            <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+            <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+            <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+            <CustomScript src="/elrealestate/assets/js/main.js" />
 
 
         </>
