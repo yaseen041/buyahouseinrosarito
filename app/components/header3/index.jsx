@@ -60,6 +60,10 @@ const handleClose = () => setOpenMenu(false);
                                     <Link href="/blog">Blog</Link>
                                    
                                 </li>
+                                <li className={pathname==="/faq"?"current":""}>
+                                    <Link href="/faq">FAQ</Link>
+                                   
+                                </li>
                                 <li className={pathname==="/contact"?"current":""} >
                                     <Link href="/contact">Contact</Link>
                                 </li>
@@ -87,7 +91,7 @@ const handleClose = () => setOpenMenu(false);
                                 </a>
                             </div>
                         </div>
-                        <a className="mobile-nav-toggler mobile-button" href="javascript:void(0);" onClick={handleShow} />
+                        <a className="mobile-nav-toggler mobile-button" href="#m" onClick={handleShow} />
                     </div>
                 </div>
                 <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}   >
@@ -110,7 +114,7 @@ const handleClose = () => setOpenMenu(false);
                 </a>
               </div>
               <ul className="mm-listview">
-                <li className="mm-listitem" id="mm-2" data-mm-child="mm-3">
+                <li className={`mm-listitem ${pathname==="/"?"current":""}`} id="mm-2" data-mm-child="mm-3">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -119,7 +123,7 @@ const handleClose = () => setOpenMenu(false);
                     Home
                   </Link>
                 </li>
-                <li className="current mm-listitem" id="mm-4" data-mm-child="mm-5">
+                <li className={`mm-listitem ${pathname==="/property"?"current":""}`} id="mm-4" data-mm-child="mm-5">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -128,7 +132,7 @@ const handleClose = () => setOpenMenu(false);
                     Property
                   </Link>
                 </li>
-                <li className="mm-listitem" id="mm-14" data-mm-child="mm-15">
+                <li className={`mm-listitem ${pathname==="/about"?"current":""}`} id="mm-14" data-mm-child="mm-15">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -137,7 +141,7 @@ const handleClose = () => setOpenMenu(false);
                     About
                   </Link>
                 </li>
-                <li className="mm-listitem" id="mm-16" data-mm-child="mm-17">
+                <li className={`mm-listitem ${pathname==="/blog"?"current":""}`} id="mm-16" data-mm-child="mm-17">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -146,7 +150,7 @@ const handleClose = () => setOpenMenu(false);
                     Blog
                   </Link>
                 </li>
-                <li className="mm-listitem" id="mm-18" data-mm-child="mm-19">
+                <li className={`mm-listitem ${pathname==="/contact"?"current":""}`} id="mm-18" data-mm-child="mm-19">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -688,7 +692,188 @@ const handleClose = () => setOpenMenu(false);
         </Offcanvas.Body>
        </Offcanvas>
             </header>
-
+            <div className="modal fade modalCenter" id="modallogin">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content modal-sm">
+                        <a href="#" className="btn-hide-modal" data-bs-dismiss="modal">
+                            <i className="icon-close" />
+                        </a>
+                        <div className="image-left">
+                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <h3>Welcome to Your Real Estate Website</h3>
+                        </div>
+                        <div className="content-right">
+                            <h4>Sign into your account</h4>
+                            <form className="form-login">
+                                <fieldset className="name">
+                                    <input
+                                        type="text"
+                                        placeholder="Username"
+                                        className=""
+                                        name="text"
+                                        tabIndex={2}
+                                        defaultValue="creative"
+                                        aria-required="true"
+                                        required=""
+                                    />
+                                </fieldset>
+                                <fieldset className="password">
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        className=""
+                                        name="password"
+                                        tabIndex={2}
+                                        defaultValue=""
+                                        aria-required="true"
+                                        required=""
+                                    />
+                                </fieldset>
+                                <div className="flex items-center justify-between w-full">
+                                    <div className="checkbox-item">
+                                        <label>
+                                            <p>Remember me</p>
+                                            <input type="checkbox" />
+                                            <span className="btn-checkbox" />
+                                        </label>
+                                    </div>
+                                    <a href="#" className="lost-password">
+                                        Lost your password?
+                                    </a>
+                                </div>
+                                <div className="button-submit w-full">
+                                    <button className="tf-button-primary w-full" type="submit">
+                                        Login
+                                        <i className="icon-arrow-right-add" />
+                                    </button>
+                                </div>
+                            </form>
+                            <div className="flex items-center justify-center">
+                                <p>Not a member?</p>
+                                <a
+                                    href="#"
+                                    className="btn-show-register"
+                                    data-bs-dismiss="modal"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalregister"
+                                >
+                                    Register here
+                                </a>
+                            </div>
+                            <ul className="wg-social-1">
+                                <li>
+                                    <a href="#">
+                                        <i className="flaticon-google" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="flaticon-twitter" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i className="flaticon-facebook" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="modal fade modalCenter" id="modalregister">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content modal-sm">
+                        <a href="#" className="btn-hide-modal" data-bs-dismiss="modal">
+                            <i className="icon-close" />
+                        </a>
+                        <div className="image-left">
+                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <h3>Welcome to Your Real Estate Website</h3>
+                        </div>
+                        <div className="content-right">
+                            <h4>Create an account</h4>
+                            <form className="form-login">
+                                <fieldset className="name">
+                                    <input
+                                        type="text"
+                                        placeholder="Username"
+                                        className=""
+                                        name="text"
+                                        tabIndex={2}
+                                        defaultValue=""
+                                        aria-required="true"
+                                        required=""
+                                    />
+                                </fieldset>
+                                <fieldset className="email">
+                                    <input
+                                        type="email"
+                                        placeholder="Email"
+                                        className=""
+                                        name="email"
+                                        tabIndex={2}
+                                        defaultValue=""
+                                        aria-required="true"
+                                        required=""
+                                    />
+                                </fieldset>
+                                <fieldset className="password">
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        className=""
+                                        name="password"
+                                        tabIndex={2}
+                                        defaultValue=""
+                                        aria-required="true"
+                                        required=""
+                                    />
+                                </fieldset>
+                                <fieldset className="password">
+                                    <input
+                                        type="password"
+                                        placeholder="Retype Password"
+                                        className=""
+                                        name="password"
+                                        tabIndex={2}
+                                        defaultValue=""
+                                        aria-required="true"
+                                        required=""
+                                    />
+                                </fieldset>
+                                <div className="flex items-center justify-between">
+                                    <div className="checkbox-item">
+                                        <label>
+                                            <p>I agree with terms &amp; conditions</p>
+                                            <input type="checkbox" />
+                                            <span className="btn-checkbox" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className="button-submit">
+                                    <button className="tf-button-primary w-full" type="submit">
+                                        Register
+                                        <i className="icon-arrow-right-add" />
+                                    </button>
+                                </div>
+                            </form>
+                            <div className="flex items-center justify-center">
+                                <p>Have an account?</p>
+                                <a
+                                    href="#"
+                                    className="btn-show-register"
+                                    data-bs-dismiss="modal"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modallogin"
+                                >
+                                    Log in
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
 
     )

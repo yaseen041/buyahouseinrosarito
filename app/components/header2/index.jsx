@@ -61,6 +61,10 @@ const handleClose = () => setOpenMenu(false);
               <Link href="/blog">Blog</Link>
              
             </li>
+            <li className={pathname==="/faq"?"current":""}>
+              <Link href="/faq">FAQ</Link>
+             
+            </li>
             <li className={pathname==="/contact"?"current":""}>
               <Link href="/contact">Contact</Link>
             </li>
@@ -91,7 +95,7 @@ const handleClose = () => setOpenMenu(false);
             </a>
           </div>
         </div>
-        <a className="mobile-nav-toggler mobile-button" href="javascript:void(0);" onClick={handleShow} />
+        <a className="mobile-nav-toggler mobile-button" href="#m" onClick={handleShow} />
       </div>
     </div>
     <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}   >
@@ -114,7 +118,7 @@ const handleClose = () => setOpenMenu(false);
                 </a>
               </div>
               <ul className="mm-listview">
-                <li className="mm-listitem" id="mm-2" data-mm-child="mm-3">
+                <li className={`mm-listitem ${pathname==="/"?"current":""}`} id="mm-2" data-mm-child="mm-3">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -123,7 +127,7 @@ const handleClose = () => setOpenMenu(false);
                     Home
                   </Link>
                 </li>
-                <li className="current mm-listitem" id="mm-4" data-mm-child="mm-5">
+                <li className={`mm-listitem ${pathname==="/property"?"current":""}`} id="mm-4" data-mm-child="mm-5">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -132,7 +136,7 @@ const handleClose = () => setOpenMenu(false);
                     Property
                   </Link>
                 </li>
-                <li className="mm-listitem" id="mm-14" data-mm-child="mm-15">
+                <li className={`mm-listitem ${pathname==="/about"?"current":""}`} id="mm-14" data-mm-child="mm-15">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -141,7 +145,7 @@ const handleClose = () => setOpenMenu(false);
                     About
                   </Link>
                 </li>
-                <li className="mm-listitem" id="mm-16" data-mm-child="mm-17">
+                <li className={`mm-listitem ${pathname==="/blog"?"current":""}`} id="mm-16" data-mm-child="mm-17">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"
@@ -150,7 +154,16 @@ const handleClose = () => setOpenMenu(false);
                     Blog
                   </Link>
                 </li>
-                <li className="mm-listitem" id="mm-18" data-mm-child="mm-19">
+                <li className={`mm-listitem ${pathname==="/faq"?"current":""}`} id="mm-16" data-mm-child="mm-17">
+                  <Link
+                    className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
+                    aria-label="Open submenu"
+                    href="/faq"
+                  >
+                    FAQ
+                  </Link>
+                </li>
+                <li className={`mm-listitem ${pathname==="/contact"?"current":""}`} id="mm-18" data-mm-child="mm-19">
                   <Link
                     className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                     aria-label="Open submenu"

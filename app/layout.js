@@ -5,6 +5,8 @@ import Script from 'next/script';
 import React from "react";
 import { usePathname } from 'next/navigation';
 import Head from 'next/head';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 // import Scripts from "./scripts";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,10 +19,34 @@ const geistMono = Geist_Mono({
 });
 
 
-
 export default function RootLayout({ children }) {
   const [isJQueryLoaded, setIsJQueryLoaded] = React.useState(false);
-  console.log(isJQueryLoaded)
+  const pathname = usePathname();
+  React.useEffect(() => {
+    const handleStart = () => NProgress.start();
+    const handleComplete = () => NProgress.done();
+    handleStart();
+    handleComplete();
+    const handleRouteChange = () => {
+      handleStart();
+      handleComplete();
+    };
+  
+    handleRouteChange();
+  
+    return () => {
+      handleComplete();
+    };
+  }, [pathname]);
+  
+  React.useEffect(() => {
+    const handleWindowLoad = () => NProgress.done();
+    window.addEventListener("load", handleWindowLoad);
+  
+    return () => {
+      window.removeEventListener("load", handleWindowLoad);
+    };
+  }, []);
   return (
     <html lang="en">
       <head>
@@ -69,13 +95,15 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/assets/images/favicon.png" />
         <link rel="apple-touch-icon-precomposed" href="/assets/images/favicon.png" />
 
+       
 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}  body counter-scroll mm-wrapper`}>
         {children}
+       
         <Script
           src="/assets/js/jquery.min.js"
-          strategy="lazyOnload" // Load it after the page load
+          strategy="beforeInteractive" // Load it after the page load
           onLoad={() => {
             if (window.jQuery) {
               console.log("jQuery loaded successfully.");
@@ -84,23 +112,24 @@ export default function RootLayout({ children }) {
           }}
           onError={(e) => console.error("Failed to load jQuery:", e)}
         />
-        {isJQueryLoaded && (
-          <>
             <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
-
             <Script src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
             <Script src="/assets/js/bootstrap-select.min.js" strategy="afterInteractive" />
+        {isJQueryLoaded && (
+          <>
+
+           
             {/* <Script src="/assets/js/swiper-bundle.min.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/swiper.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/countto.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/circletype.min.js" strategy="afterInteractive" /> */}
-            <Script
-              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFC3m2n0jBRFTMvUNZc0-6Y0Rzlcadzcw"
+            {/* <Script
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2l4KGGTm4cTqoSl6h8UAOAob87sHBsA"
               async
               strategy="afterInteractive"
-            />
+            /> */}
             {/* <Script src="/assets/js/marker.js" strategy="afterInteractive" /> */}
-            <Script src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+            {/* <Script src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/apexcharts.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/area-chart.js" strategy="afterInteractive" /> */}
@@ -110,7 +139,7 @@ export default function RootLayout({ children }) {
             {/* <Script src="/assets/js/nouislider.min.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/rangle-slider.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/mmenu.js" strategy="afterInteractive" /> */}
-            <Script src="/assets/js/wow.min.js" strategy="afterInteractive" />
+            {/* <Script src="/assets/js/wow.min.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/scrollmagic.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/main.js" strategy="afterInteractive" /> */}
             {/* <Script src="/assets/js/maps.js" strategy="afterInteractive" /> */}

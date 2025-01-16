@@ -1,10 +1,6 @@
-
-import Image from "next/image";
-import styles from "./page.module.css";
-import HomePage from "./home/page";
-import Footer from "./components/footer";
-import Property from "./property/page";
-
+"use client"
+import dynamic from 'next/dynamic';
+const HomePage = dynamic(() => import("@/app/home/page"), { ssr: false })
 export default function Home() {
   return (
     <>
