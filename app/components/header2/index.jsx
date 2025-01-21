@@ -37,8 +37,8 @@ const handleClose = () => setOpenMenu(false);
       <div className="header-inner-wrap">
         <div id="site-logo">
           <Link href="/" rel="home">
-            <img id="logo-header" src="/assets/images/logo/logo-white.svg" alt="" />
-            <img id="logo-header-mobile" src="/assets/images/logo/logo.svg" alt="" />
+            <img id="logo-header" src="/elrealestate/assets/images/logo/logo-white.svg" alt="" />
+            <img id="logo-header-mobile" src="/elrealestate/assets/images/logo/logo.svg" alt="" />
           </Link>
         </div>
         <nav className="main-menu style-white">
@@ -712,7 +712,7 @@ const handleClose = () => setOpenMenu(false);
                             <i className="icon-close" />
                         </a>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -801,7 +801,7 @@ const handleClose = () => setOpenMenu(false);
                             <i className="icon-close" />
                         </a>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">

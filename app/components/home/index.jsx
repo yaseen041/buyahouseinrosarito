@@ -13,8 +13,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay"
 import Link from 'next/link';
+import VideoComponent from '../video';
 
-const HomeComponent = () => {
+const HomeComponent = ({ types = [], cities = [] }) => {
     const [openFilter, setOpenFilter] = React.useState(false)
     const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
@@ -28,7 +29,7 @@ const HomeComponent = () => {
     return (
         <>
 
-           
+
             < div id="wrapper">
                 <div id="page" className="">
                     <Header1 />
@@ -827,68 +828,45 @@ const HomeComponent = () => {
                                     </div>
                                     <div className="col-12">
                                         <div className="wrap">
-                                            <div className="cities-item style-3 wow fadeInUp">
-                                                <img src="/elrealestate/assets/images/house/our-properties-1.jpg" alt="" />
-                                                <div className="content">
-                                                    <h4>Town House</h4>
-                                                    <p>17 Properties</p>
-                                                </div>
-                                                <Link href="/property/this-is-new" className="button-arrow-right">
-                                                    <i className="icon-arrow-right-add" />
-                                                </Link>
-                                            </div>
-                                            <div
-                                                className="cities-item style-3 wow fadeInUp"
-                                                data-wow-delay="0.1s"
+                                            <Swiper
+                                                className='swiper-container slider-discover padding-bottom-80 pagination-style-2'
+                                                slidesPerView={1}
+                                                spaceBetween={40}
+                                                modules={[Pagination, A11y]}
+                                                pagination={{ clickable: true }}
+                                                breakpoints={{
+                                                    450: {
+                                                        slidesPerView: 1,
+                                                        spaceBetween: 30,
+                                                    },
+                                                    768: {
+                                                        slidesPerView: 2,
+                                                        spaceBetween: 30,
+                                                    },
+                                                    1024: { // Adjust breakpoint to avoid overlap with 868
+                                                        slidesPerView: 4,
+                                                        spaceBetween: 40,
+                                                    },
+                                                }}
                                             >
-                                                <img src="/elrealestate/assets/images/house/our-properties-2.jpg" alt="" />
-                                                <div className="content">
-                                                    <h4>Modern Villa</h4>
-                                                    <p>17 Properties</p>
-                                                </div>
-                                                <Link href="/property/this-is-new" className="button-arrow-right">
-                                                    <i className="icon-arrow-right-add" />
-                                                </Link>
-                                            </div>
-                                            <div
-                                                className="cities-item style-3 wow fadeInUp"
-                                                data-wow-delay="0.15s"
-                                            >
-                                                <img src="/elrealestate/assets/images/house/our-properties-3.jpg" alt="" />
-                                                <div className="content">
-                                                    <h4>Apartment</h4>
-                                                    <p>17 Properties</p>
-                                                </div>
-                                                <Link href="/property/this-is-new" className="button-arrow-right">
-                                                    <i className="icon-arrow-right-add" />
-                                                </Link>
-                                            </div>
-                                            <div
-                                                className="cities-item style-3 wow fadeInUp"
-                                                data-wow-delay="0.2s"
-                                            >
-                                                <img src="/elrealestate/assets/images/house/our-properties-4.jpg" alt="" />
-                                                <div className="content">
-                                                    <h4>Single Family</h4>
-                                                    <p>17 Properties</p>
-                                                </div>
-                                                <Link href="/property/this-is-new" className="button-arrow-right">
-                                                    <i className="icon-arrow-right-add" />
-                                                </Link>
-                                            </div>
-                                            <div
-                                                className="cities-item style-3 wow fadeInUp"
-                                                data-wow-delay="0.25s"
-                                            >
-                                                <img src="/elrealestate/assets/images/house/our-properties-5.jpg" alt="" />
-                                                <div className="content">
-                                                    <h4>Office</h4>
-                                                    <p>17 Properties</p>
-                                                </div>
-                                                <Link href="/property/this-is-new" className="button-arrow-right">
-                                                    <i className="icon-arrow-right-add" />
-                                                </Link>
-                                            </div>
+                                                {types.map((item) => (
+                                                    <SwiperSlide key={item.id} >
+                                                        <div className="cities-item style-3 wow fadeInUp">
+                                                            <img src={item.banner} alt="" />
+                                                            <div className="content">
+                                                                <h4>{item.title}</h4>
+                                                                <p>{item.property_count} Properties</p>
+                                                            </div>
+                                                            <Link href={`/property/?type=${item.slug}`} className="button-arrow-right">
+                                                                <i className="icon-arrow-right-add" />
+                                                            </Link>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                ))}
+
+
+
+                                            </Swiper>
                                         </div>
                                     </div>
                                 </div>
@@ -912,7 +890,9 @@ const HomeComponent = () => {
                                     </div>
                                 </div>
                                 <div className="counter">
-                                    <div className="row">
+                                    <div className='row' >
+                                        <div className='col-12 col-md-12' >
+                                        <div className="row">
                                         <div className="col-xl-3 col-md-6">
                                             <div className="number-counter style-1">
                                                 <div className="text-center">
@@ -998,6 +978,50 @@ const HomeComponent = () => {
                                             </div>
                                         </div>
                                     </div>
+                                        </div>
+                                       
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </section>
+                        <section className="tf-section flat-counter">
+                            <div className="cl-container">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div className="heading-section text-center">
+                                            <h2 className="wow fadeInUp">
+                                                Our mission is to redefine real estate <br /> in the
+                                                customer's favor.
+                                            </h2>
+                                            <div className="text wow fadeInUp">
+                                                Based on your view history
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="counter">
+                                    <div className='row justify-center' >
+                                        
+                                        <div className='col-12 col-md-8 ' >
+                                           <VideoComponent src="/elrealestate/assets/video.mp4" />
+                                            {/* <div className="video">
+                                               
+                                                <div className="video-wrap">
+                                                    <img src="/elrealestate/assets/images/image-box/video-2.jpg" alt="" />
+                                                    <Link
+                                                        href="/assets/video.mp4"
+                                                        className="popup-youtube"
+                                                    >
+                                                        <div className="icon">
+                                                            <i className="flaticon-play" />
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </div> */}
+                                        </div>
+                                    </div>
+                                   
                                 </div>
                             </div>
                         </section>
@@ -1511,104 +1535,28 @@ const HomeComponent = () => {
                                                         spaceBetween: 30,
                                                     },
                                                     1024: { // Adjust breakpoint to avoid overlap with 868
-                                                        slidesPerView: 5,
+                                                        slidesPerView: 4,
                                                         spaceBetween: 40,
                                                     },
                                                 }}
                                             >
-                                                <SwiperSlide>
-                                                    <div className="swiper-slide">
-                                                        <div className="cities-item style-1 wow fadeInUp">
-                                                            <div className="image">
-                                                                <img src="/elrealestate/assets/images/image-box/cities-1.jpg" alt="" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p>13 Properties</p>
-                                                                <h4>New York</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </SwiperSlide>
-                                                <SwiperSlide>
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="cities-item style-1 wow fadeInUp"
-                                                            data-wow-delay="0.1s"
-                                                        >
-                                                            <div className="image">
-                                                                <img src="/elrealestate/assets/images/image-box/cities-2.jpg" alt="" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p>13 Properties</p>
-                                                                <h4>Chicago</h4>
+                                                {cities.map((item) => (
+                                                    <SwiperSlide key={item.id} >
+                                                        <div className="swiper-slide">
+                                                            <div className="cities-item style-1 wow fadeInUp">
+                                                                <div className="image">
+                                                                    <img src={item.image} alt="" />
+                                                                </div>
+                                                                <div className="content">
+                                                                    <p>13 Properties</p>
+                                                                    <h4>{item.name}</h4>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </SwiperSlide>
-                                                <SwiperSlide>
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="cities-item style-1 wow fadeInUp"
-                                                            data-wow-delay="0.15s"
-                                                        >
-                                                            <div className="image">
-                                                                <img src="/elrealestate/assets/images/image-box/cities-3.jpg" alt="" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p>13 Properties</p>
-                                                                <h4>Los Angeles</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </SwiperSlide>
-                                                <SwiperSlide>
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="cities-item style-1 wow fadeInUp"
-                                                            data-wow-delay="0.2s"
-                                                        >
-                                                            <div className="image">
-                                                                <img src="/elrealestate/assets/images/image-box/cities-4.jpg" alt="" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p>13 Properties</p>
-                                                                <h4>Miami</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </SwiperSlide>
-                                                <SwiperSlide>
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="cities-item style-1 wow fadeInUp"
-                                                            data-wow-delay="0.25s"
-                                                        >
-                                                            <div className="image">
-                                                                <img src="/elrealestate/assets/images/image-box/cities-5.jpg" alt="" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p>13 Properties</p>
-                                                                <h4>Florida</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </SwiperSlide>
-                                                <SwiperSlide>
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="cities-item style-1 wow fadeInUp"
-                                                            data-wow-delay="0.3s"
-                                                        >
-                                                            <div className="image">
-                                                                <img src="/elrealestate/assets/images/image-box/cities-4.jpg" alt="" />
-                                                            </div>
-                                                            <div className="content">
-                                                                <p>13 Properties</p>
-                                                                <h4>Miami</h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </SwiperSlide>
+                                                    </SwiperSlide>
+                                                ))}
+
+
 
                                             </Swiper>
 
@@ -3433,13 +3381,13 @@ const HomeComponent = () => {
                     </div>
                 </div>
             </div>
-           
+
             <CustomScript
-          src="/elrealestate/assets/js/jquery.min.js"
-          strategy="lazyOnload" // Load it after the page load
-         
-          onError={(e) => console.error("Failed to load jQuery:", e)}
-        />
+                src="/elrealestate/assets/js/jquery.min.js"
+                strategy="lazyOnload" // Load it after the page load
+
+                onError={(e) => console.error("Failed to load jQuery:", e)}
+            />
             <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
             <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
             <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />

@@ -103,7 +103,8 @@
   var video = function(){
     if ($('div').hasClass('video-wrap')) {
       $('.popup-youtube').magnificPopup({
-        type: 'iframe'
+        type: 'iframe',
+        
       });
     }
   };

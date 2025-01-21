@@ -21,12 +21,8 @@ const ContactComponent = () => {
        
         
         <div id="wrapper">
-            {/* #page */}
             <div id="page" className="">
-                {/* header */}
                 <Header3 />
-                {/* /header */}
-                {/* main-content */}
                 <div className="main-content spacing-20">
                     <div className="wrap-map-v5">
                        <Map />

@@ -1813,6 +1813,7 @@ ul.list-text li::before {
   -webkit-transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
   transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
   transition: transform 500ms ease;
+  max-height: 240px;
 }
 .box-dream .image .swiper-container .swiper-slide {
   overflow: hidden;
@@ -1888,7 +1889,7 @@ ul.list-text li::before {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 11px;
 }
 .box-dream .content .title {
@@ -2344,6 +2345,7 @@ ul.list-text li::before {
   font-size: 13px;
   line-height: 15px;
   border-radius: 120px;
+  text-transform: uppercase;
 }
 .list-tags .tags-item.for-sell {
   background-color: var(--Fourth);
@@ -2410,6 +2412,7 @@ ul.list-text li::before {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  height: 100%;
 }
 .cities-item .image {
   overflow: hidden;
@@ -10315,6 +10318,7 @@ body::-webkit-scrollbar {
 }
 .property-list-wrap-v3 .list .box-dream {
   margin-bottom: 30px;
+  height: 94%;
 }
 
 .property-map-wrap-v4 {

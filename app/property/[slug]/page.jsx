@@ -1,9 +1,14 @@
-'use client';
+"use client";
 import dynamic from 'next/dynamic';
-const PropertyDetail = dynamic(() => import("@/app/components/propertyDetail"), { ssr: false })
+const PropertyDetail = dynamic(() => import("@/app/components/propertyDetail"))
+
 const DetailPage = () => {
+
+
   return (
-    <PropertyDetail />
+    <div>
+      <PropertyDetail />
+    </div>
   )
 }
 

@@ -9,14 +9,9 @@ const DetailPage = () => {
   return (
     <div>
       <div id="wrapper">
-        {/* #page */}
         <div id="page" className="">
-          {/* header */}
           <Header3 />
-          {/* /header */}
-          {/* main-content */}
           <div className="main-content">
-            {/* property-single-wrap */}
             <div
               className="property-single-wrap sticky-container"
               data-sticky-container=""

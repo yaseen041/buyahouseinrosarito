@@ -35,7 +35,7 @@ const handleClose = () => setOpenMenu(false);
                                 <img
                                     className="d-block"
                                     id="logo-header"
-                                    src="/assets/images/logo/logo.svg"
+                                    src="/elrealestate/assets/images/logo/logo.svg"
                                     alt=""
                                 />
                             </Link>
@@ -699,7 +699,7 @@ const handleClose = () => setOpenMenu(false);
                             <i className="icon-close" />
                         </a>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -788,7 +788,7 @@ const handleClose = () => setOpenMenu(false);
                             <i className="icon-close" />
                         </a>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
