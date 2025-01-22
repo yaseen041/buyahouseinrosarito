@@ -6,6 +6,15 @@ import Link from 'next/link';
 import CustomScript from '@/app/scripts';
 import Map from '../map';
 const DetailPage = ({ property = {},agent={} }) => {
+ 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id); // Get the element by its id
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+    }
+  };
+
+
   return (
     <div>
       <div id="wrapper">
@@ -27,7 +36,7 @@ const DetailPage = ({ property = {},agent={} }) => {
                         <li>/</li>
                         <li>Property List</li>
                         <li>/</li>
-                        <li>Renovated Apartment</li>
+                        <li>{property?.title}</li>
                       </ul>
                       <div className="list-icons-page">
                         <div className="item">
@@ -188,10 +197,10 @@ const DetailPage = ({ property = {},agent={} }) => {
                       <div className="address">
                         <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                           <h4 className="mb-0">Address</h4>
-                          <Link href="#" className="tf-button-green">
+                          {/* <Link href="#" className="tf-button-green">
                             <i className="flaticon-location" />
                             Open On Google Maps
-                          </Link>
+                          </Link> */}
                         </div>
                         <div className="list-item">
                           <div className="item wow fadeInUp">
@@ -369,7 +378,7 @@ const DetailPage = ({ property = {},agent={} }) => {
                           
                         </ul>
                       </div>
-                      <div className="schedule">
+                      <div className="schedule" id="schedule" >
                         <h4 className="wow fadeInUp">Schedule a tour</h4>
                         <form className="form-schedule">
                           <div className="cols">
@@ -791,7 +800,7 @@ const DetailPage = ({ property = {},agent={} }) => {
                           </fieldset>
                         </form>
                       </div> */}
-                      <div className="contact-info">
+                      <div className="contact-info" id="contact" >
                         <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                           <h4 className="mb-0">Contact Information</h4>
                           <Link href="#" className="tf-button-green">
@@ -928,7 +937,10 @@ const DetailPage = ({ property = {},agent={} }) => {
                       <div className="map">
                         <h4 className="wow fadeInUp">Map</h4>
                         <div className="wrap-map-v1">
-                          <Map />
+                          <Map 
+                          lattitude={Number(property?.lattitude)}
+                          longitude={Number(property?.longitude)}
+                          />
                         </div>
                       </div>
                       {/* <div className="tour">
@@ -1513,17 +1525,17 @@ const DetailPage = ({ property = {},agent={} }) => {
                           Request a tour as early as <br />
                           <span>Today at 11:00AM</span>
                         </div>
-                        <Link href="#" className="tf-button-primary w-full">
+                        <button  className="tf-button-primary w-full" onClick={()=>scrollToSection("schedule")} >
                           Schedule a Tour
                           <i className="icon-arrow-right-add" />
-                        </Link>
-                        <Link
-                          href="#"
+                        </button>
+                        <button
+                         onClick={()=>scrollToSection("contact")}
                           className="tf-button-primary w-full style-bg-white"
                         >
                           Contact an agent
                           <i className="icon-arrow-right-add" />
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>

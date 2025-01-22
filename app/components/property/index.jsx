@@ -27,12 +27,14 @@ const PropertyComponent = ({
   handleCity,
   selectedSorting = {},
   handleSorting,
-  agents=[],
+  agents = [],
   currentPage
 }) => {
 
   const [openFilter, setOpenFilter] = React.useState(false)
-  const [openSelect, setOpenSelect] = React.useState({ status: false, type: false, city: false, sorting: false })
+  const [openSelect, setOpenSelect] = React.useState({
+     status: false, type: false, city: false, sorting: false,community:false,minBed:false,maxBed:false,minBath:false,maxBath:false 
+    })
   const toggleFilter = () => setOpenFilter(!openFilter)
   const prevButtonRef = React.useRef(null);
   const nextButtonRef = React.useRef(null);
@@ -46,6 +48,8 @@ const PropertyComponent = ({
       type: name === "type" ? !prev.type : false,
       city: name === "city" ? !prev.city : false,
       sorting: name === "sorting" ? !prev.sorting : false,
+      community: name === "community" ? !prev.community : false,
+      minBed: name === "minBed" ? !prev.minBed : false,
     }));
   }
   React.useEffect(() => {
@@ -57,7 +61,7 @@ const PropertyComponent = ({
       );
 
       if (!isClickInside) {
-        setOpenSelect({ status: false, type: false, city: false, sorting: false });
+        setOpenSelect({ status: false, type: false, city: false, sorting: false,community:false,minBed:false });
       }
     };
 
@@ -109,7 +113,7 @@ const PropertyComponent = ({
                       <div className="form-filter wow fadeInUp">
                         <form className="form-search-home5">
                           <div className="list">
-                            {/* <div className="group-form form-search-content">
+                            <div className="group-form form-search-content">
                               <div className="form-style-has-title">
                                 <div className="title">Keyword</div>
                                 <div className="relative">
@@ -192,8 +196,8 @@ const PropertyComponent = ({
                                   </div>
                                 </div>
                               </div>
-                            </div> */}
-                             <div className="group-form">
+                            </div>
+                            <div className="group-form">
                               <div className="form-style-has-title" ref={assignRef("city")} >
                                 <div className="title">City</div>
                                 <div className={`nice-select ${openSelect.city ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "city")} >
@@ -208,47 +212,15 @@ const PropertyComponent = ({
                                       All cities
                                     </li>
                                     {cities.map((city) => (
-                                            <li
-                                              key={city.id}
-                                              data-value=""
-                                              className={`option ${selectedCity.id === city.id ? "selected" : ""}`}
-                                              onClick={() => handleCity(city.id, city.name)}
-                                            >
-                                              {city.name}
-                                            </li>
-                                          ))}
-
-
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="divider-1" />
-                            <div className="divider-1" />
-                            <div className="group-form">
-                              <div className="form-style-has-title" ref={assignRef("status")} >
-                                <div className="title">Status</div>
-                                <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} >
-                                  <span className="current">{status.title}</span>
-                                  <ul className="list style-radio">
-                                    <li
-                                      data-value="For Sale"
-                                      className={`option ${status.id === 0 ? "selected" : ""} `}
-
-                                      onClick={() => handleStatus(0, " All Status")}
-                                    >
-                                      All Status
-                                    </li>
-                                    {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
                                       <li
-                                        data-value="For Sale"
-                                        className={`option ${status.id === item.id ? "selected" : ""} `}
-                                        key={item.id}
-                                        onClick={() => handleStatus(item.id, item.title)}
+                                        key={city.id}
+                                        data-value=""
+                                        className={`option ${selectedCity.id === city.id ? "selected" : ""}`}
+                                        onClick={() => handleCity(city.id, city.name)}
                                       >
-                                        {item.title}
+                                        {city.name}
                                       </li>
-                                    )) : null}
+                                    ))}
 
 
                                   </ul>
@@ -256,6 +228,9 @@ const PropertyComponent = ({
                               </div>
                             </div>
                             <div className="divider-1" />
+
+
+
                             <div className="group-form">
                               <div className="form-style-has-title" ref={assignRef("type")} >
                                 <div className="title">Type</div>
@@ -290,9 +265,60 @@ const PropertyComponent = ({
                                 >
                                   <div>
                                     <div className="grid-3-cols mb-20"  >
-                                     
-                                      <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Bedrooms</span>
+                                      <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
+                                        <span className="current">{status.title}</span>
+                                        <ul className="list style-radio">
+                                          <li
+                                            data-value="For Sale"
+                                            className={`option ${status.id === 0 ? "selected" : ""} `}
+
+                                            onClick={() => handleStatus(0, " All Status")}
+                                          >
+                                            All Status
+                                          </li>
+                                          {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                            <li
+                                              data-value="For Sale"
+                                              className={`option ${status.id === item.id ? "selected" : ""} `}
+                                              key={item.id}
+                                              onClick={() => handleStatus(item.id, item.title)}
+                                            >
+                                              {item.title}
+                                            </li>
+                                          )) : null}
+
+
+                                        </ul>
+
+                                      </div>
+                                      <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
+                                        <span className="current">{status.title}</span>
+                                        <ul className="list style-radio">
+                                          <li
+                                            data-value="For Sale"
+                                            className={`option ${status.id === 0 ? "selected" : ""} `}
+
+                                            onClick={() => handleStatus(0, " All Status")}
+                                          >
+                                            All Status
+                                          </li>
+                                          {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                            <li
+                                              data-value="For Sale"
+                                              className={`option ${status.id === item.id ? "selected" : ""} `}
+                                              key={item.id}
+                                              onClick={() => handleStatus(item.id, item.title)}
+                                            >
+                                              {item.title}
+                                            </li>
+                                          )) : null}
+
+
+                                        </ul>
+
+                                      </div>
+                                      <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
+                                        <span className="current">Min.Bedrooms</span>
                                         <ul className="list">
                                           <li
                                             data-value=""
@@ -309,7 +335,41 @@ const PropertyComponent = ({
                                         </ul>
                                       </div>
                                       <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Bathrooms</span>
+                                        <span className="current">Max.Bedrooms</span>
+                                        <ul className="list">
+                                          <li
+                                            data-value=""
+                                            className="option selected"
+                                          >
+                                            Bedrooms
+                                          </li>
+                                          <li data-value="1 Bed" className="option">
+                                            1 Bed
+                                          </li>
+                                          <li data-value="2 Bed" className="option">
+                                            2 Bed
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div className="nice-select" tabIndex={0}>
+                                        <span className="current">Min.Bathrooms</span>
+                                        <ul className="list">
+                                          <li
+                                            data-value=""
+                                            className="option selected"
+                                          >
+                                            Bathrooms
+                                          </li>
+                                          <li data-value="1 Bath" className="option">
+                                            1 Bath
+                                          </li>
+                                          <li data-value="2 Bath" className="option">
+                                            2 Bath
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div className="nice-select" tabIndex={0}>
+                                        <span className="current">Max.Bathrooms</span>
                                         <ul className="list">
                                           <li
                                             data-value=""
@@ -508,14 +568,14 @@ const PropertyComponent = ({
                           <div className={`nice-select default ${openSelect.sorting ? "open" : ""} `} tabIndex={0} onClick={(e) => handleSelectClick(e, "sorting")} >
                             <span className="current">{selectedSorting.title}</span>
                             <ul className="list">
-                              
+
                               {Object.keys(filters).length > 0 ? filters?.sorting.map((sort) => (
-                                <li data-value="" key={sort.id} className="option" onClick={()=>{
-                                  handleSorting(sort.id,sort.title)
+                                <li data-value="" key={sort.id} className="option" onClick={() => {
+                                  handleSorting(sort.id, sort.title)
                                   const newParams = new URLSearchParams(searchParams.toString());
                                   newParams.set("sort", sort.title)
                                   router.push(`/property?${newParams.toString()}`)
-                                  }} >
+                                }} >
                                   {sort.title}
                                 </li>
                               )) : null}
@@ -819,23 +879,23 @@ const PropertyComponent = ({
                       <div className="sidebar-item sidebar-agents-1 no-bg">
                         <div className="sidebar-title">Agents</div>
                         <ul>
-                          {agents.map((item)=>(
+                          {agents.map((item) => (
                             <li key={item.id} >
-                            <div className="image">
-                              <img src={item.image} alt="" />
-                            </div>
-                            <div className="content">
-                              <div className="name">
-                                <Link href="#">{item.name}</Link>
+                              <div className="image">
+                                <img src={item.image} alt="" />
                               </div>
-                              <p>{item.email}</p>
-                              <p>{item.phone}</p>
-                            </div>
-                          </li>
+                              <div className="content">
+                                <div className="name">
+                                  <Link href="#">{item.name}</Link>
+                                </div>
+                                <p>{item.email}</p>
+                                <p>{item.phone}</p>
+                              </div>
+                            </li>
                           ))}
-                          
-                         
-                          
+
+
+
                         </ul>
                       </div>
                     </div>
