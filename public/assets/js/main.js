@@ -379,7 +379,7 @@
     // sticky();
     email();
     dropOptionForm();
-    preloader();
+    // preloader();
     
   });
 

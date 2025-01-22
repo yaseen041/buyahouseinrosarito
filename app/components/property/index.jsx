@@ -10,6 +10,7 @@ import 'swiper/css/pagination';
 import Link from 'next/link';
 import CustomPagination from '../pagination';
 import Footer from '../footer';
+import { useRouter, useSearchParams } from 'next/navigation';
 const PropertyComponent = ({
   properties = [],
   types = [],
@@ -21,21 +22,30 @@ const PropertyComponent = ({
   status = {},
   handleSearch,
   selectedTypes = {},
-  handleTypes
+  handleTypes,
+  selectedCity = {},
+  handleCity,
+  selectedSorting = {},
+  handleSorting,
+  agents=[],
+  currentPage
 }) => {
 
   const [openFilter, setOpenFilter] = React.useState(false)
-  const [openSelect, setOpenSelect] = React.useState({ status: false, type: false, city: false })
+  const [openSelect, setOpenSelect] = React.useState({ status: false, type: false, city: false, sorting: false })
   const toggleFilter = () => setOpenFilter(!openFilter)
   const prevButtonRef = React.useRef(null);
   const nextButtonRef = React.useRef(null);
   const dropdownRefs = React.useRef({});
+  const searchParams = useSearchParams()
+  const router = useRouter()
 
   const handleOpenSelect = (name) => {
     setOpenSelect((prev) => ({
       status: name === "status" ? !prev.status : false,
       type: name === "type" ? !prev.type : false,
       city: name === "city" ? !prev.city : false,
+      sorting: name === "sorting" ? !prev.sorting : false,
     }));
   }
   React.useEffect(() => {
@@ -47,7 +57,7 @@ const PropertyComponent = ({
       );
 
       if (!isClickInside) {
-        setOpenSelect({ status: false, type: false, city: false });
+        setOpenSelect({ status: false, type: false, city: false, sorting: false });
       }
     };
 
@@ -221,11 +231,11 @@ const PropertyComponent = ({
                                 <div className={`nice-select ${openSelect.type ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "type")}>
                                   <span className="current">{selectedTypes.title}</span>
                                   <ul className="list">
-                                    <li ta-value="" className={`option ${selectedTypes.id===0?"selected":""}`} onClick={()=>handleTypes(0,"All types")} >
+                                    <li ta-value="" className={`option ${selectedTypes.id === 0 ? "selected" : ""}`} onClick={() => handleTypes(0, "All types")} >
                                       All types
                                     </li>
                                     {types.map((item) => (
-                                      <li data-value="" className={`option ${selectedTypes.id===item.id?"selected":""} `} key={item.id} onClick={()=>handleTypes(item.id,item.title)} >
+                                      <li data-value="" className={`option ${selectedTypes.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleTypes(item.id, item.title)} >
                                         {item.title}
                                       </li>
                                     ))}
@@ -250,14 +260,18 @@ const PropertyComponent = ({
                                   <div>
                                     <div className="grid-3-cols mb-20" ref={assignRef("city")} >
                                       <div className={`nice-select ${openSelect.city ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "city")} >
-                                        <span className="current">City</span>
+                                        <span className="current">{selectedCity.title}</span>
 
                                         <ul className="list">
+                                          <li className={`option ${selectedCity.id === 0 ? "selected" : ""}`} onClick={() => handleCity(0, "City")}  >
+                                            City
+                                          </li>
                                           {cities.map((city) => (
                                             <li
                                               key={city.id}
                                               data-value=""
-                                              className="option"
+                                              className={`option ${selectedCity.id === city.id ? "selected" : ""}`}
+                                              onClick={() => handleCity(city.id, city.name)}
                                             >
                                               {city.name}
                                             </li>
@@ -476,13 +490,19 @@ const PropertyComponent = ({
                     <div className="top">
                       <div className="sub">
                         <p className="wow fadeInUp">{properties.length} results</p>
-                        <div className="sort-wrap wow fadeInUp" data-wow-delay="0.1s">
+                        <div className="sort-wrap wow fadeInUp" data-wow-delay="0.1s" ref={assignRef("sorting")} >
                           <p>Sort by</p>
-                          <div className="nice-select default" tabIndex={0}>
-                            <span className="current">Newest listings</span>
+                          <div className={`nice-select default ${openSelect.sorting ? "open" : ""} `} tabIndex={0} onClick={(e) => handleSelectClick(e, "sorting")} >
+                            <span className="current">{selectedSorting.title}</span>
                             <ul className="list">
+                              
                               {Object.keys(filters).length > 0 ? filters?.sorting.map((sort) => (
-                                <li data-value="" key={sort.id} className="option">
+                                <li data-value="" key={sort.id} className="option" onClick={()=>{
+                                  handleSorting(sort.id,sort.title)
+                                  const newParams = new URLSearchParams(searchParams.toString());
+                                  newParams.set("sort", sort.title)
+                                  router.push(`/property?${newParams.toString()}`)
+                                  }} >
                                   {sort.title}
                                 </li>
                               )) : null}
@@ -574,6 +594,7 @@ const PropertyComponent = ({
                       itemsPerPage={6}
                       onPageChange={handlePageChange}
                       totalData={totalProperties}
+                      initialPaage={currentPage}
 
 
 
@@ -586,7 +607,15 @@ const PropertyComponent = ({
                         <div className="sidebar-title">Property Types</div>
                         <ul>
                           {types.map((item) => (
-                            <li key={item.id} >
+                            <li key={item.id} className={` ${selectedTypes.id === item.id ? "active" : ""} `} onClick={() => {
+                              handleTypes(item.id, item.title)
+                              const newParams = new URLSearchParams(searchParams.toString());
+                              newParams.set("type", item.title)
+                              router.push(`/property?${newParams.toString()}`)
+                            }
+
+
+                            }  >
                               <Link href="#">{item.title}</Link>
                             </li>
                           ))}
@@ -777,42 +806,23 @@ const PropertyComponent = ({
                       <div className="sidebar-item sidebar-agents-1 no-bg">
                         <div className="sidebar-title">Agents</div>
                         <ul>
-                          <li>
+                          {agents.map((item)=>(
+                            <li key={item.id} >
                             <div className="image">
-                              <img src="/elrealestate/assets/images/sidebar/agent-1.png" alt="" />
+                              <img src={item.image} alt="" />
                             </div>
                             <div className="content">
                               <div className="name">
-                                <Link href="#">Jane Cooper</Link>
+                                <Link href="#">{item.name}</Link>
                               </div>
-                              <p>sale@justhome.com</p>
-                              <p>3-596 95 38 12</p>
+                              <p>{item.email}</p>
+                              <p>{item.phone}</p>
                             </div>
                           </li>
-                          <li>
-                            <div className="image">
-                              <img src="/elrealestate/assets/images/sidebar/agent-2.png" alt="" />
-                            </div>
-                            <div className="content">
-                              <div className="name">
-                                <Link href="#">Marvin McKinney</Link>
-                              </div>
-                              <p>sale@justhome.com</p>
-                              <p>3-596 95 38 12</p>
-                            </div>
-                          </li>
-                          <li>
-                            <div className="image">
-                              <img src="/elrealestate/assets/images/sidebar/agent-3.png" alt="" />
-                            </div>
-                            <div className="content">
-                              <div className="name">
-                                <Link href="#">Cameron Williamson</Link>
-                              </div>
-                              <p>sale@justhome.com</p>
-                              <p>3-596 95 38 12</p>
-                            </div>
-                          </li>
+                          ))}
+                          
+                         
+                          
                         </ul>
                       </div>
                     </div>

@@ -15,7 +15,7 @@ import "swiper/css/autoplay"
 import Link from 'next/link';
 import VideoComponent from '../video';
 
-const HomeComponent = ({ types = [], cities = [] }) => {
+const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForSale = [] }) => {
     const [openFilter, setOpenFilter] = React.useState(false)
     const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
@@ -857,7 +857,7 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                                                 <h4>{item.title}</h4>
                                                                 <p>{item.property_count} Properties</p>
                                                             </div>
-                                                            <Link href={`/property/?type=${item.slug}`} className="button-arrow-right">
+                                                            <Link href={`/property/?type=${item.title}`} className="button-arrow-right">
                                                                 <i className="icon-arrow-right-add" />
                                                             </Link>
                                                         </div>
@@ -892,96 +892,96 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                 <div className="counter">
                                     <div className='row' >
                                         <div className='col-12 col-md-12' >
-                                        <div className="row">
-                                        <div className="col-xl-3 col-md-6">
-                                            <div className="number-counter style-1">
-                                                <div className="text-center">
-                                                    $
-                                                    <span
-                                                        className="number"
-                                                        data-speed={2500}
-                                                        data-to={16}
-                                                        data-inviewport="yes"
-                                                    >
-                                                        16
-                                                    </span>
-                                                    .4M
+                                            <div className="row">
+                                                <div className="col-xl-3 col-md-6">
+                                                    <div className="number-counter style-1">
+                                                        <div className="text-center">
+                                                            $
+                                                            <span
+                                                                className="number"
+                                                                data-speed={2500}
+                                                                data-to={16}
+                                                                data-inviewport="yes"
+                                                            >
+                                                                16
+                                                            </span>
+                                                            .4M
+                                                        </div>
+                                                        <h4>
+                                                            Owned from properties <br /> transactions
+                                                        </h4>
+                                                        <p className="text-content">
+                                                            Pellentesque egestas elementum egestas faucibus sem.
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <h4>
-                                                    Owned from properties <br /> transactions
-                                                </h4>
-                                                <p className="text-content">
-                                                    Pellentesque egestas elementum egestas faucibus sem.
-                                                </p>
+                                                <div className="col-xl-3 col-md-6">
+                                                    <div className="number-counter style-1">
+                                                        <div className="text-center">
+                                                            <span
+                                                                className="number"
+                                                                data-speed={2500}
+                                                                data-to={26}
+                                                                data-inviewport="yes"
+                                                            >
+                                                                26
+                                                            </span>
+                                                            K+
+                                                        </div>
+                                                        <h4>
+                                                            Properties For <br /> Buy
+                                                        </h4>
+                                                        <p className="text-content">
+                                                            Pellentesque egestas elementum egestas faucibus sem.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-xl-3 col-md-6">
+                                                    <div className="number-counter style-1">
+                                                        <div className="text-center">
+                                                            <span
+                                                                className="number"
+                                                                data-speed={2500}
+                                                                data-to={14}
+                                                                data-inviewport="yes"
+                                                            >
+                                                                14
+                                                            </span>
+                                                            K+
+                                                        </div>
+                                                        <h4>
+                                                            Properties Buy <br /> Sell
+                                                        </h4>
+                                                        <p className="text-content">
+                                                            Pellentesque egestas elementum egestas faucibus sem.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-xl-3 col-md-6">
+                                                    <div className="number-counter style-1">
+                                                        <div className="text-center">
+                                                            <span
+                                                                className="number"
+                                                                data-speed={2500}
+                                                                data-to={890}
+                                                                data-inviewport="yes"
+                                                            >
+                                                                890
+                                                            </span>
+                                                        </div>
+                                                        <h4>
+                                                            Daily Completed <br /> Transactions
+                                                        </h4>
+                                                        <p className="text-content">
+                                                            Pellentesque egestas elementum egestas faucibus sem.
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="col-xl-3 col-md-6">
-                                            <div className="number-counter style-1">
-                                                <div className="text-center">
-                                                    <span
-                                                        className="number"
-                                                        data-speed={2500}
-                                                        data-to={26}
-                                                        data-inviewport="yes"
-                                                    >
-                                                        26
-                                                    </span>
-                                                    K+
-                                                </div>
-                                                <h4>
-                                                    Properties For <br /> Buy
-                                                </h4>
-                                                <p className="text-content">
-                                                    Pellentesque egestas elementum egestas faucibus sem.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-3 col-md-6">
-                                            <div className="number-counter style-1">
-                                                <div className="text-center">
-                                                    <span
-                                                        className="number"
-                                                        data-speed={2500}
-                                                        data-to={14}
-                                                        data-inviewport="yes"
-                                                    >
-                                                        14
-                                                    </span>
-                                                    K+
-                                                </div>
-                                                <h4>
-                                                    Properties Buy <br /> Sell
-                                                </h4>
-                                                <p className="text-content">
-                                                    Pellentesque egestas elementum egestas faucibus sem.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="col-xl-3 col-md-6">
-                                            <div className="number-counter style-1">
-                                                <div className="text-center">
-                                                    <span
-                                                        className="number"
-                                                        data-speed={2500}
-                                                        data-to={890}
-                                                        data-inviewport="yes"
-                                                    >
-                                                        890
-                                                    </span>
-                                                </div>
-                                                <h4>
-                                                    Daily Completed <br /> Transactions
-                                                </h4>
-                                                <p className="text-content">
-                                                    Pellentesque egestas elementum egestas faucibus sem.
-                                                </p>
-                                            </div>
-                                        </div>
+
                                     </div>
-                                        </div>
-                                       
-                                    </div>
-                                   
+
                                 </div>
                             </div>
                         </section>
@@ -1002,9 +1002,9 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                 </div>
                                 <div className="counter">
                                     <div className='row justify-center' >
-                                        
+
                                         <div className='col-12 col-md-8 ' >
-                                           <VideoComponent src="/elrealestate/assets/video.mp4" />
+                                            <VideoComponent src="/elrealestate/assets/video.mp4" />
                                             {/* <div className="video">
                                                
                                                 <div className="video-wrap">
@@ -1021,7 +1021,7 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                             </div> */}
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </section>
@@ -1055,7 +1055,7 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                                     slidesPerView: 2,
                                                     spaceBetween: 30,
                                                 },
-                                                1024: { // Adjust breakpoint to avoid overlap with 868
+                                                1024: { 
                                                     slidesPerView: 3,
                                                     spaceBetween: 40,
                                                 },
@@ -1079,7 +1079,6 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                                             <Swiper
                                                                 className='swiper-container slider-box-dream arrow-style-1 pagination-style-1'
                                                                 slidesPerView={1}
-
                                                                 modules={[Pagination, A11y, Navigation]}
                                                                 navigation
                                                                 pagination={{ clickable: true }}
@@ -1548,16 +1547,13 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                                                     <img src={item.image} alt="" />
                                                                 </div>
                                                                 <div className="content">
-                                                                    <p>13 Properties</p>
+                                                                    <p>{item.properties_count} Properties</p>
                                                                     <h4>{item.name}</h4>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </SwiperSlide>
                                                 ))}
-
-
-
                                             </Swiper>
 
                                         </div>
@@ -1601,625 +1597,91 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                                 },
                                             }}
                                         >
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 type-small wow fadeInUp">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR RENT
-                                                                </Link>
-                                                                <Link href="#" className="tags-item featured">
-                                                                    FEATURED
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 type-small wow fadeInUp"
-                                                        data-wow-delay="0.1s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">
-                                                                        Villa One Hyde Park
+                                            {recentForRent.map((item) => (
+                                                <SwiperSlide key={item.id} >
+                                                    <div className="swiper-slide">
+                                                        <div className="box-dream style-2 type-small wow fadeInUp">
+                                                            <div className="image">
+                                                                <div className="list-tags">
+                                                                    <Link href="#" className="tags-item for-sell">
+                                                                        {item.listing_status}
                                                                     </Link>
+                                                                    {item.is_featured && (
+                                                                        <Link href="#" className="tags-item featured">
+                                                                            FEATURED
+                                                                        </Link>
+                                                                    )}
+
                                                                 </div>
+                                                                <div className="button-heart">
+                                                                    <i className="flaticon-heart-1" />
+                                                                </div>
+                                                                <Swiper
+                                                                    className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
+                                                                    slidesPerView={1}
+
+                                                                    modules={[Pagination, A11y, Navigation]}
+                                                                    navigation
+                                                                    pagination={{ clickable: true }}
+                                                                >
+                                                                    {item.gallery.map((i, index) => (
+                                                                        <SwiperSlide key={index} >
+                                                                            <div className="swiper-slide">
+                                                                                <div className="w-full">
+                                                                                    <img
+                                                                                        className="w-full"
+                                                                                        src={i}
+                                                                                        alt=""
+                                                                                    />
+                                                                                </div>
+                                                                            </div>
+                                                                        </SwiperSlide>
+                                                                    ))}
+
+
+                                                                </Swiper>
+
                                                             </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
+                                                            <div className="content">
+                                                                <div className="head">
+                                                                    <div className="title">
+                                                                        <Link href={`/property/${item.slug}`}>{item.title}</Link>
                                                                     </div>
                                                                 </div>
-                                                                <div className="price">$815,000</div>
+                                                                <div className="location">
+                                                                    <div className="icon">
+                                                                        <i className="flaticon-location" />
+                                                                    </div>
+                                                                    <p>{item.address}</p>
+                                                                </div>
+                                                                <div className="bot">
+                                                                    <div className="icon-box">
+                                                                        <div className="item">
+                                                                            <i className="flaticon-hotel" />
+                                                                            <p>{item.bedrooms}</p>
+                                                                        </div>
+                                                                        <div className="item">
+                                                                            <i className="flaticon-bath-tub" />
+                                                                            <p>{item.bathrooms}</p>
+                                                                        </div>
+                                                                        <div className="item">
+                                                                            <i className="flaticon-minus-front" />
+                                                                            <p>{item.size}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="price">${item.price.toLocaleString()}</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 type-small wow fadeInUp"
-                                                        data-wow-delay="0.15s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
+                                                </SwiperSlide>
+                                            ))}
 
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
 
-                                                            </Swiper>
 
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">
-                                                                        Home Pitt Street
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 type-small wow fadeInUp"
-                                                        data-wow-delay="0.2s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
 
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
 
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 type-small">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
 
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 type-small">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/rent-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
                                         </Swiper>
 
                                     </div>
@@ -2262,621 +1724,86 @@ const HomeComponent = ({ types = [], cities = [] }) => {
                                                 },
                                             }}
                                         >
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 type-small wow fadeInUp">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR RENT
-                                                                </Link>
-                                                                <Link href="#" className="tags-item featured">
-                                                                    FEATURED
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 type-small wow fadeInUp"
-                                                        data-wow-delay="0.1s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">
-                                                                        Villa One Hyde Park
+                                            {recentForSale.map((item) => (
+                                                <SwiperSlide key={item.id} >
+                                                    <div className="swiper-slide">
+                                                        <div className="box-dream style-2 type-small wow fadeInUp">
+                                                            <div className="image">
+                                                                <div className="list-tags">
+                                                                    <Link href="#" className="tags-item for-sell">
+                                                                        {item.listing_status}
                                                                     </Link>
+                                                                    {item.is_featured && (
+                                                                        <Link href="#" className="tags-item featured">
+                                                                            FEATURED
+                                                                        </Link>
+                                                                    )}
+
                                                                 </div>
+                                                                <div className="button-heart">
+                                                                    <i className="flaticon-heart-1" />
+                                                                </div>
+                                                                <Swiper
+                                                                    className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
+                                                                    slidesPerView={1}
+
+                                                                    modules={[Pagination, A11y, Navigation]}
+                                                                    navigation
+                                                                    pagination={{ clickable: true }}
+                                                                >
+                                                                    {item.gallery.map((i, index) => (
+                                                                        <SwiperSlide key={index} >
+                                                                            <div className="swiper-slide">
+                                                                                <div className="w-full">
+                                                                                    <img
+                                                                                        className="w-full"
+                                                                                        src={i}
+                                                                                        alt=""
+                                                                                    />
+                                                                                </div>
+                                                                            </div>
+                                                                        </SwiperSlide>
+                                                                    ))}
+
+
+                                                                </Swiper>
+
                                                             </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
+                                                            <div className="content">
+                                                                <div className="head">
+                                                                    <div className="title">
+                                                                        <Link href={`/property/${item.slug}`}>{item.title}</Link>
                                                                     </div>
                                                                 </div>
-                                                                <div className="price">$815,000</div>
+                                                                <div className="location">
+                                                                    <div className="icon">
+                                                                        <i className="flaticon-location" />
+                                                                    </div>
+                                                                    <p>{item.address}</p>
+                                                                </div>
+                                                                <div className="bot">
+                                                                    <div className="icon-box">
+                                                                        <div className="item">
+                                                                            <i className="flaticon-hotel" />
+                                                                            <p>{item.bedrooms}</p>
+                                                                        </div>
+                                                                        <div className="item">
+                                                                            <i className="flaticon-bath-tub" />
+                                                                            <p>{item.bathrooms}</p>
+                                                                        </div>
+                                                                        <div className="item">
+                                                                            <i className="flaticon-minus-front" />
+                                                                            <p>{item.size}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="price">${item.price.toLocaleString()}</div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 type-small wow fadeInUp"
-                                                        data-wow-delay="0.15s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
+                                                </SwiperSlide>
+                                            ))}
 
-
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">
-                                                                        Home Pitt Street
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 type-small wow fadeInUp"
-                                                        data-wow-delay="0.2s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 type-small">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 type-small">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/sale-properties-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </SwiperSlide>
                                         </Swiper>
 
                                     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import ReactPaginate from 'react-paginate';
-const CustomPagination = ({ itemsPerPage = 6,  totalData = 122,onPageChange }) => {
+const CustomPagination = ({ itemsPerPage = 6,  totalData = 122,onPageChange,initialPaage }) => {
     const pageCount = Math.ceil(totalData / itemsPerPage);
 
     return (
@@ -16,7 +16,8 @@ const CustomPagination = ({ itemsPerPage = 6,  totalData = 122,onPageChange }) =
                 renderOnZeroPageCount={null}
                 containerClassName='wg-pagination justify-center wow fadeInUp'
                 activeClassName='active'
-            
+                initialPage={initialPaage}
+                                
                 
             />
              {/* <ul className="wg-pagination justify-center wow fadeInUp">

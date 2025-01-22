@@ -10,6 +10,8 @@ const HomePage = () => {
     const [loading, setLoading] = React.useState(true)
     const [types, setTypes] = React.useState([])
     const [cities, setCities] = React.useState([])
+    const [recentForRent, setRecentForRent] = React.useState([])
+    const [recentForSale, setRecentForSale] = React.useState([])
     const getTypes = async () => {
         try {
             const data = await api.Get(url.PROPERTY_TYPES)
@@ -25,7 +27,6 @@ const HomePage = () => {
     const getCities = async () => {
         try {
             const data = await api.Get(url.CITIES)
-            console.log(data)
             if (data) {
                 setCities(data.data)
             }
@@ -33,17 +34,51 @@ const HomePage = () => {
             console.log(error)
         }
     }
-
+    const GetRecentForRent = async () => {
+        try {
+            const data = await api.Get(url.RECENT_FOR_RENT)
+            if (data) {
+                setRecentForRent(data.data)
+                console.log(data)
+            }
+            setLoading(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const GetRecentForSale = async () => {
+        try {
+            const data = await api.Get(url.RECENT_FOR_SALE)
+            if (data) {
+                setRecentForSale(data.data)
+                console.log(data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
     React.useEffect(() => {
         getTypes()
         getCities()
+        GetRecentForRent()
+        GetRecentForSale()
+
     }, [])
 
     return (
         <>
+            {loading && (
+                <div className="preload preload-container">
+                    <div className="middle" />
+                </div>
+            )}
+
+
             <HomeComponent
                 types={types}
                 cities={cities}
+                recentForRent={recentForRent}
+                recentForSale={recentForSale}
 
             />
 

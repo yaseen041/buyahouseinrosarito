@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay"
 import Footer from '../footer';
-const AboutComponent = () => {
+const AboutComponent = ({testimonials=[],agents=[]}) => {
   const prevButtonRef = React.useRef(null);
   const nextButtonRef = React.useRef(null);
 
@@ -410,158 +410,83 @@ const AboutComponent = () => {
                       }}
 
                     >
-                      <SwiperSlide>
-                        <div className="swiper-slide">
-                          <div className="testimonials-item">
-                            <div className="head">
-                              <div className="image wow fadeInLeft">
-                                <img src="/elrealestate/assets/images/author/author-1.png" alt="" />
-                              </div>
-                              <div>
-                                <div className="title wow fadeInUp">
-                                  <a href="#">Cameron Williamson</a>
-                                </div>
-                                <p className="wow fadeInUp">Designer</p>
-                              </div>
-                            </div>
-                            <div className="description wow fadeInUp">
-                              Searches for multiplexes, property comparisons, and
-                              the loan estimator. Works great. Lorem ipsum dolor sit
-                              amet, consectetur adipiscing elit, sed do eiusmod
-                              tempor incididunt ut labore et dores.
-                            </div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={45}
-                              height={44}
-                              viewBox="0 0 45 44"
-                              fill="none"
-                            >
-                              <g filter="url(#filter0_d_249_14836)">
-                                <path
-                                  d="M9.67883 38C6.64234 38 4.27007 36.9524 2.56204 34.8571C0.854015 32.6667 0 29.4286 0 25.1429C0 20.6667 0.99635 16.381 2.98905 12.2857C5.07664 8.19048 8.01825 4.14286 11.8139 0.142864C11.9088 0.0476213 12.0511 0 12.2409 0C12.5255 0 12.7153 0.142858 12.8102 0.428574C13 0.619048 13.0474 0.857143 12.9526 1.14286C10.6752 4.19048 9.10949 7.14286 8.25548 10C7.49635 12.7619 7.11679 15.8571 7.11679 19.2857C7.11679 21.8571 7.44891 23.8571 8.11314 25.2857C8.77737 26.7143 9.67883 28 10.8175 29.1429L5.40876 30.1429C5.31387 28.5238 5.74088 27.2857 6.68978 26.4286C7.73358 25.5714 9.06205 25.1429 10.6752 25.1429C12.6679 25.1429 14.1861 25.7143 15.2299 26.8571C16.3686 28 16.938 29.5714 16.938 31.5714C16.938 33.6667 16.2737 35.2857 14.9453 36.4286C13.7117 37.4762 11.9562 38 9.67883 38ZM31.5985 38C28.562 38 26.1898 36.9524 24.4818 34.8571C22.8686 32.6667 22.062 29.4286 22.062 25.1429C22.062 20.5714 23.0584 16.2381 25.0511 12.1429C27.0438 8.04762 29.9854 4.04762 33.8759 0.142864C33.9708 0.0476213 34.1131 0 34.3029 0C34.5876 0 34.7774 0.142858 34.8723 0.428574C35.062 0.619048 35.1095 0.857143 35.0146 1.14286C32.7372 4.19048 31.1715 7.14286 30.3175 10C29.5584 12.7619 29.1788 15.8571 29.1788 19.2857C29.1788 21.8571 29.4635 23.9048 30.0328 25.4286C30.6971 26.8571 31.5985 28.0952 32.7372 29.1429L27.4708 30.1429C27.3759 28.5238 27.8029 27.2857 28.7518 26.4286C29.7007 25.5714 31.0292 25.1429 32.7372 25.1429C34.7299 25.1429 36.2482 25.7143 37.292 26.8571C38.4307 28 39 29.5714 39 31.5714C39 33.6667 38.3358 35.2857 37.0073 36.4286C35.7737 37.4762 33.9708 38 31.5985 38Z"
-                                  fill="#1A1A1A"
-                                />
-                              </g>
-                              <defs>
-                                <filter
-                                  id="filter0_d_249_14836"
-                                  x={0}
-                                  y={0}
-                                  width={45}
-                                  height={44}
-                                  filterUnits="userSpaceOnUse"
-                                  colorInterpolationFilters="sRGB"
-                                >
-                                  <feFlood
-                                    floodOpacity={0}
-                                    result="BackgroundImageFix"
-                                  />
-                                  <feColorMatrix
-                                    in="SourceAlpha"
-                                    type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                    result="hardAlpha"
-                                  />
-                                  <feOffset dx={6} dy={6} />
-                                  <feComposite in2="hardAlpha" operator="out" />
-                                  <feColorMatrix
-                                    type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-                                  />
-                                  <feBlend
-                                    mode="normal"
-                                    in2="BackgroundImageFix"
-                                    result="effect1_dropShadow_249_14836"
-                                  />
-                                  <feBlend
-                                    mode="normal"
-                                    in="SourceGraphic"
-                                    in2="effect1_dropShadow_249_14836"
-                                    result="shape"
-                                  />
-                                </filter>
-                              </defs>
-                            </svg>
-                          </div>
-                        </div>
-                      </SwiperSlide>
-                      <SwiperSlide>
-                        <div className="swiper-slide">
-                          <div className="testimonials-item">
-                            <div className="head">
-                              <div className="image">
-                                <img src="/elrealestate/assets/images/author/author-1.png" alt="" />
-                              </div>
-                              <div>
-                                <div className="title">
-                                  <a href="#">Cameron Williamson</a>
-                                </div>
-                                <p>Designer</p>
-                              </div>
-                            </div>
-                            <div className="description">
-                              Searches for multiplexes, property comparisons, and
-                              the loan estimator. Works great. Lorem ipsum dolor sit
-                              amet, consectetur adipiscing elit, sed do eiusmod
-                              tempor incididunt ut labore et dores.
-                            </div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width={45}
-                              height={44}
-                              viewBox="0 0 45 44"
-                              fill="none"
-                            >
-                              <g filter="url(#filter0_d_249_14836)">
-                                <path
-                                  d="M9.67883 38C6.64234 38 4.27007 36.9524 2.56204 34.8571C0.854015 32.6667 0 29.4286 0 25.1429C0 20.6667 0.99635 16.381 2.98905 12.2857C5.07664 8.19048 8.01825 4.14286 11.8139 0.142864C11.9088 0.0476213 12.0511 0 12.2409 0C12.5255 0 12.7153 0.142858 12.8102 0.428574C13 0.619048 13.0474 0.857143 12.9526 1.14286C10.6752 4.19048 9.10949 7.14286 8.25548 10C7.49635 12.7619 7.11679 15.8571 7.11679 19.2857C7.11679 21.8571 7.44891 23.8571 8.11314 25.2857C8.77737 26.7143 9.67883 28 10.8175 29.1429L5.40876 30.1429C5.31387 28.5238 5.74088 27.2857 6.68978 26.4286C7.73358 25.5714 9.06205 25.1429 10.6752 25.1429C12.6679 25.1429 14.1861 25.7143 15.2299 26.8571C16.3686 28 16.938 29.5714 16.938 31.5714C16.938 33.6667 16.2737 35.2857 14.9453 36.4286C13.7117 37.4762 11.9562 38 9.67883 38ZM31.5985 38C28.562 38 26.1898 36.9524 24.4818 34.8571C22.8686 32.6667 22.062 29.4286 22.062 25.1429C22.062 20.5714 23.0584 16.2381 25.0511 12.1429C27.0438 8.04762 29.9854 4.04762 33.8759 0.142864C33.9708 0.0476213 34.1131 0 34.3029 0C34.5876 0 34.7774 0.142858 34.8723 0.428574C35.062 0.619048 35.1095 0.857143 35.0146 1.14286C32.7372 4.19048 31.1715 7.14286 30.3175 10C29.5584 12.7619 29.1788 15.8571 29.1788 19.2857C29.1788 21.8571 29.4635 23.9048 30.0328 25.4286C30.6971 26.8571 31.5985 28.0952 32.7372 29.1429L27.4708 30.1429C27.3759 28.5238 27.8029 27.2857 28.7518 26.4286C29.7007 25.5714 31.0292 25.1429 32.7372 25.1429C34.7299 25.1429 36.2482 25.7143 37.292 26.8571C38.4307 28 39 29.5714 39 31.5714C39 33.6667 38.3358 35.2857 37.0073 36.4286C35.7737 37.4762 33.9708 38 31.5985 38Z"
-                                  fill="#1A1A1A"
-                                />
-                              </g>
-                              <defs>
-                                <filter
-                                  id="filter0_d_249_14836"
-                                  x={0}
-                                  y={0}
-                                  width={45}
-                                  height={44}
-                                  filterUnits="userSpaceOnUse"
-                                  colorInterpolationFilters="sRGB"
-                                >
-                                  <feFlood
-                                    floodOpacity={0}
-                                    result="BackgroundImageFix"
-                                  />
-                                  <feColorMatrix
-                                    in="SourceAlpha"
-                                    type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                                    result="hardAlpha"
-                                  />
-                                  <feOffset dx={6} dy={6} />
-                                  <feComposite in2="hardAlpha" operator="out" />
-                                  <feColorMatrix
-                                    type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-                                  />
-                                  <feBlend
-                                    mode="normal"
-                                    in2="BackgroundImageFix"
-                                    result="effect1_dropShadow_249_14836"
-                                  />
-                                  <feBlend
-                                    mode="normal"
-                                    in="SourceGraphic"
-                                    in2="effect1_dropShadow_249_14836"
-                                    result="shape"
-                                  />
-                                </filter>
-                              </defs>
-                            </svg>
-                          </div>
-                        </div>
-                      </SwiperSlide>
+                      {testimonials.map((item)=>(
+                         <SwiperSlide key={item.id} >
+                         <div className="swiper-slide">
+                           <div className="testimonials-item">
+                             <div className="head">
+                               <div className="image wow fadeInLeft">
+                                 <img src={item.image} alt="" />
+                               </div>
+                               <div>
+                                 <div className="title wow fadeInUp">
+                                   <a href="#">{item.name}</a>
+                                 </div>
+                                 <p className="wow fadeInUp">{item.designation}</p>
+                               </div>
+                             </div>
+                             <div className="description wow fadeInUp">
+                              {item.content}
+                             </div>
+                             <svg
+                               xmlns="http://www.w3.org/2000/svg"
+                               width={45}
+                               height={44}
+                               viewBox="0 0 45 44"
+                               fill="none"
+                             >
+                               <g filter="url(#filter0_d_249_14836)">
+                                 <path
+                                   d="M9.67883 38C6.64234 38 4.27007 36.9524 2.56204 34.8571C0.854015 32.6667 0 29.4286 0 25.1429C0 20.6667 0.99635 16.381 2.98905 12.2857C5.07664 8.19048 8.01825 4.14286 11.8139 0.142864C11.9088 0.0476213 12.0511 0 12.2409 0C12.5255 0 12.7153 0.142858 12.8102 0.428574C13 0.619048 13.0474 0.857143 12.9526 1.14286C10.6752 4.19048 9.10949 7.14286 8.25548 10C7.49635 12.7619 7.11679 15.8571 7.11679 19.2857C7.11679 21.8571 7.44891 23.8571 8.11314 25.2857C8.77737 26.7143 9.67883 28 10.8175 29.1429L5.40876 30.1429C5.31387 28.5238 5.74088 27.2857 6.68978 26.4286C7.73358 25.5714 9.06205 25.1429 10.6752 25.1429C12.6679 25.1429 14.1861 25.7143 15.2299 26.8571C16.3686 28 16.938 29.5714 16.938 31.5714C16.938 33.6667 16.2737 35.2857 14.9453 36.4286C13.7117 37.4762 11.9562 38 9.67883 38ZM31.5985 38C28.562 38 26.1898 36.9524 24.4818 34.8571C22.8686 32.6667 22.062 29.4286 22.062 25.1429C22.062 20.5714 23.0584 16.2381 25.0511 12.1429C27.0438 8.04762 29.9854 4.04762 33.8759 0.142864C33.9708 0.0476213 34.1131 0 34.3029 0C34.5876 0 34.7774 0.142858 34.8723 0.428574C35.062 0.619048 35.1095 0.857143 35.0146 1.14286C32.7372 4.19048 31.1715 7.14286 30.3175 10C29.5584 12.7619 29.1788 15.8571 29.1788 19.2857C29.1788 21.8571 29.4635 23.9048 30.0328 25.4286C30.6971 26.8571 31.5985 28.0952 32.7372 29.1429L27.4708 30.1429C27.3759 28.5238 27.8029 27.2857 28.7518 26.4286C29.7007 25.5714 31.0292 25.1429 32.7372 25.1429C34.7299 25.1429 36.2482 25.7143 37.292 26.8571C38.4307 28 39 29.5714 39 31.5714C39 33.6667 38.3358 35.2857 37.0073 36.4286C35.7737 37.4762 33.9708 38 31.5985 38Z"
+                                   fill="#1A1A1A"
+                                 />
+                               </g>
+                               <defs>
+                                 <filter
+                                   id="filter0_d_249_14836"
+                                   x={0}
+                                   y={0}
+                                   width={45}
+                                   height={44}
+                                   filterUnits="userSpaceOnUse"
+                                   colorInterpolationFilters="sRGB"
+                                 >
+                                   <feFlood
+                                     floodOpacity={0}
+                                     result="BackgroundImageFix"
+                                   />
+                                   <feColorMatrix
+                                     in="SourceAlpha"
+                                     type="matrix"
+                                     values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                     result="hardAlpha"
+                                   />
+                                   <feOffset dx={6} dy={6} />
+                                   <feComposite in2="hardAlpha" operator="out" />
+                                   <feColorMatrix
+                                     type="matrix"
+                                     values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+                                   />
+                                   <feBlend
+                                     mode="normal"
+                                     in2="BackgroundImageFix"
+                                     result="effect1_dropShadow_249_14836"
+                                   />
+                                   <feBlend
+                                     mode="normal"
+                                     in="SourceGraphic"
+                                     in2="effect1_dropShadow_249_14836"
+                                     result="shape"
+                                   />
+                                 </filter>
+                               </defs>
+                             </svg>
+                           </div>
+                         </div>
+                       </SwiperSlide>
+                      ))}
+                     
+                     
 
                       <div className=' slider-testimonials arrow-style-1 pagination-style-number' >
                         <div className="bottom-wrap">
@@ -735,7 +660,7 @@ const AboutComponent = () => {
                   <Swiper
                   className="swiper-container slider-news slider-auto"
                     slidesPerView={1}
-                    spaceBetween={40}
+                    spaceBetween={30}
                     modules={[Pagination, A11y]}
                     loop={true}
 
@@ -750,194 +675,49 @@ const AboutComponent = () => {
                       },
                       1024: { // Adjust breakpoint to avoid overlap with 868
                         slidesPerView: 4,
-                        spaceBetween: 40,
+                        spaceBetween: 30,
                       },
                     }}
                   >
-                    <SwiperSlide>
-                    <div className="swiper-slide">
-                        <div className="experts-item wow fadeInUp">
-                          <div className="image">
-                            <img src="/elrealestate/assets/images/image-box/experts-1.jpg" alt="" />
-                            <ul className="wg-social-1">
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-facebook" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-twitter" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-instagram" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-linkedin" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <h4>
-                            <a href="#">Eleanor Pena</a>
-                          </h4>
-                          <p>Medical Assistant</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="swiper-slide">
-                        <div
-                          className="experts-item wow fadeInUp"
-                          data-wow-delay="0.1s"
-                        >
-                          <div className="image">
-                            <img src="/elrealestate/assets/images/image-box/experts-2.jpg" alt="" />
-                            <ul className="wg-social-1">
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-facebook" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-twitter" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-instagram" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-linkedin" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <h4>
-                            <a href="#">Leslie Alexander</a>
-                          </h4>
-                          <p>Marketing Coordinator</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="swiper-slide">
-                        <div
-                          className="experts-item wow fadeInUp"
-                          data-wow-delay="0.2s"
-                        >
-                          <div className="image">
-                            <img src="/elrealestate/assets/images/image-box/experts-3.jpg" alt="" />
-                            <ul className="wg-social-1">
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-facebook" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-twitter" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-instagram" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-linkedin" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <h4>
-                            <a href="#">Wade Warren</a>
-                          </h4>
-                          <p>President of Sales</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="swiper-slide">
-                        <div
-                          className="experts-item wow fadeInUp"
-                          data-wow-delay="0.3s"
-                        >
-                          <div className="image">
-                            <img src="/elrealestate/assets/images/image-box/experts-4.jpg" alt="" />
-                            <ul className="wg-social-1">
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-facebook" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-twitter" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-instagram" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-linkedin" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <h4>
-                            <a href="#">Kathryn Murphy</a>
-                          </h4>
-                          <p>Web Designer</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className="swiper-slide">
-                        <div className="experts-item">
-                          <div className="image">
-                            <img src="/elrealestate/assets/images/image-box/experts-1.jpg" alt="" />
-                            <ul className="wg-social-1">
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-facebook" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-twitter" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-instagram" />
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#">
-                                  <i className="flaticon-linkedin" />
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <h4>
-                            <a href="#">Eleanor Pena</a>
-                          </h4>
-                          <p>Medical Assistant</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
+                    {agents.map((item)=>(
+                       <SwiperSlide key={item.id} >
+                       <div className="swiper-slide">
+                           <div className="experts-item wow fadeInUp">
+                             <div className="image" style={{height:360}} >
+                               <img src={item.image} alt="" style={{height:"100%"}} />
+                               {/* <ul className="wg-social-1">
+                                 <li>
+                                   <a href="#">
+                                     <i className="flaticon-facebook" />
+                                   </a>
+                                 </li>
+                                 <li>
+                                   <a href="#">
+                                     <i className="flaticon-twitter" />
+                                   </a>
+                                 </li>
+                                 <li>
+                                   <a href="#">
+                                     <i className="flaticon-instagram" />
+                                   </a>
+                                 </li>
+                                 <li>
+                                   <a href="#">
+                                     <i className="flaticon-linkedin" />
+                                   </a>
+                                 </li>
+                               </ul> */}
+                             </div>
+                             <h4>
+                               <a href="#">{item.name}</a>
+                             </h4>
+                             <p>{item.designation}</p>
+                           </div>
+                         </div>
+                       </SwiperSlide>
+                    ))}
+                   
+                    
                   </Swiper>
                  
                 </div>
