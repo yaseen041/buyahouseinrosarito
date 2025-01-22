@@ -109,7 +109,7 @@ const PropertyComponent = ({
                       <div className="form-filter wow fadeInUp">
                         <form className="form-search-home5">
                           <div className="list">
-                            <div className="group-form form-search-content">
+                            {/* <div className="group-form form-search-content">
                               <div className="form-style-has-title">
                                 <div className="title">Keyword</div>
                                 <div className="relative">
@@ -192,7 +192,38 @@ const PropertyComponent = ({
                                   </div>
                                 </div>
                               </div>
+                            </div> */}
+                             <div className="group-form">
+                              <div className="form-style-has-title" ref={assignRef("city")} >
+                                <div className="title">City</div>
+                                <div className={`nice-select ${openSelect.city ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "city")} >
+                                  <span className="current">{selectedCity.title}</span>
+                                  <ul className="list style-radio">
+                                    <li
+                                      data-value="For Sale"
+                                      className={`option ${status.id === 0 ? "selected" : ""} `}
+
+                                      onClick={() => handleCity(0, " All cities")}
+                                    >
+                                      All cities
+                                    </li>
+                                    {cities.map((city) => (
+                                            <li
+                                              key={city.id}
+                                              data-value=""
+                                              className={`option ${selectedCity.id === city.id ? "selected" : ""}`}
+                                              onClick={() => handleCity(city.id, city.name)}
+                                            >
+                                              {city.name}
+                                            </li>
+                                          ))}
+
+
+                                  </ul>
+                                </div>
+                              </div>
                             </div>
+                            <div className="divider-1" />
                             <div className="divider-1" />
                             <div className="group-form">
                               <div className="form-style-has-title" ref={assignRef("status")} >
@@ -230,7 +261,7 @@ const PropertyComponent = ({
                                 <div className="title">Type</div>
                                 <div className={`nice-select ${openSelect.type ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "type")}>
                                   <span className="current">{selectedTypes.title}</span>
-                                  <ul className="list">
+                                  <ul className="list style-radio">
                                     <li ta-value="" className={`option ${selectedTypes.id === 0 ? "selected" : ""}`} onClick={() => handleTypes(0, "All types")} >
                                       All types
                                     </li>
@@ -258,26 +289,8 @@ const PropertyComponent = ({
                                   id="a1"
                                 >
                                   <div>
-                                    <div className="grid-3-cols mb-20" ref={assignRef("city")} >
-                                      <div className={`nice-select ${openSelect.city ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "city")} >
-                                        <span className="current">{selectedCity.title}</span>
-
-                                        <ul className="list">
-                                          <li className={`option ${selectedCity.id === 0 ? "selected" : ""}`} onClick={() => handleCity(0, "City")}  >
-                                            City
-                                          </li>
-                                          {cities.map((city) => (
-                                            <li
-                                              key={city.id}
-                                              data-value=""
-                                              className={`option ${selectedCity.id === city.id ? "selected" : ""}`}
-                                              onClick={() => handleCity(city.id, city.name)}
-                                            >
-                                              {city.name}
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      </div>
+                                    <div className="grid-3-cols mb-20"  >
+                                     
                                       <div className="nice-select" tabIndex={0}>
                                         <span className="current">Bedrooms</span>
                                         <ul className="list">

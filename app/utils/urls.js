@@ -19,4 +19,10 @@ export class url {
     static TESTIMONIALS = `${BASE_URL}/testimonials/all`
     static AGENTS = `${BASE_URL}/agents/all`
 
+    // Blogs URLs
+
+    static BLOGS = `${BASE_URL}/blogs`
+    static CATEGORIES = `${BASE_URL}/categories`
+    static SINGLEBLOG = `${BASE_URL}/blogs/fetch/`
+
 }

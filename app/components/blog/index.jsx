@@ -1,313 +1,371 @@
 "use client";
-import React from 'react'
-import Header3 from '../header3';
-import Link from 'next/link'
-import Footer from '../footer';
-import CustomScript from '@/app/scripts';
-const BlogComponent = () => {
-    return (
-        <>
-       
-        
-        <div id="wrapper">
-            {/* #page */}
-            <div id="page" className="">
-                {/* header */}
-               <Header3 />
-                {/* /header */}
-                {/* main-content */}
-                <div className="main-content style-1">
-                    {/* flat-title */}
-                    <div className="flat-title">
-                        <div className="cl-container full">
-                            <div className="row">
-                                <div className="col-12">
-                                    <div className="content">
-                                        <h2>Blog Pages</h2>
-                                        <ul className="breadcrumbs">
-                                            <li>
-                                                <Link href="/">Home</Link>
-                                            </li>
-                                            <li>/</li>
-                                            <li>Property List</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* /flat-title */}
-                    <div className="cl-container">
-                        <div className="row">
-                            <div className="col-lg-8">
-                                {/* list-blog */}
-                                <div className="wg-blog style-row wow fadeInUp">
-                                    <div className="image">
-                                        <img src="/elrealestate/assets/images/blog/blog-list-1.jpg" alt="" />
-                                    </div>
-                                    <div className="content">
-                                        <div className="sub-blog">
-                                            <div>Tips &amp; Tricks</div>
-                                            <div>April 26, 2024</div>
-                                        </div>
-                                        <div className="name">
-                                            <Link href="/blog/thi-is-new">
-                                                Chip and Joanna Gaines’ Latest Fixer-Upper Is Open for
-                                                Visitors
-                                            </Link>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                                            mollis et sem sed sollicitudin. Donec non odio neque. Aliquam
-                                            hendrerit sollicitudin purus, quis rutrum mi accumsan nec.{" "}
-                                        </p>
-                                        <Link href="/blog/thi-is-new" className="tf-button-no-bg">
-                                            Read More
-                                            <i className="icon-arrow-right-add" />
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="wg-blog style-row wow fadeInUp">
-                                    <div className="image">
-                                        <img src="/elrealestate/assets/images/blog/blog-list-2.jpg" alt="" />
-                                    </div>
-                                    <div className="content">
-                                        <div className="sub-blog">
-                                            <div>Tips &amp; Tricks</div>
-                                            <div>April 26, 2024</div>
-                                        </div>
-                                        <div className="name">
-                                            <Link href="/blog/thi-is-new">
-                                                Homebuyers Will Be So Thankful To Hear These
-                                            </Link>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                                            mollis et sem sed sollicitudin. Donec non odio neque. Aliquam
-                                            hendrerit sollicitudin purus, quis rutrum mi accumsan nec.{" "}
-                                        </p>
-                                        <Link href="/blog/thi-is-new" className="tf-button-no-bg">
-                                            Read More
-                                            <i className="icon-arrow-right-add" />
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="wg-blog style-row wow fadeInUp">
-                                    <div className="image">
-                                        <img src="/elrealestate/assets/images/blog/blog-list-3.jpg" alt="" />
-                                    </div>
-                                    <div className="content">
-                                        <div className="sub-blog">
-                                            <div>Tips &amp; Tricks</div>
-                                            <div>April 26, 2024</div>
-                                        </div>
-                                        <div className="name">
-                                            <Link href="/blog/thi-is-new">
-                                                That’s Life! Frank Sinatra’s Former Los Angeles-Area
-                                            </Link>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                                            mollis et sem sed sollicitudin. Donec non odio neque. Aliquam
-                                            hendrerit sollicitudin purus, quis rutrum mi accumsan nec.{" "}
-                                        </p>
-                                        <Link href="/blog/thi-is-new" className="tf-button-no-bg">
-                                            Read More
-                                            <i className="icon-arrow-right-add" />
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="wg-blog style-row wow fadeInUp">
-                                    <div className="image">
-                                        <img src="/elrealestate/assets/images/blog/blog-list-4.jpg" alt="" />
-                                    </div>
-                                    <div className="content">
-                                        <div className="sub-blog">
-                                            <div>Tips &amp; Tricks</div>
-                                            <div>April 26, 2024</div>
-                                        </div>
-                                        <div className="name">
-                                            <Link href="/blog/thi-is-new">
-                                                Affordability crisis buyers and renters turn to tiny living
-                                            </Link>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                                            mollis et sem sed sollicitudin. Donec non odio neque. Aliquam
-                                            hendrerit sollicitudin purus, quis rutrum mi accumsan nec.{" "}
-                                        </p>
-                                        <Link href="/blog/thi-is-new" className="tf-button-no-bg">
-                                            Read More
-                                            <i className="icon-arrow-right-add" />
-                                        </Link>
-                                    </div>
-                                </div>
-                                {/* /list-blog */}
-                                <ul className="wg-pagination justify-center wow fadeInUp">
-                                    <li>
-                                        <Link href="#">
-                                            <i className="icon-keyboard_arrow_left" />
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">1</Link>
-                                    </li>
-                                    <li className="active">
-                                        <Link href="#">2</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">3</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">4</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">...</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">20</Link>
-                                    </li>
-                                    <li>
-                                        <Link href="#">
-                                            <i className="icon-keyboard_arrow_right" />
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="sidebar">
-                                    <div className="sidebar-item sidebar-search">
-                                        <form className="form-search">
-                                            <fieldset className="name">
-                                                <input
-                                                    type="text"
-                                                    placeholder="Search"
-                                                    className=""
-                                                    name="name"
-                                                    tabIndex={2}
-                                                    defaultValue=""
-                                                    aria-required="true"
-                                                    required=""
-                                                />
-                                            </fieldset>
-                                            <div className="button-submit style-absolute-right-center">
-                                                <button className="style-icon-default" type="submit">
-                                                    <i className="flaticon-magnifiying-glass" />
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div className="sidebar-item sidebar-categories">
-                                        <div className="sidebar-title">Categories</div>
-                                        <ul>
-                                            <li>
-                                                <Link href="#">Apartment</Link>
-                                            </li>
-                                            <li className="active">
-                                                <Link href="#">Office</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">Single Family</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">Shop</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">Villa</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="sidebar-item sidebar-agents">
-                                        <div className="sidebar-title">Recent Agents</div>
-                                        <ul>
-                                            <li>
-                                                <div className="image">
-                                                    <img src="/elrealestate/assets/images/blog/blog-list-1.jpg" alt="" />
-                                                </div>
-                                                <div className="content">
-                                                    <div className="name">
-                                                        <Link href="/blog/thi-is-new">Manhattan Apartments</Link>
-                                                    </div>
-                                                    <p>May 27, 2024</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="image">
-                                                    <img src="/elrealestate/assets/images/blog/blog-list-3.jpg" alt="" />
-                                                </div>
-                                                <div className="content">
-                                                    <div className="name">
-                                                        <Link href="/blog/thi-is-new">Modern Villa</Link>
-                                                    </div>
-                                                    <p>May 27, 2024</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="image">
-                                                    <img src="/elrealestate/assets/images/blog/blog-list-2.jpg" alt="" />
-                                                </div>
-                                                <div className="content">
-                                                    <div className="name">
-                                                        <Link href="/blog/thi-is-new">Best Luxury Family House</Link>
-                                                    </div>
-                                                    <p>May 27, 2024</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="sidebar-item sidebar-tags">
-                                        <div className="sidebar-title">Popular Tags</div>
-                                        <ul>
-                                            <li>
-                                                <Link href="#">Real Estate</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">Business</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">Construction</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">Luxury</Link>
-                                            </li>
-                                            <li>
-                                                <Link href="#">House</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* /main-content */}
-                {/* footer */}
-               <Footer />
-                {/* /footer */}
-            </div>
-            {/* /#page */}
-        </div>
- 
-        <CustomScript
-          src="/elrealestate/assets/js/jquery.min.js"
-          strategy="lazyOnload" // Load it after the page load
-          onLoad={() => {
-            if (window.jQuery) {
-              console.log("jQuery loaded successfully.");
-              setIsJQueryLoaded(true);
-            }
-          }}
-          onError={(e) => console.error("Failed to load jQuery:", e)}
-        />
-     
-     
-     
-      <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/main.js"  />
-    </>
-    )
-}
+import React, { useState, useEffect } from "react";
+import Header3 from "../header3";
+import Link from "next/link";
+import Footer from "../footer";
+import CustomScript from "@/app/scripts";
+import { useRouter, useSearchParams } from "next/navigation";
+import Loader from "../loader/Loader";
+import { url } from "@/app/utils/urls";
+import NotFound from "../NotFound/NotFound";
 
-export default BlogComponent
+const BlogComponent = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const categoryQuery = searchParams.get("category");
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const pageQuery = searchParams.get("page");
+  const [loading, setLoading] = useState(true);
+  const [blogs, setBlogs] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(null);
+
+
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPages: 1,
+    next: null,
+    prev: null,
+  });
+
+  const fetchBlogs = async (url, setter) => {
+    try {
+      const response = await fetch(url);
+
+      const data = await response.json();
+      setter(data.data.data);
+      setPagination({
+        currentPage: data.data.current_page,
+        totalPages: data.data.last_page,
+        // next: data.data.from ? data.data.from + 1 : null,
+        next: data.data.current_page + 1,
+        prev: data.data.current_page - 1,
+      });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const fetchCategories = async (url, setter) => {
+    try {
+      const response = await fetch(url);
+      //   if (!response.ok) {
+      //     throw new Error(`HTTP error! status: ${response.status}`);
+      //   }
+
+      const data = await response.json();
+      setter(data.data);
+    } catch (err) {
+      //   console.error("Failed to fetch data:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const blogsUrl = `${url.BLOGS}?page=${pageQuery}${
+      categoryQuery ? `&category=${categoryQuery}` : ""
+    }${searchQuery ? `&search=${searchQuery}` : ""}`;
+
+    fetchBlogs(blogsUrl, setBlogs);
+    fetchCategories(url.CATEGORIES, setCategories);
+  }, [url, pageQuery, categoryQuery, searchQuery]);
+
+  function truncate(text, wordLimit = 20) {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    }
+    return text;
+  }
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= pagination.totalPages) {
+      router.push(
+        `?page=${page}${categoryQuery ? `&category=${categoryQuery}` : ""}${
+          searchQuery ? `&search=${searchQuery}` : ""
+        }`
+      );
+    }
+  };
+
+
+  useEffect(() => {
+    // Sync the searchQuery state with the search parameter in the URL on mount
+    setSearchQuery(searchParams.get("search") || "");
+  }, [searchParams]);
+
+  const handleSearch = (e) => {
+    const newValue = e.target.value;
+
+    // If the new value is different from the current searchQuery, update the query
+    if (newValue !== searchQuery) {
+      setSearchQuery(newValue);
+      const newQuery = { ...searchParams, search: newValue };
+      router.push({
+        pathname: router.pathname,
+        query: newQuery,
+      }, undefined, { shallow: true });
+    }
+  };
+
+  return (
+    <>
+      <div id="wrapper">
+        <div id="page">
+          <Header3 />
+          <div className="main-content style-1">
+            <div className="flat-title ">
+              <div className="cl-container full">
+                <div className="row">
+                  <div className="col-12">
+                    <div className="content">
+                      <h2>Blogs</h2>
+                      <ul className="breadcrumbs">
+                        <li>
+                          <Link href="/">Home</Link>
+                        </li>
+                        <li>/</li>
+                        <li>Blogs List</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="cl-container">
+              <div className="row">
+                <div className="col-lg-8">
+                  {loading ? (
+                    <Loader />
+                  ) : blogs.length > 0 ? (
+                    blogs.map((blog) => (
+                      <div
+                        className="wg-blog style-row wow fadeInUp"
+                        key={blog.id}
+                      >
+                        <div className="image">
+                          <img src={blog.featured_image || "/elrealestate/assets/images/blog/blog-grid-1.jpg" } alt={blog.title} />
+                        </div>
+                        <div className="content">
+                          <div className="sub-blog">
+                            <div>{blog.category.title}</div>
+                            <div>
+                              {" "}
+                              {new Intl.DateTimeFormat("en-US", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              }).format(new Date(blog.publish_date))}
+                            </div>
+                          </div>
+                          <div className="name">
+                            <Link href={`/blog/${blog.slug}`}>
+                              {blog.title}
+                            </Link>
+                          </div>
+                          <p>{truncate(blog.meta_description)}</p>
+                          <Link
+                            href={`/blog/${blog.slug}`}
+                            className="tf-button-no-bg"
+                          >
+                            Read More
+                            <i className="icon-arrow-right-add" />
+                          </Link>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+
+                    <NotFound message="We couldn't find anything matching your category. Please try again with different category." />
+                    // <div className="wg-blog style-row wow fadeInUp">
+                    //   <div className="image">
+                    //     <img
+                    //       src="/elrealestate/assets/images/blog/blog-list-1.jpg"
+                    //       alt=""
+                    //     />
+                    //   </div>
+                    //   <div className="content">
+                    //     <div className="sub-blog">
+                    //       <div>Tips &amp; Tricks</div>
+                    //       <div>April 26, 2024</div>
+                    //     </div>
+                    //     <div className="name">
+                    //       <Link href="/blog/thi-is-new">
+                    //         Chip and Joanna Gaines’ Latest Fixer-Upper Is Open
+                    //         for Visitors
+                    //       </Link>
+                    //     </div>
+                    //     <p>
+                    //       Lorem ipsum dolor sit amet, consectetur adipiscing
+                    //       elit. Duis mollis et sem sed sollicitudin. Donec non
+                    //       odio neque. Aliquam hendrerit sollicitudin purus, quis
+                    //       rutrum mi accumsan nec.{" "}
+                    //     </p>
+                    //     <Link
+                    //       href="/blog/thi-is-new"
+                    //       className="tf-button-no-bg"
+                    //     >
+                    //       Read More
+                    //       <i className="icon-arrow-right-add" />
+                    //     </Link>
+                    //   </div>
+                    // </div>
+                  )}
+                  {/* Pagination */}
+                  {pagination.totalPages > 1 && (
+                    <ul
+                      className="wg-pagination justify-center wow fadeInUp"
+                      role="navigation"
+                      aria-label="Pagination"
+                    >
+                      <li
+                        className={`previous ${
+                          pagination.currentPage === 1 ? "disabled" : ""
+                        }`}
+                      >
+                        <a
+                          onClick={() =>
+                            handlePageChange(pagination.currentPage - 1)
+                          }
+                          aria-label="Previous page"
+                          rel="prev"
+                          role="button"
+                          tabIndex={pagination.currentPage === 1 ? -1 : 0}
+                          aria-disabled={pagination.currentPage === 1}
+                        >
+                          &lt;
+                        </a>
+                      </li>
+
+                      {Array.from(
+                        { length: pagination.totalPages },
+                        (_, idx) => (
+                          <li
+                            key={idx}
+                            className={
+                              pagination.currentPage === idx + 1 ? "active" : ""
+                            }
+                          >
+                            <a
+                              onClick={() => handlePageChange(idx + 1)}
+                              aria-label={`Page ${page}${
+                                pagination.currentPage === page
+                                  ? " is your current page"
+                                  : ""
+                              }`}
+                              aria-current={
+                                pagination.currentPage === page
+                                  ? "page"
+                                  : undefined
+                              }
+                              rel={
+                                pagination.currentPage === page
+                                  ? "canonical"
+                                  : undefined
+                              }
+                              role="button"
+                              tabIndex={0}
+                            >
+                              {idx + 1}
+                            </a>
+                          </li>
+                        )
+                      )}
+
+                      <li
+                        className={`next ${
+                          pagination.currentPage === pagination.totalPages
+                            ? "disabled"
+                            : ""
+                        }`}
+                      >
+                        <a
+                          onClick={() =>
+                            handlePageChange(pagination.currentPage + 1)
+                          }
+                          aria-label="Next page"
+                          rel="next"
+                          role="button"
+                          tabIndex={
+                            pagination.currentPage === pagination.totalPages
+                              ? -1
+                              : 0
+                          }
+                        >
+                          &gt;
+                        </a>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+                <div className="col-lg-4">
+                  <div className="sidebar">
+                    <div className="sidebar-item sidebar-search">
+                      <form className="form-search">
+                        <fieldset className="name">
+                          <input
+                            type="text"
+                            placeholder="Search"
+                            name="search"
+                            tabIndex={2}
+                            value={searchQuery}
+                            onChange={handleSearch}
+                            required
+                          />
+                        </fieldset>
+                        <div className="button-submit style-absolute-right-center">
+                          <button className="style-icon-default" type="submit">
+                            <i className="flaticon-magnifiying-glass" />
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="sidebar-item sidebar-categories">
+                      <div className="sidebar-title">Categories</div>
+                      <ul>
+                        {categories.map((category) => (
+                          <li
+                            key={category.id}
+                            className={
+                              category.id === Number(categoryQuery)
+                                ? "active"
+                                : ""
+                            }
+                          >
+                            <Link href={`?category=${category.id}`}>
+                              {category.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Footer />
+        </div>
+      </div>
+
+      <CustomScript
+        src="/elrealestate/assets/js/jquery.nice-select.min.js"
+        strategy="afterInteractive"
+      />
+      <CustomScript
+        src="/elrealestate/assets/js/jquery.fancybox.js"
+        strategy="afterInteractive"
+      />
+      <CustomScript
+        src="/elrealestate/assets/js/magnific-popup.min.js"
+        strategy="afterInteractive"
+      />
+      <CustomScript src="/elrealestate/assets/js/main.js" />
+    </>
+  );
+};
+
+export default BlogComponent;
