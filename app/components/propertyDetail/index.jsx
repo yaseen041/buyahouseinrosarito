@@ -1,26 +1,143 @@
-'use client';
-import React from 'react'
-import Header3 from '../header3';
-import Footer from '../footer';
-import Link from 'next/link';
-import CustomScript from '@/app/scripts';
-import Map from '../map';
-const DetailPage = ({ property = {},agent={} }) => {
- 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id); // Get the element by its id
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+"use client";
+import React, { useState, useEffect } from "react";
+import Header3 from "../header3";
+import Footer from "../footer";
+import Link from "next/link";
+import CustomScript from "@/app/scripts";
+import Map from "../map";
+import MultiSelect from "../MultiSelect/MultiSelect";
+import { url } from "@/app/utils/urls";
+import ScheduleForm from "../ScheduleForm/ScheduleForm";
+
+const DetailPage = ({ property = {}, agent = {} }) => {
+  const [properties, setProperties] = useState([]);
+  const [selectedProperties, setSelectedProperties] = useState([]);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [error, setError] = useState("");
+  const [errorType, setErrorType] = useState("");
+  const [errors, setErrors] = useState({});
+  const [spin, setSpin] = useState(false);
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await fetch(url.PROPERTIESOPTIONS);
+        if (!response.ok) {
+          throw new Error("Failed to fetch blog data");
+        }
+        const data = await response.json();
+        console.log(data);
+        setProperties(data.data);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+
+    fetchProperties();
+  }, [url, setProperties]);
+
+  const handleSelectionChange = (selected) => {
+    setSelectedProperties(selected);
+    setErrors((prevErrors) => ({ ...prevErrors, property_id: "" }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSpin(true);
+
+    const formErrors = {}; // Initialize the errors object
+
+    // Validate each field
+    if (!name || name.trim() === "") {
+      formErrors.name = "Name is required.";
+    }
+    if (!phone || phone.trim() === "") {
+      formErrors.phone = "Phone number is required.";
+    }
+    if (!email || email.trim() === "") {
+      formErrors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      formErrors.email = "Email is not valid.";
+    }
+    if (!selectedProperties || selectedProperties.length === 0) {
+      formErrors.property_id = "At least one property must be selected.";
+    }
+    if (!message || message.trim() === "") {
+      formErrors.message = "Message is required.";
+    }
+
+    // If there are errors, update the errors state and return early
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
+
+    // Clear any existing errors before submitting
+    setErrors({});
+
+    // Example formData
+    const formData = {
+      name: name,
+      phone: phone,
+      email: email,
+      property_id: JSON.stringify(selectedProperties), // Ensure this is a stringified array
+      message: message,
+    };
+
+    try {
+      const response = await fetch(url.SUBMITCONTACT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to submit the contact form");
+      }
+      const data = await response.json();
+
+      if (data.status === "success") {
+        setSpin(false);
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+        setSelectedProperties([]);
+        setErrorType("success");
+        setError(data.message);
+
+        setTimeout(() => {
+          setError("");
+        }, 10000);
+      } else {
+        setSpin(false);
+        setErrorType("error");
+        setError(data.message);
+        setTimeout(() => {
+          setError("");
+        }, 10000);
+      }
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id); // Get the element by its id
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the section
+    }
+  };
 
   return (
     <div>
       <div id="wrapper">
         <div id="page" className="">
           <Header3 />
-          <div className="main-content">
+          <div className="main-content p-0">
             <div
               className="property-single-wrap sticky-container"
               data-sticky-container=""
@@ -77,18 +194,19 @@ const DetailPage = ({ property = {},agent={} }) => {
                             FEATURED
                           </Link>
                         )}
-
                       </div>
-                      {Object.keys(property).length > 0 ? property?.gallery.map((item, index) => (
-                        <a
-                          href={`${item}`}
-                          className={`item-${index + 1}`}
-                          data-fancybox="gallery"
-                          key={index}
-                        >
-                          <img src={item} alt="" />
-                        </a>
-                      )) : null}
+                      {Object.keys(property).length > 0
+                        ? property?.gallery.map((item, index) => (
+                            <a
+                              href={`${item}`}
+                              className={`item-${index + 1}`}
+                              data-fancybox="gallery"
+                              key={index}
+                            >
+                              <img src={item} alt="" />
+                            </a>
+                          ))
+                        : null}
 
                       {/* <a
                         href="/elrealestate/assets/images/house/property-detail-2.jpg"
@@ -144,10 +262,16 @@ const DetailPage = ({ property = {},agent={} }) => {
                         </div>
                         <div>
                           {property.avg_ft > 0 && (
-                            <div className="square">${property.avg_ft.toLocaleString()} /sq ft</div>
-
+                            <div className="square">
+                              ${property.avg_ft.toLocaleString()} /sq ft
+                            </div>
                           )}
-                          <div className="price">${Object.keys(property).length > 0 ? property?.price.toLocaleString() : null}</div>
+                          <div className="price">
+                            $
+                            {Object.keys(property).length > 0
+                              ? property?.price.toLocaleString()
+                              : null}
+                          </div>
                         </div>
                       </div>
                       <div className="box-items">
@@ -157,41 +281,67 @@ const DetailPage = ({ property = {},agent={} }) => {
                           </div>
                           <div className="text-content">Multi Family</div>
                         </div>
-                        <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                        <div
+                          className="item wow fadeInUp"
+                          data-wow-delay="0.1s"
+                        >
                           <div className="icon">
                             <i className="flaticon-hammer" />
                           </div>
-                          <div className="text-content">Built in {property?.year_built}</div>
+                          <div className="text-content">
+                            Built in {property?.year_built}
+                          </div>
                         </div>
-                        <div className="item wow fadeInUp" data-wow-delay="0.2s">
+                        <div
+                          className="item wow fadeInUp"
+                          data-wow-delay="0.2s"
+                        >
                           <div className="icon">
                             <i className="flaticon-minus-front" />
                           </div>
-                          <div className="text-content">{property?.size} Sq Ft</div>
+                          <div className="text-content">
+                            {property?.size} Sq Ft
+                          </div>
                         </div>
                         <div className="item wow fadeInUp">
                           <div className="icon">
                             <i className="flaticon-hotel" />
                           </div>
-                          <div className="text-content">{property?.bedrooms} Bedrooms</div>
+                          <div className="text-content">
+                            {property?.bedrooms} Bedrooms
+                          </div>
                         </div>
-                        <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                        <div
+                          className="item wow fadeInUp"
+                          data-wow-delay="0.1s"
+                        >
                           <div className="icon">
                             <i className="flaticon-bath-tub" />
                           </div>
-                          <div className="text-content">{property?.bathrooms} Bathrooms</div>
+                          <div className="text-content">
+                            {property?.bathrooms} Bathrooms
+                          </div>
                         </div>
-                        <div className="item wow fadeInUp" data-wow-delay="0.2s">
+                        <div
+                          className="item wow fadeInUp"
+                          data-wow-delay="0.2s"
+                        >
                           <div className="icon">
                             <i className="flaticon-garage" />
                           </div>
-                          <div className="text-content">{property?.parking_spaces} Garage</div>
+                          <div className="text-content">
+                            {property?.parking_spaces} Garage
+                          </div>
                         </div>
                       </div>
                       <div className="desc">
                         <h4 className="wow fadeInUp">Description</h4>
                         <div className="wow fadeInUp">
-                          <p dangerouslySetInnerHTML={{ __html: property.description }} />
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html: property.description,
+                            }}
+                          />
                         </div>
                       </div>
                       <div className="address">
@@ -207,7 +357,10 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <div className="text">Address</div>
                             <p>{property?.address}</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Zip/Postal Code</div>
                             <p>90034</p>
                           </div>
@@ -215,7 +368,10 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <div className="text">City</div>
                             <p>{property?.city}</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Area</div>
                             <p>Brookside</p>
                           </div>
@@ -223,24 +379,37 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <div className="text">State</div>
                             <p>{property?.state}</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Country</div>
                             <p>{property?.country}</p>
                           </div>
                         </div>
                       </div>
-                      {Object.keys(property).length > 0 && property.files.length > 0 ?
+                      {Object.keys(property).length > 0 &&
+                      property.files.length > 0 ? (
                         <div className="attachments">
                           <h4 className="wow fadeInUp">Property Attachments</h4>
                           <div className="wrap-file-item wow fadeInUp">
                             {property.files.map((item, index) => (
-                              <Link href={`${item.url}`} target="_blank" className="file-item" key={index} >
+                              <Link
+                                href={`${item.url}`}
+                                target="_blank"
+                                className="file-item"
+                                key={index}
+                              >
                                 <div className="icon">
-                                  <img src="/elrealestate/assets/images/image-box/file-pdf.svg" alt="" />
+                                  <img
+                                    src="/elrealestate/assets/images/image-box/file-pdf.svg"
+                                    alt=""
+                                  />
                                 </div>
                                 <div>
-                                  <div className="name">Resource file {index + 1}</div>
-
+                                  <div className="name">
+                                    Resource file {index + 1}
+                                  </div>
                                 </div>
                               </Link>
                             ))}
@@ -256,7 +425,7 @@ const DetailPage = ({ property = {},agent={} }) => {
                           </Link> */}
                           </div>
                         </div>
-                        : null}
+                      ) : null}
                       <div className="details">
                         <h4 className="wow fadeInUp">Details</h4>
                         <div className="list-item">
@@ -264,15 +433,26 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <div className="text">Property ID:</div>
                             <p>{property?.code}</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Garage:</div>
                             <p>{property?.parking_spaces}</p>
                           </div>
                           <div className="item wow fadeInUp">
                             <div className="text">Price:</div>
-                            <p>${Object.keys(property).length>0? property?.price.toLocaleString():null}</p>
+                            <p>
+                              $
+                              {Object.keys(property).length > 0
+                                ? property?.price.toLocaleString()
+                                : null}
+                            </p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Garage Size:</div>
                             <p>200 SqFt</p>
                           </div>
@@ -280,7 +460,10 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <div className="text">Property Size:</div>
                             <p>{property?.size} Sq Ft</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Year Built:</div>
                             <p>{property?.year_built}</p>
                           </div>
@@ -288,18 +471,25 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <div className="text">Bedrooms:</div>
                             <p>{property?.bedrooms}</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Property Type:</div>
-                            {Object.keys(property).length > 0 ? property.types.map((item) => (
-                              <p key={item.id}>{item.title}</p>
-                            )) : null}
-
+                            {Object.keys(property).length > 0
+                              ? property.types.map((item) => (
+                                  <p key={item.id}>{item.title}</p>
+                                ))
+                              : null}
                           </div>
                           <div className="item wow fadeInUp">
                             <div className="text">Bathrooms:</div>
                             <p>{property?.bathrooms}</p>
                           </div>
-                          <div className="item wow fadeInUp" data-wow-delay="0.1s">
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
                             <div className="text">Property Status:</div>
                             <p>{property?.listing_status}</p>
                           </div>
@@ -344,201 +534,54 @@ const DetailPage = ({ property = {},agent={} }) => {
                       <div className="features">
                         <h4 className="wow fadeInUp">Facts &amp; Features</h4>
                         <p className="wow fadeInUp">
-                          Lorem ipsum dolor sit amet, homero debitis temporibus in
-                          mei, at sit voluptua antiopam hendrerit. Lorem epicuri eu
-                          per. Mediocrem torquatos deseruisse te eum commodo.
+                          Lorem ipsum dolor sit amet, homero debitis temporibus
+                          in mei, at sit voluptua antiopam hendrerit. Lorem
+                          epicuri eu per. Mediocrem torquatos deseruisse te eum
+                          commodo.
                         </p>
                         <ul>
-                          {Object.keys(property).length > 0 ?
-                            Object.keys(property.features).map((featureKey) => (
-                              <li key={featureKey} >
-                                <h5 className="wow fadeInUp">
-                                  {featureKey
-                                    .replace(/_/g, ' ') 
-                                    .replace(/\b\w/g, (char) => char.toUpperCase())}
-                                </h5>
-                                <div
-                                  className="wrap-check-ellipse wow fadeInUp"
-                                  data-wow-delay="0.1s"
-                                >
-                                  {property.features[featureKey].map((item)=>(
-                                     <div className="check-ellipse-item" key={item.id} >
-                                     <div className="icon">
-                                       <i className="flaticon-check" />
-                                     </div>
-                                     <p>{item.title}</p>
-                                   </div>
-                                  ))}
-                                 
-                                 
-                                </div>
-                              </li>
-                            ))
+                          {Object.keys(property).length > 0
+                            ? Object.keys(property.features).map(
+                                (featureKey) => (
+                                  <li key={featureKey}>
+                                    <h5 className="wow fadeInUp">
+                                      {featureKey
+                                        .replace(/_/g, " ")
+                                        .replace(/\b\w/g, (char) =>
+                                          char.toUpperCase()
+                                        )}
+                                    </h5>
+                                    <div
+                                      className="wrap-check-ellipse wow fadeInUp"
+                                      data-wow-delay="0.1s"
+                                    >
+                                      {property.features[featureKey].map(
+                                        (item) => (
+                                          <div
+                                            className="check-ellipse-item"
+                                            key={item.id}
+                                          >
+                                            <div className="icon">
+                                              <i className="flaticon-check" />
+                                            </div>
+                                            <p>{item.title}</p>
+                                          </div>
+                                        )
+                                      )}
+                                    </div>
+                                  </li>
+                                )
+                              )
                             : null}
-                          
                         </ul>
                       </div>
-                      <div className="schedule" id="schedule" >
+
+                      {/* Tour For */}
+                      <div className="schedule">
                         <h4 className="wow fadeInUp">Schedule a tour</h4>
-                        <form className="form-schedule">
-                          <div className="cols">
-                            <fieldset className="message">
-                              <input
-                                type="date"
-                                name="date"
-                                defaultValue="2023-11-20"
-                              />
-                            </fieldset>
-                            <div className="nice-select" tabIndex={0}>
-                              <span className="current">Please Select Time</span>
-                              <ul className="list">
-                                <li data-value="" className="option selected">
-                                  6 AM
-                                </li>
-                                <li data-value="For Ren" className="option">
-                                  12 AM
-                                </li>
-                                <li data-value="Sold" className="option">
-                                  6 PM
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div className="widget-tabs style-4">
-                            <ul className="widget-menu-tab">
-                              <li className="item-title active">
-                                <span className="inner">In Person</span>
-                              </li>
-                              <li className="item-title">
-                                <span className="inner">Video Chat</span>
-                              </li>
-                            </ul>
-                            <div className="widget-content-tab">
-                              <div className="widget-content-inner active">
-                                <div className="cols">
-                                  <fieldset className="name has-top-title">
-                                    <input
-                                      type="text"
-                                      placeholder="Name"
-                                      className=""
-                                      name="text"
-                                      tabIndex={2}
-                                      defaultValue="Ali Tufan"
-                                      aria-required="true"
-                                      required=""
-                                    />
-                                    <label htmlFor="">Name</label>
-                                  </fieldset>
-                                  <fieldset className="phone has-top-title">
-                                    <input
-                                      type="number"
-                                      placeholder="Phone"
-                                      className=""
-                                      name="number"
-                                      tabIndex={2}
-                                      defaultValue=""
-                                      aria-required="true"
-                                      required=""
-                                    />
-                                    <label htmlFor="">Phone</label>
-                                  </fieldset>
-                                  <fieldset className="email has-top-title">
-                                    <input
-                                      type="email"
-                                      placeholder="Email"
-                                      className=""
-                                      name="email"
-                                      tabIndex={2}
-                                      defaultValue=""
-                                      aria-required="true"
-                                      required=""
-                                    />
-                                    <label htmlFor="">Email</label>
-                                  </fieldset>
-                                </div>
-                                <fieldset className="message has-top-title">
-                                  <textarea
-                                    name="message"
-                                    rows={4}
-                                    placeholder="Your Comment"
-                                    className=""
-                                    tabIndex={2}
-                                    aria-required="true"
-                                    required=""
-                                    defaultValue={"Lorem Ipsum Dolar Sit Amet"}
-                                  />
-                                  <label htmlFor="">Your Comment</label>
-                                </fieldset>
-                              </div>
-                              <div className="widget-content-inner">
-                                <div className="cols">
-                                  <fieldset className="name has-top-title">
-                                    <input
-                                      type="text"
-                                      placeholder="Name"
-                                      className=""
-                                      name="text"
-                                      tabIndex={2}
-                                      defaultValue="Ali Tufan"
-                                      aria-required="true"
-                                      required=""
-                                    />
-                                    <label htmlFor="">Name</label>
-                                  </fieldset>
-                                  <fieldset className="phone has-top-title">
-                                    <input
-                                      type="number"
-                                      placeholder="Phone"
-                                      className=""
-                                      name="number"
-                                      tabIndex={2}
-                                      defaultValue=""
-                                      aria-required="true"
-                                      required=""
-                                    />
-                                    <label htmlFor="">Phone</label>
-                                  </fieldset>
-                                  <fieldset className="email has-top-title">
-                                    <input
-                                      type="email"
-                                      placeholder="Email"
-                                      className=""
-                                      name="email"
-                                      tabIndex={2}
-                                      defaultValue=""
-                                      aria-required="true"
-                                      required=""
-                                    />
-                                    <label htmlFor="">Email</label>
-                                  </fieldset>
-                                </div>
-                                <fieldset className="message has-top-title">
-                                  <textarea
-                                    name="message"
-                                    rows={4}
-                                    placeholder="Your Comment"
-                                    className=""
-                                    tabIndex={2}
-                                    aria-required="true"
-                                    required=""
-                                    defaultValue={"Lorem Ipsum Dolar Sit Amet"}
-                                  />
-                                  <label htmlFor="">Your Comment</label>
-                                </fieldset>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="button-submit">
-                            <button
-                              className="tf-button-primary w-full"
-                              type="submit"
-                            >
-                              Submit a Tour Request
-                              <i className="icon-arrow-right-add" />
-                            </button>
-                          </div>
-                        </form>
+                        <ScheduleForm propertyId={property.id} />
                       </div>
+
                       {/* <div className="plans">
                         <h4 className="wow fadeInUp">Floor Plans</h4>
                         <div className="widget-tabs style-3">
@@ -800,7 +843,7 @@ const DetailPage = ({ property = {},agent={} }) => {
                           </fieldset>
                         </form>
                       </div> */}
-                      <div className="contact-info" id="contact" >
+                      <div className="contact-info" id="contact">
                         <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                           <h4 className="mb-0">Contact Information</h4>
                           <Link href="#" className="tf-button-green">
@@ -819,23 +862,36 @@ const DetailPage = ({ property = {},agent={} }) => {
                             <p>{agent.phone}</p>
                           </div>
                         </div>
+
+                        {/* Contact Enquiry Form */}
                         <div className="title wow fadeInUp">
                           Enquire About This Property
                         </div>
-                        <form className="form-comment">
+                        <form className="form-comment" onSubmit={handleSubmit}>
                           <div className="cols">
                             <fieldset className="name wow fadeInUp has-top-title">
                               <input
                                 type="text"
                                 placeholder="Name"
-                                className=""
+                                value={name}
+                                onChange={(e) => {
+                                  setName(e.target.value); // Update the name state
+                                  setErrors((prevErrors) => ({
+                                    ...prevErrors,
+                                    name: "", // Reset the name error when the user starts typing
+                                  }));
+                                }}
                                 name="text"
                                 tabIndex={2}
-                                defaultValue="Ali Tufan"
                                 aria-required="true"
                                 required=""
                               />
                               <label htmlFor="">Name</label>
+                              {errors?.name && (
+                                <span className="error text-danger">
+                                  {errors?.name}
+                                </span>
+                              )}
                             </fieldset>
                             <fieldset
                               className="phone wow fadeInUp has-top-title"
@@ -844,14 +900,25 @@ const DetailPage = ({ property = {},agent={} }) => {
                               <input
                                 type="number"
                                 placeholder="Phone"
-                                className=""
-                                name="number"
+                                value={phone}
+                                onChange={(e) => {
+                                  setPhone(e.target.value); // Update the name state
+                                  setErrors((prevErrors) => ({
+                                    ...prevErrors,
+                                    phone: "", // Reset the name error when the user starts typing
+                                  }));
+                                }}
+                                name="phone"
                                 tabIndex={2}
-                                defaultValue=""
                                 aria-required="true"
                                 required=""
                               />
                               <label htmlFor="">Phone</label>
+                              {errors?.phone && (
+                                <span className="error text-danger">
+                                  {errors?.phone}
+                                </span>
+                              )}
                             </fieldset>
                           </div>
                           <div className="cols">
@@ -859,33 +926,41 @@ const DetailPage = ({ property = {},agent={} }) => {
                               <input
                                 type="email"
                                 placeholder="Email"
-                                className=""
+                                value={email}
+                                onChange={(e) => {
+                                  setEmail(e.target.value); // Update the name state
+                                  setErrors((prevErrors) => ({
+                                    ...prevErrors,
+                                    email: "", // Reset the name error when the user starts typing
+                                  }));
+                                }}
                                 name="email"
                                 tabIndex={2}
-                                defaultValue=""
                                 aria-required="true"
                                 required=""
                               />
                               <label htmlFor="">Email</label>
+                              {errors?.email && (
+                                <span className="error text-danger">
+                                  {errors?.email}
+                                </span>
+                              )}
                             </fieldset>
-                            <div
-                              className="nice-select wow fadeInUp"
+                            <fieldset
+                              className="wow fadeInUp"
                               data-wow-delay="0.1s"
                               tabIndex={0}
                             >
-                              <span className="current">Please Select Time</span>
-                              <ul className="list">
-                                <li data-value="" className="option selected">
-                                  6 AM
-                                </li>
-                                <li data-value="For Ren" className="option">
-                                  12 AM
-                                </li>
-                                <li data-value="Sold" className="option">
-                                  6 PM
-                                </li>
-                              </ul>
-                            </div>
+                              <MultiSelect
+                                options={properties}
+                                onChange={handleSelectionChange}
+                              />
+                              {errors?.property_id && (
+                                <span className="error text-danger">
+                                  {errors?.property_id}
+                                </span>
+                              )}
+                            </fieldset>
                           </div>
                           <fieldset className="message wow fadeInUp has-top-title">
                             <textarea
@@ -896,9 +971,8 @@ const DetailPage = ({ property = {},agent={} }) => {
                               tabIndex={2}
                               aria-required="true"
                               required=""
-                              defaultValue={
-                                "Hello, I am interested in [Renovated apartment at last floor]"
-                              }
+                              value={message}
+                              onChange={(e) => setMessage(e.target.value)}
                             />
                             <label htmlFor="">Message</label>
                           </fieldset>
@@ -908,14 +982,50 @@ const DetailPage = ({ property = {},agent={} }) => {
                                 By submitting this form I agree to
                                 <span>Terms of Use</span>
                               </p>
-                              <input type="checkbox" />
+                              <input
+                                type="checkbox"
+                                checked={consent}
+                                onChange={(e) => setConsent(e.target.checked)}
+                              />
                               <span className="btn-checkbox" />
                             </label>
                           </div>
+                          {error && (
+                            <div
+                              className={`checkbox-item wow fadeInUp ${
+                                error ? "" : "d-none"
+                              }`}
+                            >
+                              <div
+                                className={`alert alert-${errorType} fade show`}
+                                role="alert"
+                              >
+                                <strong style={{ textTransform: "capitalize" }}>
+                                  {errorType}
+                                </strong>{" "}
+                                {error}
+                              </div>
+                            </div>
+                          )}
                           <div className="button-submit wow fadeInUp">
-                            <button className="tf-button-primary" type="submit">
-                              Request Information
-                              <i className="icon-arrow-right-add" />
+                            <button
+                              className={`tf-button-primary w-full ${
+                                !consent ? "disabled" : ""
+                              }`}
+                              disabled={!consent || spin}
+                              type="submit"
+                            >
+                              {spin ? (
+                                <>
+                                  <span className="spinner"></span> Request
+                                  Submitting...
+                                </>
+                              ) : (
+                                <>
+                                  Request Information
+                                  <i className="icon-arrow-right-add" />
+                                </>
+                              )}
                             </button>
                           </div>
                         </form>
@@ -937,9 +1047,9 @@ const DetailPage = ({ property = {},agent={} }) => {
                       <div className="map">
                         <h4 className="wow fadeInUp">Map</h4>
                         <div className="wrap-map-v1">
-                          <Map 
-                          lattitude={Number(property?.lattitude)}
-                          longitude={Number(property?.longitude)}
+                          <Map
+                            lattitude={Number(property?.lattitude)}
+                            longitude={Number(property?.longitude)}
                           />
                         </div>
                       </div>
@@ -1331,191 +1441,110 @@ const DetailPage = ({ property = {},agent={} }) => {
                           </div>
                         </form>
                       </div> */}
-                      <div className="smilar-homes">
+                      {Object.keys(property).length > 0?
+                         property?.related_listings?.length > 0
+                          ? 
+                                            <div className="smilar-homes">
                         <h4 className="wow fadeInUp">Similar Homes</h4>
                         <div className="row">
-                          <div className="col-md-6">
-                            <div className="box-dream has-border wow fadeInUp">
-                              <div className="image">
-                                <div className="list-tags">
-                                  <Link href="#" className="tags-item for-sell">
-                                    FOR RENT
-                                  </Link>
-                                  <Link href="#" className="tags-item featured">
-                                    FEATURED
-                                  </Link>
-                                </div>
-                                <div className="button-heart">
-                                  <i className="flaticon-heart-1" />
-                                </div>
-                                <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
-                                  <div className="swiper-wrapper">
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-1.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-2.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-3.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-4.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="swiper-pagination box-dream-pagination" />
-                                  <div className="box-dream-next swiper-button-next" />
-                                  <div className="box-dream-prev swiper-button-prev" />
-                                </div>
-                              </div>
-                              <div className="content">
-                                <div className="head">
-                                  <div className="title">
-                                    <Link href="/property/property-single">
-                                      Home Pitt Street
+                          {Object.keys(property).length > 0? property.related_listings.map((item)=>(
+                              <div className="col-md-6">
+                              <div className="box-dream has-border wow fadeInUp">
+                                <div className="image">
+                                  <div className="list-tags">
+                                    <Link href="#" className="tags-item for-sell">
+                                      FOR RENT
+                                    </Link>
+                                    <Link href="#" className="tags-item featured">
+                                      FEATURED
                                     </Link>
                                   </div>
-                                  <div className="price">$815,000</div>
+                                  <div className="button-heart">
+                                    <i className="flaticon-heart-1" />
+                                  </div>
+                                  <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
+                                    <div className="swiper-wrapper">
+                                      <div className="swiper-slide">
+                                        <div className="w-full">
+                                          <img
+                                            className="w-full"
+                                            src="/elrealestate/assets/images/house/home-1.jpg"
+                                            alt=""
+                                          />
+                                        </div>
+                                      </div>
+                                      <div className="swiper-slide">
+                                        <div className="w-full">
+                                          <img
+                                            className="w-full"
+                                            src="/elrealestate/assets/images/house/home-2.jpg"
+                                            alt=""
+                                          />
+                                        </div>
+                                      </div>
+                                      <div className="swiper-slide">
+                                        <div className="w-full">
+                                          <img
+                                            className="w-full"
+                                            src="/elrealestate/assets/images/house/home-3.jpg"
+                                            alt=""
+                                          />
+                                        </div>
+                                      </div>
+                                      <div className="swiper-slide">
+                                        <div className="w-full">
+                                          <img
+                                            className="w-full"
+                                            src="/elrealestate/assets/images/house/home-4.jpg"
+                                            alt=""
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="swiper-pagination box-dream-pagination" />
+                                    <div className="box-dream-next swiper-button-next" />
+                                    <div className="box-dream-prev swiper-button-prev" />
+                                  </div>
                                 </div>
-                                <div className="location">
-                                  <div className="icon">
-                                    <i className="flaticon-location" />
+                                <div className="content">
+                                  <div className="head">
+                                    <div className="title">
+                                      <Link href="/property/property-single">
+                                        Home Pitt Street
+                                      </Link>
+                                    </div>
+                                    <div className="price">$815,000</div>
                                   </div>
-                                  <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                </div>
-                                <div className="icon-box">
-                                  <div className="item">
-                                    <i className="flaticon-hotel" />
-                                    <p>4 Beds</p>
+                                  <div className="location">
+                                    <div className="icon">
+                                      <i className="flaticon-location" />
+                                    </div>
+                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
                                   </div>
-                                  <div className="item">
-                                    <i className="flaticon-bath-tub" />
-                                    <p>3 Baths</p>
-                                  </div>
-                                  <div className="item">
-                                    <i className="flaticon-minus-front" />
-                                    <p>2660 Sqft</p>
+                                  <div className="icon-box">
+                                    <div className="item">
+                                      <i className="flaticon-hotel" />
+                                      <p>4 Beds</p>
+                                    </div>
+                                    <div className="item">
+                                      <i className="flaticon-bath-tub" />
+                                      <p>3 Baths</p>
+                                    </div>
+                                    <div className="item">
+                                      <i className="flaticon-minus-front" />
+                                      <p>2660 Sqft</p>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div
-                              className="box-dream has-border wow fadeInUp"
-                              data-wow-delay="0.1s"
-                            >
-                              <div className="image">
-                                <div className="list-tags">
-                                  <Link href="#" className="tags-item for-sell">
-                                    FOR SELL
-                                  </Link>
-                                </div>
-                                <div className="button-heart">
-                                  <i className="flaticon-heart-1" />
-                                </div>
-                                <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
-                                  <div className="swiper-wrapper">
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-2.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-1.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-3.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                      <div className="w-full">
-                                        <img
-                                          className="w-full"
-                                          src="/elrealestate/assets/images/house/home-4.jpg"
-                                          alt=""
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="swiper-pagination box-dream-pagination" />
-                                  <div className="box-dream-next swiper-button-next" />
-                                  <div className="box-dream-prev swiper-button-prev" />
-                                </div>
-                              </div>
-                              <div className="content">
-                                <div className="head">
-                                  <div className="title">
-                                    <Link href="/property/property-single">
-                                      Luxury Mansion
-                                    </Link>
-                                  </div>
-                                  <div className="price">$815,000</div>
-                                </div>
-                                <div className="location">
-                                  <div className="icon">
-                                    <i className="flaticon-location" />
-                                  </div>
-                                  <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                </div>
-                                <div className="icon-box">
-                                  <div className="item">
-                                    <i className="flaticon-hotel" />
-                                    <p>4 Beds</p>
-                                  </div>
-                                  <div className="item">
-                                    <i className="flaticon-bath-tub" />
-                                    <p>3 Baths</p>
-                                  </div>
-                                  <div className="item">
-                                    <i className="flaticon-minus-front" />
-                                    <p>2660 Sqft</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          )):null}
+                        
+                         
                         </div>
                       </div>
+                     :null :null} 
+
                     </div>
                   </div>
                   <div className="col-xl-4">
@@ -1525,12 +1554,15 @@ const DetailPage = ({ property = {},agent={} }) => {
                           Request a tour as early as <br />
                           <span>Today at 11:00AM</span>
                         </div>
-                        <button  className="tf-button-primary w-full" onClick={()=>scrollToSection("schedule")} >
+                        <button
+                          className="tf-button-primary w-full"
+                          onClick={() => scrollToSection("schedule")}
+                        >
                           Schedule a Tour
                           <i className="icon-arrow-right-add" />
                         </button>
                         <button
-                         onClick={()=>scrollToSection("contact")}
+                          onClick={() => scrollToSection("contact")}
                           className="tf-button-primary w-full style-bg-white"
                         >
                           Contact an agent
@@ -1563,14 +1595,21 @@ const DetailPage = ({ property = {},agent={} }) => {
         onError={(e) => console.error("Failed to load jQuery:", e)}
       />
 
-
-
-      <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+      <CustomScript
+        src="/elrealestate/assets/js/jquery.nice-select.min.js"
+        strategy="afterInteractive"
+      />
+      <CustomScript
+        src="/elrealestate/assets/js/jquery.fancybox.js"
+        strategy="afterInteractive"
+      />
+      <CustomScript
+        src="/elrealestate/assets/js/magnific-popup.min.js"
+        strategy="afterInteractive"
+      />
       <CustomScript src="/elrealestate/assets/js/main.js" />
     </div>
-  )
-}
+  );
+};
 
-export default DetailPage
+export default DetailPage;

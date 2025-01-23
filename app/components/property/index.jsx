@@ -28,13 +28,40 @@ const PropertyComponent = ({
   selectedSorting = {},
   handleSorting,
   agents = [],
-  currentPage
+  community = [],
+  currentPage,
+  selectedCommunity = {},
+  handleCommunity,
+  handleBed,
+  handleBath,
+  selectedBath = {},
+  selectedBed = {},
+  handleInputChange,
+  minArea,
+  maxArea,
+  minPrice,
+  maxPrice,
+  features = [],
+  hanldeFeatures,
+  Keyword,
+  featuredProperties = [],
 }) => {
 
   const [openFilter, setOpenFilter] = React.useState(false)
   const [openSelect, setOpenSelect] = React.useState({
-     status: false, type: false, city: false, sorting: false,community:false,minBed:false,maxBed:false,minBath:false,maxBath:false 
-    })
+    status: false,
+    type: false,
+    city: false,
+    sorting: false,
+    community: false,
+    minBed: false,
+    maxBed: false,
+    minBath: false,
+    maxBath: false,
+    maxBed: false,
+    minBath: false,
+    maxBath: false
+  })
   const toggleFilter = () => setOpenFilter(!openFilter)
   const prevButtonRef = React.useRef(null);
   const nextButtonRef = React.useRef(null);
@@ -50,6 +77,9 @@ const PropertyComponent = ({
       sorting: name === "sorting" ? !prev.sorting : false,
       community: name === "community" ? !prev.community : false,
       minBed: name === "minBed" ? !prev.minBed : false,
+      maxBed: name === "maxBed" ? !prev.maxBed : false,
+      minBath: name === "minBath" ? !prev.minBath : false,
+      maxBath: name === "maxBath" ? !prev.maxBath : false,
     }));
   }
   React.useEffect(() => {
@@ -61,7 +91,17 @@ const PropertyComponent = ({
       );
 
       if (!isClickInside) {
-        setOpenSelect({ status: false, type: false, city: false, sorting: false,community:false,minBed:false });
+        setOpenSelect({
+          status: false,
+          type: false,
+          city: false,
+          sorting: false,
+          community: false,
+          minBed: false,
+          maxBed: false,
+          minBath: false,
+          maxBath: false
+        });
       }
     };
 
@@ -122,11 +162,10 @@ const PropertyComponent = ({
                                       type="text"
                                       placeholder="Enter Keyyword"
                                       className="show-search style-default"
-                                      name="name"
-                                      tabIndex={2}
-                                      defaultValue=""
-                                      aria-required="true"
+                                       name="Keyword"                                   
+                                      value={Keyword}
                                       required=""
+                                      onChange={handleInputChange}
                                     />
                                   </fieldset>
                                   <div className="style-absolute-right">
@@ -134,7 +173,7 @@ const PropertyComponent = ({
                                       <i className="flaticon-magnifiying-glass" />
                                     </div>
                                   </div>
-                                  <div className="box-content-search style-1">
+                                  {/* <div className="box-content-search style-1">
                                     <ul>
                                       <li>
                                         <div className="item1">
@@ -193,7 +232,7 @@ const PropertyComponent = ({
                                         </div>
                                       </li>
                                     </ul>
-                                  </div>
+                                  </div> */}
                                 </div>
                               </div>
                             </div>
@@ -205,7 +244,7 @@ const PropertyComponent = ({
                                   <ul className="list style-radio">
                                     <li
                                       data-value="For Sale"
-                                      className={`option ${status.id === 0 ? "selected" : ""} `}
+                                      className={`option ${selectedCity.id === 0 ? "selected" : ""} `}
 
                                       onClick={() => handleCity(0, " All cities")}
                                     >
@@ -263,277 +302,196 @@ const PropertyComponent = ({
                                   className={`open-filter filter-no-content ${openFilter ? "active" : ""}  `}
                                   id="a1"
                                 >
-                                  <div>
-                                    <div className="grid-3-cols mb-20"  >
-                                      <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
-                                        <span className="current">{status.title}</span>
-                                        <ul className="list style-radio">
-                                          <li
-                                            data-value="For Sale"
-                                            className={`option ${status.id === 0 ? "selected" : ""} `}
-
-                                            onClick={() => handleStatus(0, " All Status")}
-                                          >
-                                            All Status
-                                          </li>
-                                          {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                  <div  >
+                                    <div className="grid-4-cols mb-20"  >
+                                      <div className='' >
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Status</div>
+                                        <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
+                                          <span className="current">{status.title}</span>
+                                          <ul className="list style-radio">
                                             <li
                                               data-value="For Sale"
-                                              className={`option ${status.id === item.id ? "selected" : ""} `}
-                                              key={item.id}
-                                              onClick={() => handleStatus(item.id, item.title)}
+                                              className={`option ${status.id === 0 ? "selected" : ""} `}
+
+                                              onClick={() => handleStatus(0, " All Status")}
                                             >
-                                              {item.title}
+                                              All Status
                                             </li>
-                                          )) : null}
+                                            {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                              <li
+                                                data-value="For Sale"
+                                                className={`option ${status.id === item.id ? "selected" : ""} `}
+                                                key={item.id}
+                                                onClick={() => handleStatus(item.id, item.title)}
+                                              >
+                                                {item.title}
+                                              </li>
+                                            )) : null}
 
 
-                                        </ul>
+                                          </ul>
 
+                                        </div>
                                       </div>
-                                      <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
-                                        <span className="current">{status.title}</span>
-                                        <ul className="list style-radio">
-                                          <li
-                                            data-value="For Sale"
-                                            className={`option ${status.id === 0 ? "selected" : ""} `}
-
-                                            onClick={() => handleStatus(0, " All Status")}
-                                          >
-                                            All Status
-                                          </li>
-                                          {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                      <div>
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Community</div>
+                                        <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
+                                          <span className="current">{selectedCommunity.title}</span>
+                                          <ul className="list style-radio">
                                             <li
                                               data-value="For Sale"
-                                              className={`option ${status.id === item.id ? "selected" : ""} `}
-                                              key={item.id}
-                                              onClick={() => handleStatus(item.id, item.title)}
+                                              className={`option ${selectedCommunity.id === 0 ? "selected" : ""} `}
+
+                                              onClick={() => handleCommunity(0, " All Community")}
                                             >
-                                              {item.title}
+                                              All Community
                                             </li>
-                                          )) : null}
+                                            {community.map((item) => (
+                                              <li
+                                                data-value="For Sale"
+                                                className={`option ${selectedCommunity.id === item.id ? "selected" : ""} `}
+                                                key={item.id}
+                                                onClick={() => handleCommunity(item.id, item.title)}
+                                              >
+                                                {item.title}
+                                              </li>
+                                            ))}
 
 
-                                        </ul>
+                                          </ul>
 
+                                        </div>
                                       </div>
-                                      <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
-                                        <span className="current">Min.Bedrooms</span>
-                                        <ul className="list">
-                                          <li
-                                            data-value=""
-                                            className="option selected"
-                                          >
-                                            Bedrooms
-                                          </li>
-                                          <li data-value="1 Bed" className="option">
-                                            1 Bed
-                                          </li>
-                                          <li data-value="2 Bed" className="option">
-                                            2 Bed
-                                          </li>
-                                        </ul>
+                                      <div>
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bedrooms</div>
+                                        <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
+                                          <span className="current">{selectedBed.title}</span>
+                                          <ul className="list  ">
+
+                                            {Object.keys(filters).length > 0 ? filters.min_bed.map((item) => (
+                                              <li data-value="" className={`option ${selectedBed.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleBed(item.id, item.title)} >
+                                                {item.title}
+                                              </li>
+                                            )) : null}
+                                          </ul>
+                                        </div>
                                       </div>
-                                      <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Max.Bedrooms</span>
-                                        <ul className="list">
-                                          <li
-                                            data-value=""
-                                            className="option selected"
-                                          >
-                                            Bedrooms
-                                          </li>
-                                          <li data-value="1 Bed" className="option">
-                                            1 Bed
-                                          </li>
-                                          <li data-value="2 Bed" className="option">
-                                            2 Bed
-                                          </li>
-                                        </ul>
+
+                                      <div>
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bathrooms</div>
+                                        <div className={`nice-select ${openSelect.minBath ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBath")} ref={assignRef("minBath")}>
+                                          <span className="current">{selectedBath.title}</span>
+
+                                          <ul className="list">
+
+                                            {Object.keys(filters).length > 0 ? filters.min_bath.map((item) => (
+                                              <li data-value="1 Bath" className={`option ${selectedBath.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleBath(item.id, item.title)} >
+                                                {item.title}
+                                              </li>
+                                            )) : null}
+
+                                          </ul>
+                                        </div>
                                       </div>
-                                      <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Min.Bathrooms</span>
-                                        <ul className="list">
-                                          <li
-                                            data-value=""
-                                            className="option selected"
-                                          >
-                                            Bathrooms
-                                          </li>
-                                          <li data-value="1 Bath" className="option">
-                                            1 Bath
-                                          </li>
-                                          <li data-value="2 Bath" className="option">
-                                            2 Bath
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Max.Bathrooms</span>
-                                        <ul className="list">
-                                          <li
-                                            data-value=""
-                                            className="option selected"
-                                          >
-                                            Bathrooms
-                                          </li>
-                                          <li data-value="1 Bath" className="option">
-                                            1 Bath
-                                          </li>
-                                          <li data-value="2 Bath" className="option">
-                                            2 Bath
-                                          </li>
-                                        </ul>
-                                      </div>
+
+
                                     </div>
                                     <div className="grid-4-cols">
                                       <fieldset className="name">
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Area</div>
                                         <input
                                           type="text"
                                           placeholder="Min. Area"
                                           className=""
-                                          name="name"
+                                          name="minArea"
                                           tabIndex={2}
-                                          defaultValue=""
+
                                           aria-required="true"
                                           required=""
+                                          value={minArea}
+                                          onChange={handleInputChange}
                                         />
                                       </fieldset>
                                       <fieldset className="name">
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Area</div>
                                         <input
                                           type="text"
                                           placeholder="Max. Area"
                                           className=""
-                                          name="name"
+                                          name="maxArea"
                                           tabIndex={2}
-                                          defaultValue=""
+
                                           aria-required="true"
                                           required=""
+                                          value={maxArea}
+                                          onChange={handleInputChange}
                                         />
                                       </fieldset>
-                                      <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Min. Price</span>
-                                        <ul className="list">
-                                          <li
-                                            data-value=""
-                                            className="option selected"
-                                          >
-                                            Min. Price
-                                          </li>
-                                          <li data-value="100 $" className="option">
-                                            100 $
-                                          </li>
-                                          <li data-value="150 $" className="option">
-                                            150 $
-                                          </li>
-                                        </ul>
-                                      </div>
-                                      <div className="nice-select" tabIndex={0}>
-                                        <span className="current">Max. Price</span>
-                                        <ul className="list">
-                                          <li
-                                            data-value=""
-                                            className="option selected"
-                                          >
-                                            Max. Price
-                                          </li>
-                                          <li data-value="1000 $" className="option">
-                                            1000 $
-                                          </li>
-                                          <li data-value="1500 $" className="option">
-                                            1500 $
-                                          </li>
-                                        </ul>
-                                      </div>
+                                      <fieldset className="name">
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Price</div>
+                                        <input
+                                          type="text"
+                                          placeholder="Min. Price"
+                                          className=""
+                                          name="minPrice"
+                                          tabIndex={2}
+
+                                          aria-required="true"
+                                          required=""
+                                          value={minPrice}
+                                          onChange={handleInputChange}
+                                        />
+                                      </fieldset>
+                                      <fieldset className="name">
+                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Price</div>
+                                        <input
+                                          type="text"
+                                          placeholder="Max. Price"
+                                          className=""
+                                          name="maxPrice"
+                                          tabIndex={2}
+                                          aria-required="true"
+                                          required=""
+                                          value={maxPrice}
+                                          onChange={handleInputChange}
+                                        />
+                                      </fieldset>
                                     </div>
                                   </div>
                                   <div>
-                                    <div className="title">Amenities</div>
-                                    <ul className="grid-checkbox">
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Air Conditioning</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Barbeque</p>
-                                          <input type="checkbox" defaultChecked="" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Dryer</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Gym</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Lawn</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Microwave</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Refrigerator</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Sauna</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Swimming Pool</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>TV Cable</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>Washer</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
-                                      <li className="checkbox-item">
-                                        <label>
-                                          <p>WiFi</p>
-                                          <input type="checkbox" />
-                                          <span className="btn-checkbox" />
-                                        </label>
-                                      </li>
+
+                                    <ul className="grid-checked">
+                                      {
+                                        Object.keys(filters).length > 0 ?
+                                          Object.keys(filters.features).map((featureKey) => (
+                                            <li key={featureKey} >
+                                              <div className="title mt-4 mb-4">
+                                                {featureKey
+                                                  .replace(/_/g, ' ')
+                                                  .replace(/\b\w/g, (char) => char.toUpperCase())}
+                                              </div>
+                                              <ul
+
+                                                data-wow-delay="0.1s"
+                                              >
+                                                <div className='row' >
+                                                  {filters.features[featureKey].map((item) => (
+                                                    <div className='col-3 m-4' key={item.id} >
+                                                      <li className="checkbox-item"  >
+                                                        <label>
+                                                          <p>{item.title}</p>
+                                                          <input type="checkbox" onChange={()=>hanldeFeatures(item.id,item.title)} checked={features.some((feature)=>feature.id===item.id)}  />
+                                                          <span className="btn-checkbox" />
+                                                        </label>
+                                                      </li>
+                                                    </div>
+                                                  ))}
+                                                </div>
+
+                                              </ul>
+                                            </li>
+                                          )) : null}
+
                                     </ul>
                                   </div>
                                 </div>
@@ -696,7 +654,7 @@ const PropertyComponent = ({
 
                         </ul>
                       </div>
-                      <div className="sidebar-item sidebar-exclusive no-bg relative">
+                      {/* <div className="sidebar-item sidebar-exclusive no-bg relative">
                         <div className="sidebar-title">Exclusive Property</div>
                         <div className="top-wrap arrow-style-2">
                           <div ref={prevButtonRef} className="swiper-button-prev exclusive-prev" />
@@ -719,163 +677,68 @@ const PropertyComponent = ({
                           }}
 
                         >
-                          <SwiperSlide>
-                            <div className="swiper-slide">
-                              <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1">
-                                <div className="image">
-                                  <div className="list-tags">
-                                    <Link href="#" className="tags-item for-sell">
-                                      FOR RENT
-                                    </Link>
-                                    <Link href="#" className="tags-item featured">
-                                      FEATURED
-                                    </Link>
-                                  </div>
-                                  <img
-                                    className="w-full"
-                                    src="/elrealestate/assets/images/sidebar/img-1.jpg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div className="content">
-                                  <div className="price">$815,000</div>
-                                  <div className="head">
-                                    <div className="title">
-                                      <Link href="/property/property-single">
-                                        Archer House
-                                      </Link>
-                                    </div>
-                                  </div>
-                                  <div className="location">
-                                    <div className="icon">
-                                      <i className="flaticon-location" />
-                                    </div>
-                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                  </div>
-                                  <div className="icon-box">
-                                    <div className="item">
-                                      <i className="flaticon-hotel" />
-                                      <p>4</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-bath-tub" />
-                                      <p>3</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-minus-front" />
-                                      <p>2660</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <div className="swiper-slide">
-                              <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1">
-                                <div className="image">
-                                  <div className="list-tags">
-                                    <Link href="#" className="tags-item for-sell">
-                                      FOR RENT
-                                    </Link>
-                                    <Link href="#" className="tags-item featured">
-                                      FEATURED
-                                    </Link>
-                                  </div>
-                                  <img
-                                    className="w-full"
-                                    src="/elrealestate/assets/images/sidebar/img-1.jpg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div className="content">
-                                  <div className="price">$815,000</div>
-                                  <div className="head">
-                                    <div className="title">
-                                      <Link href="/property/property-single">
-                                        Archer House
-                                      </Link>
-                                    </div>
-                                  </div>
-                                  <div className="location">
-                                    <div className="icon">
-                                      <i className="flaticon-location" />
-                                    </div>
-                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                  </div>
-                                  <div className="icon-box">
-                                    <div className="item">
-                                      <i className="flaticon-hotel" />
-                                      <p>4</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-bath-tub" />
-                                      <p>3</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-minus-front" />
-                                      <p>2660</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <div className="swiper-slide">
-                              <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1">
-                                <div className="image">
-                                  <div className="list-tags">
-                                    <Link href="#" className="tags-item for-sell">
-                                      FOR RENT
-                                    </Link>
-                                    <Link href="#" className="tags-item featured">
-                                      FEATURED
-                                    </Link>
-                                  </div>
-                                  <img
-                                    className="w-full"
-                                    src="/elrealestate/assets/images/sidebar/img-1.jpg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div className="content">
-                                  <div className="price">$815,000</div>
-                                  <div className="head">
-                                    <div className="title">
-                                      <Link href="/property/property-single">
-                                        Archer House
-                                      </Link>
-                                    </div>
-                                  </div>
-                                  <div className="location">
-                                    <div className="icon">
-                                      <i className="flaticon-location" />
-                                    </div>
-                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                  </div>
-                                  <div className="icon-box">
-                                    <div className="item">
-                                      <i className="flaticon-hotel" />
-                                      <p>4</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-bath-tub" />
-                                      <p>3</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-minus-front" />
-                                      <p>2660</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </SwiperSlide>
+                          {featuredProperties.map((item) => (
+                             <SwiperSlide key={item.id} >
+                             <div className="swiper-slide">
+                               <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1" style={{height:289}} >
+                                 <div className="image">
+                                   <div className="list-tags">
+                                     <Link href="#" className="tags-item for-sell">
+                                      {item.listing_status}
+                                     </Link>
+                                     {item.is_featured && (
+                                         <Link href="#" className="tags-item featured">
+                                         FEATURED
+                                       </Link>
+                                    )}
+                                    
+                                   </div>
+                                   <img
+                                     className="w-full"
+                                     src={item.gallery[0]}
+                                     alt=""
+                                     style={{maxHeight:"290px"}}
+                                   />
+                                 </div>
+                                 <div className="content">
+                                   <div className="price">${item.price.toLocaleString()}</div>
+                                   <div className="head">
+                                     <div className="title">
+                                       <Link href="/property/property-single">
+                                         {item.title}
+                                       </Link>
+                                     </div>
+                                   </div>
+                                   <div className="location">
+                                     <div className="icon">
+                                       <i className="flaticon-location" />
+                                     </div>
+                                     <p>{item.address}</p>
+                                   </div>
+                                   <div className="icon-box">
+                                     <div className="item">
+                                       <i className="flaticon-hotel" />
+                                       <p>{item.bedrooms}</p>
+                                     </div>
+                                     <div className="item">
+                                       <i className="flaticon-bath-tub" />
+                                       <p>{item.bathrooms}</p>
+                                     </div>
+                                     <div className="item">
+                                       <i className="flaticon-minus-front" />
+                                       <p>{item.area}</p>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </SwiperSlide>
+                          ))}
+                         
 
                         </Swiper>
 
-                      </div>
+                      </div> */}
                       <div className="sidebar-item sidebar-agents-1 no-bg">
                         <div className="sidebar-title">Agents</div>
                         <ul>
@@ -907,9 +770,9 @@ const PropertyComponent = ({
           </div>
           {/* /main-content */}
           <Footer />
-        </div>
+        </div >
         {/* /#page */}
-      </div>
+      </div >
       <CustomScript
         src="/elrealestate/assets/js/jquery.min.js"
         strategy="lazyOnload" // Load it after the page load

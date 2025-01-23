@@ -37,8 +37,8 @@ const handleClose = () => setOpenMenu(false);
       <div className="header-inner-wrap">
         <div id="site-logo">
           <Link href="/" rel="home">
-            <img id="logo-header" src="/elrealestate/assets/images/logo/logo-white.svg" alt="" />
-            <img id="logo-header-mobile" src="/elrealestate/assets/images/logo/logo.svg" alt="" />
+            <img id="logo-header " className='mt-2 mb-5 d-none d-md-flex ' src="/elrealestate/assets/images/Header2.png" alt="" style={{height:"70px",width:"70px"}} />
+            <img id="logo-header-mobile" className='mt-2 mb-5 d-flex d-md-none ' src="/elrealestate/assets/images/Header3.png" alt="" style={{height:"50px",width:"50px"}} />
           </Link>
         </div>
         <nav className="main-menu style-white">
@@ -77,7 +77,7 @@ const handleClose = () => setOpenMenu(false);
             </div>
             <div className="number">800-555-6789</div>
           </div>
-          <div
+          {/* <div
             data-bs-toggle="modal"
             data-bs-target="#modallogin"
             className="header-user style-white"
@@ -85,7 +85,7 @@ const handleClose = () => setOpenMenu(false);
             <div className="icon">
               <i className="flaticon-user" />
             </div>
-          </div>
+          </div> */}
           <div className="header-btn">
             <a
               href="#"

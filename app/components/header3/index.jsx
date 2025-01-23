@@ -28,15 +28,16 @@ const handleClose = () => setOpenMenu(false);
     return (
         <>
             <header id="header_main" className={`header header-fixed ${isScrolled?"is-small is-fixed":""}`}>
-                <div className="header-inner">
-                    <div className="header-inner-wrap">
+                <div className="header-inner" style={{position:pathname==="/"?"fixed":"",width:"100%"}} >
+                    <div className="header-inner-wrap" style={{border:pathname==="/"?"0px":""}} >
                         <div id="site-logo">
                             <Link href="/" rel="home">
                                 <img
                                     className="d-block"
                                     id="logo-header"
-                                    src="/elrealestate/assets/images/logo/logo.svg"
+                                    src="/elrealestate/assets/images/Header3.png"
                                     alt=""
+                                    style={{height:"70px",width:"70px"}}
                                 />
                             </Link>
                         </div>
@@ -76,7 +77,7 @@ const handleClose = () => setOpenMenu(false);
                                 </div>
                                 <div className="number">800-555-6789</div>
                             </div>
-                            <div
+                            {/* <div
                                 data-bs-toggle="modal"
                                 data-bs-target="#modallogin"
                                 className="header-user"
@@ -84,7 +85,7 @@ const handleClose = () => setOpenMenu(false);
                                 <div className="icon">
                                     <i className="flaticon-user" />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="header-btn">
                                 <a href="#" className="tf-button-default">
                                     Add Listing

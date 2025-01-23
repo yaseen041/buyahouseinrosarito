@@ -2447,7 +2447,7 @@ ul.list-text li::before {
 .cities-item .content h4 {
   color: var(--White);
 }
-.cities-item > a {
+.cities-item > .button-arrow-right {
   position: absolute;
   left: 50px;
   bottom: 40px;
@@ -15171,4 +15171,19 @@ a {
   }
 }
 
+.form-schedule .cols,
+.form-comment .cols,
+.form-send-message .cols {
+ align-items: start !important;
+}
 
+.form-schedule .cols,
+.form-comment .cols,
+.form-send-message .cols {
+ align-items: start !important;
+}
+
+fieldset.phone::after{
+  opacity: 1;
+  height: 37px;
+}

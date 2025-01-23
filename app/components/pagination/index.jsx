@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ReactPaginate from 'react-paginate';
 const CustomPagination = ({ itemsPerPage = 6,  totalData = 122,onPageChange,initialPaage }) => {
     const pageCount = Math.ceil(totalData / itemsPerPage);
+    console.log("in pagination......",totalData)
 
     return (
         <>

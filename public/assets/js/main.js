@@ -366,7 +366,7 @@
     tabs();
     box_search();
     btn_filter();
-    video();
+    // video();
     // counter();
     flatAccordion('.flat-accordion','.flat-toggle');
     curvedtext();

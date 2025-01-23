@@ -14,17 +14,76 @@ import 'swiper/css/scrollbar';
 import "swiper/css/autoplay"
 import Link from 'next/link';
 import VideoComponent from '../video';
+import Header3 from '../header3';
 
-const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForSale = [] }) => {
+const HomeComponent = ({
+    types = [],
+    cities = [],
+    recentForRent = [],
+    recentForSale = [],
+    filters = {},
+    selectedCommunity = {},
+    community = [],
+    status = {},
+    selectedBed = {},
+    selectedBath = {},
+    minArea = "",
+    maxArea = "",
+    minPrice = "",
+    maxPrice = "",
+    features = [],
+    Keyword = "",
+    selectedTypes = {},
+    selectedCity = {},
+    BestDeals=[],
+    handleInputChange = () => { },
+    handleStatus = () => { },
+    handleCommunity = () => { },
+    handleBed = () => { },
+    handleBath = () => { },
+    hanldeFeatures = () => { },
+    handleSearch = () => { },
+    handleTypes = () => { },
+    handleCity = () => { },
+
+}) => {
     const [openFilter, setOpenFilter] = React.useState(false)
     const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
     const toggleNiceSelect = () => setOpenNiceSelect(!openNiceSelect)
+    const [openSelect, setOpenSelect] = React.useState({
+        status: false,
+        type: false,
+        city: false,
+        sorting: false,
+        community: false,
+        minBed: false,
+        maxBed: false,
+        minBath: false,
+        maxBath: false,
+        maxBed: false,
+        minBath: false,
+        maxBath: false
+    })
+    const dropdownRefs = React.useRef({});
+    const assignRef = (name) => (ref) => {
+        dropdownRefs.current[name] = ref;
+    }
+
+    const handleSelectClick = (e, name) => {
+        e.preventDefault();
+        setOpenSelect((prev) => ({
+            ...prev,
+            [name]: !prev[name],
+        }));
+    };
+
 
     React.useEffect(() => {
         new WOW().init();
         // initSliders();
     }, [])
+
 
     return (
         <>
@@ -32,7 +91,7 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
 
             < div id="wrapper">
                 <div id="page" className="">
-                    <Header1 />
+                    <Header3 />
                     <div className="main-content default">
                         <section className="slider home3 relative z-5">
                             <div className="wrap-slider">
@@ -49,13 +108,13 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                         discounts.
                                                     </div>
                                                     <div className="widget-tabs">
-                                                        <ul
+                                                        {/* <ul
                                                             className="widget-menu-tab list-link wow fadeInUp"
                                                             data-wow-delay="0.1s"
                                                         >
                                                             <li className="item-title item active">Buy</li>
                                                             <li className="item-title item">Rent</li>
-                                                        </ul>
+                                                        </ul> */}
                                                         <div className="widget-content-tab">
                                                             <div className="widget-content-inner active">
                                                                 <form className="form-search-home3 wow fadeInUp">
@@ -65,17 +124,39 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                                             className={`nice-select border-radius-1 ${openNiceSelect ? "open" : ""}`}
                                                                             tabIndex={0}
                                                                         >
-                                                                            <span className="current open ">Type</span>
+                                                                            <span className="current open ">{selectedTypes.title}</span>
                                                                             <ul className="list style-radio">
-                                                                                <li data-value="" className="option">
-                                                                                    For Sale
-                                                                                </li>
-                                                                                <li data-value="For Ren" className="option">
-                                                                                    For Ren
-                                                                                </li>
-                                                                                <li data-value="Sold" className="option">
-                                                                                    Sold
-                                                                                </li>
+                                                                            <li data-value="" className={`option ${selectedTypes.id===0?"selected":""}`} onClick={() => handleStatus(0, " All Types")}>
+                                                                                        All types
+                                                                                    </li>
+                                                                                {Object.keys(filters).length > 0 ? filters.types.map((item) => (
+                                                                                    <li data-value="" className={`option ${selectedTypes.id===item.id?"selected":""}`} key={item.id} onClick={() => handleTypes(item.id, item.title)}>
+                                                                                        {item.title}
+                                                                                    </li>
+                                                                                )) : null}
+
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="group-form " style={{width:"180px"}} >
+                                                                        <div
+                                                                            onClick={toggleNiceSelect}
+                                                                            className={`nice-select border-radius-1 ${openNiceSelect ? "open" : ""}`}
+                                                                            tabIndex={0}
+                                                                        >
+                                                                            <span className="current open ">{selectedCity.title}</span>
+                                                                            <ul className="list style-radio">
+                                                                            <li data-value="" className={`option ${selectedCity.id===0?"selected":""}`} onClick={() => handleCity(0, " City")}>
+                                                                                        City
+                                                                                    </li>
+                                                                                {Object.keys(filters).length > 0 ? filters.cities.map((item) => (
+                                                                                    <li data-value="" className={`option ${selectedCity.id===item.id?"selected":""}`} key={item.id} onClick={() => handleCity(item.id, item.name)}>
+                                                                                        {item.name}
+                                                                                    </li>
+                                                                                )) : null}
+
+
                                                                             </ul>
                                                                         </div>
                                                                     </div>
@@ -85,9 +166,10 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                                                 type="text"
                                                                                 placeholder="Enter Keywords"
                                                                                 className="show-search style-3"
-                                                                                name="name"
+                                                                                name="keyword"
                                                                                 tabIndex={2}
-                                                                                defaultValue=""
+                                                                                value={Keyword}
+                                                                                onChange={handleInputChange}
                                                                                 aria-required="true"
                                                                                 required=""
                                                                             />
@@ -97,7 +179,7 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                                                 <i className="flaticon-magnifiying-glass" />
                                                                             </div>
                                                                         </div>
-                                                                        <div className="box-content-search style-1">
+                                                                        {/* <div className="box-content-search style-1">
                                                                             <ul>
                                                                                 <li>
                                                                                     <div className="item1">
@@ -156,9 +238,9 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                                                     </div>
                                                                                 </li>
                                                                             </ul>
-                                                                        </div>
+                                                                        </div> */}
                                                                     </div>
-                                                                    <div className="group-form">
+                                                                    {/* <div className="group-form">
                                                                         <div className="wg-filter">
                                                                             <div className={`tf-button-filter btn-filter border-radius ${openFilter ? "active" : ""}`} onClick={toggleFilter} >
                                                                                 <i className="flaticon-filter" />
@@ -421,17 +503,222 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                    </div> */}
+                                                                    <div className="group-form">
+                                                                        <div className="wg-filter">
+                                                                            <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter} >
+                                                                                <i className="flaticon-filter" />
+                                                                                Filter
+                                                                            </div>
+                                                                            <div
+                                                                                className={`open-filter filter-no-content ${openFilter ? "active" : ""}  `}
+                                                                                id="a1"
+                                                                            >
+                                                                                <div  >
+                                                                                    <div className="grid-4-cols mb-20"  >
+                                                                                        <div className='' >
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Status</div>
+                                                                                            <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
+                                                                                                <span className="current">{status.title}</span>
+                                                                                                <ul className="list style-radio">
+                                                                                                    <li
+                                                                                                        data-value="For Sale"
+                                                                                                        className={`option ${status.id === 0 ? "selected" : ""} `}
+
+                                                                                                        onClick={() => handleStatus(0, " All Status")}
+                                                                                                    >
+                                                                                                        All Status
+                                                                                                    </li>
+                                                                                                    {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                                                                                        <li
+                                                                                                            data-value="For Sale"
+                                                                                                            className={`option ${status.id === item.id ? "selected" : ""} `}
+                                                                                                            key={item.id}
+                                                                                                            onClick={() => handleStatus(item.id, item.title)}
+                                                                                                        >
+                                                                                                            {item.title}
+                                                                                                        </li>
+                                                                                                    )) : null}
+
+
+                                                                                                </ul>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Community</div>
+                                                                                            <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
+                                                                                                <span className="current">{selectedCommunity.title}</span>
+                                                                                                <ul className="list style-radio">
+                                                                                                    <li
+                                                                                                        data-value="For Sale"
+                                                                                                        className={`option ${selectedCommunity.id === 0 ? "selected" : ""} `}
+
+                                                                                                        onClick={() => handleCommunity(0, " All Community")}
+                                                                                                    >
+                                                                                                        All Community
+                                                                                                    </li>
+                                                                                                    {community.map((item) => (
+                                                                                                        <li
+                                                                                                            data-value="For Sale"
+                                                                                                            className={`option ${selectedCommunity.id === item.id ? "selected" : ""} `}
+                                                                                                            key={item.id}
+                                                                                                            onClick={() => handleCommunity(item.id, item.title)}
+                                                                                                        >
+                                                                                                            {item.title}
+                                                                                                        </li>
+                                                                                                    ))}
+
+
+                                                                                                </ul>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bedrooms</div>
+                                                                                            <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
+                                                                                                <span className="current">{selectedBed.title}</span>
+                                                                                                <ul className="list  ">
+
+                                                                                                    {Object.keys(filters).length > 0 ? filters.min_bed.map((item) => (
+                                                                                                        <li data-value="" className={`option ${selectedBed.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleBed(item.id, item.title)} >
+                                                                                                            {item.title}
+                                                                                                        </li>
+                                                                                                    )) : null}
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div>
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bathrooms</div>
+                                                                                            <div className={`nice-select ${openSelect.minBath ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBath")} ref={assignRef("minBath")}>
+                                                                                                <span className="current">{selectedBath.title}</span>
+
+                                                                                                <ul className="list">
+
+                                                                                                    {Object.keys(filters).length > 0 ? filters.min_bath.map((item) => (
+                                                                                                        <li data-value="1 Bath" className={`option ${selectedBath.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleBath(item.id, item.title)} >
+                                                                                                            {item.title}
+                                                                                                        </li>
+                                                                                                    )) : null}
+
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+
+
+                                                                                    </div>
+                                                                                    <div className="grid-4-cols">
+                                                                                        <fieldset className="name">
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Area</div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                                placeholder="Min. Area"
+                                                                                                className=""
+                                                                                                name="minArea"
+                                                                                                tabIndex={2}
+
+                                                                                                aria-required="true"
+                                                                                                required=""
+                                                                                                value={minArea}
+                                                                                                onChange={handleInputChange}
+                                                                                            />
+                                                                                        </fieldset>
+                                                                                        <fieldset className="name">
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Area</div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                                placeholder="Max. Area"
+                                                                                                className=""
+                                                                                                name="maxArea"
+                                                                                                tabIndex={2}
+
+                                                                                                aria-required="true"
+                                                                                                required=""
+                                                                                                value={maxArea}
+                                                                                                onChange={handleInputChange}
+                                                                                            />
+                                                                                        </fieldset>
+                                                                                        <fieldset className="name">
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Price</div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                                placeholder="Min. Price"
+                                                                                                className=""
+                                                                                                name="minPrice"
+                                                                                                tabIndex={2}
+
+                                                                                                aria-required="true"
+                                                                                                required=""
+                                                                                                value={minPrice}
+                                                                                                onChange={handleInputChange}
+                                                                                            />
+                                                                                        </fieldset>
+                                                                                        <fieldset className="name">
+                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Price</div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                                placeholder="Max. Price"
+                                                                                                className=""
+                                                                                                name="maxPrice"
+                                                                                                tabIndex={2}
+                                                                                                aria-required="true"
+                                                                                                required=""
+                                                                                                value={maxPrice}
+                                                                                                onChange={handleInputChange}
+                                                                                            />
+                                                                                        </fieldset>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div>
+
+                                                                                    <ul className="grid-checked">
+                                                                                        {
+                                                                                            Object.keys(filters).length > 0 ?
+                                                                                                Object.keys(filters.features).map((featureKey) => (
+                                                                                                    <li key={featureKey} >
+                                                                                                        <div className="title mt-4 mb-4">
+                                                                                                            {featureKey
+                                                                                                                .replace(/_/g, ' ')
+                                                                                                                .replace(/\b\w/g, (char) => char.toUpperCase())}
+                                                                                                        </div>
+                                                                                                        <ul
+
+                                                                                                            data-wow-delay="0.1s"
+                                                                                                        >
+                                                                                                            <div className='row' >
+                                                                                                                {filters.features[featureKey].map((item) => (
+                                                                                                                    <div className='col-3 m-4' key={item.id} >
+                                                                                                                        <li className="checkbox-item"  >
+                                                                                                                            <label>
+                                                                                                                                <p>{item.title}</p>
+                                                                                                                                <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={features.some((feature) => feature.id === item.id)} />
+                                                                                                                                <span className="btn-checkbox" />
+                                                                                                                            </label>
+                                                                                                                        </li>
+                                                                                                                    </div>
+                                                                                                                ))}
+                                                                                                            </div>
+
+                                                                                                        </ul>
+                                                                                                    </li>
+                                                                                                )) : null}
+
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                     <div className="group-form">
                                                                         <div className="button-submit">
-                                                                            <button className="" type="submit">
+                                                                            <button className="" onClick={handleSearch} >
                                                                                 Search
                                                                             </button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            <div className="widget-content-inner">
+                                                            {/* <div className="widget-content-inner">
                                                                 <form className="form-search-home3">
                                                                     <div className="group-form">
                                                                         <div
@@ -803,7 +1090,7 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                                         </div>
                                                                     </div>
                                                                 </form>
-                                                            </div>
+                                                            </div> */}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -852,7 +1139,9 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                 {types.map((item) => (
                                                     <SwiperSlide key={item.id} >
                                                         <div className="cities-item style-3 wow fadeInUp">
-                                                            <img src={item.banner} alt="" />
+                                                            <Link href={`/property/?type=${item.title}`} >
+                                                            <img src={item.banner} alt=""  style={{cursor:"pointer"}} />
+                                                            </Link>
                                                             <div className="content">
                                                                 <h4>{item.title}</h4>
                                                                 <p>{item.property_count} Properties</p>
@@ -1004,7 +1293,7 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                     <div className='row justify-center' >
 
                                         <div className='col-12 col-md-8 ' >
-                                            <VideoComponent src="/elrealestate/assets/video.mp4" />
+                                            <VideoComponent src="/assets/video.mp4" />
                                             {/* <div className="video">
                                                
                                                 <div className="video-wrap">
@@ -1055,444 +1344,93 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                     slidesPerView: 2,
                                                     spaceBetween: 30,
                                                 },
-                                                1024: { 
+                                                1024: {
                                                     slidesPerView: 3,
                                                     spaceBetween: 40,
                                                 },
                                             }}
                                         >
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div className="box-dream style-2 wow fadeInUp">
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR RENT
-                                                                </Link>
-                                                                <Link href="#" className="tags-item featured">
-                                                                    FEATURED
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className='swiper-container slider-box-dream arrow-style-1 pagination-style-1'
-                                                                slidesPerView={1}
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
+                                            {BestDeals.map((item) => ( 
+                                                 <SwiperSlide key={item.id} >
+                                                 <div className="swiper-slide">
+                                                     <div className="box-dream style-2 type-small wow fadeInUp">
+                                                         <div className="image">
+                                                             <div className="list-tags">
+                                                                 <Link href="#" className="tags-item for-sell">
+                                                                     {item.listing_status}
+                                                                 </Link>
+                                                                 {item.is_featured && (
+                                                                     <Link href="#" className="tags-item featured">
+                                                                         FEATURED
+                                                                     </Link>
+                                                                 )}
 
-                                                            >
+                                                             </div>
+                                                             <div className="button-heart">
+                                                                 <i className="flaticon-heart-1" />
+                                                             </div>
+                                                             <Swiper
+                                                                 className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
+                                                                 slidesPerView={1}
 
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-                                                            <div className="swiper-pagination box-dream-pagination" />
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">Archer House</Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-slide">
-                                                    <div
-                                                        className="box-dream style-2 wow fadeInUp"
-                                                        data-wow-delay="0.1s"
-                                                    >
-                                                        <div className="image">
-                                                            <div className="list-tags">
-                                                                <Link href="#" className="tags-item for-sell">
-                                                                    FOR SELL
-                                                                </Link>
-                                                            </div>
-                                                            <div className="button-heart">
-                                                                <i className="flaticon-heart-1" />
-                                                            </div>
-                                                            <Swiper
-                                                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                slidesPerView={1}
-
-                                                                modules={[Pagination, A11y, Navigation]}
-                                                                navigation
-                                                                pagination={{ clickable: true }}
-                                                            >
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-2.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-1.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-3.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                                <SwiperSlide>
-                                                                    <div className="swiper-slide">
-                                                                        <div className="w-full">
-                                                                            <img
-                                                                                className="w-full"
-                                                                                src="/elrealestate/assets/images/house/home-4.jpg"
-                                                                                alt=""
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </SwiperSlide>
-                                                            </Swiper>
-
-                                                        </div>
-                                                        <div className="content">
-                                                            <div className="head">
-                                                                <div className="title">
-                                                                    <Link href="/property/property-single">
-                                                                        Villa One Hyde Park
-                                                                    </Link>
-                                                                </div>
-                                                            </div>
-                                                            <div className="location">
-                                                                <div className="icon">
-                                                                    <i className="flaticon-location" />
-                                                                </div>
-                                                                <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                            </div>
-                                                            <div className="bot">
-                                                                <div className="icon-box">
-                                                                    <div className="item">
-                                                                        <i className="flaticon-hotel" />
-                                                                        <p>4</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-bath-tub" />
-                                                                        <p>3</p>
-                                                                    </div>
-                                                                    <div className="item">
-                                                                        <i className="flaticon-minus-front" />
-                                                                        <p>2660</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="price">$815,000</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-wrapper">
+                                                                 modules={[Pagination, A11y, Navigation]}
+                                                                 navigation
+                                                                 pagination={{ clickable: true }}
+                                                             >
+                                                                 {item.gallery.map((i, index) => (
+                                                                     <SwiperSlide key={index} >
+                                                                         <div className="swiper-slide">
+                                                                             <div className="w-full">
+                                                                                 <img
+                                                                                     className="w-full"
+                                                                                     src={i}
+                                                                                     alt=""
+                                                                                 />
+                                                                             </div>
+                                                                         </div>
+                                                                     </SwiperSlide>
+                                                                 ))}
 
 
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="box-dream style-2 wow fadeInUp"
-                                                            data-wow-delay="0.15s"
-                                                        >
-                                                            <div className="image">
-                                                                <div className="list-tags">
-                                                                    <Link href="#" className="tags-item for-sell">
-                                                                        FOR SELL
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="button-heart">
-                                                                    <i className="flaticon-heart-1" />
-                                                                </div>
-                                                                <Swiper
-                                                                    className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                    slidesPerView={1}
+                                                             </Swiper>
 
-                                                                    modules={[Pagination, A11y, Navigation]}
-                                                                    navigation
-                                                                    pagination={{ clickable: true }}
-                                                                >
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-3.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-1.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-2.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-4.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                </Swiper>
-
-                                                            </div>
-                                                            <div className="content">
-                                                                <div className="head">
-                                                                    <div className="title">
-                                                                        <Link href="/property/property-single">
-                                                                            Home Pitt Street
-                                                                        </Link>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="location">
-                                                                    <div className="icon">
-                                                                        <i className="flaticon-location" />
-                                                                    </div>
-                                                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                                </div>
-                                                                <div className="bot">
-                                                                    <div className="icon-box">
-                                                                        <div className="item">
-                                                                            <i className="flaticon-hotel" />
-                                                                            <p>4</p>
-                                                                        </div>
-                                                                        <div className="item">
-                                                                            <i className="flaticon-bath-tub" />
-                                                                            <p>3</p>
-                                                                        </div>
-                                                                        <div className="item">
-                                                                            <i className="flaticon-minus-front" />
-                                                                            <p>2660</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="price">$815,000</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper-wrapper">
-
-
-                                                    <div className="swiper-slide">
-                                                        <div
-                                                            className="box-dream style-2 wow fadeInUp"
-                                                            data-wow-delay="0.15s"
-                                                        >
-                                                            <div className="image">
-                                                                <div className="list-tags">
-                                                                    <Link href="#" className="tags-item for-sell">
-                                                                        FOR SELL
-                                                                    </Link>
-                                                                </div>
-                                                                <div className="button-heart">
-                                                                    <i className="flaticon-heart-1" />
-                                                                </div>
-                                                                <Swiper
-                                                                    className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                    slidesPerView={1}
-
-                                                                    modules={[Pagination, A11y, Navigation]}
-                                                                    navigation
-                                                                    pagination={{ clickable: true }}
-                                                                >
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-3.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-1.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-2.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                    <SwiperSlide>
-                                                                        <div className="swiper-slide">
-                                                                            <div className="w-full">
-                                                                                <img
-                                                                                    className="w-full"
-                                                                                    src="/elrealestate/assets/images/house/home-4.jpg"
-                                                                                    alt=""
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    </SwiperSlide>
-                                                                </Swiper>
-
-                                                            </div>
-                                                            <div className="content">
-                                                                <div className="head">
-                                                                    <div className="title">
-                                                                        <Link href="/property/property-single">
-                                                                            Home Pitt Street
-                                                                        </Link>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="location">
-                                                                    <div className="icon">
-                                                                        <i className="flaticon-location" />
-                                                                    </div>
-                                                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                                                </div>
-                                                                <div className="bot">
-                                                                    <div className="icon-box">
-                                                                        <div className="item">
-                                                                            <i className="flaticon-hotel" />
-                                                                            <p>4</p>
-                                                                        </div>
-                                                                        <div className="item">
-                                                                            <i className="flaticon-bath-tub" />
-                                                                            <p>3</p>
-                                                                        </div>
-                                                                        <div className="item">
-                                                                            <i className="flaticon-minus-front" />
-                                                                            <p>2660</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="price">$815,000</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                            </SwiperSlide>
+                                                         </div>
+                                                         <div className="content">
+                                                             <div className="head">
+                                                                 <div className="title">
+                                                                     <Link href={`/property/${item.slug}`}>{item.title}</Link>
+                                                                 </div>
+                                                             </div>
+                                                             <div className="location">
+                                                                 <div className="icon">
+                                                                     <i className="flaticon-location" />
+                                                                 </div>
+                                                                 <p>{item.address}</p>
+                                                             </div>
+                                                             <div className="bot">
+                                                                 <div className="icon-box">
+                                                                     <div className="item">
+                                                                         <i className="flaticon-hotel" />
+                                                                         <p>{item.bedrooms}</p>
+                                                                     </div>
+                                                                     <div className="item">
+                                                                         <i className="flaticon-bath-tub" />
+                                                                         <p>{item.bathrooms}</p>
+                                                                     </div>
+                                                                     <div className="item">
+                                                                         <i className="flaticon-minus-front" />
+                                                                         <p>{item.size}</p>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div className="price">${item.price.toLocaleString()}</div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </SwiperSlide>
+                                            ))}
+                                           
+                                           
 
 
                                         </Swiper>
@@ -1543,13 +1481,17 @@ const HomeComponent = ({ types = [], cities = [], recentForRent = [], recentForS
                                                     <SwiperSlide key={item.id} >
                                                         <div className="swiper-slide">
                                                             <div className="cities-item style-1 wow fadeInUp">
+                                                                <Link href={`/property?city=${item.name}`} >
                                                                 <div className="image">
                                                                     <img src={item.image} alt="" />
                                                                 </div>
+                                                                </Link>
                                                                 <div className="content">
                                                                     <p>{item.properties_count} Properties</p>
-                                                                    <h4>{item.name}</h4>
-                                                                </div>
+                                                                    <h4>
+                                                                    <Link href={`/property?city=${item.name}`}>{item.name}</Link>
+                                                                    </h4>
+                                                                </div>``
                                                             </div>
                                                         </div>
                                                     </SwiperSlide>
