@@ -36,6 +36,7 @@ const HomeComponent = ({
     selectedTypes = {},
     selectedCity = {},
     BestDeals=[],
+    selectedFeatures,
     handleInputChange = () => { },
     handleStatus = () => { },
     handleCommunity = () => { },
@@ -692,7 +693,7 @@ const HomeComponent = ({
                                                                                                                         <li className="checkbox-item"  >
                                                                                                                             <label>
                                                                                                                                 <p>{item.title}</p>
-                                                                                                                                <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={features.some((feature) => feature.id === item.id)} />
+                                                                                                                                <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={selectedFeatures.some((feature) => feature.id === item.id)} />
                                                                                                                                 <span className="btn-checkbox" />
                                                                                                                             </label>
                                                                                                                         </li>

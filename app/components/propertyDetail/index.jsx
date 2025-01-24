@@ -592,7 +592,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                       </div>
 
                       {/* Tour For */}
-                      <div className="schedule">
+                      <div className="schedule" id="schedule" >
                         <h4 className="wow fadeInUp">Schedule a tour</h4>
                         <ScheduleForm propertyId={property.id} />
                       </div>
@@ -861,9 +861,9 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                       <div className="contact-info" id="contact">
                         <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                           <h4 className="mb-0">Contact Information</h4>
-                          <Link href="#" className="tf-button-green">
+                          {/* <Link href="#" className="tf-button-green">
                             View Listing
-                          </Link>
+                          </Link> */}
                         </div>
                         <div className="person wow fadeInUp">
                           <div className="image">
@@ -965,7 +965,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                             </div>
                             <div className="col-12 mt-5 ">
                             <fieldset
-                              className="wow fadeInUp"
+                              className=" wow fadeInUp  "
                               data-wow-delay="0.1s"
                               tabIndex={0}
                             >
@@ -973,6 +973,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                                 options={properties}
                                 onChange={handleSelectionChange}
                               />
+                              
                               {errors?.property_id && (
                                 <span className="error text-danger">
                                   {errors?.property_id}

@@ -162,7 +162,7 @@ const PropertyComponent = ({
                                   <fieldset className="name">
                                     <input
                                       type="text"
-                                      placeholder="Enter Keyyword"
+                                      placeholder="Enter Keyword"
                                       className="show-search style-default"
                                       name="Keyword"
                                       value={Keyword}

@@ -684,7 +684,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                        <div className="swiper-slide">
                            <div className="experts-item wow fadeInUp">
                              <div className="image" style={{height:360}} >
-                               <img src={item.image} alt="" style={{height:"100%"}} />
+                               <img src={item.image} alt="" style={{height:"100%",objectFit:"cover"}} />
                                {/* <ul className="wg-social-1">
                                  <li>
                                    <a href="#">

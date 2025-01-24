@@ -1041,6 +1041,7 @@ ul.breadcrumbs.style-1 li {
 }
 .wg-blog .image {
   overflow: hidden;
+  height: 255px;
 }
 .wg-blog .image img {
   width: 100%;
@@ -10569,6 +10570,7 @@ body::-webkit-scrollbar {
 }
 .property-single-wrap .wrap-gallery-image {
   margin-bottom: 45px;
+  max-height: 620px;
 }
 .property-single-wrap .head-title {
   display: -webkit-box;

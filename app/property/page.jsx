@@ -294,11 +294,11 @@ const PropertyPage = () => {
 
   React.useEffect(() => {
     getProprties()
-    const section = document.getElementById("property-list")
-    if(section){
+    // const section = document.getElementById("property-list")
+    // if(section){
 
-      section.scrollIntoView({ behavior: "smooth" })
-    }
+    //   section.scrollIntoView({ behavior: "smooth" })
+    // }
    
   }, [currentPage, filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
 
