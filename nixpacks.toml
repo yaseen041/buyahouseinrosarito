@@ -1,8 +1,21 @@
-# nixpacks.toml example
-
 [build]
-builder = "nodejs"
+# Set the base image
+image = "node:18-alpine"
 
-[env]
-  NODE_ENV = "production"
-  NEXT_PUBLIC_API_URL = "https://api.example.com"
+[install]
+# Install dependencies with legacy peer deps
+command = "npm install --legacy-peer-deps"
+
+[build.packages]
+# List any packages you need to install
+dependencies = [
+  "node_modules/.bin", 
+  "npm@latest"
+]
+
+[run]
+# Expose the port
+port = 3000
+
+# Command to run the app
+command = "npm start"
