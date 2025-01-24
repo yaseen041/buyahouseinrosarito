@@ -462,8 +462,8 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                             className="item wow fadeInUp"
                             data-wow-delay="0.1s"
                           >
-                            <div className="text">Garage Size:</div>
-                            <p>200 SqFt</p>
+                            <div className="text">GLA:</div>
+                            <p>{property.GLA} SqFt</p>
                           </div>
                           <div className="item wow fadeInUp">
                             <div className="text">Property Size:</div>
@@ -480,7 +480,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                             <div className="text">Bedrooms:</div>
                             <p>{property?.bedrooms}</p>
                           </div>
-                          <div
+                          {/* <div
                             className="item wow fadeInUp"
                             data-wow-delay="0.1s"
                           >
@@ -496,7 +496,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                               : null}
                               </div>
                               
-                          </div>
+                          </div> */}
                           <div className="item wow fadeInUp">
                             <div className="text">Bathrooms:</div>
                             <p>{property?.bathrooms}</p>
@@ -986,7 +986,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                             <textarea
                               name="message"
                               rows={4}
-                              placeholder="Message"
+                              placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                               className=""
                               tabIndex={2}
                               aria-required="true"

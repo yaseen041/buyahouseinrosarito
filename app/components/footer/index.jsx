@@ -106,14 +106,14 @@ const pathname = usePathname()
                       <Link href="/contact">Contact</Link>
                     </li>
                     <li>
-                      <Link href="#">Faq</Link>
+                      <Link href="/faq">Faq</Link>
                     </li>
                     <li>
                       <Link href="/blog">Blog</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link href="#">Pricing Plans</Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link href="#">Privacy Policy</Link>
                     </li>

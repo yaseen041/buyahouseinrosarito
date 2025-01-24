@@ -152,7 +152,7 @@ const ContactComponent = () => {
                                             San Francisco, CA 1980
                                         </p>
                                     </div>
-                                    
+
                                 </div>
                                 <div
                                     className="contact-item wow fadeInUp"
@@ -163,10 +163,10 @@ const ContactComponent = () => {
                                     </div>
                                     <div className="content">
                                         <h4>Contact Info</h4>
-                                        <Link href="tel:+088 (246) 642-27-10"  className="text-content">+088 (246) 642-27-10</Link>
+                                        <Link href="tel:+088 (246) 642-27-10" className="text-content">+088 (246) 642-27-10</Link>
                                         <p></p>
                                     </div>
-                                   
+
                                 </div>
                                 <div
                                     className="contact-item wow fadeInUp"
@@ -176,10 +176,10 @@ const ContactComponent = () => {
                                         <i className="flaticon-video-chat" />
                                     </div>
                                     <div className="content">
-                                        <h4>Live Support</h4>
-                                        <Link href="mailto:example@gmail.com"  className="text-content">example@gmail.com</Link>
+                                        <h4>Email Support</h4>
+                                        <Link href="mailto:example@gmail.com" className="text-content">example@gmail.com</Link>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ const ContactComponent = () => {
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Send Us a Message</h2>
                                             <div className="text wow fadeInUp">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                Contact Us For Any Inquiries
                                             </div>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@ const ContactComponent = () => {
                                                 <fieldset className="name wow fadeInUp has-top-title">
                                                     <input
                                                         type="text"
-                                                        placeholder="Name"
+                                                        placeholder="John Doe"
                                                         name="name"
                                                         tabIndex={2}
                                                         aria-required="true"
@@ -224,7 +224,7 @@ const ContactComponent = () => {
                                                 <fieldset className="phone wow fadeInUp has-top-title">
                                                     <input
                                                         type="number"
-                                                        placeholder="Phone"
+                                                        placeholder="+1 234 567 890"
                                                         value={phone}
                                                         onChange={(e) => {
                                                             setPhone(e.target.value);
@@ -247,7 +247,7 @@ const ContactComponent = () => {
                                                 <fieldset className="email wow fadeInUp has-top-title">
                                                     <input
                                                         type="email"
-                                                        placeholder="Email"
+                                                        placeholder="john@example.com"
                                                         value={email}
                                                         onChange={(e) => {
                                                             setEmail(e.target.value); // Update the name state
@@ -277,7 +277,7 @@ const ContactComponent = () => {
                                                 <textarea
                                                     name="message"
                                                     rows={4}
-                                                    placeholder="Your Message"
+                                                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat,"
                                                     value={message}
                                                     onChange={(e) => setMessage(e.target.value)}
                                                     tabIndex={2}

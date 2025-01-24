@@ -22,7 +22,7 @@ const PropertyPage = () => {
   const [selectedTypes, setSelectedTypes] = React.useState({ id: 0, title: "All types" })
   const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
   const [selectedSorting, setSelectedSorting] = React.useState({ id: 1, title: "Default" })
-  const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Community" })
+  const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Communities" })
   const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any No of Bedrooms" })
   const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any No of Bathrooms" })
   const [cities, setCities] = React.useState([])

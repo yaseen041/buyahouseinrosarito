@@ -344,9 +344,9 @@ const PropertyComponent = ({
                                               data-value="For Sale"
                                               className={`option ${selectedCommunity.id === 0 ? "selected" : ""} `}
 
-                                              onClick={() => handleCommunity(0, " All Community")}
+                                              onClick={() => handleCommunity(0, " All Communities")}
                                             >
-                                              All Community
+                                              All Communities
                                             </li>
                                             {community.map((item) => (
                                               <li
