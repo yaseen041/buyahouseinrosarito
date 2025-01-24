@@ -1808,12 +1808,12 @@ ul.list-text li::before {
 }
 .box-dream .image img {
   width: 100%;
-  height: 100%;
+  height: 310px;
   object-fit: cover;
   -webkit-transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
   transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
   transition: transform 500ms ease;
-  max-height: 240px;
+  max-height: 310px;
 }
 .box-dream .image .swiper-container .swiper-slide {
   overflow: hidden;
@@ -2429,7 +2429,7 @@ ul.list-text li::before {
 .cities-item img {
   width: 100%;
   object-fit: cover;
-  height: 100%;
+  height: 335px;
   -webkit-transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
   transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
   transition: transform 500ms ease;
@@ -14025,7 +14025,7 @@ a {
     flex-wrap: wrap;
   }
   .flat-explore .wrap .cities-item {
-    width: 47% !important;
+    width: 100% !important;
   }
   .flat-explore .wrap .cities-item .content {
     top: 15px !important;

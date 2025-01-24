@@ -1,4 +1,4 @@
-const BASE_URL = "https://explorelogicsit.net/portal/api"
+const BASE_URL = "https://explorelogicsit.net/elrealestate/portal/api"
 
 
 export class url {

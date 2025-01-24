@@ -1131,7 +1131,7 @@ const HomeComponent = ({
                                                         spaceBetween: 30,
                                                     },
                                                     1024: { // Adjust breakpoint to avoid overlap with 868
-                                                        slidesPerView: 4,
+                                                        slidesPerView: 5,
                                                         spaceBetween: 40,
                                                     },
                                                 }}
@@ -1142,9 +1142,10 @@ const HomeComponent = ({
                                                             <Link href={`/property/?type=${item.title}`} >
                                                             <img src={item.banner} alt=""  style={{cursor:"pointer"}} />
                                                             </Link>
+                                                            <div style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.5)"}} />
                                                             <div className="content">
-                                                                <h4>{item.title}</h4>
-                                                                <p>{item.property_count} Properties</p>
+                                                                <h4 style={{color:"#fff"}} >{item.title}</h4>
+                                                                <p style={{color:"#fff"}} >{item.property_count} Properties</p>
                                                             </div>
                                                             <Link href={`/property/?type=${item.title}`} className="button-arrow-right">
                                                                 <i className="icon-arrow-right-add" />
@@ -1461,6 +1462,7 @@ const HomeComponent = ({
                                                 spaceBetween={30}
                                                 modules={[Pagination, A11y, Navigation]}
                                                 navigation
+                                                loop={true}
                                                 // pagination={{ clickable: true }}
                                                 breakpoints={{
                                                     450: {
@@ -1472,7 +1474,7 @@ const HomeComponent = ({
                                                         spaceBetween: 30,
                                                     },
                                                     1024: { // Adjust breakpoint to avoid overlap with 868
-                                                        slidesPerView: 4,
+                                                        slidesPerView: 5,
                                                         spaceBetween: 40,
                                                     },
                                                 }}

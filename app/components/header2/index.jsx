@@ -37,7 +37,7 @@ const handleClose = () => setOpenMenu(false);
       <div className="header-inner-wrap">
         <div id="site-logo">
           <Link href="/" rel="home">
-            <img id="logo-header " className='mt-2 mb-5 d-none d-md-flex ' src="/assets/images/Header2.png" alt="" style={{height:"70px",width:"70px"}} />
+            <img id="logo-header " className='mt-2 mb-5 d-none d-md-flex ' src="/assets/images/header2.png" alt="" style={{height:"70px",width:"70px"}} />
             <img id="logo-header-mobile" className='mt-2 mb-5 d-flex d-md-none ' src="/assets/images/Header3.png" alt="" style={{height:"50px",width:"50px"}} />
           </Link>
         </div>
