@@ -8,7 +8,7 @@ cmds = ["npm install --legacy-peer-deps"]
 cmds = ["npm run build"]
 
 [phases.start]
-cmds = ["npm run dev"]
+cmds = ["npm start"]
 
 [environment]
-NODE_VERSION = "18" # Replace with the Node.js version your project requires
+NODE_VERSION = "20" # Replace with the Node.js version your project requires
