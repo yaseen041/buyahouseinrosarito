@@ -1,5 +1,5 @@
-# Base image
-FROM node:18-alpine AS dependencies
+# Use Node 20 image as the base
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -7,25 +7,17 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Update npm and check versions
-RUN npm install -g npm@latest
-RUN npm --version
-RUN node --version
+# Install dependencies
+RUN npm install --legacy-peer-deps
 
-# Clean npm cache
-RUN npm cache clean --force
+# Copy the rest of the application files
+COPY . .
 
-# Install dependencies (with legacy-peer-deps and force as fallback)
-RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps || npm ci --force
-
-# Copy the rest of the code
-COPY . ./
-
-# Build the Next.js app
+# Build the application (if necessary)
 RUN npm run build
 
-# Expose port 3000
+# Expose the port your app will run on
 EXPOSE 3000
 
-# Start the Next.js app
+# Start the application
 CMD ["npm", "start"]
