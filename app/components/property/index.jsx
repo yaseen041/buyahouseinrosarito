@@ -11,6 +11,7 @@ import Link from 'next/link';
 import CustomPagination from '../pagination';
 import Footer from '../footer';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Loader from '../loader/Loader';
 const PropertyComponent = ({
   properties = [],
   types = [],
@@ -45,6 +46,7 @@ const PropertyComponent = ({
   hanldeFeatures,
   Keyword,
   featuredProperties = [],
+  loading,
 }) => {
 
   const [openFilter, setOpenFilter] = React.useState(false)
@@ -162,7 +164,7 @@ const PropertyComponent = ({
                                       type="text"
                                       placeholder="Enter Keyyword"
                                       className="show-search style-default"
-                                       name="Keyword"                                   
+                                      name="Keyword"
                                       value={Keyword}
                                       required=""
                                       onChange={handleInputChange}
@@ -291,7 +293,7 @@ const PropertyComponent = ({
                               </div>
                             </div>
                           </div>
-                          <div className="flex gap10">
+                          <div className="flex gap10" id="property-list" >
                             <div className="group-form">
                               <div className="wg-filter">
                                 <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter} >
@@ -480,7 +482,7 @@ const PropertyComponent = ({
                                                       <li className="checkbox-item"  >
                                                         <label>
                                                           <p>{item.title}</p>
-                                                          <input type="checkbox" onChange={()=>hanldeFeatures(item.id,item.title)} checked={features.some((feature)=>feature.id===item.id)}  />
+                                                          <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={features.some((feature) => feature.id === item.id)} />
                                                           <span className="btn-checkbox" />
                                                         </label>
                                                       </li>
@@ -514,7 +516,7 @@ const PropertyComponent = ({
             </div>
             {/* /flat-title */}
             {/* property-grid */}
-            <div className="property-list-wrap-v3">
+            <div className="property-list-wrap-v3" >
               <div className="cl-container">
                 <div className="row">
                   <div className="col-lg-8">
@@ -544,83 +546,93 @@ const PropertyComponent = ({
                         </div>
                       </div>
                     </div>
-                    <div className="row list">
-                      {properties.map((item) => (
-                        <div className="col-xl-6" key={item.id} >
-                          <div className="box-dream has-border wow fadeInUp">
-                            <div className="image">
-                              <div className="list-tags">
-                                <Link href="#" className="tags-item for-sell">
-                                  {item.listing_status}
-                                </Link>
-                                {item.is_featured && (
-                                  <Link href="#" className="tags-item featured">
-                                    FEATURED
-                                  </Link>
-                                )}
+                    
+                     {loading ? 
+                      <Loader />
+                            : 
+                            properties.length > 0 ?
+                      <div>
+                        <div className="row list">
+                          {properties.map((item) => (
+                            <div className="col-xl-6" key={item.id} >
+                              <div className="box-dream has-border wow fadeInUp">
+                                <div className="image">
+                                  <div className="list-tags">
+                                    <Link href="#" className="tags-item for-sell">
+                                      {item.listing_status}
+                                    </Link>
+                                    {item.is_featured && (
+                                      <Link href="#" className="tags-item featured">
+                                        FEATURED
+                                      </Link>
+                                    )}
 
-                              </div>
-                              <div className="button-heart">
-                                <i className="flaticon-heart-1" />
-                              </div>
-                              <Swiper
-                                className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                slidesPerView={1}
-                                modules={[Pagination, A11y, Navigation]}
-                                navigation
-                                pagination={{ clickable: true }}
-                              >
-                                {item.gallery.map((g, i) => (
-                                  <SwiperSlide key={i} >
-                                    <div className="swiper-slide">
-                                      <div className="">
-                                        <img
-                                          className=""
-                                          src={g}
-                                          alt=""
-                                        />
-                                      </div>
+                                  </div>
+                                  <div className="button-heart">
+                                    <i className="flaticon-heart-1" />
+                                  </div>
+                                  <Swiper
+                                    className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
+                                    slidesPerView={1}
+                                    modules={[Pagination, A11y, Navigation]}
+                                    navigation
+                                    pagination={{ clickable: true }}
+                                  >
+                                    {item.gallery.map((g, i) => (
+                                      <SwiperSlide key={i} >
+                                        <div className="swiper-slide">
+                                          <div className="">
+                                            <img
+                                              className=""
+                                              src={g}
+                                              alt=""
+                                            />
+                                          </div>
+                                        </div>
+                                      </SwiperSlide>
+                                    ))}
+
+                                  </Swiper>
+
+                                </div>
+                                <div className="content">
+                                  <div className="head">
+                                    <div className="title">
+                                      <Link href={`/property/${item.slug}`}>{item.title}</Link>
                                     </div>
-                                  </SwiperSlide>
-                                ))}
-
-                              </Swiper>
-
-                            </div>
-                            <div className="content">
-                              <div className="head">
-                                <div className="title">
-                                  <Link href={`/property/${item.slug}`}>{item.title}</Link>
-                                </div>
-                                <div className="price">${item.price.toLocaleString()}</div>
-                              </div>
-                              <div className="location">
-                                <div className="icon">
-                                  <i className="flaticon-location" />
-                                </div>
-                                <p>{item.address}</p>
-                              </div>
-                              <div className="icon-box">
-                                <div className="item">
-                                  <i className="flaticon-hotel" />
-                                  <p>{item.bedrooms} Beds</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-bath-tub" />
-                                  <p>{item.bathrooms} Baths</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-minus-front" />
-                                  <p>{item.size} Sqft</p>
+                                    <div className="price">${item.price.toLocaleString()}</div>
+                                  </div>
+                                  <div className="location">
+                                    <div className="icon">
+                                      <i className="flaticon-location" />
+                                    </div>
+                                    <p>{item.address}</p>
+                                  </div>
+                                  <div className="icon-box">
+                                    <div className="item">
+                                      <i className="flaticon-hotel" />
+                                      <p>{item.bedrooms} Beds</p>
+                                    </div>
+                                    <div className="item">
+                                      <i className="flaticon-bath-tub" />
+                                      <p>{item.bathrooms} Baths</p>
+                                    </div>
+                                    <div className="item">
+                                      <i className="flaticon-minus-front" />
+                                      <p>{item.size} Sqft</p>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          ))}
+
+
                         </div>
-                      ))}
 
-
-                    </div>
+                      </div>
+                    :
+                    <h4 className="text-center pt-5 "> No Property Found</h4>} 
                     <CustomPagination
                       itemsPerPage={6}
                       onPageChange={handlePageChange}
@@ -642,6 +654,26 @@ const PropertyComponent = ({
                               handleTypes(item.id, item.title)
                               const newParams = new URLSearchParams(searchParams.toString());
                               newParams.set("type", item.title)
+                              router.push(`/property?${newParams.toString()}`)
+                            }
+
+
+                            }  >
+                              <Link href="#">{item.title}</Link>
+                            </li>
+                          ))}
+
+
+                        </ul>
+                      </div>
+                      <div className="sidebar-item sidebar-categories no-bg">
+                        <div className="sidebar-title">Communities</div>
+                        <ul>
+                          {community.map((item) => (
+                            <li key={item.id} className={` ${selectedCommunity.id === item.id ? "active" : ""} `} onClick={() => {
+                              handleCommunity(item.id, item.title)
+                              const newParams = new URLSearchParams(searchParams.toString());
+                              newParams.set("community", item.title)
                               router.push(`/property?${newParams.toString()}`)
                             }
 

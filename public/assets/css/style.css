@@ -6839,12 +6839,8 @@ ul.grid-tags li a:hover {
   width: 100%;
   background-color: #fff;
 }
-.preload-container .middle {
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  z-index: 100;
-  margin: -15px;
+ .middle {
+  
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;

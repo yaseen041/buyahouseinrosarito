@@ -4,7 +4,7 @@ import './Loader.css'; // Assuming the CSS file for the animation is Loader.css
 const Loader = () => {
   return (
     <div className="loader-container">
-      <div className="loader"></div>
+       <div className="middle" />
       <p>Loading data...</p>
     </div>
   );

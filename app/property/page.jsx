@@ -5,9 +5,9 @@ import React, { useEffect, Suspense } from 'react';
 import { api } from '@/app/utils/api';
 import { url } from '@/app/utils/urls';
 import { useRouter, useSearchParams } from 'next/navigation';
-import PropertyComponent from '../components/property';
+const PropertyComponent = dynamic(() => import("@/app/components/property"),{ssr:false})
 const PropertyPage = () => {
-  const [loading, setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(false)
   const [properties, setProperties] = React.useState([])
   const [types, setTypes] = React.useState([])
   const [agents, setAgents] = React.useState([])
@@ -219,10 +219,10 @@ const PropertyPage = () => {
         setSelectedStatus({ id: filterStatus.id, title: filterStatus.title })
         body.append("listing_status", status !== null ? filterStatus.id : "")
       }
-      if (type !== null) {
-        const filterType = filters.types.find((i) => i.title === type)
+      if (type !== null && Object.keys(filters).length > 0) {
+        const filterType = filters?.types.find((i) => i.title === type)
         setSelectedTypes({ id: filterType.id, title: filterType.title })
-        body.append("listing_type", type !== null ? filterType.id : "")
+        body.append("type_id", type !== null ? filterType.id : "")
       }
       if (city !== null) {
         const filterCity = cities.find((i) => i.name === city)
@@ -294,7 +294,12 @@ const PropertyPage = () => {
 
   React.useEffect(() => {
     getProprties()
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    const section = document.getElementById("property-list")
+    if(section){
+
+      section.scrollIntoView({ behavior: "smooth" })
+    }
+   
   }, [currentPage, filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
 
   const handleSearch = (e) => {
@@ -366,11 +371,7 @@ const PropertyPage = () => {
 
   return (
     <>
-      {loading && (
-        <div className="preload preload-container">
-          <div className="middle" />
-        </div>
-      )}
+      
     
 
         <PropertyComponent
@@ -407,7 +408,7 @@ const PropertyPage = () => {
           hanldeFeatures={hanldeFeatures}
           Keyword={Keyword}
           featuredProperties={featuredProperties}
-
+          loading={loading}
 
         />
      </>
