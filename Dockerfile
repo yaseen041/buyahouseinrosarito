@@ -7,8 +7,16 @@ WORKDIR /app
 # Copy package files
 COPY package.json package-lock.json ./
 
-# Install dependencies with legacy-peer-deps (if you are having dependency conflicts)
-RUN npm install --legacy-peer-deps
+# Update npm and check versions
+RUN npm install -g npm@latest
+RUN npm --version
+RUN node --version
+
+# Clean npm cache
+RUN npm cache clean --force
+
+# Install dependencies (with legacy-peer-deps and force as fallback)
+RUN npm ci --legacy-peer-deps || npm install --legacy-peer-deps || npm ci --force
 
 # Copy the rest of the code
 COPY . ./
