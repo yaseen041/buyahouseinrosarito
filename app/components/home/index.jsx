@@ -1107,9 +1107,9 @@ const HomeComponent = ({
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">Explore Our Properties</h2>
+                                            <h2 className="wow fadeInUp">Explore Different Property Types</h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Find a perfect match for your taste
                                             </div>
                                         </div>
                                     </div>
@@ -1141,8 +1141,8 @@ const HomeComponent = ({
                                                         <div className="cities-item style-3 wow fadeInUp">
                                                             <Link href={`/property/?type=${item.title}`} >
                                                             <img src={item.banner} alt=""  style={{cursor:"pointer"}} />
-                                                            </Link>
                                                             <div style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.5)"}} />
+                                                            </Link>
                                                             <div className="content">
                                                                 <h4 style={{color:"#fff"}} >{item.title}</h4>
                                                                 <p style={{color:"#fff"}} >{item.property_count} Properties</p>
@@ -1174,7 +1174,7 @@ const HomeComponent = ({
                                                 customer's favor.
                                             </h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            We are here to serve "You"
                                             </div>
                                         </div>
                                     </div>
@@ -1281,11 +1281,10 @@ const HomeComponent = ({
                                     <div className="col-12">
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">
-                                                Our mission is to redefine real estate <br /> in the
-                                                customer's favor.
+                                            A Message from Our CEO
                                             </h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Take a decision towards better future
                                             </div>
                                         </div>
                                     </div>
@@ -1324,12 +1323,12 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Discover Our Best Deals</h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Listings Crafted Just For You
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-12">
-
+                                            
                                         <Swiper
                                             className='swiper-container slider-discover padding-bottom-80 pagination-style-2'
                                             slidesPerView={1}
@@ -1446,9 +1445,9 @@ const HomeComponent = ({
                                 <div className="row">
                                     <div className="col-12">
                                         <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">Explore Cities</h2>
+                                            <h2 className="wow fadeInUp">Explore Cities We Serve</h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Best Possible Locations
                                             </div>
                                         </div>
                                     </div>
@@ -1514,7 +1513,7 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Recent Properties for Rent</h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Listings Crafted Just For You
                                             </div>
                                         </div>
                                     </div>
@@ -1641,7 +1640,7 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Recent Properties for Sale</h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Listings Crafted Just For You
                                             </div>
                                         </div>
                                     </div>
@@ -1765,7 +1764,7 @@ const HomeComponent = ({
                                                 How It works? Find a perfect home
                                             </h2>
                                             <div className="text wow fadeInUp">
-                                                Based on your view history
+                                            Take a decision towards better future
                                             </div>
                                         </div>
                                     </div>

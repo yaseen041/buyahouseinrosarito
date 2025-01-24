@@ -13,7 +13,7 @@ import Footer from "../footer";
 import CustomScript from "@/app/scripts";
 import Map from "../map";
 import MultiSelect from "../MultiSelect/MultiSelect";
-
+import Link from "next/link";
 import { url } from "@/app/utils/urls";
 
 const ContactComponent = () => {
@@ -152,9 +152,7 @@ const ContactComponent = () => {
                                             San Francisco, CA 1980
                                         </p>
                                     </div>
-                                    <div className="bot">
-                                        <div className="text-content">See on Map</div>
-                                    </div>
+                                    
                                 </div>
                                 <div
                                     className="contact-item wow fadeInUp"
@@ -165,11 +163,10 @@ const ContactComponent = () => {
                                     </div>
                                     <div className="content">
                                         <h4>Contact Info</h4>
-                                        <p>+088 (246) 642-27-10</p>
+                                        <Link href="tel:+088 (246) 642-27-10"  className="text-content">+088 (246) 642-27-10</Link>
+                                        <p></p>
                                     </div>
-                                    <div className="bot">
-                                        <div className="text-content">Give us a call</div>
-                                    </div>
+                                   
                                 </div>
                                 <div
                                     className="contact-item wow fadeInUp"
@@ -180,11 +177,9 @@ const ContactComponent = () => {
                                     </div>
                                     <div className="content">
                                         <h4>Live Support</h4>
-                                        <p>example@gmail.com</p>
+                                        <Link href="mailto:example@gmail.com"  className="text-content">example@gmail.com</Link>
                                     </div>
-                                    <div className="bot">
-                                        <div className="text-content">Open Live Chat</div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>

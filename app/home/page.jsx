@@ -243,11 +243,7 @@ const Home = () => {
 
     return (
         <>
-            {loading && (
-                <div className="preload preload-container">
-                    <div className="middle" />
-                </div>
-            )}
+           
 
 
             <HomeComponent
