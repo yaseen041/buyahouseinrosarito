@@ -1,12 +1,12 @@
 "use client";
-import React from 'react';
+import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { api } from '@/app/utils/api';
 import { url } from '@/app/utils/urls';
 import { useParams } from 'next/navigation';
-const PropertyDetail = dynamic(() => import("@/app/components/propertyDetail"))
+import PropertyDetail from '@/app/components/propertyDetail';
 
-const DetailPage = () => {
+const Detail = () => {
   const [loading, setLoading] = React.useState(true)
   const [property, setProperty] = React.useState({})
   const [agent, setAgent] = React.useState({})
@@ -39,26 +39,35 @@ const DetailPage = () => {
 
   React.useEffect(() => {
     getProertyDetail()
-    
+
   }, [slug])
-React.useEffect(()=>{
-  getAgent()
-},[property])
+  React.useEffect(() => {
+    getAgent()
+  }, [property])
 
   return (
-    <div>
+    <>
       {loading && (
         <div className="preload preload-container">
           <div className="middle"></div>
         </div>
       )}
-
-      <PropertyDetail
-        property={property}
-        agent={agent}
-      />
-    </div>
+    
+        <PropertyDetail
+          property={property}
+          agent={agent}
+        />
+     
+    
+     </>
+  )
+}
+const PropertyDetailPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+    <Detail />
+    </Suspense>
   )
 }
 
-export default DetailPage
+export default PropertyDetailPage

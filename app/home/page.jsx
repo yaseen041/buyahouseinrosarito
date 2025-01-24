@@ -1,13 +1,13 @@
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { url } from "@/app/utils/urls"
 import { api } from "@/app/utils/api"
 import { useSearchParams,useRouter } from 'next/navigation';
+
 const HomeComponent = dynamic(() => import("@/app/components/home"), { ssr: false })
 
-
-const HomePage = () => {
+const Home = () => {
     const [loading, setLoading] = React.useState(true)
     const [types, setTypes] = React.useState([])
     const [cities, setCities] = React.useState([])
@@ -287,4 +287,11 @@ const HomePage = () => {
     )
 }
 
+const HomePage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Home />
+        </Suspense>
+    )
+}
 export default HomePage

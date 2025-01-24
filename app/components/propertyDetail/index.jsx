@@ -126,9 +126,9 @@ const DetailPage = ({ property = {}, agent = {} }) => {
   };
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id); // Get the element by its id
+    const section = document.getElementById(id); 
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" }); // Smooth scroll to the section
+      section.scrollIntoView({ behavior: "smooth" }); 
     }
   };
 

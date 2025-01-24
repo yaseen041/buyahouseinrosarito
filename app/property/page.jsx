@@ -1,13 +1,12 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { api } from '@/app/utils/api';
 import { url } from '@/app/utils/urls';
 import { useRouter, useSearchParams } from 'next/navigation';
-const PropertyComponent = dynamic(() => import("@/app/components/property"))
-
-const Property = () => {
+import PropertyComponent from '../components/property';
+const PropertyPage = () => {
   const [loading, setLoading] = React.useState(true)
   const [properties, setProperties] = React.useState([])
   const [types, setTypes] = React.useState([])
@@ -73,7 +72,7 @@ const Property = () => {
       setMinPrice(value)
     } else if (name === "maxPrice") {
       setMaxPrice(value)
-    }else if(name==="Keyword"){
+    } else if (name === "Keyword") {
       setKeyword(value)
     }
   }
@@ -83,13 +82,13 @@ const Property = () => {
 
   }
 
-  const hanldeFeatures = (id,title)=>{
-    const exist = selectedFeatures.filter((i)=>i.id===id)
-    if(exist.length>0){
-      setSelectedFeatures((prev)=>prev.filter((i)=>i.id!==id))
-    }else{
+  const hanldeFeatures = (id, title) => {
+    const exist = selectedFeatures.filter((i) => i.id === id)
+    if (exist.length > 0) {
+      setSelectedFeatures((prev) => prev.filter((i) => i.id !== id))
+    } else {
 
-      setSelectedFeatures((prev)=>[...prev,{id:id,title:title}])
+      setSelectedFeatures((prev) => [...prev, { id: id, title: title }])
     }
   }
 
@@ -112,7 +111,7 @@ const Property = () => {
   const handleSorting = (id, title) => {
     setSelectedSorting({ id: id, title: title })
   }
-  
+
   const getCities = async () => {
     try {
 
@@ -171,8 +170,8 @@ const Property = () => {
       console.log(error)
     }
   }
-const getFeaturedProperties = async () => {
-    try { 
+  const getFeaturedProperties = async () => {
+    try {
       const data = await api.Get(url.FEATUREDPROPERTIES)
       if (data) {
         setFeaturedProperties(data.data)
@@ -268,17 +267,17 @@ const getFeaturedProperties = async () => {
         body.append("max_price", maxprice !== null ? maxprice : "")
       }
       if (features !== null) {
-        const featureArry = features.split(",").map((i)=>(i.trim()))
+        const featureArry = features.split(",").map((i) => (i.trim()))
         const getfeatures = Object.keys(filters?.features || {}).flatMap((category) =>
           filters.features[category].filter((item) => featureArry.includes(item.title))
         );
         setSelectedFeatures(getfeatures)
-        const ids = getfeatures.map((i)=>i.id)
-        body.append("features_id_array", JSON.stringify(ids) )
+        const ids = getfeatures.map((i) => i.id)
+        body.append("features_id_array", JSON.stringify(ids))
       }
-      if(title!==null){
+      if (title !== null) {
         setKeyword(title)
-        body.append("title",title)
+        body.append("title", title)
       }
 
 
@@ -296,7 +295,7 @@ const getFeaturedProperties = async () => {
   React.useEffect(() => {
     getProprties()
     window.scrollTo({ top: 0, behavior: "smooth" })
-  }, [currentPage, filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea,minprice,maxprice,features,title])
+  }, [currentPage, filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -352,14 +351,14 @@ const getFeaturedProperties = async () => {
       newParams.delete("maxprice")
     }
     if (selectedFeatures.length > 0) {
-      const feature = selectedFeatures.map((i)=>i.title)
+      const feature = selectedFeatures.map((i) => i.title)
       newParams.set("features", feature)
     } else {
       newParams.delete("features")
     }
-    if(Keyword.length>0){
-      newParams.set("title",Keyword)
-    }else{
+    if (Keyword.length > 0) {
+      newParams.set("title", Keyword)
+    } else {
       newParams.delete("title")
     }
     router.push(`/property?${newParams.toString()}`)
@@ -372,48 +371,55 @@ const getFeaturedProperties = async () => {
           <div className="middle" />
         </div>
       )}
+    
+
+        <PropertyComponent
+          properties={properties}
+          types={types}
+          filters={filters}
+          totalProperties={totalData}
+          handlePageChange={handlePageChange}
+          handleStatus={handleStatus}
+          cities={cities}
+          status={selectedstatus}
+          handleSearch={handleSearch}
+          selectedTypes={selectedTypes}
+          handleTypes={handleTypes}
+          selectedCity={selectedCity}
+          handleCity={handleCity}
+          selectedSorting={selectedSorting}
+          handleSorting={handleSorting}
+          agents={agents}
+          currentPage={currentPage}
+          community={filterdCommunity}
+          selectedCommunity={selectedCommunity}
+          handleCommunity={handleCommunity}
+          handleBed={handleBed}
+          handleBath={handleBath}
+          selectedBath={selectedBath}
+          selectedBed={selectedBed}
+          handleInputChange={handleInputChange}
+          minArea={minArea}
+          maxArea={maxArea}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          features={selectedFeatures}
+          hanldeFeatures={hanldeFeatures}
+          Keyword={Keyword}
+          featuredProperties={featuredProperties}
 
 
-      <PropertyComponent
-        properties={properties}
-        types={types}
-        filters={filters}
-        totalProperties={totalData}
-        handlePageChange={handlePageChange}
-        handleStatus={handleStatus}
-        cities={cities}
-        status={selectedstatus}
-        handleSearch={handleSearch}
-        selectedTypes={selectedTypes}
-        handleTypes={handleTypes}
-        selectedCity={selectedCity}
-        handleCity={handleCity}
-        selectedSorting={selectedSorting}
-        handleSorting={handleSorting}
-        agents={agents}
-        currentPage={currentPage}
-        community={filterdCommunity}
-        selectedCommunity={selectedCommunity}
-        handleCommunity={handleCommunity}
-        handleBed={handleBed}
-        handleBath={handleBath}
-        selectedBath={selectedBath}
-        selectedBed={selectedBed}
-        handleInputChange={handleInputChange}
-        minArea={minArea}
-        maxArea={maxArea}
-        minPrice={minPrice}
-        maxPrice={maxPrice}
-        features={selectedFeatures}
-        hanldeFeatures={hanldeFeatures}
-        Keyword={Keyword}
-        featuredProperties={featuredProperties}
-
-
-      />
-    </>
-
+        />
+     </>
+    
   )
 }
 
+const Property = () => {  
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PropertyPage />
+    </Suspense>
+  )
+}
 export default Property
