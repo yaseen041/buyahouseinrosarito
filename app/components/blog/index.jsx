@@ -147,7 +147,7 @@ const BlogComponent = () => {
                         key={blog.id}
                       >
                         <div className="image">
-                          <img src={blog.featured_image || "/elrealestate/assets/images/blog/blog-grid-1.jpg" } alt={blog.title} />
+                          <img src={blog.featured_image || "/assets/images/blog/blog-grid-1.jpg" } alt={blog.title} />
                         </div>
                         <div className="content">
                           <div className="sub-blog">
@@ -183,7 +183,7 @@ const BlogComponent = () => {
                     // <div className="wg-blog style-row wow fadeInUp">
                     //   <div className="image">
                     //     <img
-                    //       src="/elrealestate/assets/images/blog/blog-list-1.jpg"
+                    //       src="/assets/images/blog/blog-list-1.jpg"
                     //       alt=""
                     //     />
                     //   </div>
@@ -352,18 +352,18 @@ const BlogComponent = () => {
       </div>
 
       <CustomScript
-        src="/elrealestate/assets/js/jquery.nice-select.min.js"
+        src="/assets/js/jquery.nice-select.min.js"
         strategy="afterInteractive"
       />
       <CustomScript
-        src="/elrealestate/assets/js/jquery.fancybox.js"
+        src="/assets/js/jquery.fancybox.js"
         strategy="afterInteractive"
       />
       <CustomScript
-        src="/elrealestate/assets/js/magnific-popup.min.js"
+        src="/assets/js/magnific-popup.min.js"
         strategy="afterInteractive"
       />
-      <CustomScript src="/elrealestate/assets/js/main.js" />
+      <CustomScript src="/assets/js/main.js" />
     </>
   );
 };

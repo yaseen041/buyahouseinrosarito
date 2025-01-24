@@ -284,10 +284,10 @@ const FaqComponent = () => {
                 </div>
                 {/* /#page */}
             </div>
-            <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
-            <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-            <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-            <CustomScript src="/elrealestate/assets/js/main.js" />
+            <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+            <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+            <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+            <CustomScript src="/assets/js/main.js" />
         </>
     )
 }

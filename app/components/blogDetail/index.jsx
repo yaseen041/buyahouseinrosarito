@@ -122,7 +122,7 @@ const BlogDetail = () => {
                               <img
                                 src={
                                   blog.featured_image ||
-                                  "/elrealestate/assets/images/blog/blog-grid-1.jpg"
+                                  "/assets/images/blog/blog-grid-1.jpg"
                                 }
                                 alt={blog.title || "Blog Image"}
                               />
@@ -170,7 +170,7 @@ const BlogDetail = () => {
         </div>
 
         <CustomScript
-          src="/elrealestate/assets/js/jquery.min.js"
+          src="/assets/js/jquery.min.js"
           strategy="lazyOnload"
           onLoad={() => {
             if (window.jQuery) {
@@ -180,18 +180,18 @@ const BlogDetail = () => {
           onError={(e) => console.error("Failed to load jQuery:", e)}
         />
         <CustomScript
-          src="/elrealestate/assets/js/jquery.fancybox.js"
+          src="/assets/js/jquery.fancybox.js"
           strategy="afterInteractive"
         />
         <CustomScript
-          src="/elrealestate/assets/js/jquery.nice-select.min.js"
+          src="/assets/js/jquery.nice-select.min.js"
           strategy="afterInteractive"
         />
         <CustomScript
-          src="/elrealestate/assets/js/magnific-popup.min.js"
+          src="/assets/js/magnific-popup.min.js"
           strategy="afterInteractive"
         />
-        <CustomScript src="/elrealestate/assets/js/main.js" />
+        <CustomScript src="/assets/js/main.js" />
     </>
   );
 };

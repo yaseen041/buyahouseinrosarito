@@ -180,7 +180,7 @@ const PropertyComponent = ({
                                           <div>
                                             <div className="image">
                                               <img
-                                                src="/elrealestate/assets/images/author/avatar-8.png"
+                                                src="/assets/images/author/avatar-8.png"
                                                 alt=""
                                               />
                                             </div>
@@ -194,7 +194,7 @@ const PropertyComponent = ({
                                           <div>
                                             <div className="image">
                                               <img
-                                                src="/elrealestate/assets/images/author/avatar-7.png"
+                                                src="/assets/images/author/avatar-7.png"
                                                 alt=""
                                               />
                                             </div>
@@ -208,7 +208,7 @@ const PropertyComponent = ({
                                           <div>
                                             <div className="image">
                                               <img
-                                                src="/elrealestate/assets/images/author/avatar-9.png"
+                                                src="/assets/images/author/avatar-9.png"
                                                 alt=""
                                               />
                                             </div>
@@ -222,7 +222,7 @@ const PropertyComponent = ({
                                           <div>
                                             <div className="image">
                                               <img
-                                                src="/elrealestate/assets/images/author/avatar-10.png"
+                                                src="/assets/images/author/avatar-10.png"
                                                 alt=""
                                               />
                                             </div>
@@ -774,7 +774,7 @@ const PropertyComponent = ({
         {/* /#page */}
       </div >
       <CustomScript
-        src="/elrealestate/assets/js/jquery.min.js"
+        src="/assets/js/jquery.min.js"
         strategy="lazyOnload" // Load it after the page load
         onLoad={() => {
           if (window.jQuery) {
@@ -787,10 +787,10 @@ const PropertyComponent = ({
 
 
 
-      {/* <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
-      <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-      <CustomScript src="/elrealestate/assets/js/main.js" />
+      {/* <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
+      <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+      <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+      <CustomScript src="/assets/js/main.js" />
     </>
 
   )

@@ -71,7 +71,7 @@ const Header1 = () => {
                 <img
                   className="d-block"
                   id="logo-header"
-                  src="/elrealestate/assets/images/logo/logo.svg"
+                  src="/assets/images/logo/logo.svg"
                   alt=""
                 />
               </Link>

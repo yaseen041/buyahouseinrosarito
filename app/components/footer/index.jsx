@@ -16,7 +16,7 @@ const pathname = usePathname()
                   <Link href="/">
                     <img
                       id="logo-footer"
-                      src="/elrealestate/assets/images/logo/logo-footer.svg"
+                      src="/assets/images/logo/logo-footer.svg"
                       alt="images"
                     />
                   </Link>

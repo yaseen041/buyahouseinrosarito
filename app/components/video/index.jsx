@@ -51,7 +51,7 @@ const VideoComponent = ({ src }) => {
   return (
     <div className="video">
       <div className="video-wrap">
-        <img src="/elrealestate/assets/images/image-box/video-2.jpg" alt="" />
+        <img src="/assets/images/image-box/video-2.jpg" alt="" />
         {renderVideo()}
       </div>
     </div>

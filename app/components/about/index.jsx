@@ -104,27 +104,27 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
 
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/elrealestate/assets/images/slider/slider-about-1.jpg" alt="" />
+                        <img src="/assets/images/slider/slider-about-1.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/elrealestate/assets/images/slider/slider-about-2.jpg" alt="" />
+                        <img src="/assets/images/slider/slider-about-2.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/elrealestate/assets/images/slider/slider-about-3.jpg" alt="" />
+                        <img src="/assets/images/slider/slider-about-3.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/elrealestate/assets/images/slider/slider-about-4.jpg" alt="" />
+                        <img src="/assets/images/slider/slider-about-4.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div className="swiper-slide">
-                        <img src="/elrealestate/assets/images/slider/slider-about-1.jpg" alt="" />
+                        <img src="/assets/images/slider/slider-about-1.jpg" alt="" />
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -244,7 +244,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
               <div className="row justify-between">
                 <div className="col-md-6">
                   <div className="image wow fadeInLeft">
-                    <img src="/elrealestate/assets/images/section/luxury-home-4.jpg" alt="" />
+                    <img src="/assets/images/section/luxury-home-4.jpg" alt="" />
                     <div className="box">
                       <div className="icon">
                         <i className="flaticon-customer" />
@@ -554,7 +554,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-1.png"
+                                src="/assets/images/image-box/brand-1.png"
                                 alt="images"
                               />
                             </a>
@@ -566,7 +566,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-2.png"
+                                src="/assets/images/image-box/brand-2.png"
                                 alt="images"
                               />
                             </a>
@@ -578,7 +578,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-3.png"
+                                src="/assets/images/image-box/brand-3.png"
                                 alt="images"
                               />
                             </a>
@@ -590,7 +590,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-4.png"
+                                src="/assets/images/image-box/brand-4.png"
                                 alt="images"
                               />
                             </a>
@@ -602,7 +602,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-5.png"
+                                src="/assets/images/image-box/brand-5.png"
                                 alt="images"
                               />
                             </a>
@@ -614,7 +614,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-6.png"
+                                src="/assets/images/image-box/brand-6.png"
                                 alt="images"
                               />
                             </a>
@@ -626,7 +626,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                           <div className="slogan-logo">
                             <a href="#">
                               <img
-                                src="/elrealestate/assets/images/image-box/brand-1.png"
+                                src="/assets/images/image-box/brand-1.png"
                                 alt="images"
                               />
                             </a>

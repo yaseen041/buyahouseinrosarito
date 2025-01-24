@@ -209,35 +209,35 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                         : null}
 
                       {/* <a
-                        href="/elrealestate/assets/images/house/property-detail-2.jpg"
+                        href="/assets/images/house/property-detail-2.jpg"
                         className="item-2"
                         data-fancybox="gallery"
                       >
-                        <img src="/elrealestate/assets/images/house/property-detail-2.jpg" alt="" />
+                        <img src="/assets/images/house/property-detail-2.jpg" alt="" />
                       </a>
                       <a
-                        href="/elrealestate/assets/images/house/property-detail-3.jpg"
+                        href="/assets/images/house/property-detail-3.jpg"
                         className="item-3"
                         data-fancybox="gallery"
                       >
-                        <img src="/elrealestate/assets/images/house/property-detail-3.jpg" alt="" />
+                        <img src="/assets/images/house/property-detail-3.jpg" alt="" />
                       </a>
                       <a
-                        href="/elrealestate/assets/images/house/property-detail-4.jpg"
+                        href="/assets/images/house/property-detail-4.jpg"
                         className="item-4"
                         data-fancybox="gallery"
                       >
-                        <img src="/elrealestate/assets/images/house/property-detail-4.jpg" alt="" />
+                        <img src="/assets/images/house/property-detail-4.jpg" alt="" />
                       </a>
                       <a
-                        href="/elrealestate/assets/images/house/property-detail-5.jpg"
+                        href="/assets/images/house/property-detail-5.jpg"
                         className="item-5"
                         data-fancybox="gallery"
                       >
-                        <img src="/elrealestate/assets/images/house/property-detail-5.jpg" alt="" />
+                        <img src="/assets/images/house/property-detail-5.jpg" alt="" />
                       </a>
                       <a
-                        href="/elrealestate/assets/images/house/property-detail-3.jpg"
+                        href="/assets/images/house/property-detail-3.jpg"
                         className="more-photos"
                         data-fancybox="gallery"
                       >
@@ -402,7 +402,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                               >
                                 <div className="icon">
                                   <img
-                                    src="/elrealestate/assets/images/image-box/file-pdf.svg"
+                                    src="/assets/images/image-box/file-pdf.svg"
                                     alt=""
                                   />
                                 </div>
@@ -416,7 +416,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
 
                             {/* <Link href="#" className="file-item">
                             <div className="icon">
-                              <img src="/elrealestate/assets/images/image-box/file-pdf.svg" alt="" />
+                              <img src="/assets/images/image-box/file-pdf.svg" alt="" />
                             </div>
                             <div>
                               <div className="name">Ultra-Demo-PDF File</div>
@@ -529,7 +529,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                             <p>80</p>
                           </li>
                         </ul>
-                        <img src="/elrealestate/assets/images/image-box/energy.png" alt="" />
+                        <img src="/assets/images/image-box/energy.png" alt="" />
                       </div> */}
                       <div className="features">
                         <h4 className="wow fadeInUp">Facts &amp; Features</h4>
@@ -635,7 +635,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                 epicuri eu per. Mediocrem torquatos deseruisse te eum
                                 commodo.
                               </p>
-                              <img src="/elrealestate/assets/images/section/blueprint-1.png" alt="" />
+                              <img src="/assets/images/section/blueprint-1.png" alt="" />
                             </div>
                             <div className="widget-content-inner">
                               <div className="icons">
@@ -666,7 +666,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                 epicuri eu per. Mediocrem torquatos deseruisse te eum
                                 commodo.
                               </p>
-                              <img src="/elrealestate/assets/images/section/blueprint-1.png" alt="" />
+                              <img src="/assets/images/section/blueprint-1.png" alt="" />
                             </div>
                             <div className="widget-content-inner">
                               <div className="icons">
@@ -697,7 +697,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                 epicuri eu per. Mediocrem torquatos deseruisse te eum
                                 commodo.
                               </p>
-                              <img src="/elrealestate/assets/images/section/blueprint-1.png" alt="" />
+                              <img src="/assets/images/section/blueprint-1.png" alt="" />
                             </div>
                           </div>
                         </div>
@@ -1033,7 +1033,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                       {/* <div className="video">
                         <h4 className="wow fadeInUp">Video</h4>
                         <div className="video-wrap">
-                          <img src="/elrealestate/assets/images/image-box/video-2.jpg" alt="" />
+                          <img src="/assets/images/image-box/video-2.jpg" alt="" />
                           <Link
                             href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                             className="popup-youtube"
@@ -1056,7 +1056,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                       {/* <div className="tour">
                         <h4 className="wow fadeInUp">360° Virtual Tour</h4>
                         <div className="image">
-                          <img src="/elrealestate/assets/images/image-box/img-virtual-1.jpg" alt="" />
+                          <img src="/assets/images/image-box/img-virtual-1.jpg" alt="" />
                         </div>
                       </div> */}
                       {/* <div className="page-views">
@@ -1307,7 +1307,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                         <ul>
                           <li className="wow fadeInUp">
                             <div className="image">
-                              <img src="/elrealestate/assets/images/author/author-5.png" alt="" />
+                              <img src="/assets/images/author/author-5.png" alt="" />
                             </div>
                             <div className="content">
                               <div className="ratings">
@@ -1330,7 +1330,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                           </li>
                           <li className="wow fadeInUp">
                             <div className="image">
-                              <img src="/elrealestate/assets/images/author/author-6.png" alt="" />
+                              <img src="/assets/images/author/author-6.png" alt="" />
                             </div>
                             <div className="content">
                               <div className="ratings">
@@ -1468,7 +1468,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                         <div className="w-full">
                                           <img
                                             className="w-full"
-                                            src="/elrealestate/assets/images/house/home-1.jpg"
+                                            src="/assets/images/house/home-1.jpg"
                                             alt=""
                                           />
                                         </div>
@@ -1477,7 +1477,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                         <div className="w-full">
                                           <img
                                             className="w-full"
-                                            src="/elrealestate/assets/images/house/home-2.jpg"
+                                            src="/assets/images/house/home-2.jpg"
                                             alt=""
                                           />
                                         </div>
@@ -1486,7 +1486,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                         <div className="w-full">
                                           <img
                                             className="w-full"
-                                            src="/elrealestate/assets/images/house/home-3.jpg"
+                                            src="/assets/images/house/home-3.jpg"
                                             alt=""
                                           />
                                         </div>
@@ -1495,7 +1495,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                         <div className="w-full">
                                           <img
                                             className="w-full"
-                                            src="/elrealestate/assets/images/house/home-4.jpg"
+                                            src="/assets/images/house/home-4.jpg"
                                             alt=""
                                           />
                                         </div>
@@ -1584,7 +1584,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
         {/* /#page */}
       </div>
       <CustomScript
-        src="/elrealestate/assets/js/jquery.min.js"
+        src="/assets/js/jquery.min.js"
         strategy="lazyOnload" // Load it after the page load
         onLoad={() => {
           if (window.jQuery) {
@@ -1596,18 +1596,18 @@ const DetailPage = ({ property = {}, agent = {} }) => {
       />
 
       <CustomScript
-        src="/elrealestate/assets/js/jquery.nice-select.min.js"
+        src="/assets/js/jquery.nice-select.min.js"
         strategy="afterInteractive"
       />
       <CustomScript
-        src="/elrealestate/assets/js/jquery.fancybox.js"
+        src="/assets/js/jquery.fancybox.js"
         strategy="afterInteractive"
       />
       <CustomScript
-        src="/elrealestate/assets/js/magnific-popup.min.js"
+        src="/assets/js/magnific-popup.min.js"
         strategy="afterInteractive"
       />
-      <CustomScript src="/elrealestate/assets/js/main.js" />
+      <CustomScript src="/assets/js/main.js" />
     </div>
   );
 };

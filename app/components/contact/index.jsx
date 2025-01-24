@@ -380,7 +380,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-1.png"
+                                                                    src="/assets/images/image-box/brand-1.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -392,7 +392,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-2.png"
+                                                                    src="/assets/images/image-box/brand-2.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -404,7 +404,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-3.png"
+                                                                    src="/assets/images/image-box/brand-3.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -416,7 +416,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-4.png"
+                                                                    src="/assets/images/image-box/brand-4.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -428,7 +428,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-5.png"
+                                                                    src="/assets/images/image-box/brand-5.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -440,7 +440,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-6.png"
+                                                                    src="/assets/images/image-box/brand-6.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -452,7 +452,7 @@ const ContactComponent = () => {
                                                         <div className="slogan-logo">
                                                             <a href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-1.png"
+                                                                    src="/assets/images/image-box/brand-1.png"
                                                                     alt="images"
                                                                 />
                                                             </a>
@@ -499,7 +499,7 @@ const ContactComponent = () => {
                 {/* /#page */}
             </div>
             <CustomScript
-                src="/elrealestate/assets/js/jquery.min.js"
+                src="/assets/js/jquery.min.js"
                 strategy="lazyOnload" // Load it after the page load
                 onLoad={() => {
                     if (window.jQuery) {
@@ -511,19 +511,19 @@ const ContactComponent = () => {
             />
 
             <CustomScript
-                src="/elrealestate/assets/js/jquery.nice-select.min.js"
+                src="/assets/js/jquery.nice-select.min.js"
                 strategy="afterInteractive"
             />
             <CustomScript
-                src="/elrealestate/assets/js/jquery.fancybox.js"
+                src="/assets/js/jquery.fancybox.js"
                 strategy="afterInteractive"
             />
             <CustomScript
-                src="/elrealestate/assets/js/magnific-popup.min.js"
+                src="/assets/js/magnific-popup.min.js"
                 strategy="afterInteractive"
             />
 
-            <CustomScript src="/elrealestate/assets/js/main.js" />
+            <CustomScript src="/assets/js/main.js" />
         </>
     );
 };

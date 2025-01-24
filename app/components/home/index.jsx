@@ -186,7 +186,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-8.png"
+                                                                                                    src="/assets/images/author/avatar-8.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -200,7 +200,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-7.png"
+                                                                                                    src="/assets/images/author/avatar-7.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -214,7 +214,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-9.png"
+                                                                                                    src="/assets/images/author/avatar-9.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -228,7 +228,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-10.png"
+                                                                                                    src="/assets/images/author/avatar-10.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -764,7 +764,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-8.png"
+                                                                                                    src="/assets/images/author/avatar-8.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -778,7 +778,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-7.png"
+                                                                                                    src="/assets/images/author/avatar-7.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -792,7 +792,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-9.png"
+                                                                                                    src="/assets/images/author/avatar-9.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -806,7 +806,7 @@ const HomeComponent = ({
                                                                                         <div>
                                                                                             <div className="image">
                                                                                                 <img
-                                                                                                    src="/elrealestate/assets/images/author/avatar-10.png"
+                                                                                                    src="/assets/images/author/avatar-10.png"
                                                                                                     alt=""
                                                                                                 />
                                                                                             </div>
@@ -1297,7 +1297,7 @@ const HomeComponent = ({
                                             {/* <div className="video">
                                                
                                                 <div className="video-wrap">
-                                                    <img src="/elrealestate/assets/images/image-box/video-2.jpg" alt="" />
+                                                    <img src="/assets/images/image-box/video-2.jpg" alt="" />
                                                     <Link
                                                         href="/assets/video.mp4"
                                                         className="popup-youtube"
@@ -1820,22 +1820,22 @@ const HomeComponent = ({
                                         <div className="widget-content-tab">
                                             <div className="widget-content-inner active">
                                                 <div className="img-right">
-                                                    <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
                                                 </div>
                                             </div>
                                             <div className="widget-content-inner">
                                                 <div className="img-right">
-                                                    <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
                                                 </div>
                                             </div>
                                             <div className="widget-content-inner">
                                                 <div className="img-right">
-                                                    <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
                                                 </div>
                                             </div>
                                         </div>
                                         {/* <div class="img-right">
-                              <img src="/elrealestate/assets/images/section/works-step-1.jpg" alt="">
+                              <img src="/assets/images/section/works-step-1.jpg" alt="">
                           </div> */}
                                     </div>
                                 </div>
@@ -1868,7 +1868,7 @@ const HomeComponent = ({
                                 <div className="row justify-between">
                                     <div className="col-md-6">
                                         <div className="image wow fadeInLeft">
-                                            <img src="/elrealestate/assets/images/section/luxury-home-2.jpg" alt="" />
+                                            <img src="/assets/images/section/luxury-home-2.jpg" alt="" />
                                             <div className="box">
                                                 <div className="icon">
                                                     <i className="flaticon-customer" />
@@ -1965,7 +1965,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-1.png"
+                                                                    src="/assets/images/image-box/brand-1.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -1977,7 +1977,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-2.png"
+                                                                    src="/assets/images/image-box/brand-2.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -1989,7 +1989,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-3.png"
+                                                                    src="/assets/images/image-box/brand-3.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -2001,7 +2001,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-4.png"
+                                                                    src="/assets/images/image-box/brand-4.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -2013,7 +2013,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-5.png"
+                                                                    src="/assets/images/image-box/brand-5.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -2025,7 +2025,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-6.png"
+                                                                    src="/assets/images/image-box/brand-6.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -2037,7 +2037,7 @@ const HomeComponent = ({
                                                         <div className="slogan-logo">
                                                             <Link href="#">
                                                                 <img
-                                                                    src="/elrealestate/assets/images/image-box/brand-1.png"
+                                                                    src="/assets/images/image-box/brand-1.png"
                                                                     alt="images"
                                                                 />
                                                             </Link>
@@ -2075,7 +2075,7 @@ const HomeComponent = ({
                             <i className="icon-close" />
                         </Link>
                         <div className="image-left">
-                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
+                            <img src="/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -2164,7 +2164,7 @@ const HomeComponent = ({
                             <i className="icon-close" />
                         </Link>
                         <div className="image-left">
-                            <img src="/elrealestate/assets/images/section/login.jpg" alt="" />
+                            <img src="/assets/images/section/login.jpg" alt="" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -2252,15 +2252,15 @@ const HomeComponent = ({
             </div>
 
             <CustomScript
-                src="/elrealestate/assets/js/jquery.min.js"
+                src="/assets/js/jquery.min.js"
                 strategy="lazyOnload" // Load it after the page load
 
                 onError={(e) => console.error("Failed to load jQuery:", e)}
             />
-            <CustomScript src="/elrealestate/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
-            <CustomScript src="/elrealestate/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-            <CustomScript src="/elrealestate/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-            <CustomScript src="/elrealestate/assets/js/main.js" />
+            <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+            <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+            <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+            <CustomScript src="/assets/js/main.js" />
 
 
         </>

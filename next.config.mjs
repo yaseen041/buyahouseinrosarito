@@ -9,7 +9,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   // output: 'export',
-  basePath:"/elrealestate",
+  basePath:"",
  async redirects() {
     return [
       {
