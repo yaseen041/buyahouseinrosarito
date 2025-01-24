@@ -1,0 +1,12 @@
+# Define the build environment
+[build]
+image = "node:18-alpine"  # Use Node.js Alpine image
+
+# Install Yarn globally
+[install]
+command = "npm install -g yarn && yarn install --legacy-peer-deps"
+
+# Run command for your app
+[run]
+port = 3000
+command = "yarn start"
