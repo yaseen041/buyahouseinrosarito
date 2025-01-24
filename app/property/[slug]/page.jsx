@@ -47,15 +47,11 @@ const Detail = () => {
 
   return (
     <>
-      {loading && (
-        <div className="preload preload-container">
-          <div className="middle"></div>
-        </div>
-      )}
-    
+     
         <PropertyDetail
           property={property}
           agent={agent}
+          loading={loading}
         />
      
     

@@ -5929,7 +5929,7 @@ ul.grid-tags li a:hover {
   color: #111235;
 }
 .slider.home3 .wrap-slider .slider-content h1 span {
-  color: #254EF0;
+  color: #F6492A;
 }
 .slider.home3 .wrap-slider .slider-content > .text {
   font-size: 16px;
@@ -7578,11 +7578,11 @@ ul.grid-tags li a:hover {
   animation: 0.3s link-icon linear;
 }
 .tf-button-primary.style-green {
-  background-color: #254EF0;
+  background-color: #F6492A;
   color: var(--White);
 }
 .tf-button-primary.style-green:hover {
-  background-color: #0a36e1;
+  background-color: #ed4628;
 }
 .tf-button-primary.style-blue {
   background-color: var(--Fourth);
@@ -8311,7 +8311,7 @@ form.background-secondary .wg-filter > .tf-button-filter {
 }
 .form-search-home3 .button-submit button {
   padding: 19px 22px;
-  background-color: #254EF0;
+  background-color: #F6492A;
   width: 100%;
   color: var(--White);
   border-radius: 120px;
@@ -8365,9 +8365,9 @@ form.background-secondary .wg-filter > .tf-button-filter {
 }
 .form-search-home5 .button-submit button {
   padding: 19px 30px;
-  background-color: var(--Primary);
+  background-color: #F6492A;
   width: 100%;
-  color: var(--Secondary);
+  color: #fff;
   border-radius: 12px;
   font-size: 15px;
   font-weight: 500;

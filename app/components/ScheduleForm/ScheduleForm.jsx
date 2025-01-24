@@ -13,6 +13,8 @@ const ScheduleForm = ({ propertyId }) => {
   const [error, setError] = useState("");
   const [errorType, setErrorType] = useState("");
   const [spin, setSpin] = useState(false);
+   const [ openTime, setOpenTime ] = useState(false);
+    const toggleOpenTime = () => setOpenTime(!openTime);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -129,7 +131,7 @@ const ScheduleForm = ({ propertyId }) => {
           )}
         </fieldset>
         <fieldset>
-        <div className="nice-select" tabIndex={0}>
+        <div className={`nice-select ${openTime?"open":""} `} onClick={toggleOpenTime} tabIndex={0}>
           <span className="current">{time ? time : "Please Select Time"}</span>
           <ul className="list">
             {times.map((time) => (

@@ -6,9 +6,11 @@ import { usePathname } from 'next/navigation';
 const Header3 = () => {
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [openMenu,setOpenMenu] = React.useState(false)
+    const [isMobile, setIsMobile] = React.useState(false);
 const pathname = usePathname()
 const handleClose = () => setOpenMenu(false);
   const handleShow = () => setOpenMenu(true);
+
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +27,26 @@ const handleClose = () => setOpenMenu(false);
     };
   }, []);
 
+React.useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth < 992) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }
+  window.addEventListener("resize", handleResize);
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  }
+}
+, [])
+
+
     return (
         <>
             <header id="header_main" className={`header header-fixed ${isScrolled?"is-small is-fixed":""}`}>
-                <div className="header-inner" style={{position:pathname==="/"?"fixed":"",width:"100%"}} >
+                <div className="header-inner  " style={{position:pathname==="/" && !isMobile ?"fixed":"",width:"100%"}} >
                     <div className="header-inner-wrap" style={{border:pathname==="/"?"0px":""}} >
                         <div id="site-logo">
                             <Link href="/" rel="home">
@@ -37,7 +55,7 @@ const handleClose = () => setOpenMenu(false);
                                     id="logo-header"
                                     src="/assets/images/Header3.png"
                                     alt=""
-                                    style={{height:"70px",width:"70px"}}
+                                    style={{height:"100%",width:"190px"}}
                                 />
                             </Link>
                         </div>

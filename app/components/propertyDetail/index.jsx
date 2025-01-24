@@ -8,8 +8,8 @@ import Map from "../map";
 import MultiSelect from "../MultiSelect/MultiSelect";
 import { url } from "@/app/utils/urls";
 import ScheduleForm from "../ScheduleForm/ScheduleForm";
-
-const DetailPage = ({ property = {}, agent = {} }) => {
+import Loader from "../loader/Loader";
+const DetailPage = ({ property = {}, agent = {},loading }) => {
   const [properties, setProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState([]);
   const [name, setName] = useState("");
@@ -21,6 +21,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
   const [errorType, setErrorType] = useState("");
   const [errors, setErrors] = useState({});
   const [spin, setSpin] = useState(false);
+ 
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -134,9 +135,11 @@ const DetailPage = ({ property = {}, agent = {} }) => {
 
   return (
     <div>
+      
       <div id="wrapper">
         <div id="page" className="">
           <Header3 />
+          {loading ? <Loader />:
           <div className="main-content p-0">
             <div
               className="property-single-wrap sticky-container"
@@ -186,13 +189,13 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                   <div className="col-12">
                     <div className="wrap-gallery-image">
                       <div className="list-tags type-1">
-                        <Link href="#" className="tags-item for-sell">
+                        <div className="tags-item for-sell">
                           {property.listing_status}
-                        </Link>
+                        </div>
                         {property.is_featured && (
-                          <Link href="#" className="tags-item featured">
+                          <div className="tags-item featured">
                             FEATURED
-                          </Link>
+                          </div>
                         )}
                       </div>
                       {Object.keys(property).length > 0
@@ -354,8 +357,14 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                         </div>
                         <div className="list-item">
                           <div className="item wow fadeInUp">
+                            
+                              <div className="col-5 d-flex align-items-center">
                             <div className="text">Address</div>
-                            <p>{property?.address}</p>
+                            </div>
+                            <div className="col-7  p-0 " style={{display: 'flex', justifyContent: "right",textWrap:"wrap",flexWrap:"wrap"}}>
+                            <p style={{textWrap:"wrap"}} className="text-end" >{property?.address}</p>
+                            </div>
+                            
                           </div>
                           <div
                             className="item wow fadeInUp"
@@ -475,12 +484,18 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                             className="item wow fadeInUp"
                             data-wow-delay="0.1s"
                           >
+                           
+                              <div className="col-4 d-flex align-items-center">
                             <div className="text">Property Type:</div>
+                            </div>
+                            <div className="col-8 text-right  " style={{display: 'flex', justifyContent: 'flex-end',textWrap:"wrap",flexWrap:"wrap"}}>
                             {Object.keys(property).length > 0
                               ? property.types.map((item) => (
-                                  <p key={item.id}>{item.title}</p>
+                                  <p  key={item.id}>{item.title}</p>
                                 ))
                               : null}
+                              </div>
+                              
                           </div>
                           <div className="item wow fadeInUp">
                             <div className="text">Bathrooms:</div>
@@ -872,7 +887,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                             <fieldset className="name wow fadeInUp has-top-title">
                               <input
                                 type="text"
-                                placeholder="Name"
+                                placeholder="Jhon Doe"
                                 value={name}
                                 onChange={(e) => {
                                   setName(e.target.value); // Update the name state
@@ -899,7 +914,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                             >
                               <input
                                 type="number"
-                                placeholder="Phone"
+                                placeholder="+1 123 456 7890"
                                 value={phone}
                                 onChange={(e) => {
                                   setPhone(e.target.value); // Update the name state
@@ -921,8 +936,9 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                               )}
                             </fieldset>
                           </div>
-                          <div className="cols">
-                            <fieldset className="email wow fadeInUp has-top-title">
+                          <div className="row">
+                            <div className="col-12">
+                            <fieldset className="email wow fadeInUp has-top-title mb-5 ">
                               <input
                                 type="email"
                                 placeholder="Email"
@@ -946,6 +962,8 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                 </span>
                               )}
                             </fieldset>
+                            </div>
+                            <div className="col-12 mt-5 ">
                             <fieldset
                               className="wow fadeInUp"
                               data-wow-delay="0.1s"
@@ -961,6 +979,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
                                 </span>
                               )}
                             </fieldset>
+                            </div>
                           </div>
                           <fieldset className="message wow fadeInUp has-top-title">
                             <textarea
@@ -1576,6 +1595,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
             </div>
             {/* /property-single-wrap */}
           </div>
+}
           {/* /main-content */}
           {/* footer */}
           <Footer />
@@ -1583,6 +1603,7 @@ const DetailPage = ({ property = {}, agent = {} }) => {
         </div>
         {/* /#page */}
       </div>
+      
       <CustomScript
         src="/assets/js/jquery.min.js"
         strategy="lazyOnload" // Load it after the page load

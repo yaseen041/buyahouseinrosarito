@@ -1357,13 +1357,13 @@ const HomeComponent = ({
                                                      <div className="box-dream style-2 type-small wow fadeInUp">
                                                          <div className="image">
                                                              <div className="list-tags">
-                                                                 <Link href="#" className="tags-item for-sell">
+                                                                 <div className="tags-item for-sell">
                                                                      {item.listing_status}
-                                                                 </Link>
+                                                                 </div>
                                                                  {item.is_featured && (
-                                                                     <Link href="#" className="tags-item featured">
+                                                                     <div className="tags-item featured">
                                                                          FEATURED
-                                                                     </Link>
+                                                                     </div>
                                                                  )}
 
                                                              </div>
@@ -1547,13 +1547,13 @@ const HomeComponent = ({
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <Link href="#" className="tags-item for-sell">
+                                                                    <div className="tags-item for-sell">
                                                                         {item.listing_status}
-                                                                    </Link>
+                                                                    </div>
                                                                     {item.is_featured && (
-                                                                        <Link href="#" className="tags-item featured">
+                                                                        <div className="tags-item featured">
                                                                             FEATURED
-                                                                        </Link>
+                                                                        </div>
                                                                     )}
 
                                                                 </div>
@@ -1674,13 +1674,13 @@ const HomeComponent = ({
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <Link href="#" className="tags-item for-sell">
+                                                                    <div className="tags-item for-sell">
                                                                         {item.listing_status}
-                                                                    </Link>
+                                                                    </div>
                                                                     {item.is_featured && (
-                                                                        <Link href="#" className="tags-item featured">
+                                                                        <div className="tags-item featured">
                                                                             FEATURED
-                                                                        </Link>
+                                                                        </div>
                                                                     )}
 
                                                                 </div>
