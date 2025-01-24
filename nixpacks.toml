@@ -1,9 +1,13 @@
 # nixpacks.toml
 
-# Specify the version of Node.js you want to use
-[phases]
-install = "npm install --legacy-peer-deps"
+[phases.install]
+cmds = ["npm install --legacy-peer-deps"]
 
-# Optional: Specify custom build and start commands
-build = "npm run build"
-start = "npm run start"
+[phases.build]
+cmds = ["npm run build"]
+
+[phases.start]
+cmds = ["npm run start"]
+
+[environment]
+NODE_VERSION = "16" # Replace with the Node.js version required for your project
