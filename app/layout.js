@@ -9,6 +9,8 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import CustomScript from "./scripts";
 // import Scripts from "./scripts";
+
+import { UnitProvider } from "./utils/UnitContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -100,7 +102,9 @@ export default function RootLayout({ children }) {
 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}  body counter-scroll mm-wrapper`}>
+        <UnitProvider>
         {children}
+        </UnitProvider>
 
         <Script
           src="/assets/js/jquery.min.js"
