@@ -387,7 +387,7 @@ del,
 table,
 th,
 td {
-  border: 1px solid #343444;
+  border: 1px solid #3434;
 }
 
 table {
@@ -419,7 +419,9 @@ th,
 td {
   padding: 8px 12px;
 }
-
+.table > :not(:last-child) > :last-child > * {
+  border-bottom-color: #3434;
+}
 /* Media */
 embed,
 object,
@@ -10570,7 +10572,7 @@ body::-webkit-scrollbar {
 }
 .property-single-wrap .wrap-gallery-image {
   margin-bottom: 45px;
-  max-height: 620px;
+  min-height: 620px;
 }
 .property-single-wrap .head-title {
   display: -webkit-box;

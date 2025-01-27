@@ -15,6 +15,8 @@ import "swiper/css/autoplay"
 import Link from 'next/link';
 import VideoComponent from '../video';
 import Header3 from '../header3';
+import Calculator from '../calculator/calculator';
+import ComparisonTable from '../comparisonTable';
 
 const HomeComponent = ({
     types = [],
@@ -1164,8 +1166,10 @@ React.useEffect(() => {
                                 </div>
                                 <div className="counter">
                                     <div className='row justify-center' >
-
-                                        <div className='col-12 col-md-8 ' >
+                                        <div className='col-12 col-md-6' >
+                                            <Calculator />
+                                        </div>
+                                        <div className='col-12 col-md-6 ' >
                                             <VideoComponent src="/assets/video.mp4" />
                                             {/* <div className="video">
                                                
@@ -1264,7 +1268,8 @@ React.useEffect(() => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="counter">
+                                <ComparisonTable />
+                                {/* <div className="counter">
                                     <div className='row' >
                                         <div className='col-12 col-md-12' >
                                             <div className="row">
@@ -1357,7 +1362,7 @@ React.useEffect(() => {
 
                                     </div>
 
-                                </div>
+                                </div> */}
                             </div>
                         </section>
                        

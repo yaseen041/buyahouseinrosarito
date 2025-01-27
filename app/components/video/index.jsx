@@ -49,8 +49,8 @@ const VideoComponent = ({ src }) => {
   };
 
   return (
-    <div className="video">
-      <div className="video-wrap">
+    <div className="video h-100">
+      <div className="video-wrap h-100">
         <img src="/assets/images/image-box/video-2.jpg" alt="" />
         {renderVideo()}
       </div>
