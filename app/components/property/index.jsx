@@ -1,17 +1,25 @@
-'use client';
-import React from 'react'
-import Header2 from '../header2';
-import CustomScript from '@/app/scripts';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import Link from 'next/link';
-import CustomPagination from '../pagination';
-import Footer from '../footer';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Loader from '../loader/Loader';
+"use client";
+import React from "react";
+import Header2 from "../header2";
+import CustomScript from "@/app/scripts";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Link from "next/link";
+import CustomPagination from "../pagination";
+import Footer from "../footer";
+import { useRouter, useSearchParams } from "next/navigation";
+import Loader from "../loader/Loader";
+
+import { useUnitContext } from "@/app/utils/UnitContext";
 const PropertyComponent = ({
   properties = [],
   types = [],
@@ -48,8 +56,9 @@ const PropertyComponent = ({
   featuredProperties = [],
   loading,
 }) => {
+  const { isSquareMeter, toggleUnit } = useUnitContext();
 
-  const [openFilter, setOpenFilter] = React.useState(false)
+  const [openFilter, setOpenFilter] = React.useState(false);
   const [openSelect, setOpenSelect] = React.useState({
     status: false,
     type: false,
@@ -62,14 +71,14 @@ const PropertyComponent = ({
     maxBath: false,
     maxBed: false,
     minBath: false,
-    maxBath: false
-  })
-  const toggleFilter = () => setOpenFilter(!openFilter)
+    maxBath: false,
+  });
+  const toggleFilter = () => setOpenFilter(!openFilter);
   const prevButtonRef = React.useRef(null);
   const nextButtonRef = React.useRef(null);
   const dropdownRefs = React.useRef({});
-  const searchParams = useSearchParams()
-  const router = useRouter()
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   const handleOpenSelect = (name) => {
     setOpenSelect((prev) => ({
@@ -83,7 +92,7 @@ const PropertyComponent = ({
       minBath: name === "minBath" ? !prev.minBath : false,
       maxBath: name === "maxBath" ? !prev.maxBath : false,
     }));
-  }
+  };
   React.useEffect(() => {
     const handleClickOutside = (event) => {
       const isClickInside = Object.keys(dropdownRefs.current).some(
@@ -102,7 +111,7 @@ const PropertyComponent = ({
           minBed: false,
           maxBed: false,
           minBath: false,
-          maxBath: false
+          maxBath: false,
         });
       }
     };
@@ -121,15 +130,9 @@ const PropertyComponent = ({
     handleOpenSelect(name);
   };
 
-
-
-
   return (
     <>
-
-
       <div id="wrapper">
-
         {/* #page */}
         <div id="page" className="">
           <Header2 />
@@ -239,16 +242,30 @@ const PropertyComponent = ({
                               </div>
                             </div>
                             <div className="group-form">
-                              <div className="form-style-has-title" ref={assignRef("city")} >
+                              <div
+                                className="form-style-has-title"
+                                ref={assignRef("city")}
+                              >
                                 <div className="title">City</div>
-                                <div className={`nice-select ${openSelect.city ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "city")} >
-                                  <span className="current">{selectedCity.title}</span>
+                                <div
+                                  className={`nice-select ${
+                                    openSelect.city ? "open" : ""
+                                  }`}
+                                  tabIndex={0}
+                                  onClick={(e) => handleSelectClick(e, "city")}
+                                >
+                                  <span className="current">
+                                    {selectedCity.title}
+                                  </span>
                                   <ul className="list style-radio">
                                     <li
                                       data-value="For Sale"
-                                      className={`option ${selectedCity.id === 0 ? "selected" : ""} `}
-
-                                      onClick={() => handleCity(0, " All cities")}
+                                      className={`option ${
+                                        selectedCity.id === 0 ? "selected" : ""
+                                      } `}
+                                      onClick={() =>
+                                        handleCity(0, " All cities")
+                                      }
                                     >
                                       All cities
                                     </li>
@@ -256,158 +273,346 @@ const PropertyComponent = ({
                                       <li
                                         key={city.id}
                                         data-value=""
-                                        className={`option ${selectedCity.id === city.id ? "selected" : ""}`}
-                                        onClick={() => handleCity(city.id, city.name)}
+                                        className={`option ${
+                                          selectedCity.id === city.id
+                                            ? "selected"
+                                            : ""
+                                        }`}
+                                        onClick={() =>
+                                          handleCity(city.id, city.name)
+                                        }
                                       >
                                         {city.name}
                                       </li>
                                     ))}
-
-
                                   </ul>
                                 </div>
                               </div>
                             </div>
                             <div className="divider-1" />
 
-
-
                             <div className="group-form">
-                              <div className="form-style-has-title" ref={assignRef("type")} >
+                              <div
+                                className="form-style-has-title"
+                                ref={assignRef("type")}
+                              >
                                 <div className="title">Type</div>
-                                <div className={`nice-select ${openSelect.type ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "type")}>
-                                  <span className="current">{selectedTypes.title}</span>
+                                <div
+                                  className={`nice-select ${
+                                    openSelect.type ? "open" : ""
+                                  }`}
+                                  tabIndex={0}
+                                  onClick={(e) => handleSelectClick(e, "type")}
+                                >
+                                  <span className="current">
+                                    {selectedTypes.title}
+                                  </span>
                                   <ul className="list style-radio">
-                                    <li ta-value="" className={`option ${selectedTypes.id === 0 ? "selected" : ""}`} onClick={() => handleTypes(0, "All types")} >
+                                    <li
+                                      ta-value=""
+                                      className={`option ${
+                                        selectedTypes.id === 0 ? "selected" : ""
+                                      }`}
+                                      onClick={() =>
+                                        handleTypes(0, "All types")
+                                      }
+                                    >
                                       All types
                                     </li>
                                     {types.map((item) => (
-                                      <li data-value="" className={`option ${selectedTypes.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleTypes(item.id, item.title)} >
+                                      <li
+                                        data-value=""
+                                        className={`option ${
+                                          selectedTypes.id === item.id
+                                            ? "selected"
+                                            : ""
+                                        } `}
+                                        key={item.id}
+                                        onClick={() =>
+                                          handleTypes(item.id, item.title)
+                                        }
+                                      >
                                         {item.title}
                                       </li>
                                     ))}
-
-
                                   </ul>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div className="flex gap10" id="property-list" >
+                          <div className="flex gap10" id="property-list">
                             <div className="group-form">
                               <div className="wg-filter">
-                                <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter} >
+                                <div
+                                  className={`tf-button-filter btn-filter ${
+                                    openFilter ? "active" : ""
+                                  } `}
+                                  onClick={toggleFilter}
+                                >
                                   <i className="flaticon-filter" />
                                   Filter
                                 </div>
                                 <div
-                                  className={`open-filter filter-no-content ${openFilter ? "active" : ""}  `}
+                                  className={`open-filter filter-no-content ${
+                                    openFilter ? "active" : ""
+                                  }  `}
                                   id="a1"
                                 >
-                                  <div  >
-                                    <div className="grid-4-cols mb-20"  >
-                                      <div className='' >
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Status</div>
-                                        <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
-                                          <span className="current">{status.title}</span>
+                                  <div>
+                                    <div className="grid-4-cols mb-20">
+                                      <div className="">
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Status
+                                        </div>
+                                        <div
+                                          className={`nice-select ${
+                                            openSelect.status ? "open" : ""
+                                          }`}
+                                          tabIndex={0}
+                                          onClick={(e) =>
+                                            handleSelectClick(e, "status")
+                                          }
+                                          ref={assignRef("status")}
+                                        >
+                                          <span className="current">
+                                            {status.title}
+                                          </span>
                                           <ul className="list style-radio">
                                             <li
                                               data-value="For Sale"
-                                              className={`option ${status.id === 0 ? "selected" : ""} `}
-
-                                              onClick={() => handleStatus(0, " All Status")}
+                                              className={`option ${
+                                                status.id === 0
+                                                  ? "selected"
+                                                  : ""
+                                              } `}
+                                              onClick={() =>
+                                                handleStatus(0, " All Status")
+                                              }
                                             >
                                               All Status
                                             </li>
-                                            {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
-                                              <li
-                                                data-value="For Sale"
-                                                className={`option ${status.id === item.id ? "selected" : ""} `}
-                                                key={item.id}
-                                                onClick={() => handleStatus(item.id, item.title)}
-                                              >
-                                                {item.title}
-                                              </li>
-                                            )) : null}
-
-
+                                            {Object.keys(filters).length > 0
+                                              ? filters.listing_status.map(
+                                                  (item) => (
+                                                    <li
+                                                      data-value="For Sale"
+                                                      className={`option ${
+                                                        status.id === item.id
+                                                          ? "selected"
+                                                          : ""
+                                                      } `}
+                                                      key={item.id}
+                                                      onClick={() =>
+                                                        handleStatus(
+                                                          item.id,
+                                                          item.title
+                                                        )
+                                                      }
+                                                    >
+                                                      {item.title}
+                                                    </li>
+                                                  )
+                                                )
+                                              : null}
                                           </ul>
-
                                         </div>
                                       </div>
                                       <div>
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Community</div>
-                                        <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
-                                          <span className="current">{selectedCommunity.title}</span>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Community
+                                        </div>
+                                        <div
+                                          className={`nice-select ${
+                                            openSelect.community ? "open" : ""
+                                          }`}
+                                          tabIndex={0}
+                                          onClick={(e) =>
+                                            handleSelectClick(e, "community")
+                                          }
+                                          ref={assignRef("community")}
+                                        >
+                                          <span className="current">
+                                            {selectedCommunity.title}
+                                          </span>
                                           <ul className="list style-radio">
                                             <li
                                               data-value="For Sale"
-                                              className={`option ${selectedCommunity.id === 0 ? "selected" : ""} `}
-
-                                              onClick={() => handleCommunity(0, " All Communities")}
+                                              className={`option ${
+                                                selectedCommunity.id === 0
+                                                  ? "selected"
+                                                  : ""
+                                              } `}
+                                              onClick={() =>
+                                                handleCommunity(
+                                                  0,
+                                                  " All Communities"
+                                                )
+                                              }
                                             >
                                               All Communities
                                             </li>
                                             {community.map((item) => (
                                               <li
                                                 data-value="For Sale"
-                                                className={`option ${selectedCommunity.id === item.id ? "selected" : ""} `}
+                                                className={`option ${
+                                                  selectedCommunity.id ===
+                                                  item.id
+                                                    ? "selected"
+                                                    : ""
+                                                } `}
                                                 key={item.id}
-                                                onClick={() => handleCommunity(item.id, item.title)}
+                                                onClick={() =>
+                                                  handleCommunity(
+                                                    item.id,
+                                                    item.title
+                                                  )
+                                                }
                                               >
                                                 {item.title}
                                               </li>
                                             ))}
-
-
                                           </ul>
-
                                         </div>
                                       </div>
                                       <div>
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bedrooms</div>
-                                        <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
-                                          <span className="current">{selectedBed.title}</span>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Bedrooms
+                                        </div>
+                                        <div
+                                          className={`nice-select ${
+                                            openSelect.minBed ? "open" : ""
+                                          }`}
+                                          tabIndex={0}
+                                          onClick={(e) =>
+                                            handleSelectClick(e, "minBed")
+                                          }
+                                          ref={assignRef("minBed")}
+                                        >
+                                          <span className="current">
+                                            {selectedBed.title}
+                                          </span>
                                           <ul className="list  ">
-
-                                            {Object.keys(filters).length > 0 ? filters.min_bed.map((item) => (
-                                              <li data-value="" className={`option ${selectedBed.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleBed(item.id, item.title)} >
-                                                {item.title}
-                                              </li>
-                                            )) : null}
+                                            {Object.keys(filters).length > 0
+                                              ? filters.min_bed.map((item) => (
+                                                  <li
+                                                    data-value=""
+                                                    className={`option ${
+                                                      selectedBed.id === item.id
+                                                        ? "selected"
+                                                        : ""
+                                                    }`}
+                                                    key={item.id}
+                                                    onClick={() =>
+                                                      handleBed(
+                                                        item.id,
+                                                        item.title
+                                                      )
+                                                    }
+                                                  >
+                                                    {item.title}
+                                                  </li>
+                                                ))
+                                              : null}
                                           </ul>
                                         </div>
                                       </div>
 
                                       <div>
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bathrooms</div>
-                                        <div className={`nice-select ${openSelect.minBath ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBath")} ref={assignRef("minBath")}>
-                                          <span className="current">{selectedBath.title}</span>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Bathrooms
+                                        </div>
+                                        <div
+                                          className={`nice-select ${
+                                            openSelect.minBath ? "open" : ""
+                                          }`}
+                                          tabIndex={0}
+                                          onClick={(e) =>
+                                            handleSelectClick(e, "minBath")
+                                          }
+                                          ref={assignRef("minBath")}
+                                        >
+                                          <span className="current">
+                                            {selectedBath.title}
+                                          </span>
 
                                           <ul className="list">
-
-                                            {Object.keys(filters).length > 0 ? filters.min_bath.map((item) => (
-                                              <li data-value="1 Bath" className={`option ${selectedBath.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleBath(item.id, item.title)} >
-                                                {item.title}
-                                              </li>
-                                            )) : null}
-
+                                            {Object.keys(filters).length > 0
+                                              ? filters.min_bath.map((item) => (
+                                                  <li
+                                                    data-value="1 Bath"
+                                                    className={`option ${
+                                                      selectedBath.id ===
+                                                      item.id
+                                                        ? "selected"
+                                                        : ""
+                                                    } `}
+                                                    key={item.id}
+                                                    onClick={() =>
+                                                      handleBath(
+                                                        item.id,
+                                                        item.title
+                                                      )
+                                                    }
+                                                  >
+                                                    {item.title}
+                                                  </li>
+                                                ))
+                                              : null}
                                           </ul>
                                         </div>
                                       </div>
-
-
                                     </div>
                                     <div className="grid-4-cols">
                                       <fieldset className="name">
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Area</div>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Min. Area
+                                        </div>
                                         <input
                                           type="text"
                                           placeholder="Min. Area"
                                           className=""
                                           name="minArea"
                                           tabIndex={2}
-
                                           aria-required="true"
                                           required=""
                                           value={minArea}
@@ -415,14 +620,23 @@ const PropertyComponent = ({
                                         />
                                       </fieldset>
                                       <fieldset className="name">
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Area</div>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Max. Area
+                                        </div>
                                         <input
                                           type="text"
                                           placeholder="Max. Area"
                                           className=""
                                           name="maxArea"
                                           tabIndex={2}
-
                                           aria-required="true"
                                           required=""
                                           value={maxArea}
@@ -430,14 +644,23 @@ const PropertyComponent = ({
                                         />
                                       </fieldset>
                                       <fieldset className="name">
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Price</div>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Min. Price
+                                        </div>
                                         <input
                                           type="text"
                                           placeholder="Min. Price"
                                           className=""
                                           name="minPrice"
                                           tabIndex={2}
-
                                           aria-required="true"
                                           required=""
                                           value={minPrice}
@@ -445,7 +668,17 @@ const PropertyComponent = ({
                                         />
                                       </fieldset>
                                       <fieldset className="name">
-                                        <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Price</div>
+                                        <div
+                                          className="mx-2"
+                                          style={{
+                                            fontSize: 13,
+                                            fontWeight: 400,
+                                            color: "#969696",
+                                            marginBottom: 10,
+                                          }}
+                                        >
+                                          Max. Price
+                                        </div>
                                         <input
                                           type="text"
                                           placeholder="Max. Price"
@@ -461,39 +694,55 @@ const PropertyComponent = ({
                                     </div>
                                   </div>
                                   <div>
-
                                     <ul className="grid-checked">
-                                      {
-                                        Object.keys(filters).length > 0 ?
-                                          Object.keys(filters.features).map((featureKey) => (
-                                            <li key={featureKey} >
-                                              <div className="title mt-4 mb-4">
-                                                {featureKey
-                                                  .replace(/_/g, ' ')
-                                                  .replace(/\b\w/g, (char) => char.toUpperCase())}
-                                              </div>
-                                              <ul
-
-                                                data-wow-delay="0.1s"
-                                              >
-                                                <div className='row' >
-                                                  {filters.features[featureKey].map((item) => (
-                                                    <div className='col-3 m-4' key={item.id} >
-                                                      <li className="checkbox-item"  >
-                                                        <label>
-                                                          <p>{item.title}</p>
-                                                          <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={features.some((feature) => feature.id === item.id)} />
-                                                          <span className="btn-checkbox" />
-                                                        </label>
-                                                      </li>
-                                                    </div>
-                                                  ))}
+                                      {Object.keys(filters).length > 0
+                                        ? Object.keys(filters.features).map(
+                                            (featureKey) => (
+                                              <li key={featureKey}>
+                                                <div className="title mt-4 mb-4">
+                                                  {featureKey
+                                                    .replace(/_/g, " ")
+                                                    .replace(/\b\w/g, (char) =>
+                                                      char.toUpperCase()
+                                                    )}
                                                 </div>
-
-                                              </ul>
-                                            </li>
-                                          )) : null}
-
+                                                <ul data-wow-delay="0.1s">
+                                                  <div className="row">
+                                                    {filters.features[
+                                                      featureKey
+                                                    ].map((item) => (
+                                                      <div
+                                                        className="col-3 m-4"
+                                                        key={item.id}
+                                                      >
+                                                        <li className="checkbox-item">
+                                                          <label>
+                                                            <p>{item.title}</p>
+                                                            <input
+                                                              type="checkbox"
+                                                              onChange={() =>
+                                                                hanldeFeatures(
+                                                                  item.id,
+                                                                  item.title
+                                                                )
+                                                              }
+                                                              checked={features.some(
+                                                                (feature) =>
+                                                                  feature.id ===
+                                                                  item.id
+                                                              )}
+                                                            />
+                                                            <span className="btn-checkbox" />
+                                                          </label>
+                                                        </li>
+                                                      </div>
+                                                    ))}
+                                                  </div>
+                                                </ul>
+                                              </li>
+                                            )
+                                          )
+                                        : null}
                                     </ul>
                                   </div>
                                 </div>
@@ -516,45 +765,66 @@ const PropertyComponent = ({
             </div>
             {/* /flat-title */}
             {/* property-grid */}
-            <div className="property-list-wrap-v3" >
+            <div className="property-list-wrap-v3">
               <div className="cl-container">
                 <div className="row">
                   <div className="col-lg-8">
                     <div className="top">
                       <div className="sub">
-                        <p className="wow fadeInUp">{properties.length} results</p>
-                        <div className="sort-wrap wow fadeInUp" data-wow-delay="0.1s" ref={assignRef("sorting")} >
+                        <p className="wow fadeInUp">
+                          {properties.length} results
+                        </p>
+                        <div
+                          className="sort-wrap wow fadeInUp"
+                          data-wow-delay="0.1s"
+                          ref={assignRef("sorting")}
+                        >
                           <p>Sort by</p>
-                          <div className={`nice-select default ${openSelect.sorting ? "open" : ""} `} tabIndex={0} onClick={(e) => handleSelectClick(e, "sorting")} >
-                            <span className="current">{selectedSorting.title}</span>
+                          <div
+                            className={`nice-select default ${
+                              openSelect.sorting ? "open" : ""
+                            } `}
+                            tabIndex={0}
+                            onClick={(e) => handleSelectClick(e, "sorting")}
+                          >
+                            <span className="current">
+                              {selectedSorting.title}
+                            </span>
                             <ul className="list">
-
-                              {Object.keys(filters).length > 0 ? filters?.sorting.map((sort) => (
-                                <li data-value="" key={sort.id} className="option" onClick={() => {
-                                  handleSorting(sort.id, sort.title)
-                                  const newParams = new URLSearchParams(searchParams.toString());
-                                  newParams.set("sort", sort.title)
-                                  router.push(`/property?${newParams.toString()}`)
-                                }} >
-                                  {sort.title}
-                                </li>
-                              )) : null}
-
-
+                              {Object.keys(filters).length > 0
+                                ? filters?.sorting.map((sort) => (
+                                    <li
+                                      data-value=""
+                                      key={sort.id}
+                                      className="option"
+                                      onClick={() => {
+                                        handleSorting(sort.id, sort.title);
+                                        const newParams = new URLSearchParams(
+                                          searchParams.toString()
+                                        );
+                                        newParams.set("sort", sort.title);
+                                        router.push(
+                                          `/property?${newParams.toString()}`
+                                        );
+                                      }}
+                                    >
+                                      {sort.title}
+                                    </li>
+                                  ))
+                                : null}
                             </ul>
                           </div>
                         </div>
                       </div>
                     </div>
-                    
-                     {loading ? 
+
+                    {loading ? (
                       <Loader />
-                            : 
-                            properties.length > 0 ?
+                    ) : properties.length > 0 ? (
                       <div>
                         <div className="row list">
                           {properties.map((item) => (
-                            <div className="col-xl-6" key={item.id} >
+                            <div className="col-xl-6" key={item.id}>
                               <div className="box-dream has-border wow fadeInUp">
                                 <div className="image">
                                   <div className="list-tags">
@@ -566,7 +836,6 @@ const PropertyComponent = ({
                                         FEATURED
                                       </div>
                                     )}
-
                                   </div>
                                   <div className="button-heart">
                                     <i className="flaticon-heart-1" />
@@ -579,28 +848,26 @@ const PropertyComponent = ({
                                     pagination={{ clickable: true }}
                                   >
                                     {item.gallery.map((g, i) => (
-                                      <SwiperSlide key={i} >
+                                      <SwiperSlide key={i}>
                                         <div className="swiper-slide">
                                           <div className="">
-                                            <img
-                                              className=""
-                                              src={g}
-                                              alt=""
-                                            />
+                                            <img className="" src={g} alt="" />
                                           </div>
                                         </div>
                                       </SwiperSlide>
                                     ))}
-
                                   </Swiper>
-
                                 </div>
                                 <div className="content">
                                   <div className="head">
                                     <div className="title">
-                                      <Link href={`/property/${item.slug}`}>{item.title}</Link>
+                                      <Link href={`/property/${item.slug}`}>
+                                        {item.title}
+                                      </Link>
                                     </div>
-                                    <div className="price">${item.price.toLocaleString()}</div>
+                                    <div className="price">
+                                      ${item.price.toLocaleString()}
+                                    </div>
                                   </div>
                                   <div className="location">
                                     <div className="icon">
@@ -619,71 +886,80 @@ const PropertyComponent = ({
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-minus-front" />
-                                      <p>{item.size} Sqft</p>
+
+                                      <p>
+                                        {!isSquareMeter
+                                          ? item.size_mt + " Sq M"
+                                          : item.size + " Sq ft"}
+                                      </p>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           ))}
-
-
                         </div>
-
                       </div>
-                    :
-                    <h4 className="text-center pt-5 "> No Property Found</h4>} 
+                    ) : (
+                      <h4 className="text-center pt-5 "> No Property Found</h4>
+                    )}
                     <CustomPagination
                       itemsPerPage={6}
                       onPageChange={handlePageChange}
                       totalData={totalProperties}
                       initialPaage={currentPage}
-
-
-
                     />
                   </div>
                   <div className="col-lg-4">
                     <div className="sidebar">
-
                       <div className="sidebar-item sidebar-categories no-bg">
                         <div className="sidebar-title">Property Types</div>
                         <ul>
                           {types.map((item) => (
-                            <li key={item.id} className={` ${selectedTypes.id === item.id ? "active" : ""} `} onClick={() => {
-                              handleTypes(item.id, item.title)
-                              const newParams = new URLSearchParams(searchParams.toString());
-                              newParams.set("type", item.title)
-                              router.push(`/property?${newParams.toString()}`)
-                            }
-
-
-                            }  >
+                            <li
+                              key={item.id}
+                              className={` ${
+                                selectedTypes.id === item.id ? "active" : ""
+                              } `}
+                              onClick={() => {
+                                handleTypes(item.id, item.title);
+                                const newParams = new URLSearchParams(
+                                  searchParams.toString()
+                                );
+                                newParams.set("type", item.title);
+                                router.push(
+                                  `/property?${newParams.toString()}`
+                                );
+                              }}
+                            >
                               <Link href="#">{item.title}</Link>
                             </li>
                           ))}
-
-
                         </ul>
                       </div>
                       <div className="sidebar-item sidebar-categories no-bg">
                         <div className="sidebar-title">Communities</div>
                         <ul>
                           {community.map((item) => (
-                            <li key={item.id} className={` ${selectedCommunity.id === item.id ? "active" : ""} `} onClick={() => {
-                              handleCommunity(item.id, item.title)
-                              const newParams = new URLSearchParams(searchParams.toString());
-                              newParams.set("community", item.title)
-                              router.push(`/property?${newParams.toString()}`)
-                            }
-
-
-                            }  >
+                            <li
+                              key={item.id}
+                              className={` ${
+                                selectedCommunity.id === item.id ? "active" : ""
+                              } `}
+                              onClick={() => {
+                                handleCommunity(item.id, item.title);
+                                const newParams = new URLSearchParams(
+                                  searchParams.toString()
+                                );
+                                newParams.set("community", item.title);
+                                router.push(
+                                  `/property?${newParams.toString()}`
+                                );
+                              }}
+                            >
                               <Link href="#">{item.title}</Link>
                             </li>
                           ))}
-
-
                         </ul>
                       </div>
                       {/* <div className="sidebar-item sidebar-exclusive no-bg relative">
@@ -775,7 +1051,7 @@ const PropertyComponent = ({
                         <div className="sidebar-title">Agents</div>
                         <ul>
                           {agents.map((item) => (
-                            <li key={item.id} >
+                            <li key={item.id}>
                               <div className="image">
                                 <img src={item.image} alt="" />
                               </div>
@@ -788,9 +1064,6 @@ const PropertyComponent = ({
                               </div>
                             </li>
                           ))}
-
-
-
                         </ul>
                       </div>
                     </div>
@@ -802,9 +1075,9 @@ const PropertyComponent = ({
           </div>
           {/* /main-content */}
           <Footer />
-        </div >
+        </div>
         {/* /#page */}
-      </div >
+      </div>
       <CustomScript
         src="/assets/js/jquery.min.js"
         strategy="lazyOnload" // Load it after the page load
@@ -817,15 +1090,18 @@ const PropertyComponent = ({
         onError={(e) => console.error("Failed to load jQuery:", e)}
       />
 
-
-
       {/* <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
-      <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
-      <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
+      <CustomScript
+        src="/assets/js/jquery.fancybox.js"
+        strategy="afterInteractive"
+      />
+      <CustomScript
+        src="/assets/js/magnific-popup.min.js"
+        strategy="afterInteractive"
+      />
       <CustomScript src="/assets/js/main.js" />
     </>
+  );
+};
 
-  )
-}
-
-export default PropertyComponent
+export default PropertyComponent;

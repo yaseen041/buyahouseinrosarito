@@ -9,7 +9,10 @@ import MultiSelect from "../MultiSelect/MultiSelect";
 import { url } from "@/app/utils/urls";
 import ScheduleForm from "../ScheduleForm/ScheduleForm";
 import Loader from "../loader/Loader";
-const DetailPage = ({ property = {}, agent = {},loading }) => {
+import { useUnitContext } from "@/app/utils/UnitContext";
+
+const DetailPage = ({ property = {}, agent = {}, loading }) => {
+  const { isSquareMeter, toggleUnit } = useUnitContext();
   const [properties, setProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState([]);
   const [name, setName] = useState("");
@@ -21,7 +24,6 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
   const [errorType, setErrorType] = useState("");
   const [errors, setErrors] = useState({});
   const [spin, setSpin] = useState(false);
- 
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -127,91 +129,90 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
   };
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id); 
+    const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" }); 
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <div>
-      
       <div id="wrapper">
         <div id="page" className="">
           <Header3 />
-          {loading ? <Loader />:
-          <div className="main-content p-0">
-            <div
-              className="property-single-wrap sticky-container"
-              data-sticky-container=""
-            >
-              <div className="cl-container">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="flex items-center justify-between gap30 flex-wrap pt-30 pb-30">
-                      <ul className="breadcrumbs style-1 justify-start">
-                        <li>
-                          <Link href="/">Home</Link>
-                        </li>
-                        <li>/</li>
-                        <li>Property List</li>
-                        <li>/</li>
-                        <li>{property?.title}</li>
-                      </ul>
-                      <div className="list-icons-page">
-                        <div className="item">
-                          <div className="icon">
-                            <i className="flaticon-heart" />
+          {loading ? (
+            <Loader />
+          ) : (
+            <div className="main-content p-0">
+              <div
+                className="property-single-wrap sticky-container"
+                data-sticky-container=""
+              >
+                <div className="cl-container">
+                  <div className="row">
+                    <div className="col-12">
+                      <div className="flex items-center justify-between gap30 flex-wrap pt-30 pb-30">
+                        <ul className="breadcrumbs style-1 justify-start">
+                          <li>
+                            <Link href="/">Home</Link>
+                          </li>
+                          <li>/</li>
+                          <li>Property List</li>
+                          <li>/</li>
+                          <li>{property?.title}</li>
+                        </ul>
+                        <div className="list-icons-page">
+                          <div className="item">
+                            <div className="icon">
+                              <i className="flaticon-heart" />
+                            </div>
+                            <p>Save</p>
                           </div>
-                          <p>Save</p>
-                        </div>
-                        {/* <div className="item">
+                          {/* <div className="item">
                           <div className="icon">
                             <i className="flaticon-before-after" />
                           </div>
                           <p>Compare</p>
                         </div> */}
-                        <div className="item">
-                          <div className="icon">
-                            <i className="flaticon-outbox" />
+                          <div className="item">
+                            <div className="icon">
+                              <i className="flaticon-outbox" />
+                            </div>
+                            <p>Share</p>
                           </div>
-                          <p>Share</p>
-                        </div>
-                        {/* <div className="item">
+                          {/* <div className="item">
                           <div className="icon">
                             <i className="flaticon-tools-and-utensils" />
                           </div>
                           <p>Print</p>
                         </div> */}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-12">
-                    <div className="wrap-gallery-image">
-                      <div className="list-tags type-1">
-                        <div className="tags-item for-sell">
-                          {property.listing_status}
-                        </div>
-                        {property.is_featured && (
-                          <div className="tags-item featured">
-                            FEATURED
+                    <div className="col-12">
+                      <div className="wrap-gallery-image">
+                        <div className="list-tags type-1">
+                          <div className="tags-item for-sell">
+                            {property.listing_status}
                           </div>
-                        )}
-                      </div>
-                      {Object.keys(property).length > 0
-                        ? property?.gallery.map((item, index) => (
-                            <a
-                              href={`${item}`}
-                              className={`item-${index + 1}`}
-                              data-fancybox="gallery"
-                              key={index}
-                            >
-                              <img src={item} alt="" />
-                            </a>
-                          ))
-                        : null}
+                          {property.is_featured && (
+                            <div className="tags-item featured">FEATURED</div>
+                          )}
+                        </div>
+                        {Object.keys(property).length > 0
+                          ? property?.gallery.map((item, index) => (
+                              <a
+                                href={`${item}`}
+                                className={`item-${index + 1}`}
+                                data-fancybox="gallery"
+                                key={index}
+                              >
+                                <img src={item} alt="" />
+                              </a>
+                            ))
+                          : null}
 
-                      {/* <a
+                        {/* <a
                         href="/assets/images/house/property-detail-2.jpg"
                         className="item-2"
                         data-fancybox="gallery"
@@ -247,183 +248,199 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                         <i className="flaticon-gallery" />
                         <p>42 Photos</p>
                       </a> */}
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-xl-8">
-                    <div className="content-wrap">
-                      <div className="head-title wow fadeInUp">
-                        <div>
-                          <h3>{property?.title}</h3>
-                          <div className="location">
+                    <div className="col-xl-8">
+                      <div className="content-wrap">
+                        <div className="head-title wow fadeInUp">
+                          <div>
+                            <h3>{property?.title}</h3>
+                            <div className="location">
+                              <div className="icon">
+                                <i className="flaticon-location" />
+                              </div>
+                              <div className="text-content">
+                                {property.address}
+                              </div>
+                            </div>
+                          </div>
+                          <div>
+                            {property.avg_ft > 0 && (
+                              <div className="square">
+                                ${property.avg_ft.toLocaleString()} / sq ft
+                              </div>
+                            )}
+                            <div className="price">
+                              $
+                              {Object.keys(property).length > 0
+                                ? property?.price.toLocaleString()
+                                : null}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="box-items">
+                          <div className="item wow fadeInUp">
                             <div className="icon">
-                              <i className="flaticon-location" />
+                              <i className="flaticon-city" />
+                            </div>
+                            <div className="text-content">Multi Family</div>
+                          </div>
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
+                            <div className="icon">
+                              <i className="flaticon-hammer" />
                             </div>
                             <div className="text-content">
-                              {property.address}
+                              Built in {property?.year_built}
+                            </div>
+                          </div>
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.2s"
+                          >
+                            <div className="icon">
+                              <i className="flaticon-minus-front" />
+                            </div>
+                            <div className="text-content">
+                              {/* {property?.size} Sq Ft */}
+                              {!isSquareMeter
+                                ? property.size_mt + " Sq M"
+                                : property.size + " Sq ft"}
+                            </div>
+                          </div>
+                          <div className="item wow fadeInUp">
+                            <div className="icon">
+                              <i className="flaticon-hotel" />
+                            </div>
+                            <div className="text-content">
+                              {property?.bedrooms} Bedrooms
+                            </div>
+                          </div>
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.1s"
+                          >
+                            <div className="icon">
+                              <i className="flaticon-bath-tub" />
+                            </div>
+                            <div className="text-content">
+                              {property?.bathrooms} Bathrooms
+                            </div>
+                          </div>
+                          <div
+                            className="item wow fadeInUp"
+                            data-wow-delay="0.2s"
+                          >
+                            <div className="icon">
+                              <i className="flaticon-garage" />
+                            </div>
+                            <div className="text-content">
+                              {property?.parking_spaces} Garage
                             </div>
                           </div>
                         </div>
-                        <div>
-                          {property.avg_ft > 0 && (
-                            <div className="square">
-                              ${property.avg_ft.toLocaleString()} /sq ft
-                            </div>
-                          )}
-                          <div className="price">
-                            $
-                            {Object.keys(property).length > 0
-                              ? property?.price.toLocaleString()
-                              : null}
+                        <div className="desc">
+                          <h4 className="wow fadeInUp">Description</h4>
+                          <div className="wow fadeInUp">
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: property.description,
+                              }}
+                            />
                           </div>
                         </div>
-                      </div>
-                      <div className="box-items">
-                        <div className="item wow fadeInUp">
-                          <div className="icon">
-                            <i className="flaticon-city" />
-                          </div>
-                          <div className="text-content">Multi Family</div>
-                        </div>
-                        <div
-                          className="item wow fadeInUp"
-                          data-wow-delay="0.1s"
-                        >
-                          <div className="icon">
-                            <i className="flaticon-hammer" />
-                          </div>
-                          <div className="text-content">
-                            Built in {property?.year_built}
-                          </div>
-                        </div>
-                        <div
-                          className="item wow fadeInUp"
-                          data-wow-delay="0.2s"
-                        >
-                          <div className="icon">
-                            <i className="flaticon-minus-front" />
-                          </div>
-                          <div className="text-content">
-                            {property?.size} Sq Ft
-                          </div>
-                        </div>
-                        <div className="item wow fadeInUp">
-                          <div className="icon">
-                            <i className="flaticon-hotel" />
-                          </div>
-                          <div className="text-content">
-                            {property?.bedrooms} Bedrooms
-                          </div>
-                        </div>
-                        <div
-                          className="item wow fadeInUp"
-                          data-wow-delay="0.1s"
-                        >
-                          <div className="icon">
-                            <i className="flaticon-bath-tub" />
-                          </div>
-                          <div className="text-content">
-                            {property?.bathrooms} Bathrooms
-                          </div>
-                        </div>
-                        <div
-                          className="item wow fadeInUp"
-                          data-wow-delay="0.2s"
-                        >
-                          <div className="icon">
-                            <i className="flaticon-garage" />
-                          </div>
-                          <div className="text-content">
-                            {property?.parking_spaces} Garage
-                          </div>
-                        </div>
-                      </div>
-                      <div className="desc">
-                        <h4 className="wow fadeInUp">Description</h4>
-                        <div className="wow fadeInUp">
-                          <p
-                            dangerouslySetInnerHTML={{
-                              __html: property.description,
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="address">
-                        <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
-                          <h4 className="mb-0">Address</h4>
-                          {/* <Link href="#" className="tf-button-green">
+                        <div className="address">
+                          <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
+                            <h4 className="mb-0">Address</h4>
+                            {/* <Link href="#" className="tf-button-green">
                             <i className="flaticon-location" />
                             Open On Google Maps
                           </Link> */}
-                        </div>
-                        <div className="list-item">
-                          <div className="item wow fadeInUp">
-                            
+                          </div>
+                          <div className="list-item">
+                            <div className="item wow fadeInUp">
                               <div className="col-5 d-flex align-items-center">
-                            <div className="text">Address</div>
+                                <div className="text">Address</div>
+                              </div>
+                              <div
+                                className="col-7  p-0 "
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "right",
+                                  textWrap: "wrap",
+                                  flexWrap: "wrap",
+                                }}
+                              >
+                                <p
+                                  style={{ textWrap: "wrap" }}
+                                  className="text-end"
+                                >
+                                  {property?.address}
+                                </p>
+                              </div>
                             </div>
-                            <div className="col-7  p-0 " style={{display: 'flex', justifyContent: "right",textWrap:"wrap",flexWrap:"wrap"}}>
-                            <p style={{textWrap:"wrap"}} className="text-end" >{property?.address}</p>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">Zip/Postal Code</div>
+                              <p>90034</p>
                             </div>
-                            
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">Zip/Postal Code</div>
-                            <p>90034</p>
-                          </div>
-                          <div className="item wow fadeInUp">
-                            <div className="text">City</div>
-                            <p>{property?.city}</p>
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">Area</div>
-                            <p>Brookside</p>
-                          </div>
-                          <div className="item wow fadeInUp">
-                            <div className="text">State</div>
-                            <p>{property?.state}</p>
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">Country</div>
-                            <p>{property?.country}</p>
+                            <div className="item wow fadeInUp">
+                              <div className="text">City</div>
+                              <p>{property?.city}</p>
+                            </div>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">Area</div>
+                              <p>Brookside</p>
+                            </div>
+                            <div className="item wow fadeInUp">
+                              <div className="text">State</div>
+                              <p>{property?.state}</p>
+                            </div>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">Country</div>
+                              <p>{property?.country}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {Object.keys(property).length > 0 &&
-                      property.files.length > 0 ? (
-                        <div className="attachments">
-                          <h4 className="wow fadeInUp">Property Attachments</h4>
-                          <div className="wrap-file-item wow fadeInUp">
-                            {property.files.map((item, index) => (
-                              <Link
-                                href={`${item.url}`}
-                                target="_blank"
-                                className="file-item"
-                                key={index}
-                              >
-                                <div className="icon">
-                                  <img
-                                    src="/assets/images/image-box/file-pdf.svg"
-                                    alt=""
-                                  />
-                                </div>
-                                <div>
-                                  <div className="name">
-                                    Resource file {index + 1}
+                        {Object.keys(property).length > 0 &&
+                        property.files.length > 0 ? (
+                          <div className="attachments">
+                            <h4 className="wow fadeInUp">
+                              Property Attachments
+                            </h4>
+                            <div className="wrap-file-item wow fadeInUp">
+                              {property.files.map((item, index) => (
+                                <Link
+                                  href={`${item.url}`}
+                                  target="_blank"
+                                  className="file-item"
+                                  key={index}
+                                >
+                                  <div className="icon">
+                                    <img
+                                      src="/assets/images/image-box/file-pdf.svg"
+                                      alt=""
+                                    />
                                   </div>
-                                </div>
-                              </Link>
-                            ))}
+                                  <div>
+                                    <div className="name">
+                                      Resource file {index + 1}
+                                    </div>
+                                  </div>
+                                </Link>
+                              ))}
 
-                            {/* <Link href="#" className="file-item">
+                              {/* <Link href="#" className="file-item">
                             <div className="icon">
                               <img src="/assets/images/image-box/file-pdf.svg" alt="" />
                             </div>
@@ -432,55 +449,64 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                               <div className="size">140.56 kb</div>
                             </div>
                           </Link> */}
+                            </div>
                           </div>
-                        </div>
-                      ) : null}
-                      <div className="details">
-                        <h4 className="wow fadeInUp">Details</h4>
-                        <div className="list-item">
-                          <div className="item wow fadeInUp">
-                            <div className="text">Property ID:</div>
-                            <p>{property?.code}</p>
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">Garage:</div>
-                            <p>{property?.parking_spaces}</p>
-                          </div>
-                          <div className="item wow fadeInUp">
-                            <div className="text">Price:</div>
-                            <p>
-                              $
-                              {Object.keys(property).length > 0
-                                ? property?.price.toLocaleString()
-                                : null}
-                            </p>
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">GLA:</div>
-                            <p>{property.GLA} SqFt</p>
-                          </div>
-                          <div className="item wow fadeInUp">
-                            <div className="text">Property Size:</div>
-                            <p>{property?.size} Sq Ft</p>
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">Year Built:</div>
-                            <p>{property?.year_built}</p>
-                          </div>
-                          <div className="item wow fadeInUp">
-                            <div className="text">Bedrooms:</div>
-                            <p>{property?.bedrooms}</p>
-                          </div>
-                          {/* <div
+                        ) : null}
+                        <div className="details">
+                          <h4 className="wow fadeInUp">Details</h4>
+                          <div className="list-item">
+                            <div className="item wow fadeInUp">
+                              <div className="text">Property ID:</div>
+                              <p>{property?.code}</p>
+                            </div>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">Garage:</div>
+                              <p>{property?.parking_spaces}</p>
+                            </div>
+                            <div className="item wow fadeInUp">
+                              <div className="text">Price:</div>
+                              <p>
+                                $
+                                {Object.keys(property).length > 0
+                                  ? property?.price.toLocaleString()
+                                  : null}
+                              </p>
+                            </div>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">GLA:</div>
+
+                              <p>
+                                {!isSquareMeter
+                                  ? property.GLA_mt + " Sq M"
+                                  : property.GLA + " Sq ft"}
+                              </p>
+                            </div>
+                            <div className="item wow fadeInUp">
+                              <div className="text">Property Size:</div>
+                              <p>
+                                {!isSquareMeter
+                                  ? property.size_mt + " Sq M"
+                                  : property.size + " Sq ft"}
+                              </p>
+                            </div>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">Year Built:</div>
+                              <p>{property?.year_built}</p>
+                            </div>
+                            <div className="item wow fadeInUp">
+                              <div className="text">Bedrooms:</div>
+                              <p>{property?.bedrooms}</p>
+                            </div>
+                            {/* <div
                             className="item wow fadeInUp"
                             data-wow-delay="0.1s"
                           >
@@ -497,20 +523,20 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                               </div>
                               
                           </div> */}
-                          <div className="item wow fadeInUp">
-                            <div className="text">Bathrooms:</div>
-                            <p>{property?.bathrooms}</p>
-                          </div>
-                          <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="text">Property Status:</div>
-                            <p>{property?.listing_status}</p>
+                            <div className="item wow fadeInUp">
+                              <div className="text">Bathrooms:</div>
+                              <p>{property?.bathrooms}</p>
+                            </div>
+                            <div
+                              className="item wow fadeInUp"
+                              data-wow-delay="0.1s"
+                            >
+                              <div className="text">Property Status:</div>
+                              <p>{property?.listing_status}</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      {/* <div className="energy">
+                        {/* <div className="energy">
                         <h4 className="wow fadeInUp">Energy Class</h4>
                         <ul>
                           <li className="wow fadeInUp">
@@ -546,58 +572,58 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                         </ul>
                         <img src="/assets/images/image-box/energy.png" alt="" />
                       </div> */}
-                      <div className="features">
-                        <h4 className="wow fadeInUp">Facts &amp; Features</h4>
-                        <p className="wow fadeInUp">
-                          Lorem ipsum dolor sit amet, homero debitis temporibus
-                          in mei, at sit voluptua antiopam hendrerit. Lorem
-                          epicuri eu per. Mediocrem torquatos deseruisse te eum
-                          commodo.
-                        </p>
-                        <ul>
-                          {Object.keys(property).length > 0
-                            ? Object.keys(property.features).map(
-                                (featureKey) => (
-                                  <li key={featureKey}>
-                                    <h5 className="wow fadeInUp">
-                                      {featureKey
-                                        .replace(/_/g, " ")
-                                        .replace(/\b\w/g, (char) =>
-                                          char.toUpperCase()
-                                        )}
-                                    </h5>
-                                    <div
-                                      className="wrap-check-ellipse wow fadeInUp"
-                                      data-wow-delay="0.1s"
-                                    >
-                                      {property.features[featureKey].map(
-                                        (item) => (
-                                          <div
-                                            className="check-ellipse-item"
-                                            key={item.id}
-                                          >
-                                            <div className="icon">
-                                              <i className="flaticon-check" />
+                        <div className="features">
+                          <h4 className="wow fadeInUp">Facts &amp; Features</h4>
+                          <p className="wow fadeInUp">
+                            Lorem ipsum dolor sit amet, homero debitis
+                            temporibus in mei, at sit voluptua antiopam
+                            hendrerit. Lorem epicuri eu per. Mediocrem torquatos
+                            deseruisse te eum commodo.
+                          </p>
+                          <ul>
+                            {Object.keys(property).length > 0
+                              ? Object.keys(property.features).map(
+                                  (featureKey) => (
+                                    <li key={featureKey}>
+                                      <h5 className="wow fadeInUp">
+                                        {featureKey
+                                          .replace(/_/g, " ")
+                                          .replace(/\b\w/g, (char) =>
+                                            char.toUpperCase()
+                                          )}
+                                      </h5>
+                                      <div
+                                        className="wrap-check-ellipse wow fadeInUp"
+                                        data-wow-delay="0.1s"
+                                      >
+                                        {property.features[featureKey].map(
+                                          (item) => (
+                                            <div
+                                              className="check-ellipse-item"
+                                              key={item.id}
+                                            >
+                                              <div className="icon">
+                                                <i className="flaticon-check" />
+                                              </div>
+                                              <p>{item.title}</p>
                                             </div>
-                                            <p>{item.title}</p>
-                                          </div>
-                                        )
-                                      )}
-                                    </div>
-                                  </li>
+                                          )
+                                        )}
+                                      </div>
+                                    </li>
+                                  )
                                 )
-                              )
-                            : null}
-                        </ul>
-                      </div>
+                              : null}
+                          </ul>
+                        </div>
 
-                      {/* Tour For */}
-                      <div className="schedule" id="schedule" >
-                        <h4 className="wow fadeInUp">Schedule a tour</h4>
-                        <ScheduleForm propertyId={property.id} />
-                      </div>
+                        {/* Tour For */}
+                        <div className="schedule" id="schedule">
+                          <h4 className="wow fadeInUp">Schedule a tour</h4>
+                          <ScheduleForm propertyId={property.id} />
+                        </div>
 
-                      {/* <div className="plans">
+                        {/* <div className="plans">
                         <h4 className="wow fadeInUp">Floor Plans</h4>
                         <div className="widget-tabs style-3">
                           <ul className="widget-menu-tab wow fadeInUp">
@@ -717,7 +743,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </div>
                         </div>
                       </div> */}
-                      {/* <div className="calculator">
+                        {/* <div className="calculator">
                         <h4 className="wow fadeInUp">Mortgage Calculator</h4>
                         <div className="pie-chart">
                           <div id="morris-donut-1" />
@@ -858,199 +884,204 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </fieldset>
                         </form>
                       </div> */}
-                      <div className="contact-info" id="contact">
-                        <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
-                          <h4 className="mb-0">Contact Information</h4>
-                          {/* <Link href="#" className="tf-button-green">
+                        <div className="contact-info" id="contact">
+                          <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
+                            <h4 className="mb-0">Contact Information</h4>
+                            {/* <Link href="#" className="tf-button-green">
                             View Listing
                           </Link> */}
-                        </div>
-                        <div className="person wow fadeInUp">
-                          <div className="image">
-                            <img src={agent.image} alt="" />
                           </div>
-                          <div className="content">
-                            <div className="name">
-                              <Link href="#">{agent.name}</Link>
+                          <div className="person wow fadeInUp">
+                            <div className="image">
+                              <img src={agent.image} alt="" />
                             </div>
-                            <p>{agent.designation}</p>
-                            <p>{agent.phone}</p>
+                            <div className="content">
+                              <div className="name">
+                                <Link href="#">{agent.name}</Link>
+                              </div>
+                              <p>{agent.designation}</p>
+                              <p>{agent.phone}</p>
+                            </div>
                           </div>
-                        </div>
 
-                        {/* Contact Enquiry Form */}
-                        <div className="title wow fadeInUp">
-                          Enquire About This Property
-                        </div>
-                        <form className="form-comment" onSubmit={handleSubmit}>
-                          <div className="cols">
-                            <fieldset className="name wow fadeInUp has-top-title">
-                              <input
-                                type="text"
-                                placeholder="Jhon Doe"
-                                value={name}
-                                onChange={(e) => {
-                                  setName(e.target.value); // Update the name state
-                                  setErrors((prevErrors) => ({
-                                    ...prevErrors,
-                                    name: "", // Reset the name error when the user starts typing
-                                  }));
-                                }}
-                                name="text"
-                                tabIndex={2}
-                                aria-required="true"
-                                required=""
-                              />
-                              <label htmlFor="">Name</label>
-                              {errors?.name && (
-                                <span className="error text-danger">
-                                  {errors?.name}
-                                </span>
-                              )}
-                            </fieldset>
-                            <fieldset
-                              className="phone wow fadeInUp has-top-title"
-                              data-wow-delay="0.1s"
-                            >
-                              <input
-                                type="number"
-                                placeholder="+1 123 456 7890"
-                                value={phone}
-                                onChange={(e) => {
-                                  setPhone(e.target.value); // Update the name state
-                                  setErrors((prevErrors) => ({
-                                    ...prevErrors,
-                                    phone: "", // Reset the name error when the user starts typing
-                                  }));
-                                }}
-                                name="phone"
-                                tabIndex={2}
-                                aria-required="true"
-                                required=""
-                              />
-                              <label htmlFor="">Phone</label>
-                              {errors?.phone && (
-                                <span className="error text-danger">
-                                  {errors?.phone}
-                                </span>
-                              )}
-                            </fieldset>
+                          {/* Contact Enquiry Form */}
+                          <div className="title wow fadeInUp">
+                            Enquire About This Property
                           </div>
-                          <div className="row">
-                            <div className="col-12">
-                            <fieldset className="email wow fadeInUp has-top-title mb-5 ">
-                              <input
-                                type="email"
-                                placeholder="Email"
-                                value={email}
-                                onChange={(e) => {
-                                  setEmail(e.target.value); // Update the name state
-                                  setErrors((prevErrors) => ({
-                                    ...prevErrors,
-                                    email: "", // Reset the name error when the user starts typing
-                                  }));
-                                }}
-                                name="email"
-                                tabIndex={2}
-                                aria-required="true"
-                                required=""
-                              />
-                              <label htmlFor="">Email</label>
-                              {errors?.email && (
-                                <span className="error text-danger">
-                                  {errors?.email}
-                                </span>
-                              )}
-                            </fieldset>
-                            </div>
-                            <div className="col-12 mt-5 ">
-                            <fieldset
-                              className=" wow fadeInUp  "
-                              data-wow-delay="0.1s"
-                              tabIndex={0}
-                            >
-                              <MultiSelect
-                                options={properties}
-                                onChange={handleSelectionChange}
-                              />
-                              
-                              {errors?.property_id && (
-                                <span className="error text-danger">
-                                  {errors?.property_id}
-                                </span>
-                              )}
-                            </fieldset>
-                            </div>
-                          </div>
-                          <fieldset className="message wow fadeInUp has-top-title">
-                            <textarea
-                              name="message"
-                              rows={4}
-                              placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                              className=""
-                              tabIndex={2}
-                              aria-required="true"
-                              required=""
-                              value={message}
-                              onChange={(e) => setMessage(e.target.value)}
-                            />
-                            <label htmlFor="">Message</label>
-                          </fieldset>
-                          <div className="checkbox-item wow fadeInUp">
-                            <label>
-                              <p>
-                                By submitting this form I agree to
-                                <span>Terms of Use</span>
-                              </p>
-                              <input
-                                type="checkbox"
-                                checked={consent}
-                                onChange={(e) => setConsent(e.target.checked)}
-                              />
-                              <span className="btn-checkbox" />
-                            </label>
-                          </div>
-                          {error && (
-                            <div
-                              className={`checkbox-item wow fadeInUp ${
-                                error ? "" : "d-none"
-                              }`}
-                            >
-                              <div
-                                className={`alert alert-${errorType} fade show`}
-                                role="alert"
+                          <form
+                            className="form-comment"
+                            onSubmit={handleSubmit}
+                          >
+                            <div className="cols">
+                              <fieldset className="name wow fadeInUp has-top-title">
+                                <input
+                                  type="text"
+                                  placeholder="Jhon Doe"
+                                  value={name}
+                                  onChange={(e) => {
+                                    setName(e.target.value); // Update the name state
+                                    setErrors((prevErrors) => ({
+                                      ...prevErrors,
+                                      name: "", // Reset the name error when the user starts typing
+                                    }));
+                                  }}
+                                  name="text"
+                                  tabIndex={2}
+                                  aria-required="true"
+                                  required=""
+                                />
+                                <label htmlFor="">Name</label>
+                                {errors?.name && (
+                                  <span className="error text-danger">
+                                    {errors?.name}
+                                  </span>
+                                )}
+                              </fieldset>
+                              <fieldset
+                                className="phone wow fadeInUp has-top-title"
+                                data-wow-delay="0.1s"
                               >
-                                <strong style={{ textTransform: "capitalize" }}>
-                                  {errorType}
-                                </strong>{" "}
-                                {error}
+                                <input
+                                  type="number"
+                                  placeholder="+1 123 456 7890"
+                                  value={phone}
+                                  onChange={(e) => {
+                                    setPhone(e.target.value); // Update the name state
+                                    setErrors((prevErrors) => ({
+                                      ...prevErrors,
+                                      phone: "", // Reset the name error when the user starts typing
+                                    }));
+                                  }}
+                                  name="phone"
+                                  tabIndex={2}
+                                  aria-required="true"
+                                  required=""
+                                />
+                                <label htmlFor="">Phone</label>
+                                {errors?.phone && (
+                                  <span className="error text-danger">
+                                    {errors?.phone}
+                                  </span>
+                                )}
+                              </fieldset>
+                            </div>
+                            <div className="row">
+                              <div className="col-12">
+                                <fieldset className="email wow fadeInUp has-top-title mb-5 ">
+                                  <input
+                                    type="email"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => {
+                                      setEmail(e.target.value); // Update the name state
+                                      setErrors((prevErrors) => ({
+                                        ...prevErrors,
+                                        email: "", // Reset the name error when the user starts typing
+                                      }));
+                                    }}
+                                    name="email"
+                                    tabIndex={2}
+                                    aria-required="true"
+                                    required=""
+                                  />
+                                  <label htmlFor="">Email</label>
+                                  {errors?.email && (
+                                    <span className="error text-danger">
+                                      {errors?.email}
+                                    </span>
+                                  )}
+                                </fieldset>
+                              </div>
+                              <div className="col-12 mt-5 ">
+                                <fieldset
+                                  className=" wow fadeInUp  "
+                                  data-wow-delay="0.1s"
+                                  tabIndex={0}
+                                >
+                                  <MultiSelect
+                                    options={properties}
+                                    onChange={handleSelectionChange}
+                                  />
+
+                                  {errors?.property_id && (
+                                    <span className="error text-danger">
+                                      {errors?.property_id}
+                                    </span>
+                                  )}
+                                </fieldset>
                               </div>
                             </div>
-                          )}
-                          <div className="button-submit wow fadeInUp">
-                            <button
-                              className={`tf-button-primary w-full ${
-                                !consent ? "disabled" : ""
-                              }`}
-                              disabled={!consent || spin}
-                              type="submit"
-                            >
-                              {spin ? (
-                                <>
-                                  <span className="spinner"></span> Request
-                                  Submitting...
-                                </>
-                              ) : (
-                                <>
-                                  Request Information
-                                  <i className="icon-arrow-right-add" />
-                                </>
-                              )}
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                      {/* <div className="video">
+                            <fieldset className="message wow fadeInUp has-top-title">
+                              <textarea
+                                name="message"
+                                rows={4}
+                                placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                className=""
+                                tabIndex={2}
+                                aria-required="true"
+                                required=""
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                              />
+                              <label htmlFor="">Message</label>
+                            </fieldset>
+                            <div className="checkbox-item wow fadeInUp">
+                              <label>
+                                <p>
+                                  By submitting this form I agree to
+                                  <span>Terms of Use</span>
+                                </p>
+                                <input
+                                  type="checkbox"
+                                  checked={consent}
+                                  onChange={(e) => setConsent(e.target.checked)}
+                                />
+                                <span className="btn-checkbox" />
+                              </label>
+                            </div>
+                            {error && (
+                              <div
+                                className={`checkbox-item wow fadeInUp ${
+                                  error ? "" : "d-none"
+                                }`}
+                              >
+                                <div
+                                  className={`alert alert-${errorType} fade show`}
+                                  role="alert"
+                                >
+                                  <strong
+                                    style={{ textTransform: "capitalize" }}
+                                  >
+                                    {errorType}
+                                  </strong>{" "}
+                                  {error}
+                                </div>
+                              </div>
+                            )}
+                            <div className="button-submit wow fadeInUp">
+                              <button
+                                className={`tf-button-primary w-full ${
+                                  !consent ? "disabled" : ""
+                                }`}
+                                disabled={!consent || spin}
+                                type="submit"
+                              >
+                                {spin ? (
+                                  <>
+                                    <span className="spinner"></span> Request
+                                    Submitting...
+                                  </>
+                                ) : (
+                                  <>
+                                    Request Information
+                                    <i className="icon-arrow-right-add" />
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                        {/* <div className="video">
                         <h4 className="wow fadeInUp">Video</h4>
                         <div className="video-wrap">
                           <img src="/assets/images/image-box/video-2.jpg" alt="" />
@@ -1064,28 +1095,28 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </Link>
                         </div>
                       </div> */}
-                      <div className="map">
-                        <h4 className="wow fadeInUp">Map</h4>
-                        <div className="wrap-map-v1">
-                          <Map
-                            lattitude={Number(property?.lattitude)}
-                            longitude={Number(property?.longitude)}
-                          />
+                        <div className="map">
+                          <h4 className="wow fadeInUp">Map</h4>
+                          <div className="wrap-map-v1">
+                            <Map
+                              lattitude={Number(property?.lattitude)}
+                              longitude={Number(property?.longitude)}
+                            />
+                          </div>
                         </div>
-                      </div>
-                      {/* <div className="tour">
+                        {/* <div className="tour">
                         <h4 className="wow fadeInUp">360° Virtual Tour</h4>
                         <div className="image">
                           <img src="/assets/images/image-box/img-virtual-1.jpg" alt="" />
                         </div>
                       </div> */}
-                      {/* <div className="page-views">
+                        {/* <div className="page-views">
                         <h4 className="wow fadeInUp">Property Views</h4>
                         <div className="area-chart">
                           <div id="line-chart-5" />
                         </div>
                       </div> */}
-                      {/* <div className="walk-score">
+                        {/* <div className="walk-score">
                         <h4 className="wow fadeInUp">Walk Score</h4>
                         <div className="wrap-walk-score">
                           <div className="walk-score-item wow fadeInUp">
@@ -1113,7 +1144,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </div>
                         </div>
                       </div> */}
-                      {/* <div className="nearby">
+                        {/* <div className="nearby">
                         <h4 className="wow fadeInUp">What's Nearby?</h4>
                         <div className="widget-tabs style-2 type-small">
                           <ul className="widget-menu-tab wow fadeInUp">
@@ -1317,7 +1348,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </div>
                         </div>
                       </div> */}
-                      {/* <div className="reviews-wrap">
+                        {/* <div className="reviews-wrap">
                         <div className="flex justify-between items-center mb-40 wow fadeInUp">
                           <h4 className="mb-0">4 Reviews</h4>
                           <Link href="#" className="tf-button-green">
@@ -1373,7 +1404,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </li>
                         </ul>
                       </div> */}
-                      {/* <div className="leave-a-review">
+                        {/* <div className="leave-a-review">
                         <h4 className="wow fadeInUp">Leave A Review</h4>
                         <p className="wow fadeInUp">
                           Your email address will not be published. Required fields
@@ -1461,142 +1492,152 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
                           </div>
                         </form>
                       </div> */}
-                      {Object.keys(property).length > 0?
-                         property?.related_listings?.length > 0
-                          ? 
-                                            <div className="smilar-homes">
-                        <h4 className="wow fadeInUp">Similar Homes</h4>
-                        <div className="row">
-                          {Object.keys(property).length > 0? property.related_listings.map((item)=>(
-                              <div className="col-md-6">
-                              <div className="box-dream has-border wow fadeInUp">
-                                <div className="image">
-                                  <div className="list-tags">
-                                    <Link href="#" className="tags-item for-sell">
-                                      FOR RENT
-                                    </Link>
-                                    <Link href="#" className="tags-item featured">
-                                      FEATURED
-                                    </Link>
-                                  </div>
-                                  <div className="button-heart">
-                                    <i className="flaticon-heart-1" />
-                                  </div>
-                                  <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
-                                    <div className="swiper-wrapper">
-                                      <div className="swiper-slide">
-                                        <div className="w-full">
-                                          <img
-                                            className="w-full"
-                                            src="/assets/images/house/home-1.jpg"
-                                            alt=""
-                                          />
+                        {Object.keys(property).length > 0 ? (
+                          property?.related_listings?.length > 0 ? (
+                            <div className="smilar-homes">
+                              <h4 className="wow fadeInUp">Similar Homes</h4>
+                              <div className="row">
+                                {Object.keys(property).length > 0
+                                  ? property.related_listings.map((item) => (
+                                      <div className="col-md-6">
+                                        <div className="box-dream has-border wow fadeInUp">
+                                          <div className="image">
+                                            <div className="list-tags">
+                                              <Link
+                                                href="#"
+                                                className="tags-item for-sell"
+                                              >
+                                                FOR RENT
+                                              </Link>
+                                              <Link
+                                                href="#"
+                                                className="tags-item featured"
+                                              >
+                                                FEATURED
+                                              </Link>
+                                            </div>
+                                            <div className="button-heart">
+                                              <i className="flaticon-heart-1" />
+                                            </div>
+                                            <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
+                                              <div className="swiper-wrapper">
+                                                <div className="swiper-slide">
+                                                  <div className="w-full">
+                                                    <img
+                                                      className="w-full"
+                                                      src="/assets/images/house/home-1.jpg"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div className="swiper-slide">
+                                                  <div className="w-full">
+                                                    <img
+                                                      className="w-full"
+                                                      src="/assets/images/house/home-2.jpg"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div className="swiper-slide">
+                                                  <div className="w-full">
+                                                    <img
+                                                      className="w-full"
+                                                      src="/assets/images/house/home-3.jpg"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                </div>
+                                                <div className="swiper-slide">
+                                                  <div className="w-full">
+                                                    <img
+                                                      className="w-full"
+                                                      src="/assets/images/house/home-4.jpg"
+                                                      alt=""
+                                                    />
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div className="swiper-pagination box-dream-pagination" />
+                                              <div className="box-dream-next swiper-button-next" />
+                                              <div className="box-dream-prev swiper-button-prev" />
+                                            </div>
+                                          </div>
+                                          <div className="content">
+                                            <div className="head">
+                                              <div className="title">
+                                                <Link href="/property/property-single">
+                                                  Home Pitt Street
+                                                </Link>
+                                              </div>
+                                              <div className="price">
+                                                $815,000
+                                              </div>
+                                            </div>
+                                            <div className="location">
+                                              <div className="icon">
+                                                <i className="flaticon-location" />
+                                              </div>
+                                              <p>
+                                                148-37 88th Ave, Jamaica, NY
+                                                11435
+                                              </p>
+                                            </div>
+                                            <div className="icon-box">
+                                              <div className="item">
+                                                <i className="flaticon-hotel" />
+                                                <p>4 Beds</p>
+                                              </div>
+                                              <div className="item">
+                                                <i className="flaticon-bath-tub" />
+                                                <p>3 Baths</p>
+                                              </div>
+                                              <div className="item">
+                                                <i className="flaticon-minus-front" />
+                                                <p>2660 Sqft</p>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
-                                      <div className="swiper-slide">
-                                        <div className="w-full">
-                                          <img
-                                            className="w-full"
-                                            src="/assets/images/house/home-2.jpg"
-                                            alt=""
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="swiper-slide">
-                                        <div className="w-full">
-                                          <img
-                                            className="w-full"
-                                            src="/assets/images/house/home-3.jpg"
-                                            alt=""
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="swiper-slide">
-                                        <div className="w-full">
-                                          <img
-                                            className="w-full"
-                                            src="/assets/images/house/home-4.jpg"
-                                            alt=""
-                                          />
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="swiper-pagination box-dream-pagination" />
-                                    <div className="box-dream-next swiper-button-next" />
-                                    <div className="box-dream-prev swiper-button-prev" />
-                                  </div>
-                                </div>
-                                <div className="content">
-                                  <div className="head">
-                                    <div className="title">
-                                      <Link href="/property/property-single">
-                                        Home Pitt Street
-                                      </Link>
-                                    </div>
-                                    <div className="price">$815,000</div>
-                                  </div>
-                                  <div className="location">
-                                    <div className="icon">
-                                      <i className="flaticon-location" />
-                                    </div>
-                                    <p>148-37 88th Ave, Jamaica, NY 11435</p>
-                                  </div>
-                                  <div className="icon-box">
-                                    <div className="item">
-                                      <i className="flaticon-hotel" />
-                                      <p>4 Beds</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-bath-tub" />
-                                      <p>3 Baths</p>
-                                    </div>
-                                    <div className="item">
-                                      <i className="flaticon-minus-front" />
-                                      <p>2660 Sqft</p>
-                                    </div>
-                                  </div>
-                                </div>
+                                    ))
+                                  : null}
                               </div>
                             </div>
-                          )):null}
-                        
-                         
-                        </div>
+                          ) : null
+                        ) : null}
                       </div>
-                     :null :null} 
-
                     </div>
-                  </div>
-                  <div className="col-xl-4">
-                    <div className="property-single-sidebar po-sticky">
-                      <div className="sidebar-item sidebar-request">
-                        <div className="text">
-                          Request a tour as early as <br />
-                          <span>Today at 11:00AM</span>
+                    <div className="col-xl-4">
+                      <div className="property-single-sidebar po-sticky">
+                        <div className="sidebar-item sidebar-request">
+                          <div className="text">
+                            Request a tour as early as <br />
+                            <span>Today at 11:00AM</span>
+                          </div>
+                          <button
+                            className="tf-button-primary w-full"
+                            onClick={() => scrollToSection("schedule")}
+                          >
+                            Schedule a Tour
+                            <i className="icon-arrow-right-add" />
+                          </button>
+                          <button
+                            onClick={() => scrollToSection("contact")}
+                            className="tf-button-primary w-full style-bg-white"
+                          >
+                            Contact an agent
+                            <i className="icon-arrow-right-add" />
+                          </button>
                         </div>
-                        <button
-                          className="tf-button-primary w-full"
-                          onClick={() => scrollToSection("schedule")}
-                        >
-                          Schedule a Tour
-                          <i className="icon-arrow-right-add" />
-                        </button>
-                        <button
-                          onClick={() => scrollToSection("contact")}
-                          className="tf-button-primary w-full style-bg-white"
-                        >
-                          Contact an agent
-                          <i className="icon-arrow-right-add" />
-                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              {/* /property-single-wrap */}
             </div>
-            {/* /property-single-wrap */}
-          </div>
-}
+          )}
           {/* /main-content */}
           {/* footer */}
           <Footer />
@@ -1604,7 +1645,7 @@ const DetailPage = ({ property = {}, agent = {},loading }) => {
         </div>
         {/* /#page */}
       </div>
-      
+
       <CustomScript
         src="/assets/js/jquery.min.js"
         strategy="lazyOnload" // Load it after the page load

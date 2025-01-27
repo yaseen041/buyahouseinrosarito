@@ -15191,3 +15191,80 @@ fieldset.phone::after{
   opacity: 1;
   height: 37px;
 }
+
+
+/*
+ * Switcher Styles
+ */
+
+.custom-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 120px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #0b0a0a;
+}
+
+.style-no-bg .custom-switch {
+  border: 1px solid #ffffff;
+}
+
+.custom-switch input {
+  display: none;
+}
+
+.switch-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #040303;
+  line-height: 40px;
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  z-index: 2;
+  transition: color 0.3s ease-in-out;
+}
+
+.label-left {
+  left: 0;
+  color: #ffffff;
+}
+
+.label-right {
+  right: 0;
+  color: #100f0f;
+}
+.style-no-bg .label-right {
+  color: #ffffff;
+}
+
+.switch-slider {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background: #ef6920;
+  border-radius: 20px;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-switch input:checked ~ .switch-slider {
+  left: 50%;
+  background: #f17f1b;
+}
+
+.custom-switch input:checked ~ .label-left {
+  color: #181717;
+}
+.style-no-bg .custom-switch input:checked ~ .label-left {
+  color: #ffffff;
+}
+
+.custom-switch input:checked ~ .label-right {
+  color: #ffffff;
+}
+

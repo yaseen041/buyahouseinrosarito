@@ -17,7 +17,7 @@ import VideoComponent from '../video';
 import Header3 from '../header3';
 import Calculator from '../calculator/calculator';
 import ComparisonTable from '../comparisonTable';
-
+import { useUnitContext } from "@/app/utils/UnitContext";
 const HomeComponent = ({
     types = [],
     cities = [],
@@ -50,6 +50,7 @@ const HomeComponent = ({
     handleCity = () => { },
 
 }) => {
+    const { isSquareMeter, toggleUnit } = useUnitContext();
     const [openFilter, setOpenFilter] = React.useState(false)
     const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
@@ -75,23 +76,23 @@ const HomeComponent = ({
 
     const handleOpenSelect = (name) => {
         setOpenSelect((prev) => ({
-          status: name === "status" ? !prev.status : false,
-          type: name === "type" ? !prev.type : false,
-          city: name === "city" ? !prev.city : false,
-          sorting: name === "sorting" ? !prev.sorting : false,
-          community: name === "community" ? !prev.community : false,
-          minBed: name === "minBed" ? !prev.minBed : false,
-          maxBed: name === "maxBed" ? !prev.maxBed : false,
-          minBath: name === "minBath" ? !prev.minBath : false,
-          maxBath: name === "maxBath" ? !prev.maxBath : false,
+            status: name === "status" ? !prev.status : false,
+            type: name === "type" ? !prev.type : false,
+            city: name === "city" ? !prev.city : false,
+            sorting: name === "sorting" ? !prev.sorting : false,
+            community: name === "community" ? !prev.community : false,
+            minBed: name === "minBed" ? !prev.minBed : false,
+            maxBed: name === "maxBed" ? !prev.maxBed : false,
+            minBath: name === "minBath" ? !prev.minBath : false,
+            maxBath: name === "maxBath" ? !prev.maxBath : false,
         }));
-      }
+    }
 
-      const handleSelectClick = (e, name) => {
+    const handleSelectClick = (e, name) => {
         e.stopPropagation();
         handleOpenSelect(name);
-      };
-    
+    };
+
 
 
     React.useEffect(() => {
@@ -99,35 +100,35 @@ const HomeComponent = ({
         // initSliders();
     }, [])
 
-React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      const isClickInside = Object.keys(dropdownRefs.current).some(
-        (key) =>
-          dropdownRefs.current[key] &&
-          dropdownRefs.current[key].contains(event.target)
-      );
+    React.useEffect(() => {
+        const handleClickOutside = (event) => {
+            const isClickInside = Object.keys(dropdownRefs.current).some(
+                (key) =>
+                    dropdownRefs.current[key] &&
+                    dropdownRefs.current[key].contains(event.target)
+            );
 
-      if (!isClickInside) {
-        setOpenSelect({
-          status: false,
-          type: false,
-          city: false,
-          sorting: false,
-          community: false,
-          minBed: false,
-          maxBed: false,
-          minBath: false,
-          maxBath: false
-        });
-      }
-    };
+            if (!isClickInside) {
+                setOpenSelect({
+                    status: false,
+                    type: false,
+                    city: false,
+                    sorting: false,
+                    community: false,
+                    minBed: false,
+                    maxBed: false,
+                    minBath: false,
+                    maxBath: false
+                });
+            }
+        };
 
-    document.addEventListener("click", handleClickOutside);
+        document.addEventListener("click", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
 
 
 
@@ -1365,7 +1366,7 @@ React.useEffect(() => {
                                 </div> */}
                             </div>
                         </section>
-                       
+
                         {/* /flat-counter */}
                         {/* flat-discover */}
                         <section className="tf-section flat-discover">
@@ -1471,7 +1472,11 @@ React.useEffect(() => {
                                                                         </div>
                                                                         <div className="item">
                                                                             <i className="flaticon-minus-front" />
-                                                                            <p>{item.size}</p>
+                                                                            <p>
+                                                                                {!isSquareMeter
+                                                                                    ? item.size_mt + " Sq M"
+                                                                                    : item.size + " Sq ft"}
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1661,7 +1666,11 @@ React.useEffect(() => {
                                                                         </div>
                                                                         <div className="item">
                                                                             <i className="flaticon-minus-front" />
-                                                                            <p>{item.size}</p>
+                                                                            <p>
+                                                                                {!isSquareMeter
+                                                                                    ? item.size_mt + " Sq M"
+                                                                                    : item.size + " Sq ft"}
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1788,7 +1797,11 @@ React.useEffect(() => {
                                                                         </div>
                                                                         <div className="item">
                                                                             <i className="flaticon-minus-front" />
-                                                                            <p>{item.size}</p>
+                                                                            <p>
+                                                                                {!isSquareMeter
+                                                                                    ? item.size_mt + " Sq M"
+                                                                                    : item.size + " Sq ft"}
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>

@@ -52,7 +52,7 @@ const Calculator = () => {
 
 
   return (
-    <div className="calculator card p-5 rounded-4 h-100 wow fadeInUp " style={{ borderRadius: "16px" }} >
+    <div className="calculator card p-5 rounded-4 h-100 wow fadeInUp " style={{ borderRadius: "16px",zIndex:-1 }} >
       <div className="heading-section " style={{ marginBottom: "27px" }} >
         <h4 className="wow fadeInUp">Your Dream Home Estimate Calculator</h4>
         <p className="text mt-2" >With this tools you can estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home in Rosarito today!</p>

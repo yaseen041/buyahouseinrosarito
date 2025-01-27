@@ -1,17 +1,20 @@
-'use client';
-import React from 'react'
-import Link from 'next/link';
-import Scripts from '@/app/scripts';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import { usePathname,useRouter } from 'next/navigation';
+"use client";
+import React from "react";
+import Link from "next/link";
+import Scripts from "@/app/scripts";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { usePathname, useRouter } from "next/navigation";
+import { useUnitContext } from "@/app/utils/UnitContext";
 
 const Header1 = () => {
-  const [openMenu, setOpenMenu] = React.useState(false)
+  const { isSquareMeter, toggleUnit } = useUnitContext();
+
+  const [openMenu, setOpenMenu] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const handleClose = () => setOpenMenu(false);
   const handleShow = () => setOpenMenu(true);
-  const pathname = usePathname()
-  const router = useRouter()
+  const pathname = usePathname();
+  const router = useRouter();
   React.useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 130) {
@@ -29,39 +32,34 @@ const Header1 = () => {
 
   return (
     <>
-
       <header
         id="header_main"
-        className={`header header-fixed style-no-bg type-home3 style-absolute ${isScrolled?"is-fixed is-small":""}`}
+        className={`header header-fixed style-no-bg type-home3 style-absolute ${
+          isScrolled ? "is-fixed is-small" : ""
+        }`}
       >
         <div className="header-inner">
           <div className="header-inner-wrap">
             <nav className="main-menu">
               <ul className="navigation">
-                <li className={pathname==="/"?"current":""}>
+                <li className={pathname === "/" ? "current" : ""}>
                   <Link href="/">Home</Link>
-
                 </li>
-                <li className={pathname==="/property"?"current":""}>
+                <li className={pathname === "/property" ? "current" : ""}>
                   <Link href="/property">Property</Link>
-
                 </li>
-                <li className={pathname==="/about"?"current":""}>
+                <li className={pathname === "/about" ? "current" : ""}>
                   <Link href="/about">About</Link>
-                 
                 </li>
-               
-               
-                <li className={pathname==="/blog"?"current":""}>
+
+                <li className={pathname === "/blog" ? "current" : ""}>
                   <Link href="/blog">Blog</Link>
-                 
                 </li>
-               
-                <li className={pathname==="/faq"?"current":""}>
+
+                <li className={pathname === "/faq" ? "current" : ""}>
                   <Link href="/faq">FAQ</Link>
-                 
                 </li>
-                <li className={pathname==="/contact"?"current":""}>
+                <li className={pathname === "/contact" ? "current" : ""}>
                   <Link href="/contact">Contact</Link>
                 </li>
               </ul>
@@ -92,16 +90,36 @@ const Header1 = () => {
                   <i className="flaticon-user" />
                 </div>
               </div>
+              <div className="unit-switcher">
+                <label className="custom-switch">
+                  <input
+                    type="checkbox"
+                    checked={isSquareMeter}
+                    onChange={toggleUnit} 
+                  />
+                  <span className="switch-label label-left">
+                    m<sup>2</sup>
+                  </span>
+                  <span className="switch-slider"></span>
+                  <span className="switch-label label-right">
+                    ft<sup>2</sup>
+                  </span>
+                </label>
+              </div>
               <div className="header-btn">
                 <a href="#" className="tf-button-default">
                   Add Listing
                 </a>
               </div>
             </div>
-            <a className="mobile-nav-toggler mobile-button" href="#m" onClick={handleShow} />
+            <a
+              className="mobile-nav-toggler mobile-button"
+              href="#m"
+              onClick={handleShow}
+            />
           </div>
         </div>
-        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}   >
+        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}>
           <Offcanvas.Body>
             <div
               id="menu"
@@ -110,18 +128,36 @@ const Header1 = () => {
               aria-modal="false"
               role="dialog"
             >
-              <a className="close" aria-label="Close menu" href="#mm-22" onClick={handleClose} >
+              <a
+                className="close"
+                aria-label="Close menu"
+                href="#mm-22"
+                onClick={handleClose}
+              >
                 <i className="icon-close" />
               </a>
               <div className="mm-panels">
-                <div className={`mm-panel mm-panel--noanimation mm-panel--opened `} id="mm-1">
+                <div
+                  className={`mm-panel mm-panel--noanimation mm-panel--opened `}
+                  id="mm-1"
+                >
                   <div className="mm-navbar">
-                    <a className="mm-navbar__title" tabIndex={-1} aria-hidden="true">
+                    <a
+                      className="mm-navbar__title"
+                      tabIndex={-1}
+                      aria-hidden="true"
+                    >
                       <span className="">Menu</span>
                     </a>
                   </div>
                   <ul className="mm-listview">
-                    <li className={`mm-listitem ${pathname==="/"?"current":""}`}   id="mm-2" data-mm-child="mm-3">
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/" ? "current" : ""
+                      }`}
+                      id="mm-2"
+                      data-mm-child="mm-3"
+                    >
                       <Link
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -130,7 +166,13 @@ const Header1 = () => {
                         Home
                       </Link>
                     </li>
-                    <li className={`mm-listitem ${pathname==="/property"?"current":""}`} id="mm-4" data-mm-child="mm-5">
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/property" ? "current" : ""
+                      }`}
+                      id="mm-4"
+                      data-mm-child="mm-5"
+                    >
                       <Link
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -139,7 +181,13 @@ const Header1 = () => {
                         Property
                       </Link>
                     </li>
-                    <li className={`mm-listitem ${pathname==="/about"?"current":""}`} id="mm-14" data-mm-child="mm-15">
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/about" ? "current" : ""
+                      }`}
+                      id="mm-14"
+                      data-mm-child="mm-15"
+                    >
                       <Link
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -148,7 +196,13 @@ const Header1 = () => {
                         About
                       </Link>
                     </li>
-                    <li className={`mm-listitem ${pathname==="/blog"?"current":""}`} id="mm-16" data-mm-child="mm-17">
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/blog" ? "current" : ""
+                      }`}
+                      id="mm-16"
+                      data-mm-child="mm-17"
+                    >
                       <Link
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -157,8 +211,14 @@ const Header1 = () => {
                         Blog
                       </Link>
                     </li>
-                    
-                    <li className={`mm-listitem ${pathname==="/faq"?"current":""}`} id="mm-16" data-mm-child="mm-17">
+
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/faq" ? "current" : ""
+                      }`}
+                      id="mm-16"
+                      data-mm-child="mm-17"
+                    >
                       <Link
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -167,7 +227,13 @@ const Header1 = () => {
                         FAQ
                       </Link>
                     </li>
-                    <li className={`mm-listitem ${pathname==="/contact"?"current":""}`} id="mm-18" data-mm-child="mm-19">
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/contact" ? "current" : ""
+                      }`}
+                      id="mm-18"
+                      data-mm-child="mm-19"
+                    >
                       <Link
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -176,15 +242,12 @@ const Header1 = () => {
                         Contact
                       </Link>
                     </li>
-                   
-                   
                   </ul>
                 </div>
                 <div
                   className="mm-panel mm-panel--noanimation"
                   id="mm-3"
                   data-mm-parent="mm-2"
-
                 >
                   <div className="mm-navbar">
                     <a
@@ -276,7 +339,11 @@ const Header1 = () => {
                     </a>
                   </div>
                   <ul className="mm-listview">
-                    <li className="current mm-listitem" id="mm-6" data-mm-child="mm-7">
+                    <li
+                      className="current mm-listitem"
+                      id="mm-6"
+                      data-mm-child="mm-7"
+                    >
                       <a
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -294,7 +361,11 @@ const Header1 = () => {
                         Grid view
                       </a>
                     </li>
-                    <li className="mm-listitem" id="mm-10" data-mm-child="mm-11">
+                    <li
+                      className="mm-listitem"
+                      id="mm-10"
+                      data-mm-child="mm-11"
+                    >
                       <a
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -303,7 +374,11 @@ const Header1 = () => {
                         Single view
                       </a>
                     </li>
-                    <li className="mm-listitem" id="mm-12" data-mm-child="mm-13">
+                    <li
+                      className="mm-listitem"
+                      id="mm-12"
+                      data-mm-child="mm-13"
+                    >
                       <a
                         className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
                         aria-label="Open submenu"
@@ -337,17 +412,26 @@ const Header1 = () => {
                   </div>
                   <ul className="mm-listview">
                     <li className="mm-listitem">
-                      <a href="property-list-v1.html" className="mm-listitem__text">
+                      <a
+                        href="property-list-v1.html"
+                        className="mm-listitem__text"
+                      >
                         Property List 01
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-list-v2.html" className="mm-listitem__text">
+                      <a
+                        href="property-list-v2.html"
+                        className="mm-listitem__text"
+                      >
                         Property List 02
                       </a>
                     </li>
                     <li className="current mm-listitem">
-                      <a href="property-list-v3.html" className="mm-listitem__text">
+                      <a
+                        href="property-list-v3.html"
+                        className="mm-listitem__text"
+                      >
                         Property List 03
                       </a>
                     </li>
@@ -376,22 +460,34 @@ const Header1 = () => {
                   </div>
                   <ul className="mm-listview">
                     <li className="mm-listitem">
-                      <a href="property-grid-v1.html" className="mm-listitem__text">
+                      <a
+                        href="property-grid-v1.html"
+                        className="mm-listitem__text"
+                      >
                         Property Grid 01
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-grid-v2.html" className="mm-listitem__text">
+                      <a
+                        href="property-grid-v2.html"
+                        className="mm-listitem__text"
+                      >
                         Property Grid 02
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-grid-v3.html" className="mm-listitem__text">
+                      <a
+                        href="property-grid-v3.html"
+                        className="mm-listitem__text"
+                      >
                         Property Grid 03
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-grid-v4.html" className="mm-listitem__text">
+                      <a
+                        href="property-grid-v4.html"
+                        className="mm-listitem__text"
+                      >
                         Property Grid 04
                       </a>
                     </li>
@@ -420,37 +516,58 @@ const Header1 = () => {
                   </div>
                   <ul className="mm-listview">
                     <li className="mm-listitem">
-                      <a href="property-single-v1.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v1.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 01
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-single-v2.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v2.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 02
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-single-v3.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v3.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 03
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-single-v4.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v4.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 04
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-single-v5.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v5.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 05
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-single-v6.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v6.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 06
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-single-v7.html" className="mm-listitem__text">
+                      <a
+                        href="property-single-v7.html"
+                        className="mm-listitem__text"
+                      >
                         Property Single 07
                       </a>
                     </li>
@@ -479,22 +596,34 @@ const Header1 = () => {
                   </div>
                   <ul className="mm-listview">
                     <li className="mm-listitem">
-                      <a href="property-map-v1.html" className="mm-listitem__text">
+                      <a
+                        href="property-map-v1.html"
+                        className="mm-listitem__text"
+                      >
                         Property Map 01
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-map-v2.html" className="mm-listitem__text">
+                      <a
+                        href="property-map-v2.html"
+                        className="mm-listitem__text"
+                      >
                         Property Map 02
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-map-v3.html" className="mm-listitem__text">
+                      <a
+                        href="property-map-v3.html"
+                        className="mm-listitem__text"
+                      >
                         Property Map 03
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="property-map-v4.html" className="mm-listitem__text">
+                      <a
+                        href="property-map-v4.html"
+                        className="mm-listitem__text"
+                      >
                         Property Map 04
                       </a>
                     </li>
@@ -538,7 +667,10 @@ const Header1 = () => {
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="agency-single.html" className="mm-listitem__text">
+                      <a
+                        href="agency-single.html"
+                        className="mm-listitem__text"
+                      >
                         Agency Single
                       </a>
                     </li>
@@ -641,7 +773,10 @@ const Header1 = () => {
                       </a>
                     </li>
                     <li className="mm-listitem">
-                      <a href="shop-checkout.html" className="mm-listitem__text">
+                      <a
+                        href="shop-checkout.html"
+                        className="mm-listitem__text"
+                      >
                         Shop Checkout
                       </a>
                     </li>
@@ -704,19 +839,14 @@ const Header1 = () => {
               id="mm-0"
               aria-label="Close menu"
               href="#mm-22"
-
             />
           </Offcanvas.Body>
         </Offcanvas>
-
       </header>
-
-
 
       <Scripts />
     </>
+  );
+};
 
-  )
-}
-
-export default Header1
+export default Header1;
