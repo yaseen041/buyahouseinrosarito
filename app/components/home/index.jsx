@@ -35,7 +35,7 @@ const HomeComponent = ({
     Keyword = "",
     selectedTypes = {},
     selectedCity = {},
-    BestDeals=[],
+    BestDeals = [],
     selectedFeatures,
     handleInputChange = () => { },
     handleStatus = () => { },
@@ -71,19 +71,62 @@ const HomeComponent = ({
         dropdownRefs.current[name] = ref;
     }
 
-    const handleSelectClick = (e, name) => {
-        e.preventDefault();
+    const handleOpenSelect = (name) => {
         setOpenSelect((prev) => ({
-            ...prev,
-            [name]: !prev[name],
+          status: name === "status" ? !prev.status : false,
+          type: name === "type" ? !prev.type : false,
+          city: name === "city" ? !prev.city : false,
+          sorting: name === "sorting" ? !prev.sorting : false,
+          community: name === "community" ? !prev.community : false,
+          minBed: name === "minBed" ? !prev.minBed : false,
+          maxBed: name === "maxBed" ? !prev.maxBed : false,
+          minBath: name === "minBath" ? !prev.minBath : false,
+          maxBath: name === "maxBath" ? !prev.maxBath : false,
         }));
-    };
+      }
+
+      const handleSelectClick = (e, name) => {
+        e.stopPropagation();
+        handleOpenSelect(name);
+      };
+    
 
 
     React.useEffect(() => {
         new WOW().init();
         // initSliders();
     }, [])
+
+React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      const isClickInside = Object.keys(dropdownRefs.current).some(
+        (key) =>
+          dropdownRefs.current[key] &&
+          dropdownRefs.current[key].contains(event.target)
+      );
+
+      if (!isClickInside) {
+        setOpenSelect({
+          status: false,
+          type: false,
+          city: false,
+          sorting: false,
+          community: false,
+          minBed: false,
+          maxBed: false,
+          minBath: false,
+          maxBath: false
+        });
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
 
 
     return (
@@ -121,17 +164,18 @@ const HomeComponent = ({
                                                                 <form className="form-search-home3 wow fadeInUp">
                                                                     <div className="group-form">
                                                                         <div
-                                                                            onClick={toggleNiceSelect}
-                                                                            className={`nice-select border-radius-1 ${openNiceSelect ? "open" : ""}`}
+                                                                            onClick={(e) => handleSelectClick(e, "type")}
+                                                                            className={`nice-select border-radius-1 ${openSelect.type ? "open" : ""}`}
                                                                             tabIndex={0}
+                                                                            ref={assignRef("type")}
                                                                         >
                                                                             <span className="current open ">{selectedTypes.title}</span>
                                                                             <ul className="list style-radio">
-                                                                            <li data-value="" className={`option ${selectedTypes.id===0?"selected":""}`} onClick={() => handleStatus(0, " All Types")}>
-                                                                                        All types
-                                                                                    </li>
+                                                                                <li data-value="" className={`option ${selectedTypes.id === 0 ? "selected" : ""}`} onClick={() => handleTypes(0, " All Types")}>
+                                                                                    All types
+                                                                                </li>
                                                                                 {Object.keys(filters).length > 0 ? filters.types.map((item) => (
-                                                                                    <li data-value="" className={`option ${selectedTypes.id===item.id?"selected":""}`} key={item.id} onClick={() => handleTypes(item.id, item.title)}>
+                                                                                    <li data-value="" className={`option ${selectedTypes.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleTypes(item.id, item.title)}>
                                                                                         {item.title}
                                                                                     </li>
                                                                                 )) : null}
@@ -140,19 +184,20 @@ const HomeComponent = ({
                                                                             </ul>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="group-form " style={{width:"180px"}} >
+                                                                    <div className="group-form " style={{ width: "180px" }} >
                                                                         <div
-                                                                            onClick={toggleNiceSelect}
-                                                                            className={`nice-select border-radius-1 ${openNiceSelect ? "open" : ""}`}
+                                                                            onClick={(e) => handleSelectClick(e, "city")}
+                                                                            className={`nice-select border-radius-1 ${openSelect.city ? "open" : ""}`}
                                                                             tabIndex={0}
+                                                                            ref={assignRef("city")}
                                                                         >
                                                                             <span className="current open ">{selectedCity.title}</span>
                                                                             <ul className="list style-radio">
-                                                                            <li data-value="" className={`option ${selectedCity.id===0?"selected":""}`} onClick={() => handleCity(0, " City")}>
-                                                                                        City
-                                                                                    </li>
+                                                                                <li data-value="" className={`option ${selectedCity.id === 0 ? "selected" : ""}`} onClick={() => handleCity(0, " City")}>
+                                                                                    City
+                                                                                </li>
                                                                                 {Object.keys(filters).length > 0 ? filters.cities.map((item) => (
-                                                                                    <li data-value="" className={`option ${selectedCity.id===item.id?"selected":""}`} key={item.id} onClick={() => handleCity(item.id, item.name)}>
+                                                                                    <li data-value="" className={`option ${selectedCity.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleCity(item.id, item.name)}>
                                                                                         {item.name}
                                                                                     </li>
                                                                                 )) : null}
@@ -1103,6 +1148,45 @@ const HomeComponent = ({
                         </section>
                         {/* /slider */}
                         {/* flat-explore */}
+                        <section className="tf-section flat-counter">
+                            <div className="cl-container">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div className="heading-section text-center">
+                                            <h2 className="wow fadeInUp">
+                                                A Message from Our CEO
+                                            </h2>
+                                            <div className="text wow fadeInUp">
+                                                Take a decision towards better future
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="counter">
+                                    <div className='row justify-center' >
+
+                                        <div className='col-12 col-md-8 ' >
+                                            <VideoComponent src="/assets/video.mp4" />
+                                            {/* <div className="video">
+                                               
+                                                <div className="video-wrap">
+                                                    <img src="/assets/images/image-box/video-2.jpg" alt="" />
+                                                    <Link
+                                                        href="/assets/video.mp4"
+                                                        className="popup-youtube"
+                                                    >
+                                                        <div className="icon">
+                                                            <i className="flaticon-play" />
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </div> */}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
                         <section className="tf-section flat-explore">
                             <div className="cl-container">
                                 <div className="row">
@@ -1110,7 +1194,7 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Explore Different Property Types</h2>
                                             <div className="text wow fadeInUp">
-                                            Find a perfect match for your taste
+                                                Find a perfect match for your taste
                                             </div>
                                         </div>
                                     </div>
@@ -1141,12 +1225,12 @@ const HomeComponent = ({
                                                     <SwiperSlide key={item.id} >
                                                         <div className="cities-item style-3 wow fadeInUp">
                                                             <Link href={`/property/?type=${item.title}`} >
-                                                            <img src={item.banner} alt=""  style={{cursor:"pointer"}} />
-                                                            <div style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",backgroundColor:"rgba(0,0,0,0.5)"}} />
+                                                                <img src={item.banner} alt="" style={{ cursor: "pointer" }} />
+                                                                <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0,0,0,0.5)" }} />
                                                             </Link>
                                                             <div className="content">
-                                                                <h4 style={{color:"#fff"}} >{item.title}</h4>
-                                                                <p style={{color:"#fff"}} >{item.property_count} Properties</p>
+                                                                <h4 style={{ color: "#fff" }} >{item.title}</h4>
+                                                                <p style={{ color: "#fff" }} >{item.property_count} Properties</p>
                                                             </div>
                                                             <Link href={`/property/?type=${item.title}`} className="button-arrow-right">
                                                                 <i className="icon-arrow-right-add" />
@@ -1175,7 +1259,7 @@ const HomeComponent = ({
                                                 customer's favor.
                                             </h2>
                                             <div className="text wow fadeInUp">
-                                            We are here to serve "You"
+                                                We are here to serve "You"
                                             </div>
                                         </div>
                                     </div>
@@ -1276,45 +1360,7 @@ const HomeComponent = ({
                                 </div>
                             </div>
                         </section>
-                        <section className="tf-section flat-counter">
-                            <div className="cl-container">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">
-                                            A Message from Our CEO
-                                            </h2>
-                                            <div className="text wow fadeInUp">
-                                            Take a decision towards better future
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="counter">
-                                    <div className='row justify-center' >
-
-                                        <div className='col-12 col-md-8 ' >
-                                            <VideoComponent src="/assets/video.mp4" />
-                                            {/* <div className="video">
-                                               
-                                                <div className="video-wrap">
-                                                    <img src="/assets/images/image-box/video-2.jpg" alt="" />
-                                                    <Link
-                                                        href="/assets/video.mp4"
-                                                        className="popup-youtube"
-                                                    >
-                                                        <div className="icon">
-                                                            <i className="flaticon-play" />
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            </div> */}
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </section>
+                       
                         {/* /flat-counter */}
                         {/* flat-discover */}
                         <section className="tf-section flat-discover">
@@ -1324,12 +1370,12 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Discover Our Best Deals</h2>
                                             <div className="text wow fadeInUp">
-                                            Listings Crafted Just For You
+                                                Listings Crafted Just For You
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-12">
-                                            
+
                                         <Swiper
                                             className='swiper-container slider-discover padding-bottom-80 pagination-style-2'
                                             slidesPerView={1}
@@ -1351,87 +1397,87 @@ const HomeComponent = ({
                                                 },
                                             }}
                                         >
-                                            {BestDeals.map((item) => ( 
-                                                 <SwiperSlide key={item.id} >
-                                                 <div className="swiper-slide">
-                                                     <div className="box-dream style-2 type-small wow fadeInUp">
-                                                         <div className="image">
-                                                             <div className="list-tags">
-                                                                 <div className="tags-item for-sell">
-                                                                     {item.listing_status}
-                                                                 </div>
-                                                                 {item.is_featured && (
-                                                                     <div className="tags-item featured">
-                                                                         FEATURED
-                                                                     </div>
-                                                                 )}
+                                            {BestDeals.map((item) => (
+                                                <SwiperSlide key={item.id} >
+                                                    <div className="swiper-slide">
+                                                        <div className="box-dream style-2 type-small wow fadeInUp">
+                                                            <div className="image">
+                                                                <div className="list-tags">
+                                                                    <div className="tags-item for-sell">
+                                                                        {item.listing_status}
+                                                                    </div>
+                                                                    {item.is_featured && (
+                                                                        <div className="tags-item featured">
+                                                                            FEATURED
+                                                                        </div>
+                                                                    )}
 
-                                                             </div>
-                                                             <div className="button-heart">
-                                                                 <i className="flaticon-heart-1" />
-                                                             </div>
-                                                             <Swiper
-                                                                 className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
-                                                                 slidesPerView={1}
+                                                                </div>
+                                                                <div className="button-heart">
+                                                                    <i className="flaticon-heart-1" />
+                                                                </div>
+                                                                <Swiper
+                                                                    className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
+                                                                    slidesPerView={1}
 
-                                                                 modules={[Pagination, A11y, Navigation]}
-                                                                 navigation
-                                                                 pagination={{ clickable: true }}
-                                                             >
-                                                                 {item.gallery.map((i, index) => (
-                                                                     <SwiperSlide key={index} >
-                                                                         <div className="swiper-slide">
-                                                                             <div className="w-full">
-                                                                                 <img
-                                                                                     className="w-full"
-                                                                                     src={i}
-                                                                                     alt=""
-                                                                                 />
-                                                                             </div>
-                                                                         </div>
-                                                                     </SwiperSlide>
-                                                                 ))}
+                                                                    modules={[Pagination, A11y, Navigation]}
+                                                                    navigation
+                                                                    pagination={{ clickable: true }}
+                                                                >
+                                                                    {item.gallery.map((i, index) => (
+                                                                        <SwiperSlide key={index} >
+                                                                            <div className="swiper-slide">
+                                                                                <div className="w-full">
+                                                                                    <img
+                                                                                        className="w-full"
+                                                                                        src={i}
+                                                                                        alt=""
+                                                                                    />
+                                                                                </div>
+                                                                            </div>
+                                                                        </SwiperSlide>
+                                                                    ))}
 
 
-                                                             </Swiper>
+                                                                </Swiper>
 
-                                                         </div>
-                                                         <div className="content">
-                                                             <div className="head">
-                                                                 <div className="title">
-                                                                     <Link href={`/property/${item.slug}`}>{item.title}</Link>
-                                                                 </div>
-                                                             </div>
-                                                             <div className="location">
-                                                                 <div className="icon">
-                                                                     <i className="flaticon-location" />
-                                                                 </div>
-                                                                 <p>{item.address}</p>
-                                                             </div>
-                                                             <div className="bot">
-                                                                 <div className="icon-box">
-                                                                     <div className="item">
-                                                                         <i className="flaticon-hotel" />
-                                                                         <p>{item.bedrooms}</p>
-                                                                     </div>
-                                                                     <div className="item">
-                                                                         <i className="flaticon-bath-tub" />
-                                                                         <p>{item.bathrooms}</p>
-                                                                     </div>
-                                                                     <div className="item">
-                                                                         <i className="flaticon-minus-front" />
-                                                                         <p>{item.size}</p>
-                                                                     </div>
-                                                                 </div>
-                                                                 <div className="price">${item.price.toLocaleString()}</div>
-                                                             </div>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </SwiperSlide>
+                                                            </div>
+                                                            <div className="content">
+                                                                <div className="head">
+                                                                    <div className="title">
+                                                                        <Link href={`/property/${item.slug}`}>{item.title}</Link>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="location">
+                                                                    <div className="icon">
+                                                                        <i className="flaticon-location" />
+                                                                    </div>
+                                                                    <p>{item.address}</p>
+                                                                </div>
+                                                                <div className="bot">
+                                                                    <div className="icon-box">
+                                                                        <div className="item">
+                                                                            <i className="flaticon-hotel" />
+                                                                            <p>{item.bedrooms}</p>
+                                                                        </div>
+                                                                        <div className="item">
+                                                                            <i className="flaticon-bath-tub" />
+                                                                            <p>{item.bathrooms}</p>
+                                                                        </div>
+                                                                        <div className="item">
+                                                                            <i className="flaticon-minus-front" />
+                                                                            <p>{item.size}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="price">${item.price.toLocaleString()}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </SwiperSlide>
                                             ))}
-                                           
-                                           
+
+
 
 
                                         </Swiper>
@@ -1448,7 +1494,7 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Explore Cities We Serve</h2>
                                             <div className="text wow fadeInUp">
-                                            Best Possible Locations
+                                                Best Possible Locations
                                             </div>
                                         </div>
                                     </div>
@@ -1484,14 +1530,14 @@ const HomeComponent = ({
                                                         <div className="swiper-slide">
                                                             <div className="cities-item style-1 wow fadeInUp">
                                                                 <Link href={`/property?city=${item.name}`} >
-                                                                <div className="image">
-                                                                    <img src={item.image} alt="" />
-                                                                </div>
+                                                                    <div className="image">
+                                                                        <img src={item.image} alt="" />
+                                                                    </div>
                                                                 </Link>
                                                                 <div className="content">
                                                                     <p>{item.properties_count} Properties</p>
                                                                     <h4>
-                                                                    <Link href={`/property?city=${item.name}`}>{item.name}</Link>
+                                                                        <Link href={`/property?city=${item.name}`}>{item.name}</Link>
                                                                     </h4>
                                                                 </div>``
                                                             </div>
@@ -1514,7 +1560,7 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Recent Properties for Rent</h2>
                                             <div className="text wow fadeInUp">
-                                            Listings Crafted Just For You
+                                                Listings Crafted Just For You
                                             </div>
                                         </div>
                                     </div>
@@ -1641,7 +1687,7 @@ const HomeComponent = ({
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Recent Properties for Sale</h2>
                                             <div className="text wow fadeInUp">
-                                            Listings Crafted Just For You
+                                                Listings Crafted Just For You
                                             </div>
                                         </div>
                                     </div>
@@ -1765,7 +1811,7 @@ const HomeComponent = ({
                                                 How It works? Find a perfect home
                                             </h2>
                                             <div className="text wow fadeInUp">
-                                            Take a decision towards better future
+                                                Take a decision towards better future
                                             </div>
                                         </div>
                                     </div>
@@ -2259,7 +2305,7 @@ const HomeComponent = ({
 
                 onError={(e) => console.error("Failed to load jQuery:", e)}
             />
-            <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" />
+            {/* <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
             <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
             <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
             <CustomScript src="/assets/js/main.js" />
