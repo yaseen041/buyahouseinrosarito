@@ -1,53 +1,70 @@
 import React from 'react'
 
 const ComparisonTable = () => {
+
+    const ScrollToTable = (e) => {
+        if (window.innerWidth <= 768) { 
+            const element = document.getElementById("table");
+            if (element) {
+                const offset = 80; 
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY; 
+                const scrollToPosition = elementPosition - offset;
+    
+                window.scrollTo({
+                    top: scrollToPosition,
+                    behavior: "smooth"
+                });
+            }
+        }
+    };
+
     return (
         <div  >
 
 
-            <div className="widget-tabs style-3 wow fadeInUp" style={{ backgroundColor: "rgb(249, 249, 249)" }} >
+            <div className="widget-tabs style-3 wow fadeInUp pe-0 pe-md-5" style={{ backgroundColor: "rgb(249, 249, 249)", border: "1px solid #121D36" }} >
                 <div className='row g-0' >
                     <div className='col-12 col-md-2' >
-                        <ul className="widget-menu-tab wow fadeInUp h-100 " style={{ flexDirection: "column", borderRadius: 0 }} >
-                            <li className="item-title w-100 text-start active " style={{ borderRadius: 5,padding:"6px 30px" }} >
+                        <ul className="widget-menu-tab wow fadeInUp h-100 " style={{ flexDirection: "column", borderRadius: 0, backgroundColor: "#121D36" }} >
+                            <li className="item-title w-100 text-start active " style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Hawaii</span>
                             </li>
-                            <li className="item-title w-100 text-start " style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start " style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">California</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Wahsington</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Colorado</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Oregon</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Utah</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Arizona</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Nevada</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Idaho</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">New Mexico</span>
                             </li>
-                            <li className="item-title w-100 text-start" style={{ borderRadius: 5,padding:"6px 30px" }} >
+                            <li className="item-title w-100 text-start" style={{ borderRadius: 5, padding: "6px 30px" }} onClick={ScrollToTable} >
                                 <span className="inner">Texas</span>
                             </li>
                         </ul>
                     </div>
-                    <div className='col-12 col-md-10 pt-3 d-flex align-items-center '  >
-                        <div className="widget-content-tab" style={{overflow:"auto"}} >
-                            <div className="widget-content-inner  active table-responsive " style={{minWidth:660}} >
-                                <table className=' table table-striped   '  >
+                    <div className='col-12 col-md-10 pt-3 d-flex align-items-center ' id="table" >
+                        <div className="widget-content-tab" style={{ overflow: "auto" }} >
+                            <div className="widget-content-inner  active table-responsive " style={{ minWidth: 660 }} >
+                                <table className=' table table-striped   '   >
                                     <thead className='table-dark' >
                                         <tr>
                                             <th className='py-4' style={{ color: "#FFF", fontSize: 16, width: "240px" }} >Features</th>
@@ -99,7 +116,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}}>
+                            <div className="widget-content-inner" style={{ minWidth: 660 }}>
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -152,7 +169,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -205,7 +222,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -258,7 +275,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -311,7 +328,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -364,7 +381,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -417,7 +434,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -470,7 +487,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -523,7 +540,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>
@@ -576,7 +593,7 @@ const ComparisonTable = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="widget-content-inner" style={{minWidth:660}} >
+                            <div className="widget-content-inner" style={{ minWidth: 660 }} >
                                 <table className=' table table-striped  w-100  ' >
                                     <thead className='table-dark' >
                                         <tr>

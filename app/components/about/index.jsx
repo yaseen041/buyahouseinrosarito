@@ -410,7 +410,7 @@ const AboutComponent = ({testimonials=[],agents=[]}) => {
                       }}
 
                     >
-                      {testimonials.map((item)=>(
+                      {testimonials.slice(0,5).map((item)=>(
                          <SwiperSlide key={item.id} >
                          <div className="swiper-slide">
                            <div className="testimonials-item">

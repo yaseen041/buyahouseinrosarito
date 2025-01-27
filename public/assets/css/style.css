@@ -11844,7 +11844,7 @@ body::-webkit-scrollbar {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: var(--Text);
+  color:#FFF;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -11856,6 +11856,7 @@ body::-webkit-scrollbar {
 .widget-tabs.style-3 .widget-menu-tab .item-title.active {
   background-color: var(--White);
   box-shadow: 0px 6px 15px 0px rgba(64, 79, 104, 0.05);
+  color: #121D36;
 }
 .widget-tabs.style-4 .widget-menu-tab {
   display: -webkit-box;
