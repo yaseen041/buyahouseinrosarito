@@ -119,7 +119,7 @@ const Header1 = () => {
             />
           </div>
         </div>
-        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}>
+        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true} style={{ zIndex: 9999 }}>
           <Offcanvas.Body>
             <div
               id="menu"

@@ -8508,8 +8508,13 @@ form.background-secondary .wg-filter > .tf-button-filter {
 }
 .has-top-title textarea:valid,
 .has-top-title input:valid {
+  /* border: 1px solid var(--Secondary) !important; */
+}
+.has-top-title textarea:active,
+.has-top-title input:active {
   border: 1px solid var(--Secondary) !important;
 }
+
 .has-top-title textarea:valid ~ label,
 .has-top-title input:valid ~ label {
   opacity: 1;
@@ -15268,3 +15273,25 @@ fieldset.phone::after{
   color: #ffffff;
 }
 
+.about h3{
+  font-size: 20px !important;
+}
+.about h5{
+  font-size: 16px !important;
+}
+.about ul li a{
+  text-decoration: underline !important;
+}
+.about ul li span{
+  font-weight: 800 !important;
+}
+.about ul li{
+  list-style: disc !important ;
+  font-size: 15px !important;
+}
+@media screen and (max-width: 767px) {
+  .about h3{
+    font-size: 14px !important;
+  }
+  
+}

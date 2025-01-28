@@ -39,6 +39,7 @@ const Header3 = () => {
         setIsMobile(false);
       }
     };
+    handleResize()
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -183,7 +184,7 @@ const Header3 = () => {
             />
           </div>
         </div>
-        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}>
+        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true} style={{ zIndex: 9999 }}>
           <Offcanvas.Body>
             <div
               id="menu"

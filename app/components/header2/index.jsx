@@ -97,7 +97,7 @@ const Header2 = () => {
             </div>
           </div> */}
 
-              <div className="unit-switcher">
+              <div className="unit-switcher d-none d-md-block">
                 <label className="custom-switch">
                   <input
                     type="checkbox"
@@ -120,6 +120,22 @@ const Header2 = () => {
                 </a>
               </div>
             </div>
+            <div className="unit-switcher d-block d-md-none">
+                <label className="custom-switch">
+                  <input
+                    type="checkbox"
+                    checked={isSquareMeter}
+                    onChange={toggleUnit} // Call toggle function on change
+                  />
+                  <span className="switch-label label-left">
+                    m<sup>2</sup>
+                  </span>
+                  <span className="switch-slider"></span>
+                  <span className="switch-label label-right">
+                    ft<sup>2</sup>
+                  </span>
+                </label>
+              </div>
             <a
               className="mobile-nav-toggler mobile-button"
               href="#m"
@@ -127,7 +143,7 @@ const Header2 = () => {
             />
           </div>
         </div>
-        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true}>
+        <Offcanvas show={openMenu} onHide={handleClose} backdrop={true} style={{ zIndex: 9999 }}>
           <Offcanvas.Body>
             <div
               id="menu"
