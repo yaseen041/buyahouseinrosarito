@@ -50,6 +50,7 @@ const PropertyPage = () => {
 
 
   const handlePageChange = (page, offset) => {
+    console.log(page)
     setCurrentPage(page.selected + 1);
     const newParams = new URLSearchParams(searchParams.toString());
     if (currentPage > 0) {
@@ -193,12 +194,7 @@ const PropertyPage = () => {
 
 
   React.useEffect(() => {
-    if (page !== null) {
-      setCurrentPage(Number(page))
-      const newParams = new URLSearchParams(searchParams.toString());
-      newParams.set("page", page)
-      router.push(`/property?${newParams.toString()}`)
-    }
+   
     getFilters()
     getTypes()
     getCities()
@@ -213,7 +209,9 @@ const PropertyPage = () => {
     try {
       setLoading(true)
       const body = new FormData()
-
+      if (page !== null) {
+        setCurrentPage(Number(page))
+      }
       if (status !== null) {
         const filterStatus = filters.listing_status?.find((i) => i.title === status)
         setSelectedStatus({ id: filterStatus.id, title: filterStatus.title })
@@ -293,6 +291,7 @@ const PropertyPage = () => {
   }
 
   React.useEffect(() => {
+    
     getProprties()
     // const section = document.getElementById("property-list")
     // if(section){

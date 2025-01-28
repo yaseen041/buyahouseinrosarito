@@ -8510,8 +8510,8 @@ form.background-secondary .wg-filter > .tf-button-filter {
 .has-top-title input:valid {
   /* border: 1px solid var(--Secondary) !important; */
 }
-.has-top-title textarea:active,
-.has-top-title input:active {
+.has-top-title textarea:focus,
+.has-top-title input:focus {
   border: 1px solid var(--Secondary) !important;
 }
 
@@ -15294,4 +15294,51 @@ fieldset.phone::after{
     font-size: 14px !important;
   }
   
+}
+.wg-blog {
+  display: flex;
+  flex-direction: column; 
+  height: 100%; 
+  border: 1px solid var(--Border);
+}
+
+.wg-blog .image {
+  height: 220px;
+}
+.sub-blog {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.sub-blog div {
+  font-size: 12px;
+}
+
+.sub-blog div:not(:last-child)::after {
+  content: none;
+}
+
+.wg-blog .content {
+  padding: 10px;
+  border: none !important;
+  text-align: start;
+}
+.wg-blog .image {
+  overflow: hidden;
+}
+.sub-blog div {
+  font-size: 13px;
+}
+.wg-blog .content .name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.wg-blog:hover {
+  box-shadow: 0px 6px 15px 0px rgba(110, 110, 110, 0.73);
+}
+
+.blog_content *{
+    all: revert;
 }

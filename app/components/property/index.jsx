@@ -248,9 +248,8 @@ const PropertyComponent = ({
                               >
                                 <div className="title">City</div>
                                 <div
-                                  className={`nice-select ${
-                                    openSelect.city ? "open" : ""
-                                  }`}
+                                  className={`nice-select ${openSelect.city ? "open" : ""
+                                    }`}
                                   tabIndex={0}
                                   onClick={(e) => handleSelectClick(e, "city")}
                                 >
@@ -260,9 +259,8 @@ const PropertyComponent = ({
                                   <ul className="list style-radio">
                                     <li
                                       data-value="For Sale"
-                                      className={`option ${
-                                        selectedCity.id === 0 ? "selected" : ""
-                                      } `}
+                                      className={`option ${selectedCity.id === 0 ? "selected" : ""
+                                        } `}
                                       onClick={() =>
                                         handleCity(0, " All cities")
                                       }
@@ -273,11 +271,10 @@ const PropertyComponent = ({
                                       <li
                                         key={city.id}
                                         data-value=""
-                                        className={`option ${
-                                          selectedCity.id === city.id
+                                        className={`option ${selectedCity.id === city.id
                                             ? "selected"
                                             : ""
-                                        }`}
+                                          }`}
                                         onClick={() =>
                                           handleCity(city.id, city.name)
                                         }
@@ -298,9 +295,8 @@ const PropertyComponent = ({
                               >
                                 <div className="title">Type</div>
                                 <div
-                                  className={`nice-select ${
-                                    openSelect.type ? "open" : ""
-                                  }`}
+                                  className={`nice-select ${openSelect.type ? "open" : ""
+                                    }`}
                                   tabIndex={0}
                                   onClick={(e) => handleSelectClick(e, "type")}
                                 >
@@ -310,9 +306,8 @@ const PropertyComponent = ({
                                   <ul className="list style-radio">
                                     <li
                                       ta-value=""
-                                      className={`option ${
-                                        selectedTypes.id === 0 ? "selected" : ""
-                                      }`}
+                                      className={`option ${selectedTypes.id === 0 ? "selected" : ""
+                                        }`}
                                       onClick={() =>
                                         handleTypes(0, "All types")
                                       }
@@ -322,11 +317,10 @@ const PropertyComponent = ({
                                     {types.map((item) => (
                                       <li
                                         data-value=""
-                                        className={`option ${
-                                          selectedTypes.id === item.id
+                                        className={`option ${selectedTypes.id === item.id
                                             ? "selected"
                                             : ""
-                                        } `}
+                                          } `}
                                         key={item.id}
                                         onClick={() =>
                                           handleTypes(item.id, item.title)
@@ -344,18 +338,16 @@ const PropertyComponent = ({
                             <div className="group-form">
                               <div className="wg-filter">
                                 <div
-                                  className={`tf-button-filter btn-filter ${
-                                    openFilter ? "active" : ""
-                                  } `}
+                                  className={`tf-button-filter btn-filter ${openFilter ? "active" : ""
+                                    } `}
                                   onClick={toggleFilter}
                                 >
                                   <i className="flaticon-filter" />
                                   Filter
                                 </div>
                                 <div
-                                  className={`open-filter filter-no-content ${
-                                    openFilter ? "active" : ""
-                                  }  `}
+                                  className={`open-filter filter-no-content ${openFilter ? "active" : ""
+                                    }  `}
                                   id="a1"
                                 >
                                   <div>
@@ -373,9 +365,8 @@ const PropertyComponent = ({
                                           Status
                                         </div>
                                         <div
-                                          className={`nice-select ${
-                                            openSelect.status ? "open" : ""
-                                          }`}
+                                          className={`nice-select ${openSelect.status ? "open" : ""
+                                            }`}
                                           tabIndex={0}
                                           onClick={(e) =>
                                             handleSelectClick(e, "status")
@@ -388,11 +379,10 @@ const PropertyComponent = ({
                                           <ul className="list style-radio">
                                             <li
                                               data-value="For Sale"
-                                              className={`option ${
-                                                status.id === 0
+                                              className={`option ${status.id === 0
                                                   ? "selected"
                                                   : ""
-                                              } `}
+                                                } `}
                                               onClick={() =>
                                                 handleStatus(0, " All Status")
                                               }
@@ -401,26 +391,25 @@ const PropertyComponent = ({
                                             </li>
                                             {Object.keys(filters).length > 0
                                               ? filters.listing_status.map(
-                                                  (item) => (
-                                                    <li
-                                                      data-value="For Sale"
-                                                      className={`option ${
-                                                        status.id === item.id
-                                                          ? "selected"
-                                                          : ""
+                                                (item) => (
+                                                  <li
+                                                    data-value="For Sale"
+                                                    className={`option ${status.id === item.id
+                                                        ? "selected"
+                                                        : ""
                                                       } `}
-                                                      key={item.id}
-                                                      onClick={() =>
-                                                        handleStatus(
-                                                          item.id,
-                                                          item.title
-                                                        )
-                                                      }
-                                                    >
-                                                      {item.title}
-                                                    </li>
-                                                  )
+                                                    key={item.id}
+                                                    onClick={() =>
+                                                      handleStatus(
+                                                        item.id,
+                                                        item.title
+                                                      )
+                                                    }
+                                                  >
+                                                    {item.title}
+                                                  </li>
                                                 )
+                                              )
                                               : null}
                                           </ul>
                                         </div>
@@ -438,9 +427,8 @@ const PropertyComponent = ({
                                           Community
                                         </div>
                                         <div
-                                          className={`nice-select ${
-                                            openSelect.community ? "open" : ""
-                                          }`}
+                                          className={`nice-select ${openSelect.community ? "open" : ""
+                                            }`}
                                           tabIndex={0}
                                           onClick={(e) =>
                                             handleSelectClick(e, "community")
@@ -453,11 +441,10 @@ const PropertyComponent = ({
                                           <ul className="list style-radio">
                                             <li
                                               data-value="For Sale"
-                                              className={`option ${
-                                                selectedCommunity.id === 0
+                                              className={`option ${selectedCommunity.id === 0
                                                   ? "selected"
                                                   : ""
-                                              } `}
+                                                } `}
                                               onClick={() =>
                                                 handleCommunity(
                                                   0,
@@ -470,12 +457,11 @@ const PropertyComponent = ({
                                             {community.map((item) => (
                                               <li
                                                 data-value="For Sale"
-                                                className={`option ${
-                                                  selectedCommunity.id ===
-                                                  item.id
+                                                className={`option ${selectedCommunity.id ===
+                                                    item.id
                                                     ? "selected"
                                                     : ""
-                                                } `}
+                                                  } `}
                                                 key={item.id}
                                                 onClick={() =>
                                                   handleCommunity(
@@ -503,9 +489,8 @@ const PropertyComponent = ({
                                           Bedrooms
                                         </div>
                                         <div
-                                          className={`nice-select ${
-                                            openSelect.minBed ? "open" : ""
-                                          }`}
+                                          className={`nice-select ${openSelect.minBed ? "open" : ""
+                                            }`}
                                           tabIndex={0}
                                           onClick={(e) =>
                                             handleSelectClick(e, "minBed")
@@ -518,24 +503,23 @@ const PropertyComponent = ({
                                           <ul className="list  ">
                                             {Object.keys(filters).length > 0
                                               ? filters.min_bed.map((item) => (
-                                                  <li
-                                                    data-value=""
-                                                    className={`option ${
-                                                      selectedBed.id === item.id
-                                                        ? "selected"
-                                                        : ""
+                                                <li
+                                                  data-value=""
+                                                  className={`option ${selectedBed.id === item.id
+                                                      ? "selected"
+                                                      : ""
                                                     }`}
-                                                    key={item.id}
-                                                    onClick={() =>
-                                                      handleBed(
-                                                        item.id,
-                                                        item.title
-                                                      )
-                                                    }
-                                                  >
-                                                    {item.title}
-                                                  </li>
-                                                ))
+                                                  key={item.id}
+                                                  onClick={() =>
+                                                    handleBed(
+                                                      item.id,
+                                                      item.title
+                                                    )
+                                                  }
+                                                >
+                                                  {item.title}
+                                                </li>
+                                              ))
                                               : null}
                                           </ul>
                                         </div>
@@ -554,9 +538,8 @@ const PropertyComponent = ({
                                           Bathrooms
                                         </div>
                                         <div
-                                          className={`nice-select ${
-                                            openSelect.minBath ? "open" : ""
-                                          }`}
+                                          className={`nice-select ${openSelect.minBath ? "open" : ""
+                                            }`}
                                           tabIndex={0}
                                           onClick={(e) =>
                                             handleSelectClick(e, "minBath")
@@ -570,25 +553,24 @@ const PropertyComponent = ({
                                           <ul className="list">
                                             {Object.keys(filters).length > 0
                                               ? filters.min_bath.map((item) => (
-                                                  <li
-                                                    data-value="1 Bath"
-                                                    className={`option ${
-                                                      selectedBath.id ===
+                                                <li
+                                                  data-value="1 Bath"
+                                                  className={`option ${selectedBath.id ===
                                                       item.id
-                                                        ? "selected"
-                                                        : ""
+                                                      ? "selected"
+                                                      : ""
                                                     } `}
-                                                    key={item.id}
-                                                    onClick={() =>
-                                                      handleBath(
-                                                        item.id,
-                                                        item.title
-                                                      )
-                                                    }
-                                                  >
-                                                    {item.title}
-                                                  </li>
-                                                ))
+                                                  key={item.id}
+                                                  onClick={() =>
+                                                    handleBath(
+                                                      item.id,
+                                                      item.title
+                                                    )
+                                                  }
+                                                >
+                                                  {item.title}
+                                                </li>
+                                              ))
                                               : null}
                                           </ul>
                                         </div>
@@ -697,51 +679,51 @@ const PropertyComponent = ({
                                     <ul className="grid-checked">
                                       {Object.keys(filters).length > 0
                                         ? Object.keys(filters.features).map(
-                                            (featureKey) => (
-                                              <li key={featureKey}>
-                                                <div className="title mt-4 mb-4">
-                                                  {featureKey
-                                                    .replace(/_/g, " ")
-                                                    .replace(/\b\w/g, (char) =>
-                                                      char.toUpperCase()
-                                                    )}
+                                          (featureKey) => (
+                                            <li key={featureKey}>
+                                              <div className="title mt-4 mb-4">
+                                                {featureKey
+                                                  .replace(/_/g, " ")
+                                                  .replace(/\b\w/g, (char) =>
+                                                    char.toUpperCase()
+                                                  )}
+                                              </div>
+                                              <ul data-wow-delay="0.1s">
+                                                <div className="row">
+                                                  {filters.features[
+                                                    featureKey
+                                                  ].map((item) => (
+                                                    <div
+                                                      className="col-3 m-4"
+                                                      key={item.id}
+                                                    >
+                                                      <li className="checkbox-item">
+                                                        <label>
+                                                          <p>{item.title}</p>
+                                                          <input
+                                                            type="checkbox"
+                                                            onChange={() =>
+                                                              hanldeFeatures(
+                                                                item.id,
+                                                                item.title
+                                                              )
+                                                            }
+                                                            checked={features.some(
+                                                              (feature) =>
+                                                                feature.id ===
+                                                                item.id
+                                                            )}
+                                                          />
+                                                          <span className="btn-checkbox" />
+                                                        </label>
+                                                      </li>
+                                                    </div>
+                                                  ))}
                                                 </div>
-                                                <ul data-wow-delay="0.1s">
-                                                  <div className="row">
-                                                    {filters.features[
-                                                      featureKey
-                                                    ].map((item) => (
-                                                      <div
-                                                        className="col-3 m-4"
-                                                        key={item.id}
-                                                      >
-                                                        <li className="checkbox-item">
-                                                          <label>
-                                                            <p>{item.title}</p>
-                                                            <input
-                                                              type="checkbox"
-                                                              onChange={() =>
-                                                                hanldeFeatures(
-                                                                  item.id,
-                                                                  item.title
-                                                                )
-                                                              }
-                                                              checked={features.some(
-                                                                (feature) =>
-                                                                  feature.id ===
-                                                                  item.id
-                                                              )}
-                                                            />
-                                                            <span className="btn-checkbox" />
-                                                          </label>
-                                                        </li>
-                                                      </div>
-                                                    ))}
-                                                  </div>
-                                                </ul>
-                                              </li>
-                                            )
+                                              </ul>
+                                            </li>
                                           )
+                                        )
                                         : null}
                                     </ul>
                                   </div>
@@ -781,9 +763,8 @@ const PropertyComponent = ({
                         >
                           <p>Sort by</p>
                           <div
-                            className={`nice-select default ${
-                              openSelect.sorting ? "open" : ""
-                            } `}
+                            className={`nice-select default ${openSelect.sorting ? "open" : ""
+                              } `}
                             tabIndex={0}
                             onClick={(e) => handleSelectClick(e, "sorting")}
                           >
@@ -793,24 +774,24 @@ const PropertyComponent = ({
                             <ul className="list">
                               {Object.keys(filters).length > 0
                                 ? filters?.sorting.map((sort) => (
-                                    <li
-                                      data-value=""
-                                      key={sort.id}
-                                      className="option"
-                                      onClick={() => {
-                                        handleSorting(sort.id, sort.title);
-                                        const newParams = new URLSearchParams(
-                                          searchParams.toString()
-                                        );
-                                        newParams.set("sort", sort.title);
-                                        router.push(
-                                          `/property?${newParams.toString()}`
-                                        );
-                                      }}
-                                    >
-                                      {sort.title}
-                                    </li>
-                                  ))
+                                  <li
+                                    data-value=""
+                                    key={sort.id}
+                                    className="option"
+                                    onClick={() => {
+                                      handleSorting(sort.id, sort.title);
+                                      const newParams = new URLSearchParams(
+                                        searchParams.toString()
+                                      );
+                                      newParams.set("sort", sort.title);
+                                      router.push(
+                                        `/property?${newParams.toString()}`
+                                      );
+                                    }}
+                                  >
+                                    {sort.title}
+                                  </li>
+                                ))
                                 : null}
                             </ul>
                           </div>
@@ -918,9 +899,8 @@ const PropertyComponent = ({
                           {types.map((item) => (
                             <li
                               key={item.id}
-                              className={` ${
-                                selectedTypes.id === item.id ? "active" : ""
-                              } `}
+                              className={` ${selectedTypes.id === item.id ? "active" : ""
+                                } `}
                               onClick={() => {
                                 handleTypes(item.id, item.title);
                                 const newParams = new URLSearchParams(
@@ -943,9 +923,8 @@ const PropertyComponent = ({
                           {community.map((item) => (
                             <li
                               key={item.id}
-                              className={` ${
-                                selectedCommunity.id === item.id ? "active" : ""
-                              } `}
+                              className={` ${selectedCommunity.id === item.id ? "active" : ""
+                                } `}
                               onClick={() => {
                                 handleCommunity(item.id, item.title);
                                 const newParams = new URLSearchParams(

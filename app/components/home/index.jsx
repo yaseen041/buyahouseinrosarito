@@ -1539,7 +1539,7 @@ const HomeComponent = ({
                                                     <SwiperSlide key={item.id} >
                                                         <div className="swiper-slide">
                                                             <div className="cities-item style-1 wow fadeInUp">
-                                                                <Link href={`/city/${item.name}`} as={`/${encodeURIComponent(item.name)}`} >
+                                                                <Link href={`/city/${item.slug}`} as={`/${encodeURIComponent(item.slug)}`} >
                                                                     <div className="image">
                                                                         <img src={item.image} alt="" />
                                                                     </div>
@@ -1547,7 +1547,7 @@ const HomeComponent = ({
                                                                 <div className="content">
                                                                     <p>{item.properties_count} Properties</p>
                                                                     <h4>
-                                                                        <Link href={`/city/${item.name}`} as={`/${encodeURIComponent(item.name)}`} >{item.name}</Link>
+                                                                        <Link href={`/city/${item.slug}`} as={`/${encodeURIComponent(item.slug)}`} >{item.name}</Link>
                                                                     </h4>
                                                                 </div>
                                                             </div>

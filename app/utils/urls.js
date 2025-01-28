@@ -30,5 +30,6 @@ export class url {
     static PROPERTIESOPTIONS = `${BASE_URL}/contact/property-options`
     static SUBMITCONTACT = `${BASE_URL}/contact/submit`
     static SUBMITTOUR = `${BASE_URL}/tour/submit`    
-
+// City
+    static CITY_PAGE = `${BASE_URL}/cities/page`
 }
