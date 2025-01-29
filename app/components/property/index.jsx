@@ -884,12 +884,14 @@ const PropertyComponent = ({
                     ) : (
                       <h4 className="text-center pt-5 "> No Property Found</h4>
                     )}
+                    {totalProperties >=6 && (
                     <CustomPagination
                       itemsPerPage={6}
                       onPageChange={handlePageChange}
                       totalData={totalProperties}
-                      initialPaage={currentPage}
+                      currentPage={currentPage}
                     />
+                  )}
                   </div>
                   <div className="col-lg-4">
                     <div className="sidebar">

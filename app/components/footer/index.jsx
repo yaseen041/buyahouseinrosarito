@@ -16,7 +16,7 @@ const pathname = usePathname()
                   <Link href="/">
                     <img
                       id="logo-footer"
-                      src="/assets/images/logo/logo-footer.svg"
+                      src="/assets/images/header2.png"
                       alt="images"
                     />
                   </Link>
@@ -140,7 +140,7 @@ const pathname = usePathname()
                     </li>
                   </ul>
                 </div>
-                <div className="footer-cl-6">
+                {/* <div className="footer-cl-6">
                   <div className="ft-title">Get the app</div>
                   <ul className="ft-download">
                     <li>
@@ -166,10 +166,10 @@ const pathname = usePathname()
                       </Link>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
               <div className="bottom-footer">
-                <div className="text">Copyright © {year}. Explore logics</div>
+                <div className="text"> Buy A House In Rosarito - Copyright © {year}. All rights reserved. Designed by <Link  href="https://explorelogics.com" target="_blank" rel="nofollow" > Explore Logics</Link></div>
               </div>
             </div>
           </div>

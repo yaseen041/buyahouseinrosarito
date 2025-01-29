@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Header3 from "../header3";
 import Footer from "../footer";
 import Link from "next/link";
@@ -10,7 +10,8 @@ import { url } from "@/app/utils/urls";
 import ScheduleForm from "../ScheduleForm/ScheduleForm";
 import Loader from "../loader/Loader";
 import { useUnitContext } from "@/app/utils/UnitContext";
-
+import { Tooltip, Overlay } from "react-bootstrap";
+import { useParams } from "next/navigation";
 const DetailPage = ({ property = {}, agent = {}, loading }) => {
   const { isSquareMeter, toggleUnit } = useUnitContext();
   const [properties, setProperties] = useState([]);
@@ -24,7 +25,8 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
   const [errorType, setErrorType] = useState("");
   const [errors, setErrors] = useState({});
   const [spin, setSpin] = useState(false);
-
+  const [showTooltip, setShowTooltip] = useState(false);
+  const targetRef = useRef(null);
   useEffect(() => {
     const fetchProperties = async () => {
       try {
@@ -33,8 +35,11 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
           throw new Error("Failed to fetch blog data");
         }
         const data = await response.json();
-        console.log(data);
-        setProperties(data.data);
+        if(data){
+          setProperties(data.data);
+         
+        }
+        
       } catch (err) {
         console.error(err.message);
       }
@@ -43,10 +48,12 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
     fetchProperties();
   }, [url, setProperties]);
 
-  const handleSelectionChange = (selected) => {
-    setSelectedProperties(selected);
-    setErrors((prevErrors) => ({ ...prevErrors, property_id: "" }));
-  };
+  useEffect(()=>{
+    if(properties.length>0 && Object.keys(property).length>0 ){
+      const propertyId = properties.find((i)=>i.title===property.title)
+      setSelectedProperties([propertyId.id])
+    }
+  },[properties,property])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -135,6 +142,18 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
     }
   };
 
+  const handleCopyUrl = () => {
+    const currentUrl = window.location.href;
+    navigator.clipboard.writeText(currentUrl)
+      .then(() => {
+        setShowTooltip(true);
+        setTimeout(() => setShowTooltip(false), 1500); // Hide after 1.5s
+      })
+      .catch((err) => {
+        console.error("Failed to copy URL: ", err);
+      });
+  };
+
   return (
     <div>
       <div id="wrapper">
@@ -157,17 +176,17 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                             <Link href="/">Home</Link>
                           </li>
                           <li>/</li>
-                          <li>Property List</li>
+                          <li><Link href="/property">Property</Link></li>
                           <li>/</li>
                           <li>{property?.title}</li>
                         </ul>
                         <div className="list-icons-page">
-                          <div className="item">
+                          {/* <div className="item">
                             <div className="icon">
                               <i className="flaticon-heart" />
                             </div>
                             <p>Save</p>
-                          </div>
+                          </div> */}
                           {/* <div className="item">
                           <div className="icon">
                             <i className="flaticon-before-after" />
@@ -176,7 +195,20 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                         </div> */}
                           <div className="item">
                             <div className="icon">
-                              <i className="flaticon-outbox" />
+                              <button
+                                ref={targetRef}
+                                style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
+                                onClick={handleCopyUrl}
+                              >
+                                <i className="flaticon-outbox" />
+                              </button>
+                              <Overlay target={targetRef.current} show={showTooltip} placement="bottom">
+                                {(props) => (
+                                  <Tooltip {...props} className="show">
+                                    <p style={{color:"#FFF"}} >Copied!</p>
+                                  </Tooltip>
+                                )}
+                              </Overlay>
                             </div>
                             <p>Share</p>
                           </div>
@@ -201,15 +233,15 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                         </div>
                         {Object.keys(property).length > 0
                           ? property?.gallery.map((item, index) => (
-                              <a
-                                href={`${item}`}
-                                className={`item-${index + 1}`}
-                                data-fancybox="gallery"
-                                key={index}
-                              >
-                                <img src={item} alt="" />
-                              </a>
-                            ))
+                            <a
+                              href={`${item}`}
+                              className={`item-${index + 1}`}
+                              data-fancybox="gallery"
+                              key={index}
+                            >
+                              <img src={item} alt="" />
+                            </a>
+                          ))
                           : null}
 
                         {/* <a
@@ -413,7 +445,7 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                           </div>
                         </div>
                         {Object.keys(property).length > 0 &&
-                        property.files.length > 0 ? (
+                          property.files.length > 0 ? (
                           <div className="attachments">
                             <h4 className="wow fadeInUp">
                               Property Attachments
@@ -583,45 +615,45 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                           <ul>
                             {Object.keys(property).length > 0
                               ? Object.keys(property.features).map(
-                                  (featureKey) => (
-                                    <li key={featureKey}>
-                                      <h5 className="wow fadeInUp">
-                                        {featureKey
-                                          .replace(/_/g, " ")
-                                          .replace(/\b\w/g, (char) =>
-                                            char.toUpperCase()
-                                          )}
-                                      </h5>
-                                      <div
-                                        className="wrap-check-ellipse wow fadeInUp"
-                                        data-wow-delay="0.1s"
-                                      >
-                                        {property.features[featureKey].map(
-                                          (item) => (
-                                            <div
-                                              className="check-ellipse-item"
-                                              key={item.id}
-                                            >
-                                              <div className="icon">
-                                                <i className="flaticon-check" />
-                                              </div>
-                                              <p>{item.title}</p>
-                                            </div>
-                                          )
+                                (featureKey) => (
+                                  <li key={featureKey}>
+                                    <h5 className="wow fadeInUp">
+                                      {featureKey
+                                        .replace(/_/g, " ")
+                                        .replace(/\b\w/g, (char) =>
+                                          char.toUpperCase()
                                         )}
-                                      </div>
-                                    </li>
-                                  )
+                                    </h5>
+                                    <div
+                                      className="wrap-check-ellipse wow fadeInUp"
+                                      data-wow-delay="0.1s"
+                                    >
+                                      {property.features[featureKey].map(
+                                        (item) => (
+                                          <div
+                                            className="check-ellipse-item"
+                                            key={item.id}
+                                          >
+                                            <div className="icon">
+                                              <i className="flaticon-check" />
+                                            </div>
+                                            <p>{item.title}</p>
+                                          </div>
+                                        )
+                                      )}
+                                    </div>
+                                  </li>
                                 )
+                              )
                               : null}
                           </ul>
                         </div>
 
                         {/* Tour For */}
-                        <div className="schedule" id="schedule">
+                        {/* <div className="schedule" id="schedule">
                           <h4 className="wow fadeInUp">Schedule a tour</h4>
                           <ScheduleForm propertyId={property.id} />
-                        </div>
+                        </div> */}
 
                         {/* <div className="plans">
                         <h4 className="wow fadeInUp">Floor Plans</h4>
@@ -905,181 +937,8 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                           </div>
 
                           {/* Contact Enquiry Form */}
-                          <div className="title wow fadeInUp">
-                            Enquire About This Property
-                          </div>
-                          <form
-                            className="form-comment"
-                            onSubmit={handleSubmit}
-                          >
-                            <div className="cols">
-                              <fieldset className="name wow fadeInUp has-top-title">
-                                <input
-                                  type="text"
-                                  placeholder="Jhon Doe"
-                                  value={name}
-                                  onChange={(e) => {
-                                    setName(e.target.value); // Update the name state
-                                    setErrors((prevErrors) => ({
-                                      ...prevErrors,
-                                      name: "", // Reset the name error when the user starts typing
-                                    }));
-                                  }}
-                                  name="text"
-                                  tabIndex={2}
-                                  aria-required="true"
-                                  required=""
-                                />
-                                <label htmlFor="">Name</label>
-                                {errors?.name && (
-                                  <span className="error text-danger">
-                                    {errors?.name}
-                                  </span>
-                                )}
-                              </fieldset>
-                              <fieldset
-                                className="phone wow fadeInUp has-top-title"
-                                data-wow-delay="0.1s"
-                              >
-                                <input
-                                  type="number"
-                                  placeholder="+1 123 456 7890"
-                                  value={phone}
-                                  onChange={(e) => {
-                                    setPhone(e.target.value); // Update the name state
-                                    setErrors((prevErrors) => ({
-                                      ...prevErrors,
-                                      phone: "", // Reset the name error when the user starts typing
-                                    }));
-                                  }}
-                                  name="phone"
-                                  tabIndex={2}
-                                  aria-required="true"
-                                  required=""
-                                />
-                                <label htmlFor="">Phone</label>
-                                {errors?.phone && (
-                                  <span className="error text-danger">
-                                    {errors?.phone}
-                                  </span>
-                                )}
-                              </fieldset>
-                            </div>
-                            <div className="row">
-                              <div className="col-12">
-                                <fieldset className="email wow fadeInUp has-top-title mb-5 ">
-                                  <input
-                                    type="email"
-                                    placeholder="Email"
-                                    value={email}
-                                    onChange={(e) => {
-                                      setEmail(e.target.value); // Update the name state
-                                      setErrors((prevErrors) => ({
-                                        ...prevErrors,
-                                        email: "", // Reset the name error when the user starts typing
-                                      }));
-                                    }}
-                                    name="email"
-                                    tabIndex={2}
-                                    aria-required="true"
-                                    required=""
-                                  />
-                                  <label htmlFor="">Email</label>
-                                  {errors?.email && (
-                                    <span className="error text-danger">
-                                      {errors?.email}
-                                    </span>
-                                  )}
-                                </fieldset>
-                              </div>
-                              <div className="col-12 mt-5 ">
-                                <fieldset
-                                  className=" wow fadeInUp  "
-                                  data-wow-delay="0.1s"
-                                  tabIndex={0}
-                                >
-                                  <MultiSelect
-                                    options={properties}
-                                    onChange={handleSelectionChange}
-                                  />
-
-                                  {errors?.property_id && (
-                                    <span className="error text-danger">
-                                      {errors?.property_id}
-                                    </span>
-                                  )}
-                                </fieldset>
-                              </div>
-                            </div>
-                            <fieldset className="message wow fadeInUp has-top-title">
-                              <textarea
-                                name="message"
-                                rows={4}
-                                placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                                className=""
-                                tabIndex={2}
-                                aria-required="true"
-                                required=""
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                              />
-                              <label htmlFor="">Message</label>
-                            </fieldset>
-                            <div className="checkbox-item wow fadeInUp">
-                              <label>
-                                <p>
-                                  By submitting this form I agree to
-                                  <span>Terms of Use</span>
-                                </p>
-                                <input
-                                  type="checkbox"
-                                  checked={consent}
-                                  onChange={(e) => setConsent(e.target.checked)}
-                                />
-                                <span className="btn-checkbox" />
-                              </label>
-                            </div>
-                            {error && (
-                              <div
-                                className={`checkbox-item wow fadeInUp ${
-                                  error ? "" : "d-none"
-                                }`}
-                              >
-                                <div
-                                  className={`alert alert-${errorType} fade show`}
-                                  role="alert"
-                                >
-                                  <strong
-                                    style={{ textTransform: "capitalize" }}
-                                  >
-                                    {errorType}
-                                  </strong>{" "}
-                                  {error}
-                                </div>
-                              </div>
-                            )}
-                            <div className="button-submit wow fadeInUp">
-                              <button
-                                className={`tf-button-primary w-full ${
-                                  !consent ? "disabled" : ""
-                                }`}
-                                disabled={!consent || spin}
-                                type="submit"
-                              >
-                                {spin ? (
-                                  <>
-                                    <span className="spinner"></span> Request
-                                    Submitting...
-                                  </>
-                                ) : (
-                                  <>
-                                    Request Information
-                                    <i className="icon-arrow-right-add" />
-                                  </>
-                                )}
-                              </button>
-                            </div>
-                          </form>
+                         
+                         
                         </div>
                         {/* <div className="video">
                         <h4 className="wow fadeInUp">Video</h4>
@@ -1499,108 +1358,108 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                               <div className="row">
                                 {Object.keys(property).length > 0
                                   ? property.related_listings.map((item) => (
-                                      <div className="col-md-6">
-                                        <div className="box-dream has-border wow fadeInUp">
-                                          <div className="image">
-                                            <div className="list-tags">
-                                              <Link
-                                                href="#"
-                                                className="tags-item for-sell"
-                                              >
-                                                FOR RENT
-                                              </Link>
-                                              <Link
-                                                href="#"
-                                                className="tags-item featured"
-                                              >
-                                                FEATURED
-                                              </Link>
-                                            </div>
-                                            <div className="button-heart">
-                                              <i className="flaticon-heart-1" />
-                                            </div>
-                                            <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
-                                              <div className="swiper-wrapper">
-                                                <div className="swiper-slide">
-                                                  <div className="w-full">
-                                                    <img
-                                                      className="w-full"
-                                                      src="/assets/images/house/home-1.jpg"
-                                                      alt=""
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div className="swiper-slide">
-                                                  <div className="w-full">
-                                                    <img
-                                                      className="w-full"
-                                                      src="/assets/images/house/home-2.jpg"
-                                                      alt=""
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div className="swiper-slide">
-                                                  <div className="w-full">
-                                                    <img
-                                                      className="w-full"
-                                                      src="/assets/images/house/home-3.jpg"
-                                                      alt=""
-                                                    />
-                                                  </div>
-                                                </div>
-                                                <div className="swiper-slide">
-                                                  <div className="w-full">
-                                                    <img
-                                                      className="w-full"
-                                                      src="/assets/images/house/home-4.jpg"
-                                                      alt=""
-                                                    />
-                                                  </div>
+                                    <div className="col-md-6">
+                                      <div className="box-dream has-border wow fadeInUp">
+                                        <div className="image">
+                                          <div className="list-tags">
+                                            <Link
+                                              href="#"
+                                              className="tags-item for-sell"
+                                            >
+                                              FOR RENT
+                                            </Link>
+                                            <Link
+                                              href="#"
+                                              className="tags-item featured"
+                                            >
+                                              FEATURED
+                                            </Link>
+                                          </div>
+                                          <div className="button-heart">
+                                            <i className="flaticon-heart-1" />
+                                          </div>
+                                          <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
+                                            <div className="swiper-wrapper">
+                                              <div className="swiper-slide">
+                                                <div className="w-full">
+                                                  <img
+                                                    className="w-full"
+                                                    src="/assets/images/house/home-1.jpg"
+                                                    alt=""
+                                                  />
                                                 </div>
                                               </div>
-                                              <div className="swiper-pagination box-dream-pagination" />
-                                              <div className="box-dream-next swiper-button-next" />
-                                              <div className="box-dream-prev swiper-button-prev" />
+                                              <div className="swiper-slide">
+                                                <div className="w-full">
+                                                  <img
+                                                    className="w-full"
+                                                    src="/assets/images/house/home-2.jpg"
+                                                    alt=""
+                                                  />
+                                                </div>
+                                              </div>
+                                              <div className="swiper-slide">
+                                                <div className="w-full">
+                                                  <img
+                                                    className="w-full"
+                                                    src="/assets/images/house/home-3.jpg"
+                                                    alt=""
+                                                  />
+                                                </div>
+                                              </div>
+                                              <div className="swiper-slide">
+                                                <div className="w-full">
+                                                  <img
+                                                    className="w-full"
+                                                    src="/assets/images/house/home-4.jpg"
+                                                    alt=""
+                                                  />
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div className="swiper-pagination box-dream-pagination" />
+                                            <div className="box-dream-next swiper-button-next" />
+                                            <div className="box-dream-prev swiper-button-prev" />
+                                          </div>
+                                        </div>
+                                        <div className="content">
+                                          <div className="head">
+                                            <div className="title">
+                                              <Link href="/property/property-single">
+                                                Home Pitt Street
+                                              </Link>
+                                            </div>
+                                            <div className="price">
+                                              $815,000
                                             </div>
                                           </div>
-                                          <div className="content">
-                                            <div className="head">
-                                              <div className="title">
-                                                <Link href="/property/property-single">
-                                                  Home Pitt Street
-                                                </Link>
-                                              </div>
-                                              <div className="price">
-                                                $815,000
-                                              </div>
+                                          <div className="location">
+                                            <div className="icon">
+                                              <i className="flaticon-location" />
                                             </div>
-                                            <div className="location">
-                                              <div className="icon">
-                                                <i className="flaticon-location" />
-                                              </div>
-                                              <p>
-                                                148-37 88th Ave, Jamaica, NY
-                                                11435
-                                              </p>
+                                            <p>
+                                              148-37 88th Ave, Jamaica, NY
+                                              11435
+                                            </p>
+                                          </div>
+                                          <div className="icon-box">
+                                            <div className="item">
+                                              <i className="flaticon-hotel" />
+                                              <p>4 Beds</p>
                                             </div>
-                                            <div className="icon-box">
-                                              <div className="item">
-                                                <i className="flaticon-hotel" />
-                                                <p>4 Beds</p>
-                                              </div>
-                                              <div className="item">
-                                                <i className="flaticon-bath-tub" />
-                                                <p>3 Baths</p>
-                                              </div>
-                                              <div className="item">
-                                                <i className="flaticon-minus-front" />
-                                                <p>2660 Sqft</p>
-                                              </div>
+                                            <div className="item">
+                                              <i className="flaticon-bath-tub" />
+                                              <p>3 Baths</p>
+                                            </div>
+                                            <div className="item">
+                                              <i className="flaticon-minus-front" />
+                                              <p>2660 Sqft</p>
                                             </div>
                                           </div>
                                         </div>
                                       </div>
-                                    ))
+                                    </div>
+                                  ))
                                   : null}
                               </div>
                             </div>
@@ -1611,24 +1470,201 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                     <div className="col-xl-4">
                       <div className="property-single-sidebar po-sticky">
                         <div className="sidebar-item sidebar-request">
-                          <div className="text">
-                            Request a tour as early as <br />
-                            <span>Today at 11:00AM</span>
+                        <div className="contact-info" id="contact">
+                          <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
+                            {/* <h4 className="mb-0">Contact Information</h4> */}
+                            {/* <Link href="#" className="tf-button-green">
+                            View Listing
+                          </Link> */}
                           </div>
-                          <button
-                            className="tf-button-primary w-full"
-                            onClick={() => scrollToSection("schedule")}
+                          {/* <div className="person wow fadeInUp">
+                            <div className="image">
+                              <img src={agent.image} alt="" />
+                            </div>
+                            <div className="content">
+                              <div className="name">
+                                <Link href="#">{agent.name}</Link>
+                              </div>
+                              <p>{agent.designation}</p>
+                              <p>{agent.phone}</p>
+                            </div>
+                          </div> */}
+
+                          {/* Contact Enquiry Form */}
+                          <div className="title wow fadeInUp">
+                            Enquire About This Property
+                          </div>
+                          <form
+                            className="form-comment"
+                            onSubmit={handleSubmit}
                           >
-                            Schedule a Tour
-                            <i className="icon-arrow-right-add" />
-                          </button>
-                          <button
-                            onClick={() => scrollToSection("contact")}
-                            className="tf-button-primary w-full style-bg-white"
-                          >
-                            Contact an agent
-                            <i className="icon-arrow-right-add" />
-                          </button>
+                            <div className="cols">
+                              <fieldset className="name wow fadeInUp has-top-title">
+                                <input
+                                  type="text"
+                                  placeholder="Jhon Doe"
+                                  value={name}
+                                  onChange={(e) => {
+                                    setName(e.target.value); // Update the name state
+                                    setErrors((prevErrors) => ({
+                                      ...prevErrors,
+                                      name: "", // Reset the name error when the user starts typing
+                                    }));
+                                  }}
+                                  name="text"
+                                  tabIndex={2}
+                                  aria-required="true"
+                                  required=""
+                                />
+                                <label htmlFor="">Name</label>
+                                {errors?.name && (
+                                  <span className="error text-danger">
+                                    {errors?.name}
+                                  </span>
+                                )}
+                              </fieldset>
+                              <fieldset
+                                className="phone wow fadeInUp has-top-title"
+                                data-wow-delay="0.1s"
+                              >
+                                <input
+                                  type="number"
+                                  placeholder="+1 123 456 7890"
+                                  value={phone}
+                                  onChange={(e) => {
+                                    setPhone(e.target.value); // Update the name state
+                                    setErrors((prevErrors) => ({
+                                      ...prevErrors,
+                                      phone: "", // Reset the name error when the user starts typing
+                                    }));
+                                  }}
+                                  name="phone"
+                                  tabIndex={2}
+                                  aria-required="true"
+                                  required=""
+                                />
+                                <label htmlFor="">Phone</label>
+                                {errors?.phone && (
+                                  <span className="error text-danger">
+                                    {errors?.phone}
+                                  </span>
+                                )}
+                              </fieldset>
+                            </div>
+                            <div className="row">
+                              <div className="col-12">
+                                <fieldset className="email wow fadeInUp has-top-title mb-5 ">
+                                  <input
+                                    type="email"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => {
+                                      setEmail(e.target.value); // Update the name state
+                                      setErrors((prevErrors) => ({
+                                        ...prevErrors,
+                                        email: "", // Reset the name error when the user starts typing
+                                      }));
+                                    }}
+                                    name="email"
+                                    tabIndex={2}
+                                    aria-required="true"
+                                    required=""
+                                  />
+                                  <label htmlFor="">Email</label>
+                                  {errors?.email && (
+                                    <span className="error text-danger">
+                                      {errors?.email}
+                                    </span>
+                                  )}
+                                </fieldset>
+                              </div>
+                              {/* <div className="col-12 mt-5 ">
+                                <fieldset
+                                  className=" wow fadeInUp  "
+                                  data-wow-delay="0.1s"
+                                  tabIndex={0}
+                                >
+                                  <MultiSelect
+                                    options={properties}
+                                    onChange={handleSelectionChange}
+                                  />
+
+                                  {errors?.property_id && (
+                                    <span className="error text-danger">
+                                      {errors?.property_id}
+                                    </span>
+                                  )}
+                                </fieldset>
+                              </div> */}
+                            </div>
+                            <fieldset className="message wow fadeInUp has-top-title">
+                              <textarea
+                                name="message"
+                                rows={4}
+                                placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                className=""
+                                tabIndex={2}
+                                aria-required="true"
+                                required=""
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                              />
+                              <label htmlFor="">Message</label>
+                            </fieldset>
+                            <div className="checkbox-item wow fadeInUp">
+                              <label>
+                                <p>
+                                  By submitting this form I agree to
+                                  <span>Terms of Use</span>
+                                </p>
+                                <input
+                                  type="checkbox"
+                                  checked={consent}
+                                  onChange={(e) => setConsent(e.target.checked)}
+                                />
+                                <span className="btn-checkbox" />
+                              </label>
+                            </div>
+                            {error && (
+                              <div
+                                className={`checkbox-item wow fadeInUp ${error ? "" : "d-none"
+                                  }`}
+                              >
+                                <div
+                                  className={`alert alert-${errorType} fade show`}
+                                  role="alert"
+                                >
+                                  <strong
+                                    style={{ textTransform: "capitalize" }}
+                                  >
+                                    {errorType}
+                                  </strong>{" "}
+                                  {error}
+                                </div>
+                              </div>
+                            )}
+                            <div className="button-submit wow fadeInUp">
+                              <button
+                                className={`tf-button-primary w-full ${!consent ? "disabled" : ""
+                                  }`}
+                                disabled={!consent || spin}
+                                type="submit"
+                              >
+                                {spin ? (
+                                  <>
+                                    <span className="spinner"></span> Request
+                                    Submitting...
+                                  </>
+                                ) : (
+                                  <>
+                                    Request Information
+                                    <i className="icon-arrow-right-add" />
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                          </form>
+                        </div>
                         </div>
                       </div>
                     </div>

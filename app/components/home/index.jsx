@@ -179,7 +179,7 @@ const HomeComponent = ({
                                                                                 </li>
                                                                                 {Object.keys(filters).length > 0 ? filters.types.map((item) => (
                                                                                     <li data-value="" className={`option ${selectedTypes.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleTypes(item.id, item.title)}>
-                                                                                        {item.title}
+                                                                                        {item.title} ({item.count})
                                                                                     </li>
                                                                                 )) : null}
 
@@ -201,7 +201,7 @@ const HomeComponent = ({
                                                                                 </li>
                                                                                 {Object.keys(filters).length > 0 ? filters.cities.map((item) => (
                                                                                     <li data-value="" className={`option ${selectedCity.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleCity(item.id, item.name)}>
-                                                                                        {item.name}
+                                                                                        {item.name} ({item.count})
                                                                                     </li>
                                                                                 )) : null}
 
@@ -614,7 +614,7 @@ const HomeComponent = ({
                                                                                                             key={item.id}
                                                                                                             onClick={() => handleCommunity(item.id, item.title)}
                                                                                                         >
-                                                                                                            {item.title}
+                                                                                                            {item.title} ({item.property_count})
                                                                                                         </li>
                                                                                                     ))}
 

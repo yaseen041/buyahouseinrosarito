@@ -17,7 +17,7 @@ const PropertyPage = () => {
   const [featuredProperties, setFeaturedProperties] = React.useState([])
   const [filters, setFilters] = React.useState({})
   const [totalData, setTotalData] = React.useState(0)
-  const [currentPage, setCurrentPage] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [selectedstatus, setSelectedStatus] = React.useState({ id: 0, title: "All Status" })
   const [selectedTypes, setSelectedTypes] = React.useState({ id: 0, title: "All types" })
   const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
@@ -50,7 +50,7 @@ const PropertyPage = () => {
 
 
   const handlePageChange = (page, offset) => {
-    console.log(page)
+    console.log("pages..............",page)
     setCurrentPage(page.selected + 1);
     const newParams = new URLSearchParams(searchParams.toString());
     if (currentPage > 0) {
