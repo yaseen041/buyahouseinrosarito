@@ -89,7 +89,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet"
         />
-
+        <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4b7fddacba/UntitledProject/style.css"></link>
         {/* Icons */}
         <link rel="stylesheet" type="text/css" href="/assets/icon/flaticon_just-home.css" />
         <link rel="stylesheet" type="text/css" href="/assets/icon/icomoon/style.css" />
@@ -103,7 +103,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}  body counter-scroll mm-wrapper`}>
         <UnitProvider>
-        {children}
+          {children}
         </UnitProvider>
 
         <Script
@@ -120,7 +120,7 @@ export default function RootLayout({ children }) {
         <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
         {/* <Script src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
         <Script src="/assets/js/bootstrap-select.min.js" strategy="afterInteractive" />
-       
+
         {isJQueryLoaded && (
           <>
 

@@ -25,23 +25,23 @@ const pathname = usePathname()
                   <span>Follow Us</span>
                   <ul className="list-social">
                     <li>
-                      <Link href="#">
+                      <Link href="https://www.facebook.com/BuyAHouseInRosarito/about_contact_and_basic_info" target='_blank' >
                         <i className="icon-facebook" />
                       </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link href="#">
                         <i className="icon-twitter" />
                       </Link>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <Link href="#">
                         <i className="icon-instagram" />
                       </Link>
-                    </li>
+                    </li> */}
                     <li>
-                      <Link href="#">
-                        <i className="icon-linkedin2" />
+                      <Link href="https://youtube.com/@buyahouseinrosarito?feature=shared" target='_blank' >
+                        <i className="icon-youtube" />
                       </Link>
                     </li>
                   </ul>

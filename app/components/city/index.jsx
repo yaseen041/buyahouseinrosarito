@@ -42,7 +42,7 @@ const CityComponent = ({
                                             <h2>{Object.keys(city).length > 0 ? city.city.name : null}</h2>
                                             <ul className="breadcrumbs">
                                                 <li>
-                                                    <a href="index.html">Home</a>
+                                                    <Link href="/">Home</Link>
                                                 </li>
                                                 <li>/</li>
                                                 <li>{Object.keys(city).length > 0 ? city.city.name : null}</li>
@@ -67,18 +67,9 @@ const CityComponent = ({
                                                         <li
                                                             key={item.id}
 
-                                                            onClick={() => {
-                                                                handleCommunity(item.id, item.title);
-                                                                const newParams = new URLSearchParams(
-                                                                    searchParams.toString()
-                                                                );
-                                                                newParams.set("community", item.title);
-                                                                router.push(
-                                                                    `/property?${newParams.toString()}`
-                                                                );
-                                                            }}
+                                                            
                                                         >
-                                                            <Link href="#">{item.title}</Link>
+                                                            <Link href={`/community/${item.slug}`} >{item.title}</Link>
                                                         </li>
                                                     )) : null}
                                                 </ul>
@@ -90,7 +81,7 @@ const CityComponent = ({
                                     <div className="col-lg-9">
 
                                         <div className="row">
-                                            <div className='col-12 col-md-5 ' >
+                                            <div className='col-12 col-md-12 ' >
                                                 {Object.keys(city).length > 0 ?
                                                     <>
                                                         <div className='d-flex flex-column ' >
@@ -100,12 +91,12 @@ const CityComponent = ({
                                                     </>
                                                     : null}
                                             </div>
-                                            <div className='col-12 col-md-7' >
+                                            <div className='col-12 col-md-12 ' >
                                                 {Object.keys(city).length > 0 ?
                                                     <>
                                                         <div className='d-flex flex-column align-items-center ' >
                                                            
-                                                            <div className='' dangerouslySetInnerHTML={{ __html: city.city.description }} />
+                                                            <div className='mt-5' dangerouslySetInnerHTML={{ __html: city.city.description }} />
                                                         </div>
                                                     </>
                                                     : null}

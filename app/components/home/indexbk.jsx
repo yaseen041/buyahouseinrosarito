@@ -18,152 +18,48 @@ import Header3 from '../header3';
 import Calculator from '../calculator/calculator';
 import ComparisonTable from '../comparisonTable';
 import { useUnitContext } from "@/app/utils/UnitContext";
-import { useRouter,useSearchParams } from 'next/navigation';
 
 
-const HomeComponent = ({community,types,filters,BestDeals,cities,recentForRent,recentForSale}) => {
-     console.log("data....",types)
+
+const HomeComponent = ({
+    types = [],
+    cities = [],
+    recentForRent = [],
+    recentForSale = [],
+    filters = {},
+    selectedCommunity = {},
+    community = [],
+    status = {},
+    selectedBed = {},
+    selectedBath = {},
+    minArea = "",
+    maxArea = "",
+    minPrice = "",
+    maxPrice = "",
+    features = [],
+    Keyword = "",
+    selectedTypes = {},
+    selectedCity = {},
+    BestDeals = [],
+    selectedFeatures,
+    handleInputChange = () => { },
+    handleStatus = () => { },
+    handleCommunity = () => { },
+    handleBed = () => { },
+    handleBath = () => { },
+    hanldeFeatures = () => { },
+    handleSearch = () => { },
+    handleTypes = () => { },
+    handleCity = () => { },
+    seoData
+
+}) => {
     const { isSquareMeter, toggleUnit } = useUnitContext();
     const [openFilter, setOpenFilter] = React.useState(false)
     const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
     const toggleNiceSelect = () => setOpenNiceSelect(!openNiceSelect)
-     const [loading, setLoading] = React.useState(true)
-        const [communities, setCommunities] = React.useState([])
-        const [selectedFeatures, setSelectedFeatures] = React.useState([])
-        const [seo, setSeo] = React.useState({})
-        const [selectedstatus, setSelectedStatus] = React.useState({ id: 0, title: "All Status" })
-        const [selectedTypes, setSelectedTypes] = React.useState({ id: 0, title: "All types" })
-        const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
-        const [selectedSorting, setSelectedSorting] = React.useState({ id: 1, title: "Default" })
-        const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Communities" })
-        const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any No of Bedrooms" })
-        const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any No of Bathrooms" })
-        const [minArea, setMinArea] = React.useState("")
-        const [maxArea, setMaxArea] = React.useState("")
-        const [minPrice, setMinPrice] = React.useState("")
-        const [maxPrice, setMaxPrice] = React.useState("")
-        const [Keyword, setKeyword] = React.useState("")
-
-     const searchParams = useSearchParams();
-        const router = useRouter();
-        const handleInputChange = (e) => {
-            const name = e.target.name
-            const value = e.target.value
-            if (name === "minArea") {
-                setMinArea(value)
-            } else if (name === "maxArea") {
-                setMaxArea(value)
-            } else if (name === "minPrice") {
-                setMinPrice(value)
-            } else if (name === "maxPrice") {
-                setMaxPrice(value)
-            } else if (name === "keyword") {
-                setKeyword(value)
-            }
-        }
-    
-        const handleStatus = (id, title) => {
-            setSelectedStatus({ id: id, title: title })
-    
-        }
-    
-        const hanldeFeatures = (id, title) => {
-            const exist = selectedFeatures.filter((i) => i.id === id)
-            if (exist.length > 0) {
-                setSelectedFeatures((prev) => prev.filter((i) => i.id !== id))
-            } else {
-    
-                setSelectedFeatures((prev) => [...prev, { id: id, title: title }])
-            }
-        }
-    
-        const handleCommunity = (id, title) => {
-            setSelectedCommunity({ id: id, title: title })
-    
-        }
-        const handleTypes = (id, title) => {
-            setSelectedTypes({ id: id, title: title })
-        }
-        const handleBed = (id, title) => {
-            setSelectedBed({ id: id, title: title })
-        }
-        const handleBath = (id, title) => {
-            setSelectedBath({ id: id, title: title })
-        }
-        const handleCity = (id, title) => {
-            setSelectedCity({ id: id, title: title })
-        }
-    
-
-
-    const handleSearch = (e) => {
-        e.preventDefault()
-        const newParams = new URLSearchParams(searchParams.toString());
-        if (selectedstatus.id !== 0) {
-            newParams.set("status", selectedstatus.title)
-        } else {
-            newParams.delete("status")
-        }
-        if (selectedTypes.id !== 0) {
-            newParams.set("type", selectedTypes.title)
-        } else {
-            newParams.delete("type")
-        }
-        if (selectedCity.id !== 0) {
-            newParams.set("city", selectedCity.title)
-        } else {
-            newParams.delete("city")
-        }
-        if (selectedCommunity.id !== 0) {
-            newParams.set("community", selectedCommunity.title)
-        } else {
-            newParams.delete("community")
-        }
-        if (selectedBed.id !== 0) {
-            newParams.set("bedrooms", selectedBed.title)
-        } else {
-            newParams.delete("bedrooms")
-        }
-        if (selectedBath.id !== 0) {
-            newParams.set("bathrooms", selectedBath.title)
-        } else {
-            newParams.delete("bathrooms")
-        }
-        if (minArea.length > 0) {
-            newParams.set("minarea", minArea)
-        } else {
-            newParams.delete("minarea")
-        }
-        if (maxArea.length > 0) {
-            newParams.set("maxarea", maxArea)
-        } else {
-            newParams.delete("maxarea")
-        }
-        if (minPrice.length > 0) {
-            newParams.set("minprice", minPrice)
-        } else {
-            newParams.delete("minprice")
-        }
-        if (maxPrice.length > 0) {
-            newParams.set("maxprice", maxPrice)
-        } else {
-            newParams.delete("maxprice")
-        }
-        if (selectedFeatures.length > 0) {
-            const feature = selectedFeatures.map((i) => i.title)
-            newParams.set("features", feature)
-        } else {
-            newParams.delete("features")
-        }
-        if (Keyword.length > 0) {
-            newParams.set("title", Keyword)
-        } else {
-            newParams.delete("title")
-        }
-        router.push(`/property?${newParams.toString()}`)
-    }
-
+  
     const [openSelect, setOpenSelect] = React.useState({
         status: false,
         type: false,
@@ -677,11 +573,11 @@ const HomeComponent = ({community,types,filters,BestDeals,cities,recentForRent,r
                                                                                         <div className='' >
                                                                                             <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Status</div>
                                                                                             <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
-                                                                                                <span className="current">{selectedstatus.title}</span>
+                                                                                                <span className="current">{status.title}</span>
                                                                                                 <ul className="list style-radio">
                                                                                                     <li
                                                                                                         data-value="For Sale"
-                                                                                                        className={`option ${selectedstatus.id === 0 ? "selected" : ""} `}
+                                                                                                        className={`option ${status.id === 0 ? "selected" : ""} `}
 
                                                                                                         onClick={() => handleStatus(0, " All Status")}
                                                                                                     >
@@ -690,7 +586,7 @@ const HomeComponent = ({community,types,filters,BestDeals,cities,recentForRent,r
                                                                                                     {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
                                                                                                         <li
                                                                                                             data-value="For Sale"
-                                                                                                            className={`option ${selectedstatus.id === item.id ? "selected" : ""} `}
+                                                                                                            className={`option ${status.id === item.id ? "selected" : ""} `}
                                                                                                             key={item.id}
                                                                                                             onClick={() => handleStatus(item.id, item.title)}
                                                                                                         >

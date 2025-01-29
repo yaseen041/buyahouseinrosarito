@@ -148,8 +148,7 @@ const ContactComponent = () => {
                                     <div className="content">
                                         <h4>Our Address</h4>
                                         <p>
-                                            90 Fifth Avenue, 3rd Floor <br />
-                                            San Francisco, CA 1980
+                                        Chichen Itza 8170, Rosarito, Mexico, 22567
                                         </p>
                                     </div>
 
@@ -163,7 +162,7 @@ const ContactComponent = () => {
                                     </div>
                                     <div className="content">
                                         <h4>Contact Info</h4>
-                                        <Link href="tel:+088 (246) 642-27-10" className="text-content">+088 (246) 642-27-10</Link>
+                                        <Link href="tel:+52 664 641 1658" className="text-content">+52 664 641 1658</Link>
                                         <p></p>
                                     </div>
 
@@ -177,7 +176,7 @@ const ContactComponent = () => {
                                     </div>
                                     <div className="content">
                                         <h4>Email Support</h4>
-                                        <Link href="mailto:example@gmail.com" className="text-content">example@gmail.com</Link>
+                                        <Link href="mailto:aaron@buyahouseinrosarito.com" className="text-content">aaron@buyahouseinrosarito.com</Link>
                                     </div>
 
                                 </div>

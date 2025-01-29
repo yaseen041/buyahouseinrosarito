@@ -16,15 +16,9 @@ const nextConfig = {
       },
     ]
   },
-  async rewrites() {
-   
-    return [
-      {
-        source: '/:slug',
-        destination: '/city/:slug',
-      },
-    ]
-  }
+  
+ 
+
  
 };
 
