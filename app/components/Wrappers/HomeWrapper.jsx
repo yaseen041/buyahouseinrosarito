@@ -1,6 +1,8 @@
-"use-client";
+"use client";
 import React from 'react';
-import HomeComponent from '../home';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+const HomeComponent = dynamic(()=>import("@/app/components/home"),{ssr:false})
 const HomeWrapper = ({ initialData, seoData }) => {
     const { title, description, openGraph, twitter, jsonLd } = seoData || {};
     return (
