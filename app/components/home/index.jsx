@@ -18,83 +18,82 @@ import Header3 from '../header3';
 import Calculator from '../calculator/calculator';
 import ComparisonTable from '../comparisonTable';
 import { useUnitContext } from "@/app/utils/UnitContext";
-import { useRouter,useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+import Head from 'next/head';
 
-
-const HomeComponent = ({community,types,filters,BestDeals,cities,recentForRent,recentForSale}) => {
-     console.log("data....",types)
+const HomeComponent = ({ community, types, filters, BestDeals, cities, recentForRent, recentForSale }) => {
     const { isSquareMeter, toggleUnit } = useUnitContext();
     const [openFilter, setOpenFilter] = React.useState(false)
     const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
     const toggleNiceSelect = () => setOpenNiceSelect(!openNiceSelect)
-     const [loading, setLoading] = React.useState(true)
-        const [communities, setCommunities] = React.useState([])
-        const [selectedFeatures, setSelectedFeatures] = React.useState([])
-        const [seo, setSeo] = React.useState({})
-        const [selectedstatus, setSelectedStatus] = React.useState({ id: 0, title: "All Status" })
-        const [selectedTypes, setSelectedTypes] = React.useState({ id: 0, title: "All types" })
-        const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
-        const [selectedSorting, setSelectedSorting] = React.useState({ id: 1, title: "Default" })
-        const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Communities" })
-        const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any No of Bedrooms" })
-        const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any No of Bathrooms" })
-        const [minArea, setMinArea] = React.useState("")
-        const [maxArea, setMaxArea] = React.useState("")
-        const [minPrice, setMinPrice] = React.useState("")
-        const [maxPrice, setMaxPrice] = React.useState("")
-        const [Keyword, setKeyword] = React.useState("")
+    const [loading, setLoading] = React.useState(true)
+    const [communities, setCommunities] = React.useState([])
+    const [selectedFeatures, setSelectedFeatures] = React.useState([])
+    const [seo, setSeo] = React.useState({})
+    const [selectedstatus, setSelectedStatus] = React.useState({ id: 0, title: "All Status" })
+    const [selectedTypes, setSelectedTypes] = React.useState({ id: 0, title: "All types" })
+    const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
+    const [selectedSorting, setSelectedSorting] = React.useState({ id: 1, title: "Default" })
+    const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Communities" })
+    const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any No of Bedrooms" })
+    const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any No of Bathrooms" })
+    const [minArea, setMinArea] = React.useState("")
+    const [maxArea, setMaxArea] = React.useState("")
+    const [minPrice, setMinPrice] = React.useState("")
+    const [maxPrice, setMaxPrice] = React.useState("")
+    const [Keyword, setKeyword] = React.useState("")
 
-     const searchParams = useSearchParams();
-        const router = useRouter();
-        const handleInputChange = (e) => {
-            const name = e.target.name
-            const value = e.target.value
-            if (name === "minArea") {
-                setMinArea(value)
-            } else if (name === "maxArea") {
-                setMaxArea(value)
-            } else if (name === "minPrice") {
-                setMinPrice(value)
-            } else if (name === "maxPrice") {
-                setMaxPrice(value)
-            } else if (name === "keyword") {
-                setKeyword(value)
-            }
+    const searchParams = useSearchParams();
+    const router = useRouter();
+    const handleInputChange = (e) => {
+        const name = e.target.name
+        const value = e.target.value
+        if (name === "minArea") {
+            setMinArea(value)
+        } else if (name === "maxArea") {
+            setMaxArea(value)
+        } else if (name === "minPrice") {
+            setMinPrice(value)
+        } else if (name === "maxPrice") {
+            setMaxPrice(value)
+        } else if (name === "keyword") {
+            setKeyword(value)
         }
-    
-        const handleStatus = (id, title) => {
-            setSelectedStatus({ id: id, title: title })
-    
+    }
+
+    const handleStatus = (id, title) => {
+        setSelectedStatus({ id: id, title: title })
+
+    }
+
+    const hanldeFeatures = (id, title) => {
+        const exist = selectedFeatures.filter((i) => i.id === id)
+        if (exist.length > 0) {
+            setSelectedFeatures((prev) => prev.filter((i) => i.id !== id))
+        } else {
+
+            setSelectedFeatures((prev) => [...prev, { id: id, title: title }])
         }
-    
-        const hanldeFeatures = (id, title) => {
-            const exist = selectedFeatures.filter((i) => i.id === id)
-            if (exist.length > 0) {
-                setSelectedFeatures((prev) => prev.filter((i) => i.id !== id))
-            } else {
-    
-                setSelectedFeatures((prev) => [...prev, { id: id, title: title }])
-            }
-        }
-    
-        const handleCommunity = (id, title) => {
-            setSelectedCommunity({ id: id, title: title })
-    
-        }
-        const handleTypes = (id, title) => {
-            setSelectedTypes({ id: id, title: title })
-        }
-        const handleBed = (id, title) => {
-            setSelectedBed({ id: id, title: title })
-        }
-        const handleBath = (id, title) => {
-            setSelectedBath({ id: id, title: title })
-        }
-        const handleCity = (id, title) => {
-            setSelectedCity({ id: id, title: title })
-        }
-    
+    }
+
+    const handleCommunity = (id, title) => {
+        setSelectedCommunity({ id: id, title: title })
+
+    }
+    const handleTypes = (id, title) => {
+        setSelectedTypes({ id: id, title: title })
+    }
+    const handleBed = (id, title) => {
+        setSelectedBed({ id: id, title: title })
+    }
+    const handleBath = (id, title) => {
+        setSelectedBath({ id: id, title: title })
+    }
+    const handleCity = (id, title) => {
+        setSelectedCity({ id: id, title: title })
+    }
+
 
 
     const handleSearch = (e) => {
@@ -242,8 +241,7 @@ const HomeComponent = ({community,types,filters,BestDeals,cities,recentForRent,r
 
 
     return (
-        <>
-
+        <div>
 
             < div id="wrapper">
                 <div id="page" className="">
@@ -2438,7 +2436,7 @@ const HomeComponent = ({community,types,filters,BestDeals,cities,recentForRent,r
             <CustomScript src="/assets/js/main.js" />
 
 
-        </>
+        </div>
 
     )
 }
