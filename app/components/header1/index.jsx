@@ -106,11 +106,11 @@ const Header1 = () => {
                   </span>
                 </label>
               </div>
-              <div className="header-btn">
+              {/* <div className="header-btn">
                 <a href="#" className="tf-button-default">
                   Add Listing
                 </a>
-              </div>
+              </div> */}
             </div>
             <a
               className="mobile-nav-toggler mobile-button"

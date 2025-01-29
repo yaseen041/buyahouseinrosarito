@@ -67,6 +67,72 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                       <Link href="https://www.starlink.com/" target='_blank' >Movistar: Provides competitive data plans and nationwide coverage.</Link>
                     </div> </p></li>
                   </ul>
+                  <h5 className="wow fadeInUp text-center mt-5 ">🚚 Trustworthy International Movers with Great Reviews</h5>
+                  <p className='text-center' ><strong>1. Shepherd International Movers</strong></p>
+                  <ul className='wow fadeInUp mt-5' >
+                    <li><p><strong> Overview:</strong> Shepherd International Movers is a <strong> highly rated international moving company</strong> specializing in relocations from <strong> California to Mexico.</strong> Their services include full packing, transport, and customs clearance.</p></li>
+                    <li>
+                      <p><strong>Services Offered:</strong></p>
+                    </li>
+                  </ul>
+                  <p  >
+                    ✅ Full-service international household moving <br />
+                    ✅ Vehicle shipping <br />
+                    ✅ Packing and storage solutions <br />
+                    ✅ Customs assistance for U.S.-Mexico border crossing
+                  </p>
+                  <ul className='wow fadeInUp' >
+                    <li>
+                      <p> <strong>Reviews:</strong> </p>
+                    </li>
+                  </ul>
+                  <p>
+                    ⭐ <strong>Google Maps: 4.8 stars</strong><br />
+                    ⭐ <strong>Yelp: 4.5 stars</strong>
+                  </p>
+                  <ul className='wow fadeInUp' >
+                    <li>
+                      <p> <strong>Contact:</strong> </p>
+                    </li>
+                  </ul>
+                  <p>
+                    📞<strong> Phone:</strong> (844) 747-6111<br />
+                   <span><img src='/assets/images/abouticon.png' height={20} width={20} /></span> <strong>Website:</strong> <Link href="https://maps.app.goo.gl/R3tPyiMWiW5yKFhTA" target='_blank' style={{textDecoration:"underline"}} >Shepherd Movers</Link>
+
+                  </p>
+                  <p className='text-center mt-3 ' ><strong>2. Atlas Transfer & Storage Co.</strong></p>
+                  <ul className='wow fadeInUp mt-5' >
+                    <li><p><strong> Overview:</strong> A <strong>BBB-accredited</strong> company with over<strong> 90 years of experience,</strong> Atlas Transfer & Storage offers<strong> international moving services from the US to Mexico,</strong> ensuring safe and efficient transport.</p></li>
+                    <li>
+                      <p><strong>Services Offered:</strong></p>
+                    </li>
+                  </ul>
+                  <p  >
+                    ✅ Household moving services <br />
+                    ✅ Storage solutions <br />
+                    ✅ Packing and unpacking <br />
+                    ✅ Customs documentation support
+                  </p>
+                  <ul className='wow fadeInUp' >
+                    <li>
+                      <p> <strong>Reviews:</strong> </p>
+                    </li>
+                  </ul>
+                  <p>
+                    ⭐ <strong>Google Maps: 4.7 stars</strong><br />
+                    ⭐ <strong>Better Business Bureau (BBB): A+ rating</strong><br/>
+                    ⭐ <strong>Yelp: 4.5 stars</strong>
+                  </p>
+                  <ul className='wow fadeInUp' >
+                    <li>
+                      <p> <strong>Contact:</strong> </p>
+                    </li>
+                  </ul>
+                  <p>
+                    📞<strong> Phone:</strong> (858) 513-3800<br />
+                   <span><img src='/assets/images/abouticon.png' height={20} width={20} /></span> <strong>Website:</strong> <Link href="https://maps.app.goo.gl/eYaTYR4nCwu4nEfX7" target='_blank' style={{textDecoration:"underline"}} >Atlas Transfer & Storage</Link>
+
+                  </p>
                   <h5 className="wow fadeInUp text-center mt-5 ">🏥 Healthcare and Wellness</h5>
                   <ul className='wow fadeInUp mt-5' >
                     <li><p><span>High-Quality, Affordable Care</span>: Explore Mexico’s top-notch medical facilities for everyday needs, emergencies, and more.</p></li>
@@ -158,7 +224,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
               </div>
             </div>
           </section>
-         
+
         </div>
         <Footer />
       </div>

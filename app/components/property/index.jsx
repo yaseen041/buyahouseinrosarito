@@ -279,7 +279,7 @@ const PropertyComponent = ({
                                           handleCity(city.id, city.name)
                                         }
                                       >
-                                        {city.name}
+                                        {city.name} ({city.properties_count})
                                       </li>
                                     ))}
                                   </ul>
@@ -326,7 +326,7 @@ const PropertyComponent = ({
                                           handleTypes(item.id, item.title)
                                         }
                                       >
-                                        {item.title}
+                                        {item.title} ({item.property_count})
                                       </li>
                                     ))}
                                   </ul>
@@ -470,7 +470,7 @@ const PropertyComponent = ({
                                                   )
                                                 }
                                               >
-                                                {item.title}
+                                                {item.title} ({item.property_count})
                                               </li>
                                             ))}
                                           </ul>
@@ -754,7 +754,7 @@ const PropertyComponent = ({
                     <div className="top">
                       <div className="sub">
                         <p className="wow fadeInUp">
-                          {properties.length} results
+                          {totalProperties} results
                         </p>
                         <div
                           className="sort-wrap wow fadeInUp"
@@ -912,7 +912,7 @@ const PropertyComponent = ({
                                 );
                               }}
                             >
-                              <Link href="#">{item.title}</Link>
+                              <Link href="#">{item.title} </Link>
                             </li>
                           ))}
                         </ul>

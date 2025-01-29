@@ -114,11 +114,11 @@ const Header2 = () => {
                 </label>
               </div>
 
-              <div className="header-btn">
+              {/* <div className="header-btn">
                 <a href="#" className="tf-button-default style-white">
                   Add Listing
                 </a>
-              </div>
+              </div> */}
             </div>
             <div className="unit-switcher d-block d-md-none">
                 <label className="custom-switch">
