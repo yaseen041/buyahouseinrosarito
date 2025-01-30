@@ -301,7 +301,7 @@ const PropertyPage = () => {
     //   section.scrollIntoView({ behavior: "smooth" })
     // }
    
-  }, [currentPage, filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
+  }, [ filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
 
   const handleSearch = (e) => {
     e.preventDefault()

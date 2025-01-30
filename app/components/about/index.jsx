@@ -24,11 +24,30 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
         <Header3 />
         {/* /header */}
         {/* main-content */}
-        <div className="main-content px-20 default about "  >
-          <div className="space-20" />
+        <div className="main-content px-20 default  "  >
+
           {/* flat-title */}
           <section className="flat-title ">
+            <div className='flat-title inner-page' >
             <div className="cl-container full">
+              <div className="row">
+                <div className="col-12">
+                  <div className="content">
+                    <h2>About</h2>
+                    <ul className="breadcrumbs" style={{listStyle:"none"}} >
+                      <li  style={{listStyle:"none"}} className='list-unstyled' >
+                        <Link href="/">Home</Link>
+                      </li>
+                      <li>/</li>
+                      <li>About</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div className="cl-container full about  " style={{paddingTop:90}} >  
+
               <div className="row justify-center ">
                 <div className="col-12 col-md-6">
                   <div className="content">
@@ -37,7 +56,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     </div>
                   </div>
                   <div className='text-center' >
-                  <img src="/assets/images/about1.png" className='mt-5' alt="" />
+                    <img src="/assets/images/about1.png" className='mt-5' alt="" />
                   </div>
                   <p className="wow fadeInUp mt-5 ">
                     We’re the Hansome family - an Ohio State Buckeye, my incredible wife Adriana my “Aztec Warrior Princess”, and our son Adam. While Adriana isn’t deeply connected to her Native ancestry, it’s fascinating to know our family is part of Mexico’s rich cultural tapestry. Join us as we share our personal experiences of raising a family in Rosarito and embracing the unique opportunities this place has to offer.
@@ -48,7 +67,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   </p>
                   <h5 className="wow fadeInUp text-center mt-5 ">🌴 Affordable Real Estate & Living</h5>
                   <div className='text-center' >
-                  <img src="/assets/images/about2.png" className='mt-5' alt="" />
+                    <img src="/assets/images/about2.png" className='mt-5' alt="" />
                   </div>
                   <ul className='wow fadeInUp mt-5' >
                     <li><p><span><Link href="https://buyahouseinrosarito.com/" target="_blank" >Super Low-Cost Real Estate</Link></span>: Find incredible deals on homes with ocean views, family-friendly communities, and investment properties that maximize your budget.</p></li>
@@ -101,7 +120,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   </ul>
                   <p>
                     📞<strong> Phone:</strong> (844) 747-6111<br />
-                   <span><img src='/assets/images/abouticon.png' height={20} width={20} /></span> <strong>Website:</strong> <Link href="https://maps.app.goo.gl/R3tPyiMWiW5yKFhTA" target='_blank' style={{textDecoration:"underline"}} >Shepherd Movers</Link>
+                    <span><img src='/assets/images/abouticon.png' height={20} width={20} /></span> <strong>Website:</strong> <Link href="https://maps.app.goo.gl/R3tPyiMWiW5yKFhTA" target='_blank' style={{ textDecoration: "underline" }} >Shepherd Movers</Link>
 
                   </p>
                   <p className='text-center mt-3 ' ><strong>2. Atlas Transfer & Storage Co.</strong></p>
@@ -124,7 +143,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   </ul>
                   <p>
                     ⭐ <strong>Google Maps: 4.7 stars</strong><br />
-                    ⭐ <strong>Better Business Bureau (BBB): A+ rating</strong><br/>
+                    ⭐ <strong>Better Business Bureau (BBB): A+ rating</strong><br />
                     ⭐ <strong>Yelp: 4.5 stars</strong>
                   </p>
                   <ul className='wow fadeInUp' >
@@ -134,7 +153,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   </ul>
                   <p>
                     📞<strong> Phone:</strong> (858) 513-3800<br />
-                   <span><img src='/assets/images/abouticon.png' height={20} width={20} /></span> <strong>Website:</strong> <Link href="https://maps.app.goo.gl/eYaTYR4nCwu4nEfX7" target='_blank' style={{textDecoration:"underline"}} >Atlas Transfer & Storage</Link>
+                    <span><img src='/assets/images/abouticon.png' height={20} width={20} /></span> <strong>Website:</strong> <Link href="https://maps.app.goo.gl/eYaTYR4nCwu4nEfX7" target='_blank' style={{ textDecoration: "underline" }} >Atlas Transfer & Storage</Link>
 
                   </p>
                   <h5 className="wow fadeInUp text-center mt-5 ">🏥 Healthcare and Wellness</h5>
@@ -148,31 +167,31 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   <ul className='wow fadeInUp mt-5' >
                     <li><p><span>Sport Fishing and Whale Watching, Ensenada</span>: Enjoy sport fishing and tranquil boat rides from nearby Ensenada’s port and marina.</p></li>
                     <div className='text-center' >
-                    <img className='mt-3' src='/assets/images/about3.png' />
+                      <img className='mt-3' src='/assets/images/about3.png' />
                     </div>
                     <li className='mt-3' ><p><span className='pt-3' ><Link href="https://www.surf-forecast.com/breaks/Baja-Malibu" target='_blank' >Surfing, Playas de Rosarito</Link></span>: Catch some of the best waves on the Baja coast, perfect for surfers of all levels.</p> </li>
                     <li className='mt-3' ><p><span className='pt-3' >Golfing, Playas de Rosarito</span>: Tee off at scenic golf courses with breathtaking ocean views.</p> </li>
                   </ul>
                   <div className='text-center' >
-                  <img className='mt-5 wow fadeInUp' src='/assets/images/about4.png' />
+                    <img className='mt-5 wow fadeInUp' src='/assets/images/about4.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><p><span><Link href="https://maps.app.goo.gl/APzxDcP1dBsnNH5s9" target='_blank' >Jersey Kids Zoo, Ensenada</Link></span>: Located in Valle de Guadalupe, this family-friendly park offers a petting zoo, playgrounds, and water attractions. Perfect for kids and picnics.</p></li>
                   </ul>
                   <div className='text-center' >
-                  <img className='mt-5 wow fadeInUp' src='/assets/images/about5.png' />
+                    <img className='mt-5 wow fadeInUp' src='/assets/images/about5.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><p><span>Pai Pai Ecotourism Park, Ensenada</span>: Experience exotic animals, zip-lining, EuroBungee, and interaction with animals at this conservation-focused adventure park.</p></li>
                   </ul>
                   <div className='text-center' >
-                  <img className='mt-5 wow fadeInUp' src='/assets/images/about6.png' />
+                    <img className='mt-5 wow fadeInUp' src='/assets/images/about6.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><p><span>Las Cañadas Adventure Park, Ensenada</span>: Zip-lining, ATV trails, horseback riding, camping, wave pools, and more—all in a scenic natural setting.</p></li>
                   </ul>
                   <div className='text-center' >
-                  <img className='mt-5 wow fadeInUp' src='/assets/images/about7.png' />
+                    <img className='mt-5 wow fadeInUp' src='/assets/images/about7.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><p><span><Link href="https://maps.app.goo.gl/XLzwJA74iBmEwEdV7" target='_blank' >Morelos Park Zoo, Tijuana </Link></span>: A local favorite, this zoo features various animal exhibits, a petting zoo, and beautiful picnic areas.</p></li>
@@ -196,7 +215,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     </li>
                   </ul>
                   <div className='text-center' >
-                  <img className='mt-5 wow fadeInUp' src='/assets/images/about8.png' />
+                    <img className='mt-5 wow fadeInUp' src='/assets/images/about8.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li>

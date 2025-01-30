@@ -138,7 +138,7 @@ const PropertyComponent = ({
           <Header3 />
           {/* main-content */}
           <div className="main-content px-20">
-            <div className="space-20" />
+            
             {/* flat-title */}
             <div className="flat-title page-property-list-3">
               <div className="cl-container">
@@ -178,6 +178,7 @@ const PropertyComponent = ({
                                       <i className="flaticon-magnifiying-glass" />
                                     </div>
                                   </div>
+                                  
                                   {/* <div className="box-content-search style-1">
                                     <ul>
                                       <li>
@@ -241,6 +242,7 @@ const PropertyComponent = ({
                                 </div>
                               </div>
                             </div>
+                            <div className="divider-1" />
                             <div className="group-form">
                               <div
                                 className="form-style-has-title"

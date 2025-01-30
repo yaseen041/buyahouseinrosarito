@@ -137,7 +137,26 @@ const ContactComponent = () => {
             <div id="wrapper">
                 <div id="page" className="">
                     <Header3 />
-                    <div className="main-content spacing-20">
+                    <div className='flat-title inner-page' >
+                            <div className="cl-container full">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div className="content">
+                                            <h2>Contact</h2>
+                                            <ul className="breadcrumbs" style={{ listStyle: "none" }} >
+                                                <li style={{ listStyle: "none" }} className='list-unstyled' >
+                                                    <Link href="/">Home</Link>
+                                                </li>
+                                                <li>/</li>
+                                                <li>Contact</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div className="main-content spacing-20" style={{paddingTop:90}} >
+                        
                         <div className="wrap-map-v5">
                             <Map lattitude={-34.397} longitude={150.644} />
                             <div className="grid-contact">
@@ -148,7 +167,7 @@ const ContactComponent = () => {
                                     <div className="content">
                                         <h4>Our Address</h4>
                                         <p>
-                                        Chichen Itza 8170, Rosarito, Mexico, 22567
+                                            Chichen Itza 8170, Rosarito, Mexico, 22567
                                         </p>
                                     </div>
 
@@ -329,7 +348,7 @@ const ContactComponent = () => {
                         </section>
                         {/* /send-message */}
                         {/* flat-partner */}
-                        <section className="tf-section flat-partner style-1 pt-0">
+                        {/* <section className="tf-section flat-partner style-1 pt-0">
                             <div className="cl-container">
                                 <div className="row">
                                     <div className="col-12">
@@ -458,7 +477,7 @@ const ContactComponent = () => {
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section> */}
                         {/* /flat-partner */}
                         {/* account-bar */}
                         <section className="account-bar">

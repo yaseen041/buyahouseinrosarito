@@ -3,6 +3,7 @@ import React from 'react'
 import Footer from '../footer'
 import Header3 from '../header3'
 import CustomScript from '@/app/scripts'
+import Link from 'next/link'
 
 const FaqComponent = () => {
     return (
@@ -15,7 +16,7 @@ const FaqComponent = () => {
                     {/* /header */}
                     {/* main-content */}
                     <div className="main-content px-20 default">
-                        <div className="space-20" />
+                       
                         {/* flat-title */}
                         <section className="flat-title inner-page">
                             <div className="cl-container full">
@@ -25,7 +26,7 @@ const FaqComponent = () => {
                                             <h2>Frequently asked questions</h2>
                                             <ul className="breadcrumbs">
                                                 <li>
-                                                    <a href="index.html">Home</a>
+                                                    <Link href="/">Home</Link>
                                                 </li>
                                                 <li>/</li>
                                                 <li>Frequently asked questions</li>

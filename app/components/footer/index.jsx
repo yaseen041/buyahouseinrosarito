@@ -8,8 +8,8 @@ const Footer = () => {
     const year = d.getFullYear()
 const pathname = usePathname()
   return (
-    <footer className={`footer ${pathname==="/"?"p-0":""}`}>
-          <div className={`footer-inner ${pathname==="/"?"rounded-0":""}`}>
+    <footer className={`footer p-0 `}>
+          <div className={`footer-inner rounded-0 `}>
             <div className="footer-inner-wrap">
               <div className="top-footer">
                 <div className="logo-footer">

@@ -1312,7 +1312,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                         <div className='col-12 col-md-6' >
                                             <HomeSizeCalculator />
                                         </div>
-                                        <div className='col-12 col-md-6 ' >
+                                        <div className='col-12 col-md-6 mt-5 mt-md-0 ' >
                                             <Temperatures />
                                             {/* <div className="video">
                                                

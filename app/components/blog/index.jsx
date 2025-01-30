@@ -66,9 +66,8 @@ const BlogComponent = () => {
   };
 
   useEffect(() => {
-    const blogsUrl = `${url.BLOGS}?page=${pageQuery}${
-      categoryQuery ? `&category=${categoryQuery}` : ""
-    }${searchQuery ? `&search=${searchQuery}` : ""}`;
+    const blogsUrl = `${url.BLOGS}?page=${pageQuery}${categoryQuery ? `&category=${categoryQuery}` : ""
+      }${searchQuery ? `&search=${searchQuery}` : ""}`;
 
     fetchBlogs(blogsUrl, setBlogs);
     fetchCategories(url.CATEGORIES, setCategories);
@@ -85,8 +84,7 @@ const BlogComponent = () => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= pagination.totalPages) {
       router.push(
-        `?page=${page}${categoryQuery ? `&category=${categoryQuery}` : ""}${
-          searchQuery ? `&search=${searchQuery}` : ""
+        `?page=${page}${categoryQuery ? `&category=${categoryQuery}` : ""}${searchQuery ? `&search=${searchQuery}` : ""
         }`
       );
     }
@@ -121,25 +119,25 @@ const BlogComponent = () => {
         <div id="page">
           <Header3 />
           <div className="main-content style-1">
-            <div className="flat-title ">
+            <div className='flat-title inner-page' >
               <div className="cl-container full">
                 <div className="row">
                   <div className="col-12">
                     <div className="content">
-                      <h2>Blogs</h2>
-                      <ul className="breadcrumbs">
-                        <li>
+                      <h2>Blog</h2>
+                      <ul className="breadcrumbs" style={{ listStyle: "none" }} >
+                        <li style={{ listStyle: "none" }} className='list-unstyled' >
                           <Link href="/">Home</Link>
                         </li>
                         <li>/</li>
-                        <li>Blogs List</li>
+                        <li>Blog</li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="cl-container">
+            <div className="cl-container " style={{ paddingTop: 90 }} >
               <div className="row">
                 <div className="col-lg-8">
                   {loading ? (
@@ -147,10 +145,10 @@ const BlogComponent = () => {
                   ) : blogs.length > 0 ? (
                     <div className="row wow fadeInUp">
                       {blogs.map((blog) => (
-                        <div className="col-xl-4 col-md-6 col-12 mb-20" style={{paddingRight: '0px'}} key={blog.id} >
+                        <div className="col-xl-6 col-md-6 col-12 mb-20" style={{ paddingRight: '0px' }} key={blog.id} >
                           <div className="wg-blog wow fadeInUp animated" style={{ visibility: "visible", animationName: "fadeInUp", height: "100% !important", }} >
                             <div className="image">
-                              <img src={blog.featured_image || "/assets/images/blog/blog-grid-1.jpg" } alt={blog.title} />
+                              <img src={blog.featured_image || "/assets/images/blog/blog-grid-1.jpg"} alt={blog.title} />
                             </div>
                             <div className="content">
                               <div className="sub-blog">
@@ -163,16 +161,18 @@ const BlogComponent = () => {
                                   }).format(new Date(blog.publish_date))}
                                 </div>
                               </div>
-                              <div className="name">
-                                <a href={`/blog/${blog.slug}`}>{blog.title}</a>
+                              <div style={{ minHeight: 150 }} >
+                                <div className="name">
+                                  <a href={`/blog/${blog.slug}`}>{blog.title}</a>
+                                </div>
+                                <div>
+                                  <p>{truncate(blog.meta_description)}</p>
+                                </div>
                               </div>
-                              <div>
-                                <p>{truncate(blog.meta_description)}</p>
-                              </div> 
-                              <a href={`/blog/${blog.slug}`} className="tf-button-no-bg" >
+                              <Link href={`/blog/${blog.slug}`} className="tf-button-no-bg" >
                                 Read More
                                 <i className="icon-arrow-right-add"></i>
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </div>
@@ -188,9 +188,8 @@ const BlogComponent = () => {
                       aria-label="Pagination"
                     >
                       <li
-                        className={`previous ${
-                          pagination.currentPage === 1 ? "disabled" : ""
-                        }`}
+                        className={`previous ${pagination.currentPage === 1 ? "disabled" : ""
+                          }`}
                       >
                         <a
                           onClick={() =>
@@ -217,11 +216,10 @@ const BlogComponent = () => {
                           >
                             <a
                               onClick={() => handlePageChange(idx + 1)}
-                              aria-label={`Page ${page}${
-                                pagination.currentPage === page
+                              aria-label={`Page ${page}${pagination.currentPage === page
                                   ? " is your current page"
                                   : ""
-                              }`}
+                                }`}
                               aria-current={
                                 pagination.currentPage === page
                                   ? "page"
@@ -242,11 +240,10 @@ const BlogComponent = () => {
                       )}
 
                       <li
-                        className={`next ${
-                          pagination.currentPage === pagination.totalPages
+                        className={`next ${pagination.currentPage === pagination.totalPages
                             ? "disabled"
                             : ""
-                        }`}
+                          }`}
                       >
                         <a
                           onClick={() =>
