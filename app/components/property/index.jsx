@@ -854,26 +854,26 @@ const PropertyComponent = ({
                                     <div className="icon">
                                       <i className="flaticon-location" />
                                     </div>
-                                    <p>{item.address}</p>
+                                    <p style={{fontSize:13}}>{item.address}</p>
                                   </div>
                                   <div className="icon-box">
                                     <div className="item">
                                       <i className="flaticon-hotel" />
-                                      <p>{item.bedrooms} Beds</p>
+                                      <p style={{fontSize:13}}>{item.bedrooms} Beds</p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-bath-tub" />
-                                      <p>{item.bathrooms} Baths</p>
+                                      <p style={{fontSize:13}}>{item.bathrooms} Baths</p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-minus-front" />
 
-                                      {/* <p>
+                                      {/* <p style={{fontSize:13}}>
                                         {!isSquareMeter
                                           ? item.size_mt + " Sq M"
                                           : item.size + " Sq ft"}
                                       </p> */}
-                                      <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
+                                      <p style={{fontSize:13}}>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                     </div>
                                   </div>
                                 </div>

@@ -20,6 +20,9 @@ import ComparisonTable from '../comparisonTable';
 import { useUnitContext } from "@/app/utils/UnitContext";
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from 'next/head';
+import HomeSizeCalculator from '../SizeCalculeter';
+import Temperatures from '../temp';
+import RosaritoComparisonTable from '../comparison';
 
 const HomeComponent = ({ community, types, filters, BestDeals, cities, recentForRent, recentForSale }) => {
     const { isSquareMeter, toggleUnit } = useUnitContext();
@@ -1274,11 +1277,46 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 </div>
                                 <div className="counter">
                                     <div className='row justify-center' >
-                                        <div className='col-12 col-md-6' >
-                                            <Calculator />
-                                        </div>
+                                       
                                         <div className='col-12 col-md-6 ' >
                                             <VideoComponent src="/assets/video.mp4" />
+                                           
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                        <section className="tf-section flat-counter">
+                            <div className="cl-container">
+                                <div className="row justify-center ">
+                                    <div className="col-12 col-md-8">
+                                        <div className="heading-section text-center">
+                                            <h2 className="wow fadeInUp">
+                                            Why Are More and More Americans Moving to Rosarito? The Answer May Surprise You!						
+                                            </h2>
+                                            <div className="text wow fadeInUp">
+                                            Rosarito, officially known as Playas de Rosarito, is quickly becoming one of the most sought-after destinations for Americans looking to escape the high cost of living in the U.S. Known for its stunning beachfront properties, year-round mild climate, and affordability, Rosarito offers an unmatched lifestyle at a fraction of the price compared to U.S. cities like Los Angeles or Honolulu.
+                                            </div>
+                                            <div className="text wow fadeInUp mt-2">
+                                            Imagine owning a luxury home with ocean views for as little as $300 per square foot, or a spacious inland property for just $110 per square foot. With average high temperatures ranging from 65°F (18°C) in January to 75°F (24°C) in August, Playas de Rosarito boasts one of the most comfortable climates in the region, perfect for those seeking to avoid extreme weather.
+                                            </div>
+                                            <div className="text wow fadeInUp mt-2">
+                                            In addition to its affordability and climate, Rosarito is just a short drive from the U.S. border, making it an ideal location for expats and retirees who want easy access to California while enjoying the relaxed pace and cost savings of life in Mexico.
+                                            </div>
+                                            <div className="text wow fadeInUp mt-2">
+                                            Whether you’re searching for a quiet retirement home or an affordable beachfront escape, Playas de Rosarito offers endless possibilities. With tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home in Rosarito today!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="counter">
+                                    <div className='row justify-center' >
+                                        <div className='col-12 col-md-6' >
+                                            <HomeSizeCalculator />
+                                        </div>
+                                        <div className='col-12 col-md-6 ' >
+                                            <Temperatures />
                                             {/* <div className="video">
                                                
                                                 <div className="video-wrap">
@@ -1293,6 +1331,9 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                     </Link>
                                                 </div>
                                             </div> */}
+                                        </div>
+                                        <div className='col-12 mt-5'style={{paddingTop:100}} >
+                                            <RosaritoComparisonTable />
                                         </div>
                                     </div>
 
@@ -1361,118 +1402,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                         </section>
                         {/* /flat-explore */}
                         {/* flat-counter */}
-                        <section className="tf-section flat-counter">
-                            <div className="cl-container">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">
-                                                Our mission is to redefine real estate <br /> in the
-                                                customer's favor.
-                                            </h2>
-                                            <div className="text wow fadeInUp">
-                                                We are here to serve "You"
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ComparisonTable />
-                                {/* <div className="counter">
-                                    <div className='row' >
-                                        <div className='col-12 col-md-12' >
-                                            <div className="row">
-                                                <div className="col-xl-3 col-md-6">
-                                                    <div className="number-counter style-1">
-                                                        <div className="text-center">
-                                                            $
-                                                            <span
-                                                                className="number"
-                                                                data-speed={2500}
-                                                                data-to={16}
-                                                                data-inviewport="yes"
-                                                            >
-                                                                16
-                                                            </span>
-                                                            .4M
-                                                        </div>
-                                                        <h4>
-                                                            Owned from properties <br /> transactions
-                                                        </h4>
-                                                        <p className="text-content">
-                                                            Pellentesque egestas elementum egestas faucibus sem.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-3 col-md-6">
-                                                    <div className="number-counter style-1">
-                                                        <div className="text-center">
-                                                            <span
-                                                                className="number"
-                                                                data-speed={2500}
-                                                                data-to={26}
-                                                                data-inviewport="yes"
-                                                            >
-                                                                26
-                                                            </span>
-                                                            K+
-                                                        </div>
-                                                        <h4>
-                                                            Properties For <br /> Buy
-                                                        </h4>
-                                                        <p className="text-content">
-                                                            Pellentesque egestas elementum egestas faucibus sem.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-3 col-md-6">
-                                                    <div className="number-counter style-1">
-                                                        <div className="text-center">
-                                                            <span
-                                                                className="number"
-                                                                data-speed={2500}
-                                                                data-to={14}
-                                                                data-inviewport="yes"
-                                                            >
-                                                                14
-                                                            </span>
-                                                            K+
-                                                        </div>
-                                                        <h4>
-                                                            Properties Buy <br /> Sell
-                                                        </h4>
-                                                        <p className="text-content">
-                                                            Pellentesque egestas elementum egestas faucibus sem.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className="col-xl-3 col-md-6">
-                                                    <div className="number-counter style-1">
-                                                        <div className="text-center">
-                                                            <span
-                                                                className="number"
-                                                                data-speed={2500}
-                                                                data-to={890}
-                                                                data-inviewport="yes"
-                                                            >
-                                                                890
-                                                            </span>
-                                                        </div>
-                                                        <h4>
-                                                            Daily Completed <br /> Transactions
-                                                        </h4>
-                                                        <p className="text-content">
-                                                            Pellentesque egestas elementum egestas faucibus sem.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div> */}
-                            </div>
-                        </section>
+                       
 
                         {/* /flat-counter */}
                         {/* flat-discover */}
@@ -1584,7 +1514,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                     ? item.size_mt + " Sq M"
                                                                                     : item.size + " Sq ft"}
                                                                             </p> */}
-                                                                            <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
+                                                                            <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1779,7 +1709,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                     ? item.size_mt + " Sq M"
                                                                                     : item.size + " Sq ft"}
                                                                             </p> */}
-                                                                            <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
+                                                                            <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1911,7 +1841,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                     ? item.size_mt + " Sq M"
                                                                                     : item.size + " Sq ft"}
                                                                             </p> */}
-                                                                            <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
+                                                                            <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>

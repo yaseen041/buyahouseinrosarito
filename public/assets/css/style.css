@@ -986,8 +986,8 @@ a:hover, a:focus {
 }
 
 .tf-section {
-  padding-top: 200px;
-  padding-bottom: 200px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .heading-section {
@@ -1926,7 +1926,7 @@ ul.list-text li::before {
   align-items: center;
   justify-content: start;
   gap: 10px;
-  margin-bottom: 27px;
+  margin-bottom: 11px;
 }
 .box-dream .content .location .icon i {
   font-size: 20px;
@@ -9568,8 +9568,8 @@ body::-webkit-scrollbar {
 }
 .flat-cities.style-2 {
   background-color: #F7F7F7;
-  padding-top: 189px;
-  padding-bottom: 173px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .flat-cities.style-2 .cities-item img {
   height: 330px;
@@ -9878,7 +9878,7 @@ body::-webkit-scrollbar {
 }
 
 .flat-explore {
-  padding-top: 192px;
+  padding-top: 100px;
   padding-bottom: 0;
 }
 .flat-explore .wrap {
@@ -15357,4 +15357,10 @@ fieldset.phone::after{
 
 .blog_content *{
     all: revert;
+}
+
+@media screen and (max-width:480px) {
+  .table-container th p{
+    font-size: 12px;
+  }
 }
