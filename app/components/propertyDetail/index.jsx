@@ -337,9 +337,10 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                             </div>
                             <div className="text-content">
                               {/* {property?.size} Sq Ft */}
-                              {!isSquareMeter
+                              {/* {!isSquareMeter
                                 ? property.size_mt + " Sq M"
-                                : property.size + " Sq ft"}
+                                : property.size + " Sq ft"} */}
+                                {property.size + "sqft"}/{property.size_mt + "sqm"}
                             </div>
                           </div>
                           <div className="item wow fadeInUp">
@@ -521,11 +522,12 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                             </div>
                             <div className="item wow fadeInUp">
                               <div className="text">Property Size:</div>
-                              <p>
+                              {/* <p>
                                 {!isSquareMeter
                                   ? property.size_mt + " Sq M"
                                   : property.size + " Sq ft"}
-                              </p>
+                              </p> */}
+                              <p>{property.size + "sqft"}/{property.size_mt + "sqm"}</p>
                             </div>
                             <div
                               className="item wow fadeInUp"

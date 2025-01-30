@@ -90,7 +90,7 @@ const Header1 = () => {
                   <i className="flaticon-user" />
                 </div>
               </div>
-              <div className="unit-switcher">
+              {/* <div className="unit-switcher">
                 <label className="custom-switch">
                   <input
                     type="checkbox"
@@ -105,7 +105,7 @@ const Header1 = () => {
                     ft<sup>2</sup>
                   </span>
                 </label>
-              </div>
+              </div> */}
               {/* <div className="header-btn">
                 <a href="#" className="tf-button-default">
                   Add Listing

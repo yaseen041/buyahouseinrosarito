@@ -176,11 +176,12 @@ const CityComponent = ({
                                                                                             </div>
                                                                                             <div className="item">
                                                                                                 <i className="flaticon-minus-front" />
-                                                                                                <p>
+                                                                                                {/* <p>
                                                                                                     {!isSquareMeter
                                                                                                         ? property.size_mt + " Sq M"
                                                                                                         : property.size + " Sq ft"}
-                                                                                                </p>
+                                                                                                </p> */}
+                                                                                                <p>{property.size + "sqft"}/{property.size_mt + "sqm"}</p>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

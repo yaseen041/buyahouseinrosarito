@@ -172,7 +172,9 @@ const pathname = usePathname()
                 <div className="text"> Buy A House In Rosarito - Copyright © {year}. All rights reserved. Designed by <Link  href="https://explorelogics.com" target="_blank" rel="nofollow" > Explore Logics</Link></div>
               </div>
             </div>
+            
           </div>
+          
         </footer>
   )
 }

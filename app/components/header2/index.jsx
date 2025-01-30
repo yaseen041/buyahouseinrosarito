@@ -97,7 +97,7 @@ const Header2 = () => {
             </div>
           </div> */}
 
-              <div className="unit-switcher d-none d-md-block">
+              {/* <div className="unit-switcher d-none d-md-block">
                 <label className="custom-switch">
                   <input
                     type="checkbox"
@@ -112,7 +112,7 @@ const Header2 = () => {
                     ft<sup>2</sup>
                   </span>
                 </label>
-              </div>
+              </div> */}
 
               {/* <div className="header-btn">
                 <a href="#" className="tf-button-default style-white">
@@ -120,7 +120,7 @@ const Header2 = () => {
                 </a>
               </div> */}
             </div>
-            <div className="unit-switcher d-block d-md-none">
+            {/* <div className="unit-switcher d-block d-md-none">
                 <label className="custom-switch">
                   <input
                     type="checkbox"
@@ -135,7 +135,7 @@ const Header2 = () => {
                     ft<sup>2</sup>
                   </span>
                 </label>
-              </div>
+              </div> */}
             <a
               className="mobile-nav-toggler mobile-button"
               href="#m"

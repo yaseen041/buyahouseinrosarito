@@ -18,7 +18,7 @@ import CustomPagination from "../pagination";
 import Footer from "../footer";
 import { useRouter, useSearchParams } from "next/navigation";
 import Loader from "../loader/Loader";
-
+import Header3 from "../header3";
 import { useUnitContext } from "@/app/utils/UnitContext";
 const PropertyComponent = ({
   properties = [],
@@ -135,7 +135,7 @@ const PropertyComponent = ({
       <div id="wrapper">
         {/* #page */}
         <div id="page" className="">
-          <Header2 />
+          <Header3 />
           {/* main-content */}
           <div className="main-content px-20">
             <div className="space-20" />
@@ -868,11 +868,12 @@ const PropertyComponent = ({
                                     <div className="item">
                                       <i className="flaticon-minus-front" />
 
-                                      <p>
+                                      {/* <p>
                                         {!isSquareMeter
                                           ? item.size_mt + " Sq M"
                                           : item.size + " Sq ft"}
-                                      </p>
+                                      </p> */}
+                                      <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
                                     </div>
                                   </div>
                                 </div>

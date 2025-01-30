@@ -1579,11 +1579,12 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                         </div>
                                                                         <div className="item">
                                                                             <i className="flaticon-minus-front" />
-                                                                            <p>
+                                                                            {/* <p>
                                                                                 {!isSquareMeter
                                                                                     ? item.size_mt + " Sq M"
                                                                                     : item.size + " Sq ft"}
-                                                                            </p>
+                                                                            </p> */}
+                                                                            <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1773,11 +1774,12 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                         </div>
                                                                         <div className="item">
                                                                             <i className="flaticon-minus-front" />
-                                                                            <p>
+                                                                            {/* <p>
                                                                                 {!isSquareMeter
                                                                                     ? item.size_mt + " Sq M"
                                                                                     : item.size + " Sq ft"}
-                                                                            </p>
+                                                                            </p> */}
+                                                                            <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1904,11 +1906,12 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                         </div>
                                                                         <div className="item">
                                                                             <i className="flaticon-minus-front" />
-                                                                            <p>
+                                                                            {/* <p>
                                                                                 {!isSquareMeter
                                                                                     ? item.size_mt + " Sq M"
                                                                                     : item.size + " Sq ft"}
-                                                                            </p>
+                                                                            </p> */}
+                                                                            <p>{item.size + "sqft"}/{item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="price">${item.price.toLocaleString()}</div>
@@ -1927,93 +1930,72 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                         </section>
                         {/* /recent-properties */}
                         {/* perfect-home */}
-                        <section className="tf-section perfect-home style-1">
+                        <section className="tf-section work-with-us">
                             <div className="cl-container">
-                                <div className="row justify-between widget-tabs">
+                                <div className="row">
                                     <div className="col-12">
                                         <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">
-                                                How It works? Find a perfect home
-                                            </h2>
+                                            <h2 className="wow fadeInUp">Why You Should Work With Us</h2>
                                             <div className="text wow fadeInUp">
-                                                Take a decision towards better future
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-5">
-                                        <div className="content-left widget-menu-tab">
-                                            <div className="box-icon has-bg item-title active">
-                                                <div className="icon">
-                                                    <i className="flaticon-house" />
-                                                </div>
-                                                <div className="content">
-                                                    <Link href="#" className="title">
-                                                        Find Real Estate
-                                                    </Link>
-                                                    <p>
-                                                        Sumo petentium ut per, at his wisim utinam adipiscing. Est
-                                                        ei graeco Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="box-icon has-bg item-title">
-                                                <div className="icon">
-                                                    <i className="flaticon-online-meeting" />
-                                                </div>
-                                                <div className="content">
-                                                    <Link href="#" className="title">
-                                                        Meet Relator
-                                                    </Link>
-                                                    <p>
-                                                        Sumo petentium ut per, at his wisim utinam adipiscing. Est
-                                                        ei graeco Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="box-icon has-bg item-title">
-                                                <div className="icon">
-                                                    <i className="flaticon-rental" />
-                                                </div>
-                                                <div className="content">
-                                                    <Link href="#" className="title">
-                                                        Take The Keys
-                                                    </Link>
-                                                    <p>
-                                                        Sumo petentium ut per, at his wisim utinam adipiscing. Est
-                                                        ei graeco Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="widget-content-tab">
-                                            <div className="widget-content-inner active">
-                                                <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="widget-content-inner">
-                                                <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
-                                                </div>
-                                            </div>
-                                            <div className="widget-content-inner">
-                                                <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/* <div class="img-right">
-                              <img src="/assets/images/section/works-step-1.jpg" alt="">
-                          </div> */}
                                     </div>
                                 </div>
+                                <div className="row justify-center">
+                                    <div className="col-xl-10">
+                                        <div className="wrap">
+                                            <div className="box-icon style-1">
+                                                <div className="icon has-ellipse">
+                                                    <i className="flaticon-house-1" />
+                                                </div>
+                                                <div className="content wow fadeInUp">
+                                                    <a href="#" className="title">
+                                                        Wide Range of Properties
+                                                    </a>
+                                                    <p>
+                                                        We offer expert legal help for all related <br /> property items
+                                                        in Dubai.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="box-icon style-1">
+                                                <div className="icon has-ellipse">
+                                                    <i className="flaticon-home" />
+                                                </div>
+                                                <div className="content wow fadeInUp" data-wow-delay="0.1s">
+                                                    <a href="#" className="title">
+                                                        Buy or Rent Homes
+                                                    </a>
+                                                    <p>
+                                                        We sell your home at the best market price <br /> and very
+                                                        quickly as well.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="box-icon style-1">
+                                                <div className="icon has-ellipse">
+                                                    <i className="flaticon-shield" />
+                                                </div>
+                                                <div className="content wow fadeInUp" data-wow-delay="0.5s">
+                                                    <a href="#" className="title">
+                                                        Thrusted by Thousands
+                                                    </a>
+                                                    <p>
+                                                        We offer you free consultancy to get a loan <br /> for your new
+                                                        home.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                               
+                                
                             </div>
                         </section>
+
                         {/* /perfect-home */}
                         {/* parallax */}
                         <div className="parallax-wrap">
