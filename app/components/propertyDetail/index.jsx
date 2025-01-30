@@ -1554,9 +1554,8 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                                 )}
                               </fieldset>
                             </div>
-                            <div className="row">
-                              <div className="col-12">
-                                <fieldset className="email wow fadeInUp has-top-title mb-5 ">
+                           
+                            <fieldset className="email wow fadeInUp has-top-title mb-5 ">
                                   <input
                                     type="email"
                                     placeholder="Email"
@@ -1580,26 +1579,6 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                                     </span>
                                   )}
                                 </fieldset>
-                              </div>
-                              {/* <div className="col-12 mt-5 ">
-                                <fieldset
-                                  className=" wow fadeInUp  "
-                                  data-wow-delay="0.1s"
-                                  tabIndex={0}
-                                >
-                                  <MultiSelect
-                                    options={properties}
-                                    onChange={handleSelectionChange}
-                                  />
-
-                                  {errors?.property_id && (
-                                    <span className="error text-danger">
-                                      {errors?.property_id}
-                                    </span>
-                                  )}
-                                </fieldset>
-                              </div> */}
-                            </div>
                             <fieldset className="message wow fadeInUp has-top-title">
                               <textarea
                                 name="message"

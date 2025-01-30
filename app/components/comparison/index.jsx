@@ -1,7 +1,7 @@
 import React from "react";
 
 const RosaritoComparisonTable = () => {
-    const colors = ["#699A5B","#124773"]
+    const colors = ["#f1b92c","#bdd7f0"]
   const data = [
     { state: "Hawaii", city: "Honolulu", price: "$765", summerHigh: "88°F / 31°C", winterLow: "65°F / 18°C", winterHigh: "80°F / 27°C", comparison: "Much Cheaper, Milder Summers" },
     { state: "Baja California Norte", city: "Rosarito", price: "$500", summerHigh: "77°F / 25°C", winterLow: "50°F / 10°C", winterHigh: "72°F / 22°C", comparison: "High-end beachfront for 35% less than avg. Honolulu price, with milder temperatures." },
@@ -29,9 +29,9 @@ const RosaritoComparisonTable = () => {
 
   return (
     <div className=" mt-4">
-      <h3 className="text-center fw-bold">Rosarito Price Per Square Foot & Temperature Comparison Chart</h3>
+      <h3 className="text-center fw-bold" style={{color:"#D51E4C"}} >Rosarito Price Per Square Foot & Temperature Comparison Chart</h3>
       <div style={{overflow:"auto"}} >
-      <table className="table  text-center " style={{minWidth:1200,borderColor:"#FFF",paddingTop:100}} >
+      <table className="table  text-center " style={{minWidth:1200,borderColor:"#FFF",paddingTop:40}} >
         <thead className="" style={{backgroundColor:"#121D36"}} >
           <tr>
             <th style={{borderColor:"#FFF"}}><p style={{fontWeight:"bold",fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">State</p></th>
@@ -46,13 +46,13 @@ const RosaritoComparisonTable = () => {
         <tbody>
           {data.map((row, index) => (
             <tr key={index} style={{ backgroundColor: colors[Math.floor(index / 2) % 2] }}>
-              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.state}</p></td>
-              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.city}</p></td>
-              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.price}</p></td>
-              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.summerHigh}</p></td>
-              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.winterLow}</p></td>
-              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.winterHigh}</p></td>
-              <td style={{borderColor:"#FFF"}} className="align-middle"  ><p style={{fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">{row.comparison}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.state}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.city}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.price}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.summerHigh}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.winterLow}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle" ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.winterHigh}</p></td>
+              <td style={{borderColor:"#FFF"}} className="align-middle"  ><p style={{fontSize:12,color:"#000"}} className="m-0 text-center align-middle">{row.comparison}</p></td>
             </tr>
           ))}
         </tbody>

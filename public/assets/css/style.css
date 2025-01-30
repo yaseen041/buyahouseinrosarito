@@ -6609,7 +6609,7 @@ ul.grid-tags li a:hover {
 }
 .luxury-home.style-1 {
   background-color: var(--White);
-  padding-bottom: 199px;
+  padding-bottom: 100px;
 }
 .luxury-home.style-1 .content {
   padding-top: 123px;
@@ -6982,7 +6982,7 @@ ul.grid-tags li a:hover {
 #header_main .header-inner .header-inner-wrap .main-menu ul.navigation > li::after {
   position: absolute;
   content: "";
-  bottom: 0;
+  bottom: 29px;
   left: auto;
   right: 0;
   width: 0;
@@ -6998,11 +6998,12 @@ ul.grid-tags li a:hover {
   width: 100%;
   left: 0px;
   right: auto;
+  
 }
 #header_main .header-inner .header-inner-wrap .main-menu ul.navigation > li.current::after {
   position: absolute;
   content: "";
-  bottom: 0;
+  bottom: 29px;
   width: 100%;
   height: 2px;
   background-color: var(--Secondary);
@@ -8629,7 +8630,7 @@ body::-webkit-scrollbar {
 .footer .footer-inner {
   background-color: #0F223E;
   border-radius: 24px;
-  padding: 50px 41px 0px 41px;
+  padding: 0px 41px 0px 41px;
 }
 .footer .footer-inner .footer-inner-wrap {
   width: 100%;
@@ -8644,15 +8645,16 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 41px;
+  padding-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1019607843);
+  padding-top: 20px;
 }
 .footer .footer-inner .footer-inner-wrap .top-footer .wg-social {
   margin-top: 2px;
 }
 .footer .footer-inner .footer-inner-wrap .center-footer {
-  padding-top: 95px;
-  padding-bottom: 87px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;

@@ -150,32 +150,32 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     <div className='text-center' >
                     <img className='mt-3' src='/assets/images/about3.png' />
                     </div>
-                    <li><span><Link href="https://www.surf-forecast.com/breaks/Baja-Malibu" target='_blank' >Surfing, Playas de Rosarito</Link></span>: Catch some of the best waves on the Baja coast, perfect for surfers of all levels. </li>
-                    <li><span>Golfing, Playas de Rosarito</span>: Tee off at scenic golf courses with breathtaking ocean views. </li>
+                    <li className='mt-3' ><p><span className='pt-3' ><Link href="https://www.surf-forecast.com/breaks/Baja-Malibu" target='_blank' >Surfing, Playas de Rosarito</Link></span>: Catch some of the best waves on the Baja coast, perfect for surfers of all levels.</p> </li>
+                    <li className='mt-3' ><p><span className='pt-3' >Golfing, Playas de Rosarito</span>: Tee off at scenic golf courses with breathtaking ocean views.</p> </li>
                   </ul>
                   <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about4.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
-                    <li><span><Link href="https://maps.app.goo.gl/APzxDcP1dBsnNH5s9" target='_blank' >Jersey Kids Zoo, Ensenada</Link></span>: Located in Valle de Guadalupe, this family-friendly park offers a petting zoo, playgrounds, and water attractions. Perfect for kids and picnics.</li>
+                    <li><p><span><Link href="https://maps.app.goo.gl/APzxDcP1dBsnNH5s9" target='_blank' >Jersey Kids Zoo, Ensenada</Link></span>: Located in Valle de Guadalupe, this family-friendly park offers a petting zoo, playgrounds, and water attractions. Perfect for kids and picnics.</p></li>
                   </ul>
                   <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about5.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
-                    <li><span>Pai Pai Ecotourism Park, Ensenada</span>: Experience exotic animals, zip-lining, EuroBungee, and interaction with animals at this conservation-focused adventure park.</li>
+                    <li><p><span>Pai Pai Ecotourism Park, Ensenada</span>: Experience exotic animals, zip-lining, EuroBungee, and interaction with animals at this conservation-focused adventure park.</p></li>
                   </ul>
                   <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about6.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
-                    <li><span>Las Cañadas Adventure Park, Ensenada</span>: Zip-lining, ATV trails, horseback riding, camping, wave pools, and more—all in a scenic natural setting.</li>
+                    <li><p><span>Las Cañadas Adventure Park, Ensenada</span>: Zip-lining, ATV trails, horseback riding, camping, wave pools, and more—all in a scenic natural setting.</p></li>
                   </ul>
                   <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about7.png' />
                   </div>
                   <ul className='mt-5 wow fadeInUp' >
-                    <li><span><Link href="https://maps.app.goo.gl/XLzwJA74iBmEwEdV7" target='_blank' >Morelos Park Zoo, Tijuana </Link></span>: A local favorite, this zoo features various animal exhibits, a petting zoo, and beautiful picnic areas.</li>
+                    <li><p><span><Link href="https://maps.app.goo.gl/XLzwJA74iBmEwEdV7" target='_blank' >Morelos Park Zoo, Tijuana </Link></span>: A local favorite, this zoo features various animal exhibits, a petting zoo, and beautiful picnic areas.</p></li>
                   </ul>
                   <h5 className="wow fadeInUp text-center mt-5 ">🌿 Nature & Wildlife</h5>
                   <ul className='mt-5 wow fadeInUp' >

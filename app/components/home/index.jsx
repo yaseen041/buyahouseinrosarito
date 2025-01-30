@@ -246,11 +246,10 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                             <div className="col-12">
                                                 <div className="slider-content">
                                                     <h1 className="wow fadeInUp">
-                                                        The <span>#1</span> site real estate professionals trust*
+                                                    Your Dream Home Awaits!
                                                     </h1>
                                                     <div className="text wow fadeInUp">
-                                                        From as low as $10 per day with limited time offer
-                                                        discounts.
+                                                    Affordable coastal living with all the comforts you need!
                                                     </div>
                                                     <div className="widget-tabs">
                                                         {/* <ul
@@ -1265,10 +1264,10 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 </div>
                                 <div className="counter">
                                     <div className='row justify-center' >
-                                       
+
                                         <div className='col-12 col-md-6 ' >
                                             <VideoComponent src="/assets/video.mp4" />
-                                           
+
                                         </div>
                                     </div>
 
@@ -1281,19 +1280,19 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                     <div className="col-12 col-md-8">
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">
-                                            Why Are More and More Americans Moving to Rosarito? The Answer May Surprise You!						
+                                                Why Are More and More Americans Moving to Rosarito? The Answer May Surprise You!
                                             </h2>
                                             <div className="text wow fadeInUp">
-                                            Rosarito, officially known as Playas de Rosarito, is quickly becoming one of the most sought-after destinations for Americans looking to escape the high cost of living in the U.S. Known for its stunning beachfront properties, year-round mild climate, and affordability, Rosarito offers an unmatched lifestyle at a fraction of the price compared to U.S. cities like Los Angeles or Honolulu.
+                                                Rosarito, officially known as Playas de Rosarito, is quickly becoming one of the most sought-after destinations for Americans looking to escape the high cost of living in the U.S. Known for its stunning beachfront properties, year-round mild climate, and affordability, Rosarito offers an unmatched lifestyle at a fraction of the price compared to U.S. cities like Los Angeles or Honolulu.
                                             </div>
                                             <div className="text wow fadeInUp mt-2">
-                                            Imagine owning a luxury home with ocean views for as little as $300 per square foot, or a spacious inland property for just $110 per square foot. With average high temperatures ranging from 65°F (18°C) in January to 75°F (24°C) in August, Playas de Rosarito boasts one of the most comfortable climates in the region, perfect for those seeking to avoid extreme weather.
+                                                Imagine owning a luxury home with ocean views for as little as $300 per square foot, or a spacious inland property for just $110 per square foot. With average high temperatures ranging from 65°F (18°C) in January to 75°F (24°C) in August, Playas de Rosarito boasts one of the most comfortable climates in the region, perfect for those seeking to avoid extreme weather.
                                             </div>
                                             <div className="text wow fadeInUp mt-2">
-                                            In addition to its affordability and climate, Rosarito is just a short drive from the U.S. border, making it an ideal location for expats and retirees who want easy access to California while enjoying the relaxed pace and cost savings of life in Mexico.
+                                                In addition to its affordability and climate, Rosarito is just a short drive from the U.S. border, making it an ideal location for expats and retirees who want easy access to California while enjoying the relaxed pace and cost savings of life in Mexico.
                                             </div>
                                             <div className="text wow fadeInUp mt-2">
-                                            Whether you’re searching for a quiet retirement home or an affordable beachfront escape, Playas de Rosarito offers endless possibilities. With tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home in Rosarito today!
+                                                Whether you’re searching for a quiet retirement home or an affordable beachfront escape, Playas de Rosarito offers endless possibilities. With tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home in Rosarito today!
                                             </div>
                                         </div>
                                     </div>
@@ -1320,7 +1319,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                 </div>
                                             </div> */}
                                         </div>
-                                        <div className='col-12 mt-5'style={{paddingTop:50}} >
+                                        <div className='col-12 mt-5' style={{ paddingTop: 10 }} >
                                             <RosaritoComparisonTable />
                                         </div>
                                     </div>
@@ -1390,7 +1389,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                         </section>
                         {/* /flat-explore */}
                         {/* flat-counter */}
-                       
+
 
                         {/* /flat-counter */}
                         {/* flat-discover */}
@@ -1908,9 +1907,9 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                         </div>
                                     </div>
                                 </div>
-                              
-                               
-                                
+
+
+
                             </div>
                         </section>
 
@@ -1918,10 +1917,10 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                         {/* parallax */}
                         <div className="parallax-wrap">
                             <div className="content">
-                                <div className="heading wow fadeInUp" style={{color:"#FFF"}} >
+                                <div className="heading wow fadeInUp" style={{ color: "#FFF" }} >
                                     Discover a Place You’ll <br /> Love To Live
                                 </div>
-                                <div className="text wow fadeInUp" style={{color:"#FFF"}}>
+                                <div className="text wow fadeInUp" style={{ color: "#FFF" }}>
                                     Pellentesque egestas elementum egestas faucibus sem.
                                     <br /> Velit nunc egestas ut morbi. Leo diam diam{" "}
                                 </div>

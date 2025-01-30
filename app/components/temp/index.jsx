@@ -17,22 +17,44 @@ const Temperatures = () => {
   ];
 
   return (
-    <div className=" mt-4 h-100">
-      
-      <table className="table  text-center mt-3 h-100">
-        <thead className="">
+    <div className="mt-4">
+      <table className="table text-center ">
+        <thead className="table-header" style={{ backgroundColor: "rgb(18, 29, 54)" }}>
           <tr>
-            <th className="text-center" ><p className="" style={{fontWeight:"bold"}} >Month</p></th>
-            <th className="text-center" ><p className="" style={{fontWeight:"bold"}} >High Temperature</p></th>
-            <th className="text-center" ><p className="" style={{fontWeight:"bold"}} >Low Temperature</p></th>
+            <th className="text-center">
+              <p style={{color:"#FFF"}} className="m-0 fw-bold">Month</p>
+            </th>
+            <th className="text-center">
+              <p style={{color:"#FFF"}} className="m-0 fw-bold">High Temperature</p>
+            </th>
+            <th className="text-center">
+              <p style={{color:"#FFF"}} className="m-0 fw-bold">Low Temperature</p>
+            </th>
           </tr>
         </thead>
         <tbody>
           {temperatures.map((temp, index) => (
-            <tr key={index}>
-              <td className="text-center" ><p className="">{temp.month}</p></td>
-              <td className="text-center" ><p className="">{temp.high}</p></td>
-              <td className="text-center" ><p className="">{temp.low}</p></td>
+            <tr
+              key={index}
+              style={{
+                backgroundColor: index % 2 === 0 ? "#f9f9f9" : "transparent",
+              }}
+            >
+              <td className="text-center">
+                <p className="m-0">{temp.month}</p>
+              </td>
+              <td
+                className="text-center high-temp"
+                style={{ backgroundColor: "#ffcdd2", color: "#b71c1c" }}
+              >
+                <p className="m-0 fw-bold">{temp.high}</p>
+              </td>
+              <td
+                className="text-center low-temp"
+                style={{ backgroundColor: "#bbdefb", color: "#0d47a1" }}
+              >
+                <p className="m-0 fw-bold">{temp.low}</p>
+              </td>
             </tr>
           ))}
         </tbody>

@@ -126,7 +126,7 @@ const pathname = usePathname()
                   <div className="ft-title">Contact Us</div>
                   <ul className="navigation-menu-footer">
                     <li>
-                      <div className="text">hi@justhome.com (123) 456-7890</div>
+                      <div className="text">aaron@buyahouseinrosarito.com +52 664 641 1658</div>
                     </li>
                   </ul>
                 </div>
@@ -135,7 +135,7 @@ const pathname = usePathname()
                   <ul className="navigation-menu-footer">
                     <li>
                       <div className="text">
-                        90 Fifth Avenue, 3rd Floor San Francisco, CA 1980
+                      Chichen Itza 8170, Rosarito, Mexico, 22567
                       </div>
                     </li>
                   </ul>
