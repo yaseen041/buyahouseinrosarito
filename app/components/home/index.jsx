@@ -34,7 +34,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
     const [minPrice, setMinPrice] = React.useState("")
     const [maxPrice, setMaxPrice] = React.useState("")
     const [Keyword, setKeyword] = React.useState("")
-    const [swiper, setSwiper] = React.useState(null);
+    const swiperRef = React.useRef(null);
     const searchParams = useSearchParams();
     const router = useRouter();
     const handleInputChange = (e) => {
@@ -53,16 +53,14 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
         }
     }
     const handleMouseEnter = () => {
-        if (swiper) {
-          swiper.autoplay.stop();
-          console.log("swiper.......",swiper)
+        if (swiperRef.current) {
+          swiperRef.current.autoplay.stop(); // Stops instantly
         }
       };
     
       const handleMouseLeave = () => {
-        if (swiper) {
-          swiper.autoplay.start();
-          console.log("swiper.......",swiper)
+        if (swiperRef.current) {
+          swiperRef.current.autoplay.start(); // Resumes autoplay
         }
       };
     const handleStatus = (id, title) => {
@@ -1866,7 +1864,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Why You Should Work With Us</h2>
                                             <div className="text wow fadeInUp">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Reliable experts to guide your move to Rosarito!
                                             </div>
                                         </div>
                                     </div>
@@ -2004,22 +2002,22 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 <div className="row">
                                     <div className="col-12">
                                     <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">Our Partners</h2>
+                                            <h2 className="wow fadeInUp">Trusted Partners</h2>
                                             <div className="text wow fadeInUp">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Reliable experts to guide your move to Rosarito!
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-12">
-                                        <div className="flat-brand">
+                                        <div className="flat-brand"  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
                                             <Swiper
                                                 className="swiper-container slider-brand"
                                                 slidesPerView={2}
-
-                                                autoplay={{ delay: 0, disableOnInteraction: false }}
+                                                
+                                                autoplay={{ delay: 0, disableOnInteraction: false,pauseOnMouseEnter:true }}
                                                 modules={[Autoplay]}
                                                 speed={10000}
-                                                onSwiper={setSwiper}
+                                                onSwiper={(swiper) => (swiperRef.current = swiper)}
                                                 loop={true}
                                                 breakpoints={{
                                                     450: {
@@ -2040,8 +2038,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                     },
                                                 }}
 
-                                                onMouseEnter={handleMouseEnter}
-                                                onMouseLeave={handleMouseLeave}
+                                               
 
 
 
