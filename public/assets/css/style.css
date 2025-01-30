@@ -999,8 +999,8 @@ a:hover, a:focus {
 }
 .heading-section .text {
   font-weight: 400;
-  font-size: 17px;
-  line-height: 20px;
+  font-size: 15px;
+  line-height: 25px;
   color: var(--Text);
 }
 .heading-section.style-white h2,
@@ -6740,8 +6740,8 @@ ul.grid-tags li a:hover {
 }
 
 .parallax-wrap {
-  padding-top: 216px;
-  padding-bottom: 229px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   text-align: center;
   background-image: url(../images/section/parallax-1.jpg);
   background-position: center;
@@ -9824,11 +9824,11 @@ body::-webkit-scrollbar {
 }
 
 .work-with-us {
-  padding-top: 163px;
-  padding-bottom: 200px;
+  padding-top: 100px;
+  padding-bottom: 0px;
 }
 .work-with-us .wrap {
-  margin-bottom: 190px;
+  margin-bottom: 100px;
   padding-left: 14px;
   display: -webkit-box;
   display: -moz-box;
@@ -13476,6 +13476,7 @@ a {
   max-height: unset;
   padding: 28px 20px 20px 21px;
   max-width: 300px;
+  min-width: fit-content;
 }
 .nice-select > .list .option {
   height: 41px;

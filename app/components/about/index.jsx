@@ -36,7 +36,9 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     <div className="text mt-2">👨‍👩‍👦 Our Family’s Story
                     </div>
                   </div>
+                  <div className='text-center' >
                   <img src="/assets/images/about1.png" className='mt-5' alt="" />
+                  </div>
                   <p className="wow fadeInUp mt-5 ">
                     We’re the Hansome family - an Ohio State Buckeye, my incredible wife Adriana my “Aztec Warrior Princess”, and our son Adam. While Adriana isn’t deeply connected to her Native ancestry, it’s fascinating to know our family is part of Mexico’s rich cultural tapestry. Join us as we share our personal experiences of raising a family in Rosarito and embracing the unique opportunities this place has to offer.
                   </p>
@@ -45,7 +47,9 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     Discover the magic of Rosarito, Mexico—a stunning coastal haven offering affordability, vibrant culture, and endless opportunities. Hosted by our Mexican American family, we explore why Rosarito is the perfect destination to live, retire, or invest, with all the comforts of the U.S. close at hand, but much cheaper services right in your back yard.
                   </p>
                   <h5 className="wow fadeInUp text-center mt-5 ">🌴 Affordable Real Estate & Living</h5>
+                  <div className='text-center' >
                   <img src="/assets/images/about2.png" className='mt-5' alt="" />
+                  </div>
                   <ul className='wow fadeInUp mt-5' >
                     <li><p><span><Link href="https://buyahouseinrosarito.com/" target="_blank" >Super Low-Cost Real Estate</Link></span>: Find incredible deals on homes with ocean views, family-friendly communities, and investment properties that maximize your budget.</p></li>
                     <li><p><span>Retirement-Friendly</span>: Discover why retirees are flocking to Rosarito for the affordability, ease of living, and <span><Link href="https://bwt.cbp.gov/details/09250401/POV" target='_blank' > proximity to the U.S.</Link></span></p></li>
@@ -143,23 +147,33 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   <p className='mt-3 text-center' >Rosarito is a paradise for adventure seekers and relaxation lovers alike:</p>
                   <ul className='wow fadeInUp mt-5' >
                     <li><p><span>Sport Fishing and Whale Watching, Ensenada</span>: Enjoy sport fishing and tranquil boat rides from nearby Ensenada’s port and marina.</p></li>
+                    <div className='text-center' >
                     <img className='mt-3' src='/assets/images/about3.png' />
+                    </div>
                     <li><span><Link href="https://www.surf-forecast.com/breaks/Baja-Malibu" target='_blank' >Surfing, Playas de Rosarito</Link></span>: Catch some of the best waves on the Baja coast, perfect for surfers of all levels. </li>
                     <li><span>Golfing, Playas de Rosarito</span>: Tee off at scenic golf courses with breathtaking ocean views. </li>
                   </ul>
+                  <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about4.png' />
+                  </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><span><Link href="https://maps.app.goo.gl/APzxDcP1dBsnNH5s9" target='_blank' >Jersey Kids Zoo, Ensenada</Link></span>: Located in Valle de Guadalupe, this family-friendly park offers a petting zoo, playgrounds, and water attractions. Perfect for kids and picnics.</li>
                   </ul>
+                  <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about5.png' />
+                  </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><span>Pai Pai Ecotourism Park, Ensenada</span>: Experience exotic animals, zip-lining, EuroBungee, and interaction with animals at this conservation-focused adventure park.</li>
                   </ul>
+                  <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about6.png' />
+                  </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><span>Las Cañadas Adventure Park, Ensenada</span>: Zip-lining, ATV trails, horseback riding, camping, wave pools, and more—all in a scenic natural setting.</li>
                   </ul>
+                  <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about7.png' />
+                  </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li><span><Link href="https://maps.app.goo.gl/XLzwJA74iBmEwEdV7" target='_blank' >Morelos Park Zoo, Tijuana </Link></span>: A local favorite, this zoo features various animal exhibits, a petting zoo, and beautiful picnic areas.</li>
                   </ul>
@@ -181,7 +195,9 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                       <p><span><Link href="https://maps.app.goo.gl/AG4uaKysfkP8KwKx8" target='_blank' >Valle de Guadalupe, Ensenada</Link></span>: Explore Mexico’s answer to Napa Valley, with world-class wineries, gourmet dining, and luxury resorts.</p>
                     </li>
                   </ul>
+                  <div className='text-center' >
                   <img className='mt-5 wow fadeInUp' src='/assets/images/about8.png' />
+                  </div>
                   <ul className='mt-5 wow fadeInUp' >
                     <li>
                       <p><span>Fresh Seafood & Cuisine</span>: Indulge in Rosarito’s famous lobster tacos and other Baja culinary delights.</p>

@@ -340,7 +340,7 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                               {/* {!isSquareMeter
                                 ? property.size_mt + " Sq M"
                                 : property.size + " Sq ft"} */}
-                                {property.size + "sqft"}/{property.size_mt + "sqm"}
+                                {property.size + "sqft"} / {property.size_mt + "sqm"}
                             </div>
                           </div>
                           <div className="item wow fadeInUp">
@@ -370,7 +370,7 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                               <i className="flaticon-garage" />
                             </div>
                             <div className="text-content">
-                              {property?.parking_spaces} Garage
+                              {property?.parking_spaces} Parking Space
                             </div>
                           </div>
                         </div>
@@ -514,11 +514,12 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                             >
                               <div className="text">GLA:</div>
 
-                              <p>
+                              {/* <p>
                                 {!isSquareMeter
                                   ? property.GLA_mt + " Sq M"
                                   : property.GLA + " Sq ft"}
-                              </p>
+                              </p> */}
+                              <p>{property.GLA + "sqft"} / {property.GLA_mt + "sqm"}</p>
                             </div>
                             <div className="item wow fadeInUp">
                               <div className="text">Property Size:</div>
@@ -527,7 +528,7 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                                   ? property.size_mt + " Sq M"
                                   : property.size + " Sq ft"}
                               </p> */}
-                              <p>{property.size + "sqft"}/{property.size_mt + "sqm"}</p>
+                              <p>{property.size + "sqft"} / {property.size_mt + "sqm"}</p>
                             </div>
                             <div
                               className="item wow fadeInUp"
@@ -608,12 +609,12 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                       </div> */}
                         <div className="features">
                           <h4 className="wow fadeInUp">Facts &amp; Features</h4>
-                          <p className="wow fadeInUp">
+                          {/* <p className="wow fadeInUp">
                             Lorem ipsum dolor sit amet, homero debitis
                             temporibus in mei, at sit voluptua antiopam
                             hendrerit. Lorem epicuri eu per. Mediocrem torquatos
                             deseruisse te eum commodo.
-                          </p>
+                          </p> */}
                           <ul>
                             {Object.keys(property).length > 0
                               ? Object.keys(property.features).map(

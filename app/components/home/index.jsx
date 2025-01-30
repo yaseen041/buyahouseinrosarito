@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import Header1 from '../header1';
 import Footer from '../footer';
 import CustomScript from '@/app/scripts';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,32 +14,21 @@ import "swiper/css/autoplay"
 import Link from 'next/link';
 import VideoComponent from '../video';
 import Header3 from '../header3';
-import Calculator from '../calculator/calculator';
-import ComparisonTable from '../comparisonTable';
-import { useUnitContext } from "@/app/utils/UnitContext";
 import { useRouter, useSearchParams } from 'next/navigation';
-import Head from 'next/head';
 import HomeSizeCalculator from '../SizeCalculeter';
 import Temperatures from '../temp';
 import RosaritoComparisonTable from '../comparison';
 
 const HomeComponent = ({ community, types, filters, BestDeals, cities, recentForRent, recentForSale }) => {
-    const { isSquareMeter, toggleUnit } = useUnitContext();
     const [openFilter, setOpenFilter] = React.useState(false)
-    const [openNiceSelect, setOpenNiceSelect] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
-    const toggleNiceSelect = () => setOpenNiceSelect(!openNiceSelect)
-    const [loading, setLoading] = React.useState(true)
-    const [communities, setCommunities] = React.useState([])
     const [selectedFeatures, setSelectedFeatures] = React.useState([])
-    const [seo, setSeo] = React.useState({})
     const [selectedstatus, setSelectedStatus] = React.useState({ id: 0, title: "All Status" })
     const [selectedTypes, setSelectedTypes] = React.useState({ id: 0, title: "All types" })
     const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
-    const [selectedSorting, setSelectedSorting] = React.useState({ id: 1, title: "Default" })
     const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Communities" })
-    const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any No of Bedrooms" })
-    const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any No of Bathrooms" })
+    const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any Number" })
+    const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any Number" })
     const [minArea, setMinArea] = React.useState("")
     const [maxArea, setMaxArea] = React.useState("")
     const [minPrice, setMinPrice] = React.useState("")
@@ -1332,7 +1320,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                 </div>
                                             </div> */}
                                         </div>
-                                        <div className='col-12 mt-5'style={{paddingTop:100}} >
+                                        <div className='col-12 mt-5'style={{paddingTop:50}} >
                                             <RosaritoComparisonTable />
                                         </div>
                                     </div>
@@ -1930,10 +1918,10 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                         {/* parallax */}
                         <div className="parallax-wrap">
                             <div className="content">
-                                <div className="heading wow fadeInUp">
+                                <div className="heading wow fadeInUp" style={{color:"#FFF"}} >
                                     Discover a Place You’ll <br /> Love To Live
                                 </div>
-                                <div className="text wow fadeInUp">
+                                <div className="text wow fadeInUp" style={{color:"#FFF"}}>
                                     Pellentesque egestas elementum egestas faucibus sem.
                                     <br /> Velit nunc egestas ut morbi. Leo diam diam{" "}
                                 </div>

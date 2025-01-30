@@ -31,7 +31,7 @@ const RosaritoComparisonTable = () => {
     <div className=" mt-4">
       <h3 className="text-center fw-bold">Rosarito Price Per Square Foot & Temperature Comparison Chart</h3>
       <div style={{overflow:"auto"}} >
-      <table className="table  text-center mt-3" style={{minWidth:1200,borderColor:"#FFF"}} >
+      <table className="table  text-center " style={{minWidth:1200,borderColor:"#FFF",paddingTop:100}} >
         <thead className="" style={{backgroundColor:"#121D36"}} >
           <tr>
             <th style={{borderColor:"#FFF"}}><p style={{fontWeight:"bold",fontSize:12,color:"#FFF"}} className="m-0 text-center align-middle">State</p></th>

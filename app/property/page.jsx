@@ -23,8 +23,8 @@ const PropertyPage = () => {
   const [selectedCity, setSelectedCity] = React.useState({ id: 0, title: "City" })
   const [selectedSorting, setSelectedSorting] = React.useState({ id: 1, title: "Default" })
   const [selectedCommunity, setSelectedCommunity] = React.useState({ id: 0, title: "All Communities" })
-  const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any No of Bedrooms" })
-  const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any No of Bathrooms" })
+  const [selectedBed, setSelectedBed] = React.useState({ id: 0, title: "Any Number" })
+  const [selectedBath, setSelectedBath] = React.useState({ id: 0, title: "Any Number" })
   const [cities, setCities] = React.useState([])
   const [minArea, setMinArea] = React.useState("")
   const [maxArea, setMaxArea] = React.useState("")
@@ -211,6 +211,8 @@ const PropertyPage = () => {
       const body = new FormData()
       if (page !== null) {
         setCurrentPage(Number(page))
+      }else{
+        setCurrentPage(1)
       }
       if (status !== null) {
         const filterStatus = filters.listing_status?.find((i) => i.title === status)
@@ -303,7 +305,12 @@ const PropertyPage = () => {
 
   const handleSearch = (e) => {
     e.preventDefault()
+    
     const newParams = new URLSearchParams(searchParams.toString());
+    if(page !==null){
+      setCurrentPage(1)
+      newParams.delete("page")
+    }
     if (selectedstatus.id !== 0) {
       newParams.set("status", selectedstatus.title)
     } else {
