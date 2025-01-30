@@ -34,7 +34,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
     const [minPrice, setMinPrice] = React.useState("")
     const [maxPrice, setMaxPrice] = React.useState("")
     const [Keyword, setKeyword] = React.useState("")
-
+    const [swiper, setSwiper] = React.useState(null);
     const searchParams = useSearchParams();
     const router = useRouter();
     const handleInputChange = (e) => {
@@ -52,7 +52,19 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
             setKeyword(value)
         }
     }
-
+    const handleMouseEnter = () => {
+        if (swiper) {
+          swiper.autoplay.stop();
+          console.log("swiper.......",swiper)
+        }
+      };
+    
+      const handleMouseLeave = () => {
+        if (swiper) {
+          swiper.autoplay.start();
+          console.log("swiper.......",swiper)
+        }
+      };
     const handleStatus = (id, title) => {
         setSelectedStatus({ id: id, title: title })
 
@@ -1991,9 +2003,10 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                        <div className="heading-section text-center">
-                                            <div className="text">
-                                                Thousands of world’s leading companies trust Space
+                                    <div className="heading-section text-center">
+                                            <h2 className="wow fadeInUp">Our Partners</h2>
+                                            <div className="text wow fadeInUp">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                             </div>
                                         </div>
                                     </div>
@@ -2006,6 +2019,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                 autoplay={{ delay: 0, disableOnInteraction: false }}
                                                 modules={[Autoplay]}
                                                 speed={10000}
+                                                onSwiper={setSwiper}
                                                 loop={true}
                                                 breakpoints={{
                                                     450: {
@@ -2026,7 +2040,8 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                     },
                                                 }}
 
-
+                                                onMouseEnter={handleMouseEnter}
+                                                onMouseLeave={handleMouseLeave}
 
 
 
