@@ -164,25 +164,25 @@ const CommunityComponent = ({
                                                                                         <div className="icon">
                                                                                             <i className="flaticon-location" />
                                                                                         </div>
-                                                                                        <p>{property.address}</p>
+                                                                                        <p style={{fontSize:13}}>{property.address}</p>
                                                                                     </div>
                                                                                     <div className="icon-box">
                                                                                         <div className="item">
                                                                                             <i className="flaticon-hotel" />
-                                                                                            <p>{property.bedrooms} Beds</p>
+                                                                                            <p style={{fontSize:13}}>{property.bedrooms} Beds</p>
                                                                                         </div>
                                                                                         <div className="item">
                                                                                             <i className="flaticon-bath-tub" />
-                                                                                            <p>{property.bathrooms} Baths</p>
+                                                                                            <p style={{fontSize:13}}>{property.bathrooms} Baths</p>
                                                                                         </div>
                                                                                         <div className="item">
                                                                                             <i className="flaticon-minus-front" />
-                                                                                            {/* <p>
+                                                                                            {/* <p style={{fontSize:13}}>
                                                                                                 {!isSquareMeter
                                                                                                     ? property.size_mt + " Sq M"
                                                                                                     : property.size + " Sq ft"}
                                                                                             </p> */}
-                                                                                            <p>{property.size + "sqft"}/{property.size_mt + "sqm"}</p>
+                                                                                            <p style={{fontSize:13}}>{property.size + "sqft"} / {property.size_mt + "sqm"}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
