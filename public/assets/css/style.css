@@ -15319,10 +15319,11 @@ fieldset.phone::after{
   flex-direction: column; 
   height: 100%; 
   border: 1px solid var(--Border);
+  box-shadow: 0px 6px 15px 0px rgba(110, 110, 110, 0.33);
 }
 
 .wg-blog .image {
-  height: 220px;
+  height: 275px;
 }
 .sub-blog {
   display: flex;
