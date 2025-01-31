@@ -5,7 +5,6 @@ import { fetchPropertyDetailSEOData } from '../server';
 export async function generateMetadata({ params }) {
   
   const resolvedParams = await params;
-  console.log("params.......", resolvedParams); // Debugging
 
   if (!resolvedParams?.slug) {
     console.error("Slug not found in params");
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: seoData.openGraph?.title || "Default OG Title",
       description: seoData.openGraph?.description || "Default OG Description",
-      url: `https://buyhomeinrosarito.com/property/${params.slug}`,
+      url: `https://buyhomeinrosarito.com/property/${resolvedParams.slug}`,
       images: seoData.openGraph?.images || [
         { url: "/default-og-image.jpg", width: 1200, height: 630, alt: "Default Image Alt Text" },
       ],

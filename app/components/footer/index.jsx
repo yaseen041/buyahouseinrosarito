@@ -16,8 +16,9 @@ const pathname = usePathname()
                   <Link href="/">
                     <img
                       id="logo-footer"
-                      src="/assets/images/header2.png"
+                      src="/assets/images/footer.png"
                       alt="images"
+                      style={{ height: "50%", width: "90px" }}
                     />
                   </Link>
                 </div>

@@ -68,11 +68,11 @@ const Header3 = () => {
             <div id="site-logo">
               <Link href="/" rel="home">
                 <img
-                  className="d-block"
+                  className="d-block pt-2 pb-2"
                   id="logo-header"
                   src="/assets/images/Header3.png"
                   alt=""
-                  style={{ height: "100%", width: "190px" }}
+                  style={{ height: "50%", width: "90px" }}
                 />
               </Link>
             </div>

@@ -32,7 +32,6 @@ export async function fetchSEOData() {
 export async function fetchPropertyDetailSEOData(slug) {
     try {
         const data = await api.Get(`${url.PROPERTY}/${slug}`);
-        console.log("slug=============>",slug)
         if (Object.keys(data).length>0) {
             return {
                 title: data.data.meta_title || "Default Title",
