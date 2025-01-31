@@ -1,47 +1,46 @@
-"use client";
+
 import React from 'react';
-import dynamic from 'next/dynamic';
-const AboutComponent = dynamic(()=>import("@/app/components/about"),{ssr:false})
-import { url } from '../utils/urls';
-import { api } from '../utils/api';
+
+import { fetchSEOData } from './server';
+import AboutWrapper from '../components/Wrappers/AboutWrapper';
+
+export const metadata = async () => {
+  // Fetch the SEO data
+  const seoData = await fetchSEOData();
+
+  return {
+    title: seoData.title || 'Default Title', // Use a fallback if necessary
+    description: seoData.description || 'Default Description',
+    keywords: seoData.keywords || 'Default Keywords',
+    openGraph: {
+      title: seoData.title || 'Default FB Title',
+      description: seoData.description || 'Default FB Description',
+      url: 'https://buyhomeinrosarito.com/about', // Update if necessary
+      images: [
+        {
+          url: seoData.image, // Use the image URL
+          width: 1200,
+          height: 630,
+          alt: seoData.fb_title || 'Default Image Alt Text',
+        },
+      ],
+    },
+    twitter: {
+      title: seoData.title || 'Default Twitter Title',
+      description: seoData.description || 'Default Twitter Description',
+      image: seoData.image,
+    },
+    jsonLd: seoData.jsonLd || '{}', // JSON-LD data
+  };
+};
+
+
 const About = () => {
- const [loading,setLoading] = React.useState(false)
- const [testimonials,setTestimonials] = React.useState([])
- const [agents,setAgents] = React.useState([])
-
- const getTestimonials = async ()=>{
-  try {
-    const data = await api.Get(url.TESTIMONIALS)
-    if(data){
-      setTestimonials(data.data)
-    }
-  } catch (error) {
-    console.log(error)
-  }
- }
-
- const getAgents = async ()=>{
-  try {
-    const data = await api.Get(url.AGENTS)
-    if(data){
-      setAgents(data.data)
-    }
-  } catch (error) {
-    console.log(error)
-  }
- }
-
- React.useEffect(()=>{
-  getTestimonials()
-  getAgents()
- },[])
+ 
 
 
   return (
-   <AboutComponent 
-   testimonials={testimonials}
-   agents={agents}
-   />
+   <AboutWrapper />
 
   )
 }

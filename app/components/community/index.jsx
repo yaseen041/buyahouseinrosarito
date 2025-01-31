@@ -33,25 +33,28 @@ const CommunityComponent = ({
                 {/* /header */}
                 {/* main-content */}
                 {loading ? <Loader /> :
-                    <div className="main-content" style={{paddingTop:90}} >
+                    <div className="main-content" style={{ paddingTop: 90 }} >
                         {/* flat-title */}
                         <div className="flat-title">
-                            <div className="cl-container full">
-                                <div className="row ">
-                                    <div className="col-12">
-                                        <div className="content">
-                                            <h2>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</h2>
-                                            <ul className="breadcrumbs">
-                                                <li>
-                                                    <Link href="/">Home</Link>
-                                                </li>
-                                                <li>/</li>
-                                                <li>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</li>
-                                            </ul>
+                            <div className='flat-title inner-page' >
+                                <div className="cl-container full">
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <div className="content">
+                                                <h2>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</h2>
+                                                <ul className="breadcrumbs">
+                                                    <li>
+                                                        <Link href="/">Home</Link>
+                                                    </li>
+                                                    <li>/</li>
+                                                    <li>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         {/* /flat-title */}
                         {/* property-list-wrap */}
@@ -62,12 +65,12 @@ const CommunityComponent = ({
                                         <div className="sidebar">
 
                                             <div className="sidebar-item sidebar-categories no-bg">
-                                                <div className="sidebar-title">Communities</div>
+                                                <div className="sidebar-title">Nearby Communities</div>
                                                 <ul>
                                                     {Object.keys(community).length > 0 ? community.related_neighborhoods.map((item) => (
                                                         <li
                                                             key={item.id}
-                                                       >
+                                                        >
                                                             <Link href={`/community/${item.slug}`} >{item.title}</Link>
                                                         </li>
                                                     )) : null}
@@ -94,7 +97,7 @@ const CommunityComponent = ({
                                                 {Object.keys(community).length > 0 ?
                                                     <>
                                                         <div className='d-flex  ' >
-                                                        
+
                                                             <div className='mt-5' dangerouslySetInnerHTML={{ __html: community.neighborhood.description }} />
                                                         </div>
                                                     </>
@@ -162,16 +165,16 @@ const CommunityComponent = ({
                                                                                         <div className="icon">
                                                                                             <i className="flaticon-location" />
                                                                                         </div>
-                                                                                        <p style={{fontSize:13}}>{property.address}</p>
+                                                                                        <p style={{ fontSize: 13 }}>{property.address}</p>
                                                                                     </div>
                                                                                     <div className="icon-box">
                                                                                         <div className="item">
                                                                                             <i className="flaticon-hotel" />
-                                                                                            <p style={{fontSize:13}}>{property.bedrooms} Beds</p>
+                                                                                            <p style={{ fontSize: 13 }}>{property.bedrooms} Beds</p>
                                                                                         </div>
                                                                                         <div className="item">
                                                                                             <i className="flaticon-bath-tub" />
-                                                                                            <p style={{fontSize:13}}>{property.bathrooms} Baths</p>
+                                                                                            <p style={{ fontSize: 13 }}>{property.bathrooms} Baths</p>
                                                                                         </div>
                                                                                         <div className="item">
                                                                                             <i className="flaticon-minus-front" />
@@ -180,7 +183,7 @@ const CommunityComponent = ({
                                                                                                     ? property.size_mt + " Sq M"
                                                                                                     : property.size + " Sq ft"}
                                                                                             </p> */}
-                                                                                            <p style={{fontSize:13}}>{property.size + "sqft"} / {property.size_mt + "sqm"}</p>
+                                                                                            <p style={{ fontSize: 13 }}>{property.size + "sqft"} / {property.size_mt + "sqm"}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -209,19 +212,19 @@ const CommunityComponent = ({
 
                                         </div>
                                         {Object.keys(community).length > 0 && (
-                                    <div className='mt-5 col-12 col-md-12 ' >
-                                        <Map
-                                            lattitude={Number(community.neighborhood.latitude)}
-                                            longitude={Number(community.neighborhood.longitude)}
-                                        />
+                                            <div className='mt-5 col-12 col-md-12 ' >
+                                                <Map
+                                                    lattitude={Number(community.neighborhood.latitude)}
+                                                    longitude={Number(community.neighborhood.longitude)}
+                                                />
+                                            </div>
+                                        )}
                                     </div>
-                                )}
-                                    </div>
-                                            
+
 
 
                                 </div>
-                               
+
 
                             </div>
                         </div>

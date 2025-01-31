@@ -230,13 +230,13 @@ const DetailPage = () => {
                         </div> */}
                           <div className="item">
                             <div className="icon">
-                              <button
+                              <div
                                 ref={targetRef}
                                 style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
                                 onClick={handleCopyUrl}
                               >
                                 <i className="flaticon-outbox" />
-                              </button>
+                              </div>
                               <Overlay target={targetRef.current} show={showTooltip} placement="bottom">
                                 {(props) => (
                                   <Tooltip {...props} className="show">

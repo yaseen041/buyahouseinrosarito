@@ -103,15 +103,15 @@ export default function RootLayout({ children,pageMetadata  }) {
           {children}
           </UnitProvider>
 
-        {/* <Script
+        <Script
           src="/assets/js/jquery.min.js"
           strategy="beforeInteractive" // Load it after the page load
         
           onError={(e) => console.error("Failed to load jQuery:", e)}
-        /> */}
-        {/* <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" /> */}
+        />
+        <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
         {/* <Script src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
-        {/* <Script src="/assets/js/bootstrap-select.min.js" strategy="afterInteractive" /> */}
+        <Script src="/assets/js/bootstrap-select.min.js" strategy="afterInteractive" />
 
      
 

@@ -161,7 +161,7 @@ const BlogComponent = () => {
                                   }).format(new Date(blog.publish_date))}
                                 </div>
                               </div>
-                              <div style={{ minHeight: 150 }} >
+                              <div style={{ minHeight: 140 }} >
                                 <div className="name">
                                   <a href={`/blog/${blog.slug}`}>{blog.title}</a>
                                 </div>
