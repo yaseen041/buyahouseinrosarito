@@ -51,23 +51,23 @@ const BlogDetail = () => {
         <div id="page" className="">
           <Header3 />
           <div className='flat-title inner-page' >
-                      <div className="cl-container full">
-                        <div className="row">
-                          <div className="col-12">
-                            <div className="content">
-                              <h2>{blog?.title}</h2>
-                              <ul className="breadcrumbs">
-                                <li>
-                                  <Link href="/">Home</Link>
-                                </li>
-                                <li>/</li>
-                                <li>{blog?.title}</li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+            <div className="cl-container full">
+              <div className="row">
+                <div className="col-12">
+                  <div className="content">
+                    <h2>{blog?.title}</h2>
+                    <ul className="breadcrumbs">
+                      <li>
+                        <Link href="/">Home</Link>
+                      </li>
+                      <li>/</li>
+                      <li>{blog?.title}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="main-content spacing-20">
 
             <div className="blog-single-wrap">
@@ -78,8 +78,8 @@ const BlogDetail = () => {
                   <NotFound message="We couldn't find any post." />
                   :
                   <>
-                  
-                    <div className="image-head" style={{paddingTop:90}} >
+
+                    <div className="image-head" style={{ paddingTop: 90 }} >
                       <img src={blog?.featured_image} alt={blog?.title} />
                     </div>
 
@@ -115,9 +115,10 @@ const BlogDetail = () => {
               )}
             </div>
             {/* wg-related-posts */}
-          
+
           </div>
-          <div className="wg-related-posts">
+          {relatedblog?.length && (
+            <div className="wg-related-posts">
               <div className="cl-container">
                 <div className="row">
                   <div className="col-12">
@@ -131,56 +132,51 @@ const BlogDetail = () => {
                   </div>
                 </div>
                 <div className="row ">
-                  {relatedblog?.length > 0 ? (
-                    relatedblog?.map((blog) => (
-                      <div className="col-xl-4 col-lg-6 col-12" key={blog?.id}>
-                        <div className="wg-blog wow fadeInUp">
-                          <div className="image">
-                            <img
-                              src={
-                                blog?.featured_image ||
-                                "/assets/images/blog/blog-grid-1.jpg"
-                              }
-                              alt={blog?.title || "Blog Image"}
-                            />
-                          </div>
-                          <div className="content">
-                              <div className="sub-blog">
-                                <div>{blog?.category.title}</div>
-                                <div>
-                                  {new Intl.DateTimeFormat("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                  }).format(new Date(blog?.publish_date))}
-                                </div>
-                              </div>
-                              <div style={{ minHeight: 150 }} >
-                                <div className="name">
-                                  <a href={`/blog/${blog?.slug}`}>{blog?.title}</a>
-                                </div>
-                                <div>
-                                  <p>{truncate(blog?.meta_description)}</p>
-                                </div>
-                              </div>
-                              <Link href={`/blog/${blog?.slug}`} className="tf-button-no-bg" >
-                                Read More
-                                <i className="icon-arrow-right-add"></i>
-                              </Link>
+
+                  {relatedblog?.map((blog) => (
+                    <div className="col-xl-4 col-lg-6 col-12" key={blog?.id}>
+                      <div className="wg-blog wow fadeInUp">
+                        <div className="image">
+                          <img
+                            src={
+                              blog?.featured_image ||
+                              "/assets/images/blog/blog-grid-1.jpg"
+                            }
+                            alt={blog?.title || "Blog Image"}
+                          />
+                        </div>
+                        <div className="content">
+                          <div className="sub-blog">
+                            <div>{blog?.category.title}</div>
+                            <div>
+                              {new Intl.DateTimeFormat("en-US", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              }).format(new Date(blog?.publish_date))}
                             </div>
+                          </div>
+                          <div style={{ minHeight: 150 }} >
+                            <div className="name">
+                              <a href={`/blog/${blog?.slug}`}>{blog?.title}</a>
+                            </div>
+                            <div>
+                              <p>{truncate(blog?.meta_description)}</p>
+                            </div>
+                          </div>
+                          <Link href={`/blog/${blog?.slug}`} className="tf-button-no-bg" >
+                            Read More
+                            <i className="icon-arrow-right-add"></i>
+                          </Link>
                         </div>
                       </div>
-                    ))
-                  ) : (
-                    <div className="col-xl-3 col-lg-6 col-12">
-                      <div className=" wow fadeInUp">
-                        <NotFound message="We couldn't find any related post." />
-                      </div>
                     </div>
-                  )}
+                  ))}
+
                 </div>
               </div>
             </div>
+          )}
           <Footer />
         </div>
       </div>
