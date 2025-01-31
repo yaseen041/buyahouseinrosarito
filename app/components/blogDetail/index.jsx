@@ -5,7 +5,6 @@ import Header3 from "../header3";
 import Footer from "../footer";
 import Link from "next/link";
 import CustomScript from "@/app/scripts";
-import Head from "next/head";
 import Loader from "../loader/Loader";
 import { url } from "@/app/utils/urls";
 import NotFound from "../NotFound/NotFound";
@@ -41,21 +40,7 @@ const BlogDetail = () => {
 
   return (
     <>
-    <Head>
-          <title>{"El Real Estate | Blog | " +blog?.title }</title>
-          <meta name="description" content={blog?.meta_description || ""} />
-          <meta name="keywords" content={blog?.meta_keywords || ""} />
-          <meta property="og:title" content={blog?.fb_title || blog?.meta_title || ""} />
-          <meta property="og:description" content={blog?.fb_description || blog?.meta_description || ""} />
-          <meta property="og:image" content={blog?.fb_image || ""} />
-          <meta property="og:url" content={`https://yourwebsite.com/blog/${blog?.slug}`} />
-          <meta name="twitter:title" content={blog?.twitter_title || blog?.meta_title || ""} />
-          <meta name="twitter:description" content={blog?.twitter_description || blog?.meta_description || ""} />
-          <meta name="twitter:image" content={blog?.twitter_image || ""} />
-          <script type="application/ld+json">
-          {blog?.json_ld_code || "{}"}
-          </script>
-    </Head>
+   
         <div id="wrapper">
           <div id="page" className="">
             <Header3 />

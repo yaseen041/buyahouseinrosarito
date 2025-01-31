@@ -36,4 +36,5 @@ export class url {
 
 //SEO
     static HOME_SEO = `${BASE_URL}/seo/home`
+    static PROPERTY_SEO = `${BASE_URL}/seo/property`
 }

@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useUnitContext } from "@/app/utils/UnitContext";
+// import { useUnitContext } from "@/app/utils/UnitContext";
 import Footer from '../footer';
 import { useRouter } from 'next/navigation';
 import Loader from '../loader/Loader';
@@ -22,7 +22,7 @@ const CityComponent = ({
     city = {},
     loading = true
 }) => {
-    const { isSquareMeter, toggleUnit } = useUnitContext();
+    // const { isSquareMeter, toggleUnit } = useUnitContext();
     const router = useRouter()
     return (
         <div>

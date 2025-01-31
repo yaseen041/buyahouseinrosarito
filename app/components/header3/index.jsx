@@ -4,7 +4,7 @@ import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { usePathname } from "next/navigation";
 
-import { useUnitContext } from "@/app/utils/UnitContext";
+// import { useUnitContext } from "@/app/utils/UnitContext";
 
 const Header3 = () => {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -14,7 +14,7 @@ const Header3 = () => {
   const handleClose = () => setOpenMenu(false);
   const handleShow = () => setOpenMenu(true);
 
-  const { isSquareMeter, toggleUnit } = useUnitContext();
+  // const { isSquareMeter, toggleUnit } = useUnitContext();
 
   React.useEffect(() => {
     const handleScroll = () => {

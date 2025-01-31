@@ -17,6 +17,7 @@
     "magnific-popup": "^1.2.0",
     "mmenu-js": "^9.3.0",
     "next": "^15.2.0-canary.24",
+    "next-seo": "^6.6.0",
     "nouislider": "^15.8.1",
     "nprogress": "^0.2.0",
     "react": "^19.0.0",

@@ -5,14 +5,13 @@ import Footer from "../footer";
 import Link from "next/link";
 import CustomScript from "@/app/scripts";
 import Map from "../map";
-import MultiSelect from "../MultiSelect/MultiSelect";
 import { url } from "@/app/utils/urls";
-import ScheduleForm from "../ScheduleForm/ScheduleForm";
 import Loader from "../loader/Loader";
 import { useUnitContext } from "@/app/utils/UnitContext";
 import { Tooltip, Overlay } from "react-bootstrap";
 import { useParams } from "next/navigation";
-const DetailPage = ({ property = {}, agent = {}, loading }) => {
+import { api } from '@/app/utils/api';
+const DetailPage = () => {
   const { isSquareMeter, toggleUnit } = useUnitContext();
   const [properties, setProperties] = useState([]);
   const [selectedProperties, setSelectedProperties] = useState([]);
@@ -27,6 +26,42 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
   const [spin, setSpin] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const targetRef = useRef(null);
+  const [loading, setLoading] = React.useState(true)
+  const [property, setProperty] = React.useState({})
+  const [agent, setAgent] = React.useState({})
+  const params = useParams()
+  const { slug } = params;
+
+  const getProertyDetail = async () => {
+    try {
+      const data = await api.Get(`${url.PROPERTY}/${slug}`)
+      if (data) {
+        setProperty(data.data)
+      }
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const getAgent = async () => {
+    try {
+      const data = await api.Get(`${url.AGENT}/${property.agent}`)
+      if (Object.keys(data).length>0) {
+        setAgent(data.data)
+      }
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  React.useEffect(() => {
+    getProertyDetail()
+
+  }, [slug])
+  React.useEffect(() => {
+    getAgent()
+  }, [property])
   useEffect(() => {
     const fetchProperties = async () => {
       try {
@@ -926,6 +961,7 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                             View Listing
                           </Link> */}
                           </div>
+                          {Object.keys(agent).length>0 && (
                           <div className="person wow fadeInUp">
                             <div className="image">
                               <img src={agent.image} alt="" />
@@ -938,6 +974,7 @@ const DetailPage = ({ property = {}, agent = {}, loading }) => {
                               <p>{agent.phone}</p>
                             </div>
                           </div>
+                          )}
 
                           {/* Contact Enquiry Form */}
                          

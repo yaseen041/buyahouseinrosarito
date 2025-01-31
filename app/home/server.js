@@ -9,6 +9,7 @@ export async function fetchSEOData() {
         return {
           title: data.data.meta_title || "Default Title",
           description: data.data.meta_description || "Default Description",
+          keywords:data.data.meta_keywords || "buyahouse, rosarito",
           openGraph: {
             title: data.data.fb_title || "Default OG Title",
             description: data.data.fb_description || "Default OG Description",

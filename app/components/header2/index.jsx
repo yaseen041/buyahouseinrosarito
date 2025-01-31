@@ -4,10 +4,10 @@ import Link from "next/link";
 import Scripts from "@/app/scripts";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { usePathname } from "next/navigation";
-import { useUnitContext } from "@/app/utils/UnitContext";
+// import { useUnitContext } from "@/app/utils/UnitContext";
 
 const Header2 = () => {
-  const { isSquareMeter, toggleUnit } = useUnitContext();
+  // const { isSquareMeter, toggleUnit } = useUnitContext();
   const [openMenu, setOpenMenu] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const handleClose = () => setOpenMenu(false);
