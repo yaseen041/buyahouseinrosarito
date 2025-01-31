@@ -1511,9 +1511,9 @@ ul.list-text li::before {
 }
 
 .wg-related-posts {
-  padding-top: 191px;
-  padding-bottom: 171px;
-  border-radius: 24px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 0px;
   background-color: #F9F9F9;
 }
 
@@ -8912,7 +8912,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   gap: 51px;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
 }
 .blog-single-wrap .blog-single-inner h2 {
   margin-bottom: 12px;
@@ -15317,7 +15317,6 @@ fieldset.phone::after{
 .wg-blog {
   display: flex;
   flex-direction: column; 
-  height: 100%; 
   border: 1px solid var(--Border);
   box-shadow: 0px 6px 15px 0px rgba(110, 110, 110, 0.33);
 }
