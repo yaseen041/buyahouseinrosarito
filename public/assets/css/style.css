@@ -7479,14 +7479,14 @@ ul.grid-tags li a:hover {
 
 .tf-button-no-bg {
   position: relative;
-  width: max-content;
+  /* width: max-content; */
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   color: var(--Secondary);
   font-weight: 500;

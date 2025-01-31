@@ -16,6 +16,12 @@ const BlogDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  function truncate(text, charLimit = 150) {
+    if (text.length > charLimit) {
+      return text.slice(0, charLimit) + "...";
+    }
+    return text;
+  }
   useEffect(() => {
     if (slug) {
       const fetchBlogData = async () => {
@@ -136,29 +142,29 @@ const BlogDetail = () => {
                             />
                           </div>
                           <div className="content">
-                            <div className="sub-blog">
-                              <div>{blog.category?.title}</div>
-                              <div>
-                                {new Intl.DateTimeFormat("en-US", {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                }).format(new Date(blog.publish_date))}
+                              <div className="sub-blog">
+                                <div>{blog.category.title}</div>
+                                <div>
+                                  {new Intl.DateTimeFormat("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                  }).format(new Date(blog.publish_date))}
+                                </div>
                               </div>
-                            </div>
-                            <div className="name">
-                              <Link href={`/blog/${blog.slug}`}>
-                                {blog.title || "Untitled Blog"}
+                              <div style={{ minHeight: 150 }} >
+                                <div className="name">
+                                  <a href={`/blog/${blog.slug}`}>{blog.title}</a>
+                                </div>
+                                <div>
+                                  <p>{truncate(blog.meta_description)}</p>
+                                </div>
+                              </div>
+                              <Link href={`/blog/${blog.slug}`} className="tf-button-no-bg" >
+                                Read More
+                                <i className="icon-arrow-right-add"></i>
                               </Link>
                             </div>
-                            <Link
-                              href={`/blog/${blog.slug}`}
-                              className="tf-button-no-bg"
-                            >
-                              Read More
-                              <i className="icon-arrow-right-add" />
-                            </Link>
-                          </div>
                         </div>
                       </div>
                     ))

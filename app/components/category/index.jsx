@@ -4,12 +4,13 @@ import Header3 from "../header3";
 import Link from "next/link";
 import Footer from "../footer";
 import CustomScript from "@/app/scripts";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams,useParams } from "next/navigation";
 import Loader from "../loader/Loader";
 import { url } from "@/app/utils/urls";
 import NotFound from "../NotFound/NotFound";
 
-const BlogComponent = () => {
+const CategoryBlogComponent = () => {
+    const {slug} = useParams()
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryQuery = searchParams.get("category");
@@ -21,6 +22,7 @@ const BlogComponent = () => {
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
+  const [catName,setCatName] = useState("")
 
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -57,6 +59,9 @@ const BlogComponent = () => {
 
       const data = await response.json();
       setter(data.data);
+      const getCatName = data.data.find((i)=>i.slug===slug)
+console.log("cat name=====>",getCatName,categories)
+setCatName(getCatName.title)
     } catch (err) {
       //   console.error("Failed to fetch data:", err);
       setError(err.message);
@@ -66,8 +71,7 @@ const BlogComponent = () => {
   };
 
   useEffect(() => {
-    const blogsUrl = `${url.BLOGS}?page=${pageQuery}${categoryQuery ? `&category=${categoryQuery}` : ""
-      }${searchQuery ? `&search=${searchQuery}` : ""}`;
+    const blogsUrl = `${url.BLOG_CATEGORY}/${slug}?${pageQuery !==null? `&page=${pageQuery}`:""}${searchQuery ? `&search=${searchQuery}` : ""}`;
 
     fetchBlogs(blogsUrl, setBlogs);
     fetchCategories(url.CATEGORIES, setCategories);
@@ -128,6 +132,8 @@ const BlogComponent = () => {
                         <li style={{ listStyle: "none" }} className='list-unstyled' >
                           <Link href="/">Home</Link>
                         </li>
+                        <li>/</li>
+                        <li>{catName}</li>
                         <li>/</li>
                         <li>Blog</li>
                       </ul>
@@ -293,7 +299,7 @@ const BlogComponent = () => {
                           <li
                             key={category.slug}
                             className={
-                              category.slug === categoryQuery
+                              category.slug === slug
                                 ? "active"
                                 : ""
                             }
@@ -331,4 +337,4 @@ const BlogComponent = () => {
   );
 };
 
-export default BlogComponent;
+export default CategoryBlogComponent;

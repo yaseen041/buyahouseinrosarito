@@ -29,7 +29,8 @@ export class url {
     static SINGLEBLOG = `${BASE_URL}/blogs/fetch/`
     static PROPERTIESOPTIONS = `${BASE_URL}/contact/property-options`
     static SUBMITCONTACT = `${BASE_URL}/contact/submit`
-    static SUBMITTOUR = `${BASE_URL}/tour/submit`    
+    static SUBMITTOUR = `${BASE_URL}/tour/submit` 
+    static BLOG_CATEGORY =  `${BASE_URL}/blogs/category-withslug`   
 // Pages
     static CITY_PAGE = `${BASE_URL}/cities/page`
     static COOMUNITY_PAGE = `${BASE_URL}/neighborhoods/page`
