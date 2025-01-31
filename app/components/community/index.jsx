@@ -33,11 +33,11 @@ const CommunityComponent = ({
                 {/* /header */}
                 {/* main-content */}
                 {loading ? <Loader /> :
-                    <div className="main-content">
+                    <div className="main-content" style={{paddingTop:90}} >
                         {/* flat-title */}
                         <div className="flat-title">
                             <div className="cl-container full">
-                                <div className="row">
+                                <div className="row ">
                                     <div className="col-12">
                                         <div className="content">
                                             <h2>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</h2>
@@ -67,9 +67,7 @@ const CommunityComponent = ({
                                                     {Object.keys(community).length > 0 ? community.related_neighborhoods.map((item) => (
                                                         <li
                                                             key={item.id}
-
-
-                                                        >
+                                                       >
                                                             <Link href={`/community/${item.slug}`} >{item.title}</Link>
                                                         </li>
                                                     )) : null}
@@ -79,7 +77,7 @@ const CommunityComponent = ({
 
                                         </div>
                                     </div>
-                                    <div className="col-lg-9">
+                                    <div className="col-lg-9 mt-5 mt-md-0 ">
 
                                         <div className="row">
                                             <div className='col-12 col-md-12 ' >

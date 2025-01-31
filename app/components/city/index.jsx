@@ -32,7 +32,7 @@ const CityComponent = ({
                 {/* /header */}
                 {/* main-content */}
                 {loading ? <Loader /> :
-                    <div className="main-content">
+                    <div className="main-content" style={{paddingTop:90}}>
                         {/* flat-title */}
                         <div className="flat-title">
                             <div className="cl-container full">
@@ -78,7 +78,7 @@ const CityComponent = ({
 
                                         </div>
                                     </div>
-                                    <div className="col-lg-9">
+                                    <div className="col-lg-9 mt-5 mt-md-0 ">
 
                                         <div className="row">
                                             <div className='col-12 col-md-12 ' >

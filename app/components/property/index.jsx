@@ -678,7 +678,7 @@ const PropertyComponent = ({
                                   onClick={toggleFilter}
                                 >
                                   <i className="flaticon-filter" />
-                                  Filter
+                                  Filters
                                 </div>
                                 <div
                                   className={`open-filter filter-no-content ${openFilter ? "active" : ""
@@ -1174,7 +1174,8 @@ const PropertyComponent = ({
                                     ))}
                                   </Swiper>
                                 </div>
-                                <div className="content">
+                                <div className="content"  >
+                                  <div style={{minHeight:120}} >
                                   <div className="head">
                                     <div className="title">
                                       <Link href={`/property/${item.slug}`}>
@@ -1185,11 +1186,13 @@ const PropertyComponent = ({
                                       ${item.price.toLocaleString()}
                                     </div>
                                   </div>
+                                 
                                   <div className="location">
                                     <div className="icon">
                                       <i className="flaticon-location" />
                                     </div>
                                     <p style={{fontSize:13}}>{item.address}</p>
+                                  </div>
                                   </div>
                                   <div className="icon-box">
                                     <div className="item">
@@ -1211,6 +1214,7 @@ const PropertyComponent = ({
                                       <p style={{fontSize:13}}>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                     </div>
                                   </div>
+                               
                                 </div>
                               </div>
                             </div>
@@ -1244,6 +1248,9 @@ const PropertyComponent = ({
                                 const newParams = new URLSearchParams(
                                   searchParams.toString()
                                 );
+                                if(page !==null){
+                                  newParams.delete("page")
+                                }
                                 newParams.set("type", item.title);
                                 router.push(
                                   `/property?${newParams.toString()}`
@@ -1268,6 +1275,9 @@ const PropertyComponent = ({
                                 const newParams = new URLSearchParams(
                                   searchParams.toString()
                                 );
+                                if(page !==null){
+                                  newParams.delete("page")
+                                }
                                 newParams.set("community", item.title);
                                 router.push(
                                   `/property?${newParams.toString()}`
@@ -1377,7 +1387,7 @@ const PropertyComponent = ({
                                   <Link href="#">{item.name}</Link>
                                 </div>
                                 <p>{item.email}</p>
-                                <p>{item.phone}</p>
+                                <p>{item.designation}</p>
                               </div>
                             </li>
                           ))}

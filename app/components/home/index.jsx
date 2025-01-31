@@ -664,7 +664,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                         <div className="wg-filter">
                                                                             <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter} >
                                                                                 <i className="flaticon-filter" />
-                                                                                Filter
+                                                                                Filters
                                                                             </div>
                                                                             <div
                                                                                 className={`open-filter filter-no-content ${openFilter ? "active" : ""}  `}

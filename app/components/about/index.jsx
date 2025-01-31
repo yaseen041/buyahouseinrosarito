@@ -164,7 +164,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   </ul>
                   <h5 className="wow fadeInUp text-center mt-5 ">🏖️ Recreation & Adventure</h5>
                   <p className='mt-3 text-center' >Rosarito is a paradise for adventure seekers and relaxation lovers alike:</p>
-                  <ul className='wow fadeInUp mt-5' >
+                  <ul className='wow fadeInUp mt-5 mb-3' >
                     <li><p><span>Sport Fishing and Whale Watching, Ensenada</span>: Enjoy sport fishing and tranquil boat rides from nearby Ensenada’s port and marina.</p></li>
                     <div className='text-center' >
                       <img className='mt-3' src='/assets/images/about3.png' />

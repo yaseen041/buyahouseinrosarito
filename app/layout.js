@@ -86,7 +86,7 @@ export default function RootLayout({ children,pageMetadata  }) {
           href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4b7fddacba/UntitledProject/style.css"></link>
+        {/* <link rel="stylesheet" href="https://i.icomoon.io/public/temp/4b7fddacba/UntitledProject/style.css"></link> */}
   
         <link rel="stylesheet" type="text/css" href="/assets/icon/flaticon_just-home.css" />
         <link rel="stylesheet" type="text/css" href="/assets/icon/icomoon/style.css" />

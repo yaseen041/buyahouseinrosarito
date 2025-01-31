@@ -267,7 +267,7 @@ const DetailPage = () => {
                           )}
                         </div>
                         {Object.keys(property).length > 0
-                          ? property?.gallery.map((item, index) => (
+                          ? property?.gallery.slice(0,5).map((item, index) => (
                             <a
                               href={`${item}`}
                               className={`item-${index + 1}`}
@@ -278,43 +278,15 @@ const DetailPage = () => {
                             </a>
                           ))
                           : null}
-
-                        {/* <a
-                        href="/assets/images/house/property-detail-2.jpg"
-                        className="item-2"
-                        data-fancybox="gallery"
-                      >
-                        <img src="/assets/images/house/property-detail-2.jpg" alt="" />
-                      </a>
-                      <a
-                        href="/assets/images/house/property-detail-3.jpg"
-                        className="item-3"
-                        data-fancybox="gallery"
-                      >
-                        <img src="/assets/images/house/property-detail-3.jpg" alt="" />
-                      </a>
-                      <a
-                        href="/assets/images/house/property-detail-4.jpg"
-                        className="item-4"
-                        data-fancybox="gallery"
-                      >
-                        <img src="/assets/images/house/property-detail-4.jpg" alt="" />
-                      </a>
-                      <a
-                        href="/assets/images/house/property-detail-5.jpg"
-                        className="item-5"
-                        data-fancybox="gallery"
-                      >
-                        <img src="/assets/images/house/property-detail-5.jpg" alt="" />
-                      </a>
-                      <a
-                        href="/assets/images/house/property-detail-3.jpg"
-                        className="more-photos"
-                        data-fancybox="gallery"
-                      >
-                        <i className="flaticon-gallery" />
-                        <p>42 Photos</p>
-                      </a> */}
+                          {Object.keys(property).length > 0
+                           ?  property?.gallery.length > 5 && (
+                            <a href={property.gallery[5]} className="more-photos" data-fancybox="gallery">
+                              <i className="flaticon-gallery" />
+                              <p>{property.gallery.length} Photos</p>
+                            </a>
+                          )
+                         : null}
+                      
                       </div>
                     </div>
                     <div className="col-xl-8">
@@ -338,9 +310,14 @@ const DetailPage = () => {
                               </div>
                             )}
                             <div className="price">
-                              $
+                             
                               {Object.keys(property).length > 0
-                                ? property?.price.toLocaleString()
+                                ? 
+                                <div>
+                                   $
+                                  {property?.price.toLocaleString()} {property?.listing_type==="rent"?`/ ${property.rent_cycle}`:null}
+                                 
+                                </div>
                                 : null}
                             </div>
                           </div>
@@ -535,11 +512,16 @@ const DetailPage = () => {
                               <p>{property?.parking_spaces}</p>
                             </div>
                             <div className="item wow fadeInUp">
-                              <div className="text">Price:</div>
+                              <div className="text">{property?.listing_type==="rent"?"Rent":"Price"}:</div>
                               <p>
-                                $
+                               
                                 {Object.keys(property).length > 0
-                                  ? property?.price.toLocaleString()
+                                  ? 
+                                  <div>
+                                     $
+                                    {property?.price.toLocaleString()} {property?.listing_type==="rent"?`/ ${property?.rent_cycle}`:null}
+                                  
+                                  </div>
                                   : null}
                               </p>
                             </div>
@@ -971,7 +953,7 @@ const DetailPage = () => {
                                 <Link href="#">{agent.name}</Link>
                               </div>
                               <p>{agent.designation}</p>
-                              <p>{agent.phone}</p>
+                              <p>{agent.description}</p>
                             </div>
                           </div>
                           )}

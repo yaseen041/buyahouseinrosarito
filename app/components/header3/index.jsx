@@ -123,7 +123,7 @@ const Header3 = () => {
                 <div className="icon">
                   <i className="flaticon-phone" />
                 </div>
-                <div className="number">800-555-6789</div>
+                <Link href="tel:+52 664 641 1658" className="number">+52 664 641 1658</Link>
               </div>
               {/* <div
                                 data-bs-toggle="modal"
@@ -274,6 +274,21 @@ const Header3 = () => {
                         href="/blog"
                       >
                         Blog
+                      </Link>
+                    </li>
+                    <li
+                      className={`mm-listitem ${
+                        pathname === "/faq" ? "current" : ""
+                      }`}
+                      id="mm-16"
+                      data-mm-child="mm-17"
+                    >
+                      <Link
+                        className="mm-btn mm-btn--next mm-listitem__btn mm-listitem__text"
+                        aria-label="Open submenu"
+                        href="/faq"
+                      >
+                        FAQ
                       </Link>
                     </li>
                     <li

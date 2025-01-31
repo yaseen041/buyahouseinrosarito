@@ -9966,7 +9966,7 @@ body::-webkit-scrollbar {
   padding-bottom: 0;
 }
 .recent-properties .heading-section {
-  padding-left: 45px;
+  /* padding-left: 45px; */
 }
 .recent-properties .slider-recent-properties {
   padding-bottom: 75px;
@@ -13823,7 +13823,7 @@ a {
     gap: 40px !important;
   }
   #header_main .header-inner .header-inner-wrap .header-right .header-call {
-    display: none;
+    display: flex;
   }
   #header_main.type-home3 .header-inner #site-logo {
     position: unset !important;

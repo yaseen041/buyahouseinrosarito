@@ -2,6 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+
 const Footer = () => {
 
     const d = new Date()
@@ -42,7 +43,7 @@ const pathname = usePathname()
                     </li> */}
                     <li>
                       <Link href="https://youtube.com/@buyahouseinrosarito?feature=shared" target='_blank' >
-                        <i className="icon-youtube" />
+                        <img src="/youtube.svg" style={{height:20,width:20}} />
                       </Link>
                     </li>
                   </ul>
@@ -127,7 +128,7 @@ const pathname = usePathname()
                   <div className="ft-title">Contact Us</div>
                   <ul className="navigation-menu-footer">
                     <li>
-                      <div className="text">aaron@buyahouseinrosarito.com +52 664 641 1658</div>
+                      <div className="text">aaron@buyahouseinrosarito.com<br /> +52 664 641 1658</div>
                     </li>
                   </ul>
                 </div>
