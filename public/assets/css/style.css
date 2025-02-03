@@ -135,7 +135,6 @@ section {
 }
 
 html {
-  font-size: 62.5%;
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -1910,6 +1909,7 @@ ul.list-text li::before {
   font-weight: 500;
   font-size: 19px;
   line-height: 28px;
+  max-width:223px;
 }
 .box-dream .content .price {
   font-weight: 600;
@@ -13905,7 +13905,7 @@ a {
     padding: 9px 0 9px 9px;
   }
   #header_main .header-inner {
-    padding: 15px 15px 0 15px;
+    padding: 5px 15px 0 15px;
   }
   #header_main .header-inner .header-inner-wrap {
     padding-right: 15px;
@@ -14300,8 +14300,8 @@ a {
   }
   #header_main.is-fixed.is-small {
     background-color: var(--White);
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   #header_main.is-fixed.is-small.style-no-bg {
     background-color: var(--White);
@@ -14310,7 +14310,7 @@ a {
     background-color: transparent;
   }
   #header_main .header-inner {
-    padding-bottom: 20px !important;
+    padding-bottom: 5px !important;
   }
   #header_main .header-inner.background-white {
     background-color: var(--White);
@@ -14692,6 +14692,7 @@ a {
   }
   .contact-item {
     padding: 30px 20px;
+    min-height: 277px;
   }
   .box-dream.style-favorities {
     gap: 0;
@@ -14960,11 +14961,12 @@ a {
     padding: 15px 20px 10px;
   }
   .box-dream .content .title {
-    font-size: 20px;
+    font-size: 15px;
     line-height: 28px;
+    max-width: 148px;
   }
   .box-dream .content .price {
-    font-size: 18px;
+    font-size: 16px;
   }
   .box-dream .content .location p {
     font-size: 16px;
@@ -14973,6 +14975,7 @@ a {
   .box-dream .content .icon-box {
     width: 100%;
     gap: 10px;
+    justify-content: space-between;
   }
   .box-dream .content .icon-box .item {
     gap: 7px;
@@ -15359,9 +15362,7 @@ fieldset.phone::after{
   box-shadow: 0px 6px 15px 0px rgba(110, 110, 110, 0.73);
 }
 
-.blog_content *{
-    all: revert;
-}
+
 
 @media screen and (max-width:480px) {
   .table-container th p{

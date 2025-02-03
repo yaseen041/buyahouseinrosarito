@@ -50,7 +50,7 @@ const BlogDetail = () => {
       <div id="wrapper">
         <div id="page" className="">
           <Header3 />
-          <div className='flat-title inner-page' >
+          <div className='flat-title inner-page' style={{ backgroundImage: blog !== null ? `linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(${blog.featured_image})` : "", height: 325, paddingTop: 97 }} >
             <div className="cl-container full">
               <div className="row">
                 <div className="col-12">
@@ -61,8 +61,22 @@ const BlogDetail = () => {
                         <Link href="/">Home</Link>
                       </li>
                       <li>/</li>
+                      <li>
+                        <Link href="/blog">Blog</Link>
+                      </li>
+                      <li>/</li>
                       <li>{blog?.title}</li>
                     </ul>
+                    {blog !==null &&(
+                    <div style={{fontSize:15,color:"#FFF",marginTop:15}} >
+                      {" "}
+                      {new Intl.DateTimeFormat("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      }).format(new Date(blog?.publish_date))}
+                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -79,15 +93,15 @@ const BlogDetail = () => {
                   :
                   <>
 
-                    <div className="image-head" style={{ paddingTop: 90 }} >
+                    {/* <div className="image-head" style={{ paddingTop: 90 }} >
                       <img src={blog?.featured_image} alt={blog?.title} />
-                    </div>
+                    </div> */}
 
                     <div className="cl-container">
                       <div className="row justify-center">
                         <div className="col-xl-8 col-12">
                           <div className="blog-single-inner">
-                            <div>
+                            {/* <div>
                               <h2 className="wow fadeInUp">{blog?.title}</h2>
                               <div className="sub-blog style-color wow fadeInUp">
                                 <div>{blog?.category.title}</div>
@@ -100,12 +114,12 @@ const BlogDetail = () => {
                                   }).format(new Date(blog?.publish_date))}
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                             <div
                               dangerouslySetInnerHTML={{
                                 __html: blog?.description,
                               }}
-                              className="blog_content"
+                              className="blog_content ck_editor_content"
                             ></div>
                           </div>
                         </div>

@@ -65,7 +65,7 @@ const Header3 = () => {
             className="header-inner-wrap"
             style={{ border: pathname === "/" ? "0px" : "" }}
           >
-            <div id="site-logo">
+            <div id="site-logo " className=" d-none d-md-block" >
               <Link href="/" rel="home">
                 <img
                   className="d-block pt-2 pb-2"
@@ -73,6 +73,17 @@ const Header3 = () => {
                   src="/assets/images/Header3.png"
                   alt=""
                   style={{ height: "50%", width: "90px" }}
+                />
+              </Link>
+            </div>
+            <div id="site-logo" className="d-block d-md-none" >
+              <Link href="/" rel="home">
+                <img
+                  className="d-block pt-2 pb-2"
+                  id="logo-header"
+                  src="/assets/images/Header3.png"
+                  alt=""
+                  style={{ height: "30%", width: "60px" }}
                 />
               </Link>
             </div>

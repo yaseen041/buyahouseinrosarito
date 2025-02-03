@@ -88,7 +88,7 @@ const PropertyComponent = ({
 
 
   const handlePageChange = (page, offset) => {
-    console.log("pages..............",page)
+
     setCurrentPage(page.selected + 1);
     const newParams = new URLSearchParams(searchParams.toString());
     if (currentPage > 0) {
@@ -232,7 +232,7 @@ const PropertyComponent = ({
 
 
   React.useEffect(() => {
-   
+
     getFilters()
     getTypes()
     getCities()
@@ -249,7 +249,7 @@ const PropertyComponent = ({
       const body = new FormData()
       if (page !== null) {
         setCurrentPage(Number(page))
-      }else{
+      } else {
         setCurrentPage(1)
       }
       if (status !== null) {
@@ -331,21 +331,14 @@ const PropertyComponent = ({
   }
 
   React.useEffect(() => {
-    
     getProprties()
-    // const section = document.getElementById("property-list")
-    // if(section){
-
-    //   section.scrollIntoView({ behavior: "smooth" })
-    // }
-   
-  }, [ filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
+  }, [filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
 
   const handleSearch = (e) => {
     e.preventDefault()
-    
+
     const newParams = new URLSearchParams(searchParams.toString());
-    if(page !==null){
+    if (page !== null) {
       setCurrentPage(1)
       newParams.delete("page")
     }
@@ -463,6 +456,27 @@ const PropertyComponent = ({
     handleOpenSelect(name);
   };
 
+  const handleClearSearch = (e)=>{
+    e.preventDefault()
+    setSelectedStatus({ id: 0, title: "All Status" });
+    setSelectedTypes({ id: 0, title: "All types" });
+    setSelectedCity({ id: 0, title: "City" });
+    setSelectedSorting({ id: 1, title: "Default" });
+    setSelectedCommunity({ id: 0, title: "All Communities" });
+    setSelectedBed({ id: 0, title: "Any Number" });
+    setSelectedBath({ id: 0, title: "Any Number" });
+    setMinArea("");
+    setMaxArea("");
+    setMinPrice("");
+    setMaxPrice("");
+    setKeyword("");
+    setSelectedFeatures([]);
+    setCurrentPage(1); // Reset to the first page
+    router.push("/property")
+
+  }
+
+
   return (
     <>
       <div id="wrapper">
@@ -471,7 +485,7 @@ const PropertyComponent = ({
           <Header3 />
           {/* main-content */}
           <div className="main-content px-20">
-            
+
             {/* flat-title */}
             <div className="flat-title page-property-list-3">
               <div className="cl-container">
@@ -511,7 +525,7 @@ const PropertyComponent = ({
                                       <i className="flaticon-magnifiying-glass" />
                                     </div>
                                   </div>
-                                  
+
                                   {/* <div className="box-content-search style-1">
                                     <ul>
                                       <li>
@@ -607,8 +621,8 @@ const PropertyComponent = ({
                                         key={city.id}
                                         data-value=""
                                         className={`option ${selectedCity.id === city.id
-                                            ? "selected"
-                                            : ""
+                                          ? "selected"
+                                          : ""
                                           }`}
                                         onClick={() =>
                                           handleCity(city.id, city.name)
@@ -653,8 +667,8 @@ const PropertyComponent = ({
                                       <li
                                         data-value=""
                                         className={`option ${selectedTypes.id === item.id
-                                            ? "selected"
-                                            : ""
+                                          ? "selected"
+                                          : ""
                                           } `}
                                         key={item.id}
                                         onClick={() =>
@@ -685,7 +699,18 @@ const PropertyComponent = ({
                                     }  `}
                                   id="a1"
                                 >
-                                  <div>
+                                  <div  >
+                                   
+                                    <div className="d-flex justify-content-end mb-4 " >
+                                    <div className="group-form ">
+                                      <div className="button-submit">
+                                        <button className="d-flex align-items-center" onClick={handleClearSearch} style={{padding: "12px 19px"}} >
+                                        <i className="flaticon-close mx-2" />
+                                          Clear Search
+                                        </button>
+                                      </div>
+                                    </div>
+                                    </div>
                                     <div className="grid-4-cols mb-20">
                                       <div className="">
                                         <div
@@ -715,8 +740,8 @@ const PropertyComponent = ({
                                             <li
                                               data-value="For Sale"
                                               className={`option ${selectedstatus.id === 0
-                                                  ? "selected"
-                                                  : ""
+                                                ? "selected"
+                                                : ""
                                                 } `}
                                               onClick={() =>
                                                 handleStatus(0, " All Status")
@@ -730,8 +755,8 @@ const PropertyComponent = ({
                                                   <li
                                                     data-value="For Sale"
                                                     className={`option ${selectedstatus.id === item.id
-                                                        ? "selected"
-                                                        : ""
+                                                      ? "selected"
+                                                      : ""
                                                       } `}
                                                     key={item.id}
                                                     onClick={() =>
@@ -777,8 +802,8 @@ const PropertyComponent = ({
                                             <li
                                               data-value="For Sale"
                                               className={`option ${selectedCommunity.id === 0
-                                                  ? "selected"
-                                                  : ""
+                                                ? "selected"
+                                                : ""
                                                 } `}
                                               onClick={() =>
                                                 handleCommunity(
@@ -793,9 +818,9 @@ const PropertyComponent = ({
                                               <li
                                                 data-value="For Sale"
                                                 className={`option ${selectedCommunity.id ===
-                                                    item.id
-                                                    ? "selected"
-                                                    : ""
+                                                  item.id
+                                                  ? "selected"
+                                                  : ""
                                                   } `}
                                                 key={item.id}
                                                 onClick={() =>
@@ -841,8 +866,8 @@ const PropertyComponent = ({
                                                 <li
                                                   data-value=""
                                                   className={`option ${selectedBed.id === item.id
-                                                      ? "selected"
-                                                      : ""
+                                                    ? "selected"
+                                                    : ""
                                                     }`}
                                                   key={item.id}
                                                   onClick={() =>
@@ -891,9 +916,9 @@ const PropertyComponent = ({
                                                 <li
                                                   data-value="1 Bath"
                                                   className={`option ${selectedBath.id ===
-                                                      item.id
-                                                      ? "selected"
-                                                      : ""
+                                                    item.id
+                                                    ? "selected"
+                                                    : ""
                                                     } `}
                                                   key={item.id}
                                                   onClick={() =>
@@ -1144,7 +1169,7 @@ const PropertyComponent = ({
                               <div className="box-dream has-border wow fadeInUp">
                                 <div className="image">
                                   <div className="list-tags">
-                                    <div className="tags-item for-sell">
+                                    <div className="tags-item for-sell" style={{ backgroundColor: item.listing_type === "rent" ? "#124773" : "" }}>
                                       {item.listing_status}
                                     </div>
                                     {item.is_featured && (
@@ -1175,33 +1200,33 @@ const PropertyComponent = ({
                                   </Swiper>
                                 </div>
                                 <div className="content"  >
-                                  <div style={{minHeight:120}} >
-                                  <div className="head">
-                                    <div className="title" style={{maxWidth:230}} >
-                                      <Link href={`/property/${item.slug}`}>
-                                        {item.title}
-                                      </Link>
+                                  <div style={{ minHeight: 120 }} >
+                                    <div className="head">
+                                      <div className="title"  >
+                                        <Link href={`/property/${item.slug}`}>
+                                          {item.title}
+                                        </Link>
+                                      </div>
+                                      <div className="price">
+                                        ${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : null}
+                                      </div>
                                     </div>
-                                    <div className="price">
-                                      ${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null}
+
+                                    <div className="location">
+                                      <div className="icon">
+                                        <i className="flaticon-location" />
+                                      </div>
+                                      <p style={{ fontSize: 13 }}>{item.address}</p>
                                     </div>
-                                  </div>
-                                 
-                                  <div className="location">
-                                    <div className="icon">
-                                      <i className="flaticon-location" />
-                                    </div>
-                                    <p style={{fontSize:13}}>{item.address}</p>
-                                  </div>
                                   </div>
                                   <div className="icon-box">
                                     <div className="item">
                                       <i className="flaticon-hotel" />
-                                      <p style={{fontSize:13}}>{item.bedrooms} Beds</p>
+                                      <p style={{ fontSize: 13 }}>{item.bedrooms} <span className="d-none d-md-flex" >Beds </span></p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-bath-tub" />
-                                      <p style={{fontSize:13}}>{item.bathrooms} Baths</p>
+                                      <p style={{ fontSize: 13 }}>{item.bathrooms} <span className="d-none d-md-flex" >Baths</span></p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-minus-front" />
@@ -1211,10 +1236,10 @@ const PropertyComponent = ({
                                           ? item.size_mt + " Sq M"
                                           : item.size + " Sq ft"}
                                       </p> */}
-                                      <p style={{fontSize:13}}>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
+                                      <p style={{ fontSize: 13 }}>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                     </div>
                                   </div>
-                               
+
                                 </div>
                               </div>
                             </div>
@@ -1224,14 +1249,14 @@ const PropertyComponent = ({
                     ) : (
                       <h4 className="text-center pt-5 "> No Property Found</h4>
                     )}
-                    {totalData >=6 && (
-                    <CustomPagination
-                      itemsPerPage={6}
-                      onPageChange={handlePageChange}
-                      totalData={totalData}
-                      currentPage={currentPage}
-                    />
-                  )}
+                    {totalData >= 6 && (
+                      <CustomPagination
+                        itemsPerPage={6}
+                        onPageChange={handlePageChange}
+                        totalData={totalData}
+                        currentPage={currentPage}
+                      />
+                    )}
                   </div>
                   <div className="col-lg-4">
                     <div className="sidebar">
@@ -1248,7 +1273,7 @@ const PropertyComponent = ({
                                 const newParams = new URLSearchParams(
                                   searchParams.toString()
                                 );
-                                if(page !==null){
+                                if (page !== null) {
                                   newParams.delete("page")
                                 }
                                 newParams.set("type", item.title);
@@ -1275,7 +1300,7 @@ const PropertyComponent = ({
                                 const newParams = new URLSearchParams(
                                   searchParams.toString()
                                 );
-                                if(page !==null){
+                                if (page !== null) {
                                   newParams.delete("page")
                                 }
                                 newParams.set("community", item.title);
@@ -1289,7 +1314,7 @@ const PropertyComponent = ({
                           ))}
                         </ul>
                       </div>
-                     
+
                       <div className="sidebar-item sidebar-agents-1 no-bg">
                         <div className="sidebar-title">Agents</div>
                         <ul>

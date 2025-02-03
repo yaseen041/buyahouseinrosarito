@@ -3,6 +3,59 @@
   --foreground: #171717;
 }
 
+.ck_editor_content * {
+  all: revert !important; /* This helps reset styles */
+}
+
+
+
+.ck_editor_content {
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.ck_editor_content .image  img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.ck_editor_content .image a img {
+  display: block !important;
+  vertical-align: middle !important;
+}
+
+.ck_editor_content figure .image {
+  display: flex !important;
+  justify-content: center !important;
+
+}
+
+.ck_editor_content figure.table {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+
+@media (max-width: 768px) {
+ .ck_editor_content figure.image, 
+ .ck_editor_content figure.table {
+    flex-direction: column; 
+    align-items: center;   
+    padding: 10px;        
+  }
+}
+
+@media (max-width: 768px) {
+  .ck_editor_content figure.image img, .ck_editor_content figure.table table {
+    max-width: 100%; 
+    height: auto;    
+  }
+}
+
+.ck_editor_content{
+  line-height: 1.8 !important;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

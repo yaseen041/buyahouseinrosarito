@@ -721,7 +721,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <div className="tags-item for-sell">
+                                                                    <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}}>
                                                                         {item.listing_status}
                                                                     </div>
                                                                     {item.is_featured && (
@@ -916,7 +916,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <div className="tags-item for-sell">
+                                                                    <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}}>
                                                                         {item.listing_status}
                                                                     </div>
                                                                     {item.is_featured && (
@@ -1048,7 +1048,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <div className="tags-item for-sell">
+                                                                    <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}} >
                                                                         {item.listing_status}
                                                                     </div>
                                                                     {item.is_featured && (
@@ -1213,7 +1213,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                     <br /> Velit nunc egestas ut morbi. Leo diam diam{" "}
                                 </div>
                                 <Link
-                                    href="#"
+                                    href="/property"
                                     className="tf-button-primary style-green m-auto wow fadeInUp"
                                 >
                                     View Properties

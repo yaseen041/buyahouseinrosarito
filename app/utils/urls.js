@@ -42,4 +42,12 @@ export class url {
     static BLOG_SEO = `${BASE_URL}/seo/blog`
     static FAQ_SEO = `${BASE_URL}/seo/faq`
     static CONTACT_SEO = `${BASE_URL}/seo/contact`
+
+    //Footer
+
+    static MOST_CITIES = `${BASE_URL}/cities/mostcount`
+    static NEWS_LETTER  =`${BASE_URL}/newsletter/submit`
 }
+
+
+

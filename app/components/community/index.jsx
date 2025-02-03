@@ -142,7 +142,7 @@ const communityComponent = () => {
                                                                             <div className="box-dream has-border wow fadeInUp">
                                                                                 <div className="image">
                                                                                     <div className="list-tags">
-                                                                                        <div className="tags-item for-sell">
+                                                                                        <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}}>
                                                                                             {property.listing_status}
                                                                                         </div>
                                                                                         {property.is_featured && (
@@ -174,7 +174,7 @@ const communityComponent = () => {
                                                                                 </div>
                                                                                 <div className="content">
                                                                                     <div className="head">
-                                                                                        <div className="title" style={{maxWidth:280}} >
+                                                                                        <div className="title" style={{maxWidth:273}} >
                                                                                             <Link href={`/property/${property.slug}`}>
                                                                                                 {property.title}
                                                                                             </Link>
