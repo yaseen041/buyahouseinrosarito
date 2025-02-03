@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import Header3 from '../header3'
 import Link from 'next/link'
@@ -15,15 +16,36 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import { useUnitContext } from "@/app/utils/UnitContext";
 import Footer from '../footer';
-import { useRouter } from 'next/navigation';
+import { useRouter,useParams } from 'next/navigation';
 import Loader from '../loader/Loader';
 import Map from '../map';
-const CommunityComponent = ({
-    community = {},
-    city = {},
-    loading = true
-}) => {
+import { url } from '@/app/utils/urls';
+import { api } from '@/app/utils/api';
+const communityComponent = () => {
     // const { isSquareMeter, toggleUnit } = useUnitContext();
+    const [loading, setLoading] = React.useState(true)
+    const [communitis, setCommunities] = React.useState({})
+    const { slug } = useParams()
+    const getCity = async () => {
+        try {
+            setLoading(true)
+            const data = await api.Get(`${url.COOMUNITY_PAGE}/${slug}`)
+            if (data) {
+                setCommunities(data.response)
+            }
+            setLoading(false)
+        }
+        catch (error) {
+            console.log(error)
+            setLoading(false)
+        }
+    }
+
+    React.useEffect(() => {
+        getCity()
+    }
+        , [])
+
     const router = useRouter()
     return (
         <div>
@@ -41,13 +63,13 @@ const CommunityComponent = ({
                                     <div className="row">
                                         <div className="col-12">
                                             <div className="content">
-                                                <h2>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</h2>
+                                                <h2>{Object.keys(communitis).length > 0 ? communitis.neighborhood.title : null}</h2>
                                                 <ul className="breadcrumbs">
                                                     <li>
                                                         <Link href="/">Home</Link>
                                                     </li>
                                                     <li>/</li>
-                                                    <li>{Object.keys(community).length > 0 ? community.neighborhood.title : null}</li>
+                                                    <li>{Object.keys(communitis).length > 0 ? communitis.neighborhood.title : null}</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -67,7 +89,7 @@ const CommunityComponent = ({
                                             <div className="sidebar-item sidebar-categories no-bg">
                                                 <div className="sidebar-title">Nearby Communities</div>
                                                 <ul>
-                                                    {Object.keys(community).length > 0 ? community.related_neighborhoods.map((item) => (
+                                                    {Object.keys(communitis).length > 0 ? communitis.related_neighborhoods.map((item) => (
                                                         <li
                                                             key={item.id}
                                                         >
@@ -84,21 +106,21 @@ const CommunityComponent = ({
 
                                         <div className="row">
                                             <div className='col-12 col-md-12 ' >
-                                                {Object.keys(community).length > 0 ?
+                                                {Object.keys(communitis).length > 0 ?
                                                     <>
                                                         <div className='d-flex flex-column ' >
-                                                            <img src={community.neighborhood.banner} alt="" style={{ maxHeight: "400px", objectFit: "cover" }} />
+                                                            <img src={communitis.neighborhood.banner} alt="" style={{ maxHeight: "400px", objectFit: "cover" }} />
                                                         </div>
 
                                                     </>
                                                     : null}
                                             </div>
                                             <div className='col-12 col-md-12' >
-                                                {Object.keys(community).length > 0 ?
+                                                {Object.keys(communitis).length > 0 ?
                                                     <>
                                                         <div className='d-flex  ' >
 
-                                                            <div className='mt-5' dangerouslySetInnerHTML={{ __html: community.neighborhood.description }} />
+                                                            <div className='mt-5' dangerouslySetInnerHTML={{ __html: communitis.neighborhood.description }} />
                                                         </div>
                                                     </>
                                                     : null}
@@ -106,7 +128,7 @@ const CommunityComponent = ({
 
                                         </div>
                                         <div className='mt-5' >
-                                            {Object.keys(community.properties_by_type).map((type, typeIndex) => (
+                                            {Object.keys(communitis.properties_by_type).map((type, typeIndex) => (
                                                 <Accordion defaultActiveKey="0" key={typeIndex}  >
                                                     <Accordion.Item eventKey={typeIndex.toString()}>
                                                         <Accordion.Header>
@@ -114,7 +136,7 @@ const CommunityComponent = ({
                                                         </Accordion.Header>
                                                         <Accordion.Body>
                                                             <div className="row">
-                                                                {community.properties_by_type[type].properties.map((property, propertyIndex) => {
+                                                                {communitis.properties_by_type[type].properties.map((property, propertyIndex) => {
                                                                     return (
                                                                         <div className="col-xl-6" key={property.id}>
                                                                             <div className="box-dream has-border wow fadeInUp">
@@ -192,7 +214,7 @@ const CommunityComponent = ({
                                                                         </div>
                                                                     );
                                                                 })}
-                                                                {community.properties_by_type[type].has_more && (
+                                                                {communitis.properties_by_type[type].has_more && (
                                                                     <div className='d-flex justify-center ' >
                                                                         <button className="tf-button-default" onClick={() => {
                                                                             router.push(`/property?type=${type}&page=2`)
@@ -211,11 +233,11 @@ const CommunityComponent = ({
 
 
                                         </div>
-                                        {Object.keys(community).length > 0 && (
+                                        {Object.keys(communitis).length > 0 && (
                                             <div className='mt-5 col-12 col-md-12 ' >
                                                 <Map
-                                                    lattitude={Number(community.neighborhood.latitude)}
-                                                    longitude={Number(community.neighborhood.longitude)}
+                                                    lattitude={Number(communitis.neighborhood.latitude)}
+                                                    longitude={Number(communitis.neighborhood.longitude)}
                                                 />
                                             </div>
                                         )}
@@ -240,4 +262,4 @@ const CommunityComponent = ({
     )
 }
 
-export default CommunityComponent
+export default communityComponent

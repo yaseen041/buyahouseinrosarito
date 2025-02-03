@@ -1,42 +1,48 @@
-"use client";
+
 import React from 'react'
-import dynamic from 'next/dynamic'
-const CommunityComponent = dynamic(()=>import("@/app/components/community"),{ssr:false})
-import { url } from '@/app/utils/urls';
-import { api } from '@/app/utils/api';
-import { useParams } from 'next/navigation';
+
+import CommunityWrapper from '@/app/components/Wrappers/CommunityWrapper';
+import { fetchSEOData } from '../server';
+
+export async function generateMetadata({ params }) {
+  
+    const resolvedParams = await params;
+  
+    if (!resolvedParams?.slug) {
+      console.error("Slug not found in params");
+      return {
+        title: "Default Title",
+        description: "Default Description",
+      };
+    }
+  
+    // Fetch SEO data using the slug
+    const seoData = await fetchSEOData(resolvedParams.slug);
+  
+    return {
+      title: seoData.title || "Default Title",
+      description: seoData.description || "Default Description",
+      keywords: seoData.keywords || "Default Keywords",
+      openGraph: {
+        title: seoData.openGraph?.title || "Default OG Title",
+        description: seoData.openGraph?.description || "Default OG Description",
+        url: `https://buyhomeinrosarito.com/property/${resolvedParams.slug}`,
+        images: seoData.openGraph?.images || [
+          { url: "/default-og-image.jpg", width: 1200, height: 630, alt: "Default Image Alt Text" },
+        ],
+      },
+      twitter: {
+        title: seoData.twitter?.title || "Default Twitter Title",
+        description: seoData.twitter?.description || "Default Twitter Description",
+        image: seoData.twitter?.image || "/default-twitter-image.jpg",
+      },
+      jsonLd: seoData.jsonLd || "{}",
+    };
+  }
+
 const Community = () => {
-     const [loading, setLoading] = React.useState(true)
-        const [communitis, setCommunities] = React.useState({})
-        const { slug } = useParams()
-        const getCity = async () => {
-            try {
-                setLoading(true)
-                const data = await api.Get(`${url.COOMUNITY_PAGE}/${slug}`)
-                if (data) {
-                    setCommunities(data.response)
-                }
-                setLoading(false)
-            }
-            catch (error) {
-                console.log(error)
-                setLoading(false)
-            }
-        }
-    
-        React.useEffect(() => {
-            getCity()
-        }
-            , [])
-    
-
-
   return (
-    <CommunityComponent 
-    loading={loading}
-    community={communitis}
-    
-    />
+    <CommunityWrapper />
   )
 }
 
