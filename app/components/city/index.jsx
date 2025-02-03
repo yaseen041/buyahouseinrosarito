@@ -174,13 +174,13 @@ const CityComponent = () => {
                                                                                 </div>
                                                                                 <div className="content">
                                                                                     <div className="head">
-                                                                                        <div className="title">
+                                                                                        <div className="title"  style={{maxWidth:280}}  >
                                                                                             <Link href={`/property/${property.slug}`}>
                                                                                                 {property.title}
                                                                                             </Link>
                                                                                         </div>
                                                                                         <div className="price">
-                                                                                            ${property.price.toLocaleString()}
+                                                                                            ${property.price.toLocaleString()} {property.listing_type==="rent"?`/${property.rent_cycle}`:null}
                                                                                         </div>
                                                                                     </div>
                                                                                     <div className="location">

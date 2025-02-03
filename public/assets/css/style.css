@@ -7428,12 +7428,13 @@ ul.grid-tags li a:hover {
   justify-content: center;
   gap: 10px;
   padding: 10px 24px;
-  border: 1px solid var(--Secondary);
+  border: 1px solid #D51E4C;
   border-radius: 120px;
-  color: var(--Secondary);
+  color: #D51E4C;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
+  background-color: #FFF;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -7441,7 +7442,7 @@ ul.grid-tags li a:hover {
   transition: all 0.3s ease;
 }
 .tf-button-default:hover {
-  background-color: var(--Secondary);
+  background-color: #D51E4C;
   color: var(--White);
 }
 .tf-button-default.style-white {

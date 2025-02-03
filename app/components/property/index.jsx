@@ -1177,13 +1177,13 @@ const PropertyComponent = ({
                                 <div className="content"  >
                                   <div style={{minHeight:120}} >
                                   <div className="head">
-                                    <div className="title">
+                                    <div className="title" style={{maxWidth:230}} >
                                       <Link href={`/property/${item.slug}`}>
                                         {item.title}
                                       </Link>
                                     </div>
                                     <div className="price">
-                                      ${item.price.toLocaleString()}
+                                      ${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null}
                                     </div>
                                   </div>
                                  
@@ -1289,91 +1289,7 @@ const PropertyComponent = ({
                           ))}
                         </ul>
                       </div>
-                      {/* <div className="sidebar-item sidebar-exclusive no-bg relative">
-                        <div className="sidebar-title">Exclusive Property</div>
-                        <div className="top-wrap arrow-style-2">
-                          <div ref={prevButtonRef} className="swiper-button-prev exclusive-prev" />
-                          <div ref={nextButtonRef} className="swiper-button-next exclusive-next" />
-                        </div>
-                        <Swiper
-                          className="swiper-container slider-exclusive"
-                          slidesPerView={1}
-                          modules={[Pagination, A11y, Navigation]}
-                          navigation={{
-                            prevEl: prevButtonRef.current,
-                            nextEl: nextButtonRef.current,
-                          }}
-                          onInit={(swiper) => {
-                            // Bind swiper navigation to custom buttons
-                            swiper.params.navigation.prevEl = prevButtonRef.current;
-                            swiper.params.navigation.nextEl = nextButtonRef.current;
-                            swiper.navigation.init();
-                            swiper.navigation.update();
-                          }}
-
-                        >
-                          {featuredProperties.map((item) => (
-                             <SwiperSlide key={item.id} >
-                             <div className="swiper-slide">
-                               <div className="box-dream style-absolute type-no-bg-content style-properties-1 item-1" style={{height:289}} >
-                                 <div className="image">
-                                   <div className="list-tags">
-                                     <Link href="#" className="tags-item for-sell">
-                                      {item.listing_status}
-                                     </Link>
-                                     {item.is_featured && (
-                                         <Link href="#" className="tags-item featured">
-                                         FEATURED
-                                       </Link>
-                                    )}
-                                    
-                                   </div>
-                                   <img
-                                     className="w-full"
-                                     src={item.gallery[0]}
-                                     alt=""
-                                     style={{maxHeight:"290px"}}
-                                   />
-                                 </div>
-                                 <div className="content">
-                                   <div className="price">${item.price.toLocaleString()}</div>
-                                   <div className="head">
-                                     <div className="title">
-                                       <Link href="/property/property-single">
-                                         {item.title}
-                                       </Link>
-                                     </div>
-                                   </div>
-                                   <div className="location">
-                                     <div className="icon">
-                                       <i className="flaticon-location" />
-                                     </div>
-                                     <p>{item.address}</p>
-                                   </div>
-                                   <div className="icon-box">
-                                     <div className="item">
-                                       <i className="flaticon-hotel" />
-                                       <p>{item.bedrooms}</p>
-                                     </div>
-                                     <div className="item">
-                                       <i className="flaticon-bath-tub" />
-                                       <p>{item.bathrooms}</p>
-                                     </div>
-                                     <div className="item">
-                                       <i className="flaticon-minus-front" />
-                                       <p>{item.area}</p>
-                                     </div>
-                                   </div>
-                                 </div>
-                               </div>
-                             </div>
-                           </SwiperSlide>
-                          ))}
-                         
-
-                        </Swiper>
-
-                      </div> */}
+                     
                       <div className="sidebar-item sidebar-agents-1 no-bg">
                         <div className="sidebar-title">Agents</div>
                         <ul>

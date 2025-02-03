@@ -54,15 +54,15 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
     }
     const handleMouseEnter = () => {
         if (swiperRef.current) {
-          swiperRef.current.autoplay.stop(); // Stops instantly
+            swiperRef.current.autoplay.stop(); // Stops instantly
         }
-      };
-    
-      const handleMouseLeave = () => {
+    };
+
+    const handleMouseLeave = () => {
         if (swiperRef.current) {
-          swiperRef.current.autoplay.start(); // Resumes autoplay
+            swiperRef.current.autoplay.start(); // Resumes autoplay
         }
-      };
+    };
     const handleStatus = (id, title) => {
         setSelectedStatus({ id: id, title: title })
 
@@ -256,19 +256,13 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                             <div className="col-12">
                                                 <div className="slider-content">
                                                     <h1 className="wow fadeInUp">
-                                                    Your Dream Home Awaits!
+                                                        Your Dream Home Awaits!
                                                     </h1>
                                                     <div className="text wow fadeInUp">
-                                                    Affordable coastal living with all the comforts you need!
+                                                        Affordable coastal living with all the comforts you need!
                                                     </div>
                                                     <div className="widget-tabs">
-                                                        {/* <ul
-                                                            className="widget-menu-tab list-link wow fadeInUp"
-                                                            data-wow-delay="0.1s"
-                                                        >
-                                                            <li className="item-title item active">Buy</li>
-                                                            <li className="item-title item">Rent</li>
-                                                        </ul> */}
+                                                        
                                                         <div className="widget-content-tab">
                                                             <div className="widget-content-inner active">
                                                                 <form className="form-search-home3 wow fadeInUp">
@@ -335,331 +329,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                 <i className="flaticon-magnifiying-glass" />
                                                                             </div>
                                                                         </div>
-                                                                        {/* <div className="box-content-search style-1">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-8.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Archer House</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-7.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Home Pitt Street</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-9.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Villa One Hyde Park</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-10.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>House on the beverly hills</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div> */}
                                                                     </div>
-                                                                    {/* <div className="group-form">
-                                                                        <div className="wg-filter">
-                                                                            <div className={`tf-button-filter btn-filter border-radius ${openFilter ? "active" : ""}`} onClick={toggleFilter} >
-                                                                                <i className="flaticon-filter" />
-                                                                                Filters
-                                                                            </div>
-                                                                            <div
-                                                                                className={`open-filter filter-no-content ${openFilter ? "active" : ""}`}
-                                                                                id="a1"
-                                                                            >
-                                                                                <div>
-                                                                                    <div className="grid-3-cols mb-20">
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">City</span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    City
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="New York"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    New York
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="Paris"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    Paris
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="Ha Noi"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    Ha Noi
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Bedrooms
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Bedrooms
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1 Bed"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1 Bed
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="2 Bed"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    2 Bed
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Bathrooms
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Bathrooms
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1 Bath"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1 Bath
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="2 Bath"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    2 Bath
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div className="grid-4-cols">
-                                                                                        <fieldset className="name">
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Min. Area"
-                                                                                                className=""
-                                                                                                name="name"
-                                                                                                tabIndex={2}
-                                                                                                defaultValue=""
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <fieldset className="name">
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Max. Area"
-                                                                                                className=""
-                                                                                                name="name"
-                                                                                                tabIndex={2}
-                                                                                                defaultValue=""
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Min. Price
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Min. Price
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="100 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    100 $
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="150 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    150 $
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Max. Price
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Max. Price
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1000 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1000 $
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1500 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1500 $
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <div className="title">Amenities</div>
-                                                                                    <ul className="grid-checkbox">
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Air Conditioning</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Barbeque</p>
-                                                                                                <input
-                                                                                                    type="checkbox"
-                                                                                                    defaultChecked=""
-                                                                                                />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Dryer</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Gym</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Lawn</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Microwave</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Refrigerator</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Sauna</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Swimming Pool</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>TV Cable</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Washer</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>WiFi</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div> */}
                                                                     <div className="group-form">
                                                                         <div className="wg-filter">
                                                                             <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter} >
@@ -874,379 +544,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            {/* <div className="widget-content-inner">
-                                                                <form className="form-search-home3">
-                                                                    <div className="group-form">
-                                                                        <div
-                                                                            className="nice-select border-radius-1"
-                                                                            tabIndex={0}
-                                                                        >
-                                                                            <span className="current">Type</span>
-                                                                            <ul className="list style-radio">
-                                                                                <li data-value="" className="option selected">
-                                                                                    For Sale
-                                                                                </li>
-                                                                                <li data-value="For Ren" className="option">
-                                                                                    For Ren
-                                                                                </li>
-                                                                                <li data-value="Sold" className="option">
-                                                                                    Sold
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form flex-grow form-search-content relative">
-                                                                        <fieldset className="name">
-                                                                            <input
-                                                                                type="text"
-                                                                                placeholder="Enter Keywords"
-                                                                                className="show-search style-3"
-                                                                                name="name"
-                                                                                tabIndex={2}
-                                                                                defaultValue=""
-                                                                                aria-required="true"
-                                                                                required=""
-                                                                            />
-                                                                        </fieldset>
-                                                                        <div className="style-absolute-left-center">
-                                                                            <div className="style-icon-default">
-                                                                                <i className="flaticon-magnifiying-glass" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="box-content-search style-1">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-8.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Archer House</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-7.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Home Pitt Street</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-9.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Villa One Hyde Park</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-10.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>House on the beverly hills</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form">
-                                                                        <div className="wg-filter">
-                                                                            <div className="tf-button-filter btn-filter border-radius">
-                                                                                <i className="flaticon-filter" />
-                                                                                Filters
-                                                                            </div>
-                                                                            <div
-                                                                                className="open-filter filter-no-content"
-                                                                                id="a1"
-                                                                            >
-                                                                                <div>
-                                                                                    <div className="grid-3-cols mb-20">
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">City</span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    City
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="New York"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    New York
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="Paris"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    Paris
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="Ha Noi"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    Ha Noi
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Bedrooms
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Bedrooms
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1 Bed"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1 Bed
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="2 Bed"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    2 Bed
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Bathrooms
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Bathrooms
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1 Bath"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1 Bath
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="2 Bath"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    2 Bath
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div className="grid-4-cols">
-                                                                                        <fieldset className="name">
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Min. Area"
-                                                                                                className=""
-                                                                                                name="name"
-                                                                                                tabIndex={2}
-                                                                                                defaultValue=""
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <fieldset className="name">
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Max. Area"
-                                                                                                className=""
-                                                                                                name="name"
-                                                                                                tabIndex={2}
-                                                                                                defaultValue=""
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Min. Price
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Min. Price
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="100 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    100 $
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="150 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    150 $
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Max. Price
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Max. Price
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1000 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1000 $
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1500 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1500 $
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <div className="title">Amenities</div>
-                                                                                    <ul className="grid-checkbox">
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Air Conditioning</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Barbeque</p>
-                                                                                                <input
-                                                                                                    type="checkbox"
-                                                                                                    defaultChecked=""
-                                                                                                />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Dryer</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Gym</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Lawn</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Microwave</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Refrigerator</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Sauna</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Swimming Pool</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>TV Cable</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Washer</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>WiFi</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form">
-                                                                        <div className="button-submit">
-                                                                            <button className="" type="submit">
-                                                                                Search
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div> */}
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1314,20 +612,6 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                         </div>
                                         <div className='col-12 col-md-6 mt-5 mt-md-0 ' >
                                             <Temperatures />
-                                            {/* <div className="video">
-                                               
-                                                <div className="video-wrap">
-                                                    <img src="/assets/images/image-box/video-2.jpg" alt="" />
-                                                    <Link
-                                                        href="/assets/video.mp4"
-                                                        className="popup-youtube"
-                                                    >
-                                                        <div className="icon">
-                                                            <i className="flaticon-play" />
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            </div> */}
                                         </div>
                                         <div className='col-12 mt-5' style={{ paddingTop: 10 }} >
                                             <RosaritoComparisonTable />
@@ -1397,12 +681,6 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 </div>
                             </div>
                         </section>
-                        {/* /flat-explore */}
-                        {/* flat-counter */}
-
-
-                        {/* /flat-counter */}
-                        {/* flat-discover */}
                         <section className="tf-section flat-discover">
                             <div className="cl-container">
                                 <div className="row">
@@ -1514,7 +792,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                             <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="price">${item.price.toLocaleString()}</div>
+                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null}</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1709,7 +987,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                             <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="price">${item.price.toLocaleString()}</div>
+                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null} </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1841,7 +1119,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                             <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="price">${item.price.toLocaleString()}</div>
+                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null}</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1864,7 +1142,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Why You Should Work With Us</h2>
                                             <div className="text wow fadeInUp">
-                                            Reliable experts to guide your move to Rosarito!
+                                                Reliable experts to guide your move to Rosarito!
                                             </div>
                                         </div>
                                     </div>
@@ -2001,20 +1279,20 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                    <div className="heading-section text-center">
+                                        <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">Trusted Partners</h2>
                                             <div className="text wow fadeInUp">
-                                            Reliable experts to guide your move to Rosarito!
+                                                Reliable experts to guide your move to Rosarito!
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-12">
-                                        <div className="flat-brand"  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+                                        <div className="flat-brand" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
                                             <Swiper
                                                 className="swiper-container slider-brand"
                                                 slidesPerView={2}
-                                                
-                                                autoplay={{ delay: 0, disableOnInteraction: false,pauseOnMouseEnter:true }}
+
+                                                autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
                                                 modules={[Autoplay]}
                                                 speed={10000}
                                                 onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -2038,7 +1316,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                     },
                                                 }}
 
-                                               
+
 
 
 
