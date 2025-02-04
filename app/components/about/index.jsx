@@ -56,7 +56,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     </div>
                   </div>
                   <div className='text-center' >
-                    <img src="/assets/images/about1.png" className='mt-5' alt="" />
+                    <img src="/assets/images/about1.png" className='mt-5' alt="about-image" />
                   </div>
                   <p className="wow fadeInUp mt-5 ">
                     We’re the Hansome family - an Ohio State Buckeye, my incredible wife Adriana my “Aztec Warrior Princess”, and our son Adam. While Adriana isn’t deeply connected to her Native ancestry, it’s fascinating to know our family is part of Mexico’s rich cultural tapestry. Join us as we share our personal experiences of raising a family in Rosarito and embracing the unique opportunities this place has to offer.
@@ -67,7 +67,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                   </p>
                   <h5 className="wow fadeInUp text-center mt-5 ">🌴 Affordable Real Estate & Living</h5>
                   <div className='text-center' >
-                    <img src="/assets/images/about2.png" className='mt-5' alt="" />
+                    <img src="/assets/images/about2.png" className='mt-5' alt="about-image" />
                   </div>
                   <ul className='wow fadeInUp mt-5' >
                     <li><p><span><Link href="https://buyahouseinrosarito.com/" target="_blank" >Super Low-Cost Real Estate</Link></span>: Find incredible deals on homes with ocean views, family-friendly communities, and investment properties that maximize your budget.</p></li>

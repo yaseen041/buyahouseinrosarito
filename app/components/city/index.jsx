@@ -109,7 +109,7 @@ const CityComponent = () => {
                                                 {Object.keys(city).length > 0 ?
                                                     <>
                                                         <div className='d-flex flex-column ' >
-                                                            <img src={city.city.image} alt="" style={{ maxHeight: "400px", objectFit: "cover" }} />
+                                                            <img src={city.city.image} alt={city.city.name} style={{ maxHeight: "400px", objectFit: "cover" }} />
                                                         </div>
 
                                                     </>
@@ -165,7 +165,7 @@ const CityComponent = () => {
                                                                                             <SwiperSlide key={i}>
                                                                                                 <div className="swiper-slide">
                                                                                                     <div className="">
-                                                                                                        <img className="" src={g} alt="" />
+                                                                                                        <img className="" src={g} alt={g} />
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </SwiperSlide>

@@ -190,12 +190,6 @@ const Footer = () => {
                 <li>
                   <div className="text">aaron@buyahouseinrosarito.com<br /> +52 664 641 1658</div>
                 </li>
-              </ul>
-            </div>
-            
-            <div className="footer-cl-5">
-              <div className="ft-title">Our Address</div>
-              <ul className="navigation-menu-footer">
                 <li>
                   <div className="text">
                     Chichen Itza 8170, Rosarito, Mexico, 22567
@@ -203,6 +197,13 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+            
+            {/* <div className="footer-cl-5">
+              <div className="ft-title">Our Address</div>
+              <ul className="navigation-menu-footer">
+               
+              </ul>
+            </div> */}
             {/* <div className="footer-cl-6">
                   <div className="ft-title">Get the app</div>
                   <ul className="ft-download">

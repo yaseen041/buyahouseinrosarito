@@ -70,7 +70,7 @@ const Header1 = () => {
                   className="d-block"
                   id="logo-header"
                   src="/assets/images/logo/logo.svg"
-                  alt=""
+                  alt="logo"
                 />
               </Link>
             </div>

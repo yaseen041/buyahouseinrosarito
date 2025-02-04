@@ -19,7 +19,7 @@
           '<div class="image-box">' +
           '<figure class="image"><img src="' +
           locationImg +
-          '" alt=""></figure>' +
+          '" alt="image"></figure>' +
           "</div>" +
           '<div class="content">' +
           '<div class="price">' + locationPrice + '</div>' +

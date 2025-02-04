@@ -110,15 +110,15 @@ const HomeSizeCalculator = () => {
                                 placeholder="Enter Budget ($)"
                             />
                         </td>
-                        <td className="text-center align-middle "  style={{borderBottom:0,backgroundColor:"#f7f7f7"}}><p>{budget300 ? (budget300 / 300).toFixed(2) : "—"}</p></td>
-                        <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}} ><p>{budget300 ? ((budget300 / 300) / 10.764).toFixed(2) : "—"}</p></td>
+                        <td className="text-center align-middle"  style={{borderBottom:0,backgroundColor:"#f7f7f7"}}><p>{budget300 ? (budget300 / 300).toFixed(2) : "—"}</p></td>
+                        <td className="text-center align-middle" style={{borderBottom:0,backgroundColor:"#f7f7f7"}} ><p>{budget300 ? ((budget300 / 300) / 10.764).toFixed(2) : "—"}</p></td>
                     </tr>
                 </tbody>
             </table>
 
             {/* Section 4: Home Size for $500 Per Square Foot */}
             <table className="table m-0" style={{ height: "23.5%" }} >
-                <thead className="" style={{ backgroundColor: "#19294d" }} >
+                <thead className="" style={{ backgroundColor: "#19294d" }}>
                     <tr>
                         <th colSpan="3" className="text-center align-middle ">
                             <p style={{ color: "#FFF" }} > Luxury Living: Discover Your Beach Front Home Size at $500 Per Square Foot</p>

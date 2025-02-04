@@ -45,14 +45,14 @@ const Header2 = () => {
                   id="logo-header "
                   className="mt-2 mb-5 d-none d-md-flex "
                   src="/assets/images/header2.png"
-                  alt=""
+                  alt="logo"
                   style={{ height: "100%", width: "190px" }}
                 />
                 <img
                   id="logo-header-mobile"
                   className="mt-2 mb-5 d-flex d-md-none "
                   src="/assets/images/Header3.png"
-                  alt=""
+                  alt="logo"
                   style={{ height: "100%", width: "190px" }}
                 />
               </Link>
@@ -873,7 +873,7 @@ const Header2 = () => {
               <i className="icon-close" />
             </a>
             <div className="image-left">
-              <img src="/assets/images/section/login.jpg" alt="" />
+              <img src="/assets/images/section/login.jpg" alt="login-image" />
               <h3>Welcome to Your Real Estate Website</h3>
             </div>
             <div className="content-right">
@@ -962,7 +962,7 @@ const Header2 = () => {
               <i className="icon-close" />
             </a>
             <div className="image-left">
-              <img src="/assets/images/section/login.jpg" alt="" />
+              <img src="/assets/images/section/login.jpg" alt="login-image" />
               <h3>Welcome to Your Real Estate Website</h3>
             </div>
             <div className="content-right">

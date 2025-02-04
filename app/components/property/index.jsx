@@ -534,7 +534,7 @@ const PropertyComponent = ({
                                             <div className="image">
                                               <img
                                                 src="/assets/images/author/avatar-8.png"
-                                                alt=""
+                                                alt="image"
                                               />
                                             </div>
                                             <p>Archer House</p>
@@ -548,7 +548,7 @@ const PropertyComponent = ({
                                             <div className="image">
                                               <img
                                                 src="/assets/images/author/avatar-7.png"
-                                                alt=""
+                                                alt="image"
                                               />
                                             </div>
                                             <p>Home Pitt Street</p>
@@ -562,7 +562,7 @@ const PropertyComponent = ({
                                             <div className="image">
                                               <img
                                                 src="/assets/images/author/avatar-9.png"
-                                                alt=""
+                                                alt="image"
                                               />
                                             </div>
                                             <p>Villa One Hyde Park</p>
@@ -576,7 +576,7 @@ const PropertyComponent = ({
                                             <div className="image">
                                               <img
                                                 src="/assets/images/author/avatar-10.png"
-                                                alt=""
+                                                alt="image"
                                               />
                                             </div>
                                             <p>House on the beverly hills</p>
@@ -1192,7 +1192,7 @@ const PropertyComponent = ({
                                       <SwiperSlide key={i}>
                                         <div className="swiper-slide">
                                           <div className="">
-                                            <img className="" src={g} alt="" />
+                                            <img className="" src={g} alt={g} />
                                           </div>
                                         </div>
                                       </SwiperSlide>
@@ -1321,7 +1321,7 @@ const PropertyComponent = ({
                           {agents.map((item) => (
                             <li key={item.id}>
                               <div className="image">
-                                <img src={item.image} alt="" />
+                                <img src={item.image} alt={item.name} />
                               </div>
                               <div className="content">
                                 <div className="name">

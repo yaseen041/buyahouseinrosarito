@@ -274,7 +274,7 @@ const DetailPage = () => {
                               data-fancybox="gallery"
                               key={index}
                             >
-                              <img src={item} alt="" />
+                              <img src={item} alt={item} />
                             </a>
                           ))
                           : null}
@@ -474,7 +474,7 @@ const DetailPage = () => {
                                   <div className="icon">
                                     <img
                                       src="/assets/images/image-box/file-pdf.svg"
-                                      alt=""
+                                      alt="file-image"
                                     />
                                   </div>
                                   <div>
@@ -487,7 +487,7 @@ const DetailPage = () => {
 
                               {/* <Link href="#" className="file-item">
                             <div className="icon">
-                              <img src="/assets/images/image-box/file-pdf.svg" alt="" />
+                              <img src="/assets/images/image-box/file-pdf.svg" alt="image" />
                             </div>
                             <div>
                               <div className="name">Ultra-Demo-PDF File</div>
@@ -622,7 +622,7 @@ const DetailPage = () => {
                             <p>80</p>
                           </li>
                         </ul>
-                        <img src="/assets/images/image-box/energy.png" alt="" />
+                        <img src="/assets/images/image-box/energy.png" alt="image" />
                       </div> */}
                         <div className="features">
                           <h4 className="wow fadeInUp">Facts &amp; Features</h4>
@@ -728,7 +728,7 @@ const DetailPage = () => {
                                 epicuri eu per. Mediocrem torquatos deseruisse te eum
                                 commodo.
                               </p>
-                              <img src="/assets/images/section/blueprint-1.png" alt="" />
+                              <img src="/assets/images/section/blueprint-1.png" alt="image" />
                             </div>
                             <div className="widget-content-inner">
                               <div className="icons">
@@ -759,7 +759,7 @@ const DetailPage = () => {
                                 epicuri eu per. Mediocrem torquatos deseruisse te eum
                                 commodo.
                               </p>
-                              <img src="/assets/images/section/blueprint-1.png" alt="" />
+                              <img src="/assets/images/section/blueprint-1.png" alt="image" />
                             </div>
                             <div className="widget-content-inner">
                               <div className="icons">
@@ -790,7 +790,7 @@ const DetailPage = () => {
                                 epicuri eu per. Mediocrem torquatos deseruisse te eum
                                 commodo.
                               </p>
-                              <img src="/assets/images/section/blueprint-1.png" alt="" />
+                              <img src="/assets/images/section/blueprint-1.png" alt="image" />
                             </div>
                           </div>
                         </div>
@@ -946,7 +946,7 @@ const DetailPage = () => {
                           {Object.keys(agent).length>0 && (
                           <div className="person wow fadeInUp">
                             <div className="image">
-                              <img src={agent.image} alt="" />
+                              <img src={agent.image} alt={item.name} />
                             </div>
                             <div className="content">
                               <div className="name">
@@ -965,7 +965,7 @@ const DetailPage = () => {
                         {/* <div className="video">
                         <h4 className="wow fadeInUp">Video</h4>
                         <div className="video-wrap">
-                          <img src="/assets/images/image-box/video-2.jpg" alt="" />
+                          <img src="/assets/images/image-box/video-2.jpg" alt="image" />
                           <Link
                             href="https://www.youtube.com/watch?v=MLpWrANjFbI"
                             className="popup-youtube"
@@ -988,7 +988,7 @@ const DetailPage = () => {
                         {/* <div className="tour">
                         <h4 className="wow fadeInUp">360° Virtual Tour</h4>
                         <div className="image">
-                          <img src="/assets/images/image-box/img-virtual-1.jpg" alt="" />
+                          <img src="/assets/images/image-box/img-virtual-1.jpg" alt="image" />
                         </div>
                       </div> */}
                         {/* <div className="page-views">
@@ -1239,7 +1239,7 @@ const DetailPage = () => {
                         <ul>
                           <li className="wow fadeInUp">
                             <div className="image">
-                              <img src="/assets/images/author/author-5.png" alt="" />
+                              <img src="/assets/images/author/author-5.png" alt="image" />
                             </div>
                             <div className="content">
                               <div className="ratings">
@@ -1262,7 +1262,7 @@ const DetailPage = () => {
                           </li>
                           <li className="wow fadeInUp">
                             <div className="image">
-                              <img src="/assets/images/author/author-6.png" alt="" />
+                              <img src="/assets/images/author/author-6.png" alt="image" />
                             </div>
                             <div className="content">
                               <div className="ratings">
@@ -1407,7 +1407,7 @@ const DetailPage = () => {
                                                   <img
                                                     className="w-full"
                                                     src="/assets/images/house/home-1.jpg"
-                                                    alt=""
+                                                    alt={item.title}
                                                   />
                                                 </div>
                                               </div>
@@ -1416,7 +1416,7 @@ const DetailPage = () => {
                                                   <img
                                                     className="w-full"
                                                     src="/assets/images/house/home-2.jpg"
-                                                    alt=""
+                                                    alt={item.title}
                                                   />
                                                 </div>
                                               </div>
@@ -1425,7 +1425,7 @@ const DetailPage = () => {
                                                   <img
                                                     className="w-full"
                                                     src="/assets/images/house/home-3.jpg"
-                                                    alt=""
+                                                    alt={item.title}
                                                   />
                                                 </div>
                                               </div>
@@ -1434,7 +1434,7 @@ const DetailPage = () => {
                                                   <img
                                                     className="w-full"
                                                     src="/assets/images/house/home-4.jpg"
-                                                    alt=""
+                                                    alt={item.title}
                                                   />
                                                 </div>
                                               </div>
@@ -1501,7 +1501,7 @@ const DetailPage = () => {
                           </div>
                           {/* <div className="person wow fadeInUp">
                             <div className="image">
-                              <img src={agent.image} alt="" />
+                              <img src={agent.image} alt="image" />
                             </div>
                             <div className="content">
                               <div className="name">

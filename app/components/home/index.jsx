@@ -659,7 +659,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                     <SwiperSlide key={item.id} >
                                                         <div className="cities-item style-3 wow fadeInUp">
                                                             <Link href={`/property/?type=${item.title}`} >
-                                                                <img src={item.banner} alt="" style={{ cursor: "pointer" }} />
+                                                                <img src={item.banner} alt={item.title} style={{ cursor: "pointer" }} />
                                                                 <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0,0,0,0.5)" }} />
                                                             </Link>
                                                             <div className="content">
@@ -749,7 +749,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                     <img
                                                                                         className="w-full"
                                                                                         src={i}
-                                                                                        alt=""
+                                                                                        alt="gallery-image"
                                                                                     />
                                                                                 </div>
                                                                             </div>
@@ -854,7 +854,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                             <div className="cities-item style-1 wow fadeInUp">
                                                                 <Link href={`/city/${item.slug}`}  >
                                                                     <div className="image">
-                                                                        <img src={item.image} alt="" />
+                                                                        <img src={item.image} alt={item.name} />
                                                                     </div>
                                                                 </Link>
                                                                 <div className="content">
@@ -944,7 +944,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                     <img
                                                                                         className="w-full"
                                                                                         src={i}
-                                                                                        alt=""
+                                                                                        alt="gallery-image"
                                                                                     />
                                                                                 </div>
                                                                             </div>
@@ -1076,7 +1076,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                                     <img
                                                                                         className="w-full"
                                                                                         src={i}
-                                                                                        alt=""
+                                                                                        alt="gallery-image"
                                                                                     />
                                                                                 </div>
                                                                             </div>
@@ -1228,7 +1228,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 <div className="row justify-between">
                                     <div className="col-md-6">
                                         <div className="image wow fadeInLeft">
-                                            <img src="/assets/images/section/luxury-home-2.jpg" alt="" />
+                                            <img src="/assets/images/section/luxury-home-2.jpg" alt="luxury-home" />
                                             <div className="box">
                                                 <div className="icon">
                                                     <i className="flaticon-customer" />
@@ -1437,7 +1437,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                             <i className="icon-close" />
                         </Link>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/assets/images/section/login.jpg" alt="login-image" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -1526,7 +1526,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                             <i className="icon-close" />
                         </Link>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/assets/images/section/login.jpg" alt="login-image" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">

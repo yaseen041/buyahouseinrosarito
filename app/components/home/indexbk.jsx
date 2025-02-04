@@ -233,66 +233,7 @@ const HomeComponent = ({
                                                                                 <i className="flaticon-magnifiying-glass" />
                                                                             </div>
                                                                         </div>
-                                                                        {/* <div className="box-content-search style-1">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-8.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Archer House</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-7.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Home Pitt Street</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-9.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Villa One Hyde Park</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-10.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>House on the beverly hills</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div> */}
+                                                                       
                                                                     </div>
                                                                     {/* <div className="group-form">
                                                                         <div className="wg-filter">
@@ -772,379 +713,7 @@ const HomeComponent = ({
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            {/* <div className="widget-content-inner">
-                                                                <form className="form-search-home3">
-                                                                    <div className="group-form">
-                                                                        <div
-                                                                            className="nice-select border-radius-1"
-                                                                            tabIndex={0}
-                                                                        >
-                                                                            <span className="current">Type</span>
-                                                                            <ul className="list style-radio">
-                                                                                <li data-value="" className="option selected">
-                                                                                    For Sale
-                                                                                </li>
-                                                                                <li data-value="For Ren" className="option">
-                                                                                    For Ren
-                                                                                </li>
-                                                                                <li data-value="Sold" className="option">
-                                                                                    Sold
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form flex-grow form-search-content relative">
-                                                                        <fieldset className="name">
-                                                                            <input
-                                                                                type="text"
-                                                                                placeholder="Enter Keywords"
-                                                                                className="show-search style-3"
-                                                                                name="name"
-                                                                                tabIndex={2}
-                                                                                defaultValue=""
-                                                                                aria-required="true"
-                                                                                required=""
-                                                                            />
-                                                                        </fieldset>
-                                                                        <div className="style-absolute-left-center">
-                                                                            <div className="style-icon-default">
-                                                                                <i className="flaticon-magnifiying-glass" />
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="box-content-search style-1">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-8.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Archer House</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-7.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Home Pitt Street</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-9.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>Villa One Hyde Park</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Rent</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div className="item1">
-                                                                                        <div>
-                                                                                            <div className="image">
-                                                                                                <img
-                                                                                                    src="/assets/images/author/avatar-10.png"
-                                                                                                    alt=""
-                                                                                                />
-                                                                                            </div>
-                                                                                            <p>House on the beverly hills</p>
-                                                                                        </div>
-                                                                                        <div className="text">For Sale</div>
-                                                                                    </div>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form">
-                                                                        <div className="wg-filter">
-                                                                            <div className="tf-button-filter btn-filter border-radius">
-                                                                                <i className="flaticon-filter" />
-                                                                                Filters
-                                                                            </div>
-                                                                            <div
-                                                                                className="open-filter filter-no-content"
-                                                                                id="a1"
-                                                                            >
-                                                                                <div>
-                                                                                    <div className="grid-3-cols mb-20">
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">City</span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    City
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="New York"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    New York
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="Paris"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    Paris
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="Ha Noi"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    Ha Noi
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Bedrooms
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Bedrooms
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1 Bed"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1 Bed
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="2 Bed"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    2 Bed
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Bathrooms
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Bathrooms
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1 Bath"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1 Bath
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="2 Bath"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    2 Bath
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div className="grid-4-cols">
-                                                                                        <fieldset className="name">
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Min. Area"
-                                                                                                className=""
-                                                                                                name="name"
-                                                                                                tabIndex={2}
-                                                                                                defaultValue=""
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <fieldset className="name">
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Max. Area"
-                                                                                                className=""
-                                                                                                name="name"
-                                                                                                tabIndex={2}
-                                                                                                defaultValue=""
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Min. Price
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Min. Price
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="100 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    100 $
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="150 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    150 $
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                        <div className="nice-select" tabIndex={0}>
-                                                                                            <span className="current">
-                                                                                                Max. Price
-                                                                                            </span>
-                                                                                            <ul className="list">
-                                                                                                <li
-                                                                                                    data-value=""
-                                                                                                    className="option selected"
-                                                                                                >
-                                                                                                    Max. Price
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1000 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1000 $
-                                                                                                </li>
-                                                                                                <li
-                                                                                                    data-value="1500 $"
-                                                                                                    className="option"
-                                                                                                >
-                                                                                                    1500 $
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div>
-                                                                                    <div className="title">Amenities</div>
-                                                                                    <ul className="grid-checkbox">
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Air Conditioning</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Barbeque</p>
-                                                                                                <input
-                                                                                                    type="checkbox"
-                                                                                                    defaultChecked=""
-                                                                                                />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Dryer</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Gym</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Lawn</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Microwave</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Refrigerator</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Sauna</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Swimming Pool</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>TV Cable</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>Washer</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                        <li className="checkbox-item">
-                                                                                            <label>
-                                                                                                <p>WiFi</p>
-                                                                                                <input type="checkbox" />
-                                                                                                <span className="btn-checkbox" />
-                                                                                            </label>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form">
-                                                                        <div className="button-submit">
-                                                                            <button className="" type="submit">
-                                                                                Search
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div> */}
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1177,20 +746,7 @@ const HomeComponent = ({
                                         </div>
                                         <div className='col-12 col-md-6 ' >
                                             <VideoComponent src="/assets/video.mp4" />
-                                            {/* <div className="video">
-                                               
-                                                <div className="video-wrap">
-                                                    <img src="/assets/images/image-box/video-2.jpg" alt="" />
-                                                    <Link
-                                                        href="/assets/video.mp4"
-                                                        className="popup-youtube"
-                                                    >
-                                                        <div className="icon">
-                                                            <i className="flaticon-play" />
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            </div> */}
+                                            
                                         </div>
                                     </div>
 
@@ -1235,7 +791,7 @@ const HomeComponent = ({
                                                     <SwiperSlide key={item.id} >
                                                         <div className="cities-item style-3 wow fadeInUp">
                                                             <Link href={`/property/?type=${item.title}`} >
-                                                                <img src={item.banner} alt="" style={{ cursor: "pointer" }} />
+                                                                <img src={item.banner} alt={item.title} style={{ cursor: "pointer" }} />
                                                                 <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0,0,0,0.5)" }} />
                                                             </Link>
                                                             <div className="content">
@@ -1442,7 +998,7 @@ const HomeComponent = ({
                                                                                     <img
                                                                                         className="w-full"
                                                                                         src={i}
-                                                                                        alt=""
+                                                                                        alt={i}
                                                                                     />
                                                                                 </div>
                                                                             </div>
@@ -1546,7 +1102,7 @@ const HomeComponent = ({
                                                             <div className="cities-item style-1 wow fadeInUp">
                                                                 <Link href={`/city/${item.slug}`}  >
                                                                     <div className="image">
-                                                                        <img src={item.image} alt="" />
+                                                                        <img src={item.image} alt={item.name} />
                                                                     </div>
                                                                 </Link>
                                                                 <div className="content">
@@ -1636,7 +1192,7 @@ const HomeComponent = ({
                                                                                     <img
                                                                                         className="w-full"
                                                                                         src={i}
-                                                                                        alt=""
+                                                                                        alt={i}
                                                                                     />
                                                                                 </div>
                                                                             </div>
@@ -1767,7 +1323,7 @@ const HomeComponent = ({
                                                                                     <img
                                                                                         className="w-full"
                                                                                         src={i}
-                                                                                        alt=""
+                                                                                        alt={i}
                                                                                     />
                                                                                 </div>
                                                                             </div>
@@ -1891,22 +1447,22 @@ const HomeComponent = ({
                                         <div className="widget-content-tab">
                                             <div className="widget-content-inner active">
                                                 <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/assets/images/section/works-step-1.jpg" alt="image" />
                                                 </div>
                                             </div>
                                             <div className="widget-content-inner">
                                                 <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/assets/images/section/works-step-1.jpg" alt="image" />
                                                 </div>
                                             </div>
                                             <div className="widget-content-inner">
                                                 <div className="img-right">
-                                                    <img src="/assets/images/section/works-step-1.jpg" alt="" />
+                                                    <img src="/assets/images/section/works-step-1.jpg" alt="image" />
                                                 </div>
                                             </div>
                                         </div>
                                         {/* <div class="img-right">
-                              <img src="/assets/images/section/works-step-1.jpg" alt="">
+                              <img src="/assets/images/section/works-step-1.jpg" alt="image">
                           </div> */}
                                     </div>
                                 </div>
@@ -1939,7 +1495,7 @@ const HomeComponent = ({
                                 <div className="row justify-between">
                                     <div className="col-md-6">
                                         <div className="image wow fadeInLeft">
-                                            <img src="/assets/images/section/luxury-home-2.jpg" alt="" />
+                                            <img src="/assets/images/section/luxury-home-2.jpg" alt="image" />
                                             <div className="box">
                                                 <div className="icon">
                                                     <i className="flaticon-customer" />
@@ -2146,7 +1702,7 @@ const HomeComponent = ({
                             <i className="icon-close" />
                         </Link>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/assets/images/section/login.jpg" alt="image" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">
@@ -2235,7 +1791,7 @@ const HomeComponent = ({
                             <i className="icon-close" />
                         </Link>
                         <div className="image-left">
-                            <img src="/assets/images/section/login.jpg" alt="" />
+                            <img src="/assets/images/section/login.jpg" alt="image" />
                             <h3>Welcome to Your Real Estate Website</h3>
                         </div>
                         <div className="content-right">

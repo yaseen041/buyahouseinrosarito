@@ -109,7 +109,7 @@ const communityComponent = () => {
                                                 {Object.keys(communitis).length > 0 ?
                                                     <>
                                                         <div className='d-flex flex-column ' >
-                                                            <img src={communitis.neighborhood.banner} alt="" style={{ maxHeight: "400px", objectFit: "cover" }} />
+                                                            <img src={communitis.neighborhood.banner} alt={communitis.neighborhood.title} style={{ maxHeight: "400px", objectFit: "cover" }} />
                                                         </div>
 
                                                     </>
@@ -142,7 +142,7 @@ const communityComponent = () => {
                                                                             <div className="box-dream has-border wow fadeInUp">
                                                                                 <div className="image">
                                                                                     <div className="list-tags">
-                                                                                        <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}}>
+                                                                                        <div className="tags-item for-sell" style={{backgroundColor:property.listing_type==="rent"? "#124773":""}}>
                                                                                             {property.listing_status}
                                                                                         </div>
                                                                                         {property.is_featured && (
@@ -165,7 +165,7 @@ const communityComponent = () => {
                                                                                             <SwiperSlide key={i}>
                                                                                                 <div className="swiper-slide">
                                                                                                     <div className="">
-                                                                                                        <img className="" src={g} alt="" />
+                                                                                                        <img className="" src={g} alt={g} />
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </SwiperSlide>
@@ -174,7 +174,7 @@ const communityComponent = () => {
                                                                                 </div>
                                                                                 <div className="content">
                                                                                     <div className="head">
-                                                                                        <div className="title" style={{maxWidth:273}} >
+                                                                                        <div className="title" style={{maxWidth:273}}>
                                                                                             <Link href={`/property/${property.slug}`}>
                                                                                                 {property.title}
                                                                                             </Link>

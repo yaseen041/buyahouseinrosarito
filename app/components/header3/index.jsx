@@ -71,7 +71,7 @@ const Header3 = () => {
                   className="d-block pt-2 pb-2"
                   id="logo-header"
                   src="/assets/images/Header3.png"
-                  alt=""
+                  alt="logo"
                   style={{ height: "50%", width: "90px" }}
                 />
               </Link>
@@ -82,7 +82,7 @@ const Header3 = () => {
                   className="d-block pt-2 pb-2"
                   id="logo-header"
                   src="/assets/images/Header3.png"
-                  alt=""
+                  alt="logo"
                   style={{ height: "30%", width: "60px" }}
                 />
               </Link>
@@ -925,7 +925,7 @@ const Header3 = () => {
               <i className="icon-close" />
             </a>
             <div className="image-left">
-              <img src="/assets/images/section/login.jpg" alt="" />
+              <img src="/assets/images/section/login.jpg" alt="login-image" />
               <h3>Welcome to Your Real Estate Website</h3>
             </div>
             <div className="content-right">
@@ -1014,7 +1014,7 @@ const Header3 = () => {
               <i className="icon-close" />
             </a>
             <div className="image-left">
-              <img src="/assets/images/section/login.jpg" alt="" />
+              <img src="/assets/images/section/login.jpg" alt="login-image" />
               <h3>Welcome to Your Real Estate Website</h3>
             </div>
             <div className="content-right">

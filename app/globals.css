@@ -14,7 +14,7 @@
   font-size: 16px;
   line-height: 1.6;
 }
-
+.ck_editor_content img,
 .ck_editor_content .image  img {
   max-width: 100% !important;
   height: auto !important;
