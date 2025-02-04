@@ -27,7 +27,7 @@ const HomeSizeCalculator = () => {
 
                             <input
                                 style={{
-                                    fontSize: "1.5rem", appearance: "textfield",
+                                    fontSize: "0.8rem", appearance: "textfield",
                                     WebkitAppearance: "none",
                                     MozAppearance: "textfield"
                                 }}
@@ -63,7 +63,7 @@ const HomeSizeCalculator = () => {
                         <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}}  >
                             <input
                                 style={{
-                                    fontSize: "1.5rem", appearance: "textfield",
+                                    fontSize: "0.8rem", appearance: "textfield",
                                     WebkitAppearance: "none",
                                     MozAppearance: "textfield"
                                 }}
@@ -99,7 +99,7 @@ const HomeSizeCalculator = () => {
                         <td className="text-center align-middle "  style={{borderBottom:0,backgroundColor:"#f7f7f7"}}>
                             <input
                                 style={{
-                                    fontSize: "1.5rem", appearance: "textfield",
+                                    fontSize: "0.8rem", appearance: "textfield",
                                     WebkitAppearance: "none",
                                     MozAppearance: "textfield"
                                 }}
@@ -135,7 +135,7 @@ const HomeSizeCalculator = () => {
                         <td className="text-center align-middle " style={{backgroundColor:"#f7f7f7"}} >
                             <input
                                 style={{
-                                    fontSize: "1.5rem", appearance: "textfield",
+                                    fontSize: "0.8rem", appearance: "textfield",
                                     WebkitAppearance: "none",
                                     MozAppearance: "textfield"
                                 }}

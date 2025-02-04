@@ -1222,11 +1222,11 @@ const PropertyComponent = ({
                                   <div className="icon-box">
                                     <div className="item">
                                       <i className="flaticon-hotel" />
-                                      <p style={{ fontSize: 13 }}>{item.bedrooms} <span className="d-none d-md-flex" >Beds </span></p>
+                                      <p style={{ fontSize: 13,gap:5 }} className="d-flex" >{item.bedrooms} <span className="" > Beds </span></p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-bath-tub" />
-                                      <p style={{ fontSize: 13 }}>{item.bathrooms} <span className="d-none d-md-flex" >Baths</span></p>
+                                      <p style={{ fontSize: 13,gap:5 }} className="d-flex" >{item.bathrooms} <span className="" > Baths</span></p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-minus-front" />
@@ -1236,7 +1236,7 @@ const PropertyComponent = ({
                                           ? item.size_mt + " Sq M"
                                           : item.size + " Sq ft"}
                                       </p> */}
-                                      <p style={{ fontSize: 13 }}>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
+                                      <p style={{ fontSize: 13,gap:5 }} className="d-flex" >{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                     </div>
                                   </div>
 

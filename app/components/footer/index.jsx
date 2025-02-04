@@ -136,7 +136,9 @@ const Footer = () => {
                     >
                       {errorType}
                     </strong>{" "}
+                    <p>
                     {error}
+                    </p>
                   </div>
                 </div>
               )}
@@ -190,6 +192,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+            
             <div className="footer-cl-5">
               <div className="ft-title">Our Address</div>
               <ul className="navigation-menu-footer">
