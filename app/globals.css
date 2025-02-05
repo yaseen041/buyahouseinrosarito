@@ -4,15 +4,16 @@
 }
 
 .ck_editor_content * {
-  all: revert !important; /* This helps reset styles */
+  all: revert-layer ; 
 }
 
 
 
+
 .ck_editor_content {
-  font-family: inherit;
-  font-size: 16px;
-  line-height: 1.6;
+  font-family: inherit !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
 }
 .ck_editor_content img,
 .ck_editor_content .image  img {
@@ -36,6 +37,95 @@
   justify-content: center !important;
 }
 
+.ck_editor_content .table-container {
+  width: 100% !important;
+  max-width: 900px !important;
+  margin: auto !important;
+  font-family: Arial, sans-serif;
+}
+
+/* Table Styling */
+.ck_editor_content table.custom-table {
+  
+  border-collapse: collapse !important;
+  margin-bottom: 0px !important;
+  width: 100% !important;
+  max-width: 900px !important;
+  
+}
+
+/* Table Headers */
+
+
+/* Ensure <p> tags inside <thead> get proper styling */
+.ck_editor_content table.custom-table thead p {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Table Cells */
+.ck_editor_content table.custom-table th, 
+.ck_editor_content table.custom-table td {
+  border: 1px solid #ccc !important;
+  text-align: center !important;
+  padding: 10px !important;
+}
+
+/* Input Fields */
+.ck_editor_content table.custom-table input {
+  width: 90% !important;
+  padding: 8px !important;
+  font-size: 14px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+}
+
+/* Table Row Background */
+.ck_editor_content table.custom-table tbody tr:nth-child(odd) {
+  background-color: #f7f7f7 !important;
+}
+
+/* Different Background for Section Titles */
+.ck_editor_content table.custom-table thead[data-color="blue"] {
+  background-color: #172544 !important;
+  color:#fff
+}
+
+.ck_editor_content table.custom-table thead[data-color="dark-blue"] {
+  background-color: #172646 !important;
+}
+
+.ck_editor_content table.custom-table thead[data-color="navy"] {
+  background-color: #19294d !important;
+}
+.ck_editor_content table.custom-table thead[data-color="navy-blue"] {
+  background-color: #19294d !important;
+}
+.ck_editor_content table.custom-table thead tr th p {
+  color:#fff !important;
+}
+
+/* .ck_editor_content table.custom-table thead[style*="background-color: #172544"],
+.ck_editor_content table.custom-table thead[style*="background-color: #172646"],
+.ck_editor_content table.custom-table thead[style*="background-color: #19294d"] {
+  background-color: #172544 !important;
+} */
+
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ck_editor_content table.custom-table th,
+  .ck_editor_content table.custom-table td {
+      padding: 8px !important;
+      font-size: 14px !important;
+  }
+
+  .ck_editor_content table.custom-table input {
+      font-size: 12px !important;
+  }
+}
 
 @media (max-width: 768px) {
  .ck_editor_content figure.image, 

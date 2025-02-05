@@ -126,14 +126,12 @@ const PropertyComponent = ({
     if (exist.length > 0) {
       setSelectedFeatures((prev) => prev.filter((i) => i.id !== id))
     } else {
-
       setSelectedFeatures((prev) => [...prev, { id: id, title: title }])
     }
   }
 
   const handleCommunity = (id, title) => {
     setSelectedCommunity({ id: id, title: title })
-
   }
   const handleTypes = (id, title) => {
     setSelectedTypes({ id: id, title: title })
@@ -153,24 +151,20 @@ const PropertyComponent = ({
 
   const getCities = async () => {
     try {
-
       const data = await api.Get(url.CITIES)
       if (data) {
         setCities(data.data)
       }
-
     } catch (error) {
       console.log(error)
     }
   }
   const getCommunity = async () => {
     try {
-
       const data = await api.Get(url.COMMUNITY)
       if (data) {
         setCommunities(data.data)
       }
-
     } catch (error) {
       console.log(error)
     }
@@ -203,7 +197,6 @@ const PropertyComponent = ({
       const data = await api.Get(url.FILTERS)
       if (data) {
         setFilters(data.data)
-
       }
     } catch (error) {
       console.log(error)
@@ -232,180 +225,269 @@ const PropertyComponent = ({
 
 
   React.useEffect(() => {
-
     getFilters()
     getTypes()
     getCities()
     getAgents()
     getCommunity()
     getFeaturedProperties()
-
   }, [])
 
 
-  const getProprties = async () => {
+  // const getProprties = async () => {
+  //   try {
+  //     setLoading(true)
+  //     const body = new FormData()
+  //     if (page !== null) {
+  //       setCurrentPage(Number(page))
+  //     } else {
+  //       setCurrentPage(1)
+  //     }
+  //     if (status !== null) {
+  //       const filterStatus = filters.listing_status?.find((i) => i.title === status)
+  //       setSelectedStatus({ id: filterStatus.id, title: filterStatus.title })
+  //       body.append("listing_status", status !== null ? filterStatus.id : "")
+  //     }
+  //     if (type !== null && Object.keys(filters).length > 0) {
+  //       const filterType = filters?.types.find((i) => i.title === type)
+  //       setSelectedTypes({ id: filterType.id, title: filterType.title })
+  //       body.append("type_id", type !== null ? filterType.id : "")
+  //     }
+  //     if (city !== null) {
+  //       const filterCity = cities.find((i) => i.name === city)
+  //       setSelectedCity({ id: filterCity.id, title: filterCity.name })
+  //       body.append("city_id", city !== null ? filterCity.id : "")
+  //     }
+  //     if (sort !== null) {
+  //       const filterSort = filters.sorting.find((i) => i.title === sort)
+  //       setSelectedSorting({ id: filterSort.id, title: filterSort.title })
+  //       body.append("sorting", sort !== null ? filterSort.id : 1)
+  //     }
+  //     if (community !== null) {
+  //       const filterCommunity = communities.find((i) => i.title === community)
+  //       setSelectedCommunity({ id: filterCommunity.id, title: filterCommunity.title })
+  //       body.append("neighborhood_id", community !== null ? filterCommunity.id : "")
+  //     }
+  //     if (bedrooms !== null) {
+  //       const filterBedroom = filters.min_bed.find((i) => i.title === bedrooms)
+  //       setSelectedBed({ id: filterBedroom.id, title: filterBedroom.title })
+  //       body.append("min_bed", bedrooms !== null ? filterBedroom.id : "")
+  //     }
+  //     if (bathrooms !== null) {
+  //       const filterBathroom = filters.min_bath.find((i) => i.title === bathrooms)
+  //       setSelectedBath({ id: filterBathroom.id, title: filterBathroom.title })
+  //       body.append("min_bath", bathrooms !== null ? filterBathroom.id : "")
+  //     }
+
+  //     if (minarea !== null) {
+  //       setMinArea(minarea)
+  //       body.append("min_size", minarea !== null ? minarea : "")
+  //     }
+  //     if (maxarea !== null) {
+  //       setMaxArea(maxarea)
+  //       body.append("max_size", maxarea !== null ? maxarea : "")
+  //     }
+  //     if (minprice !== null) {
+  //       setMinPrice(minprice)
+  //       body.append("min_price", minprice !== null ? minprice : "")
+  //     }
+  //     if (maxprice !== null) {
+  //       setMaxPrice(maxprice)
+  //       body.append("max_price", maxprice !== null ? maxprice : "")
+  //     }
+  //     if (features !== null) {
+  //       const featureArry = features.split(",").map((i) => (i.trim()))
+  //       const getfeatures = Object.keys(filters?.features || {}).flatMap((category) =>
+  //         filters.features[category].filter((item) => featureArry.includes(item.title))
+  //       );
+  //       setSelectedFeatures(getfeatures)
+  //       const ids = getfeatures.map((i) => i.id)
+  //       body.append("features_id_array", JSON.stringify(ids))
+  //     }
+  //     if (title !== null) {
+  //       setKeyword(title)
+  //       body.append("title", title)
+  //     }
+
+
+  //     const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body)
+  //     if (data) {
+  //       setProperties(data.data.data)
+  //       setTotalData(data.data.total)
+  //     }
+  //     setLoading(false)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  const getProperties = async () => {
     try {
-      setLoading(true)
-      const body = new FormData()
-      if (page !== null) {
-        setCurrentPage(Number(page))
-      } else {
-        setCurrentPage(1)
-      }
-      if (status !== null) {
-        const filterStatus = filters.listing_status?.find((i) => i.title === status)
-        setSelectedStatus({ id: filterStatus.id, title: filterStatus.title })
-        body.append("listing_status", status !== null ? filterStatus.id : "")
-      }
-      if (type !== null && Object.keys(filters).length > 0) {
-        const filterType = filters?.types.find((i) => i.title === type)
-        setSelectedTypes({ id: filterType.id, title: filterType.title })
-        body.append("type_id", type !== null ? filterType.id : "")
-      }
-      if (city !== null) {
-        const filterCity = cities.find((i) => i.name === city)
-        setSelectedCity({ id: filterCity.id, title: filterCity.name })
-        body.append("city_id", city !== null ? filterCity.id : "")
-      }
-      if (sort !== null) {
-        const filterSort = filters.sorting.find((i) => i.title === sort)
-        setSelectedSorting({ id: filterSort.id, title: filterSort.title })
-        body.append("sorting", sort !== null ? filterSort.id : 1)
-      }
-      if (community !== null) {
-        const filterCommunity = communities.find((i) => i.title === community)
-        setSelectedCommunity({ id: filterCommunity.id, title: filterCommunity.title })
-        body.append("neighborhood_id", community !== null ? filterCommunity.id : "")
-      }
-      if (bedrooms !== null) {
-        const filterBedroom = filters.min_bed.find((i) => i.title === bedrooms)
-        setSelectedBed({ id: filterBedroom.id, title: filterBedroom.title })
-        body.append("min_bed", bedrooms !== null ? filterBedroom.id : "")
-      }
-      if (bathrooms !== null) {
-        const filterBathroom = filters.min_bath.find((i) => i.title === bathrooms)
-        setSelectedBath({ id: filterBathroom.id, title: filterBathroom.title })
-        body.append("min_bath", bathrooms !== null ? filterBathroom.id : "")
-      }
-
-      if (minarea !== null) {
-        setMinArea(minarea)
-        body.append("min_size", minarea !== null ? minarea : "")
-      }
-      if (maxarea !== null) {
-        setMaxArea(maxarea)
-        body.append("max_size", maxarea !== null ? maxarea : "")
-      }
-      if (minprice !== null) {
-        setMinPrice(minprice)
-        body.append("min_price", minprice !== null ? minprice : "")
-      }
-      if (maxprice !== null) {
-        setMaxPrice(maxprice)
-        body.append("max_price", maxprice !== null ? maxprice : "")
-      }
+      setLoading(true);
+      const body = new FormData();     
+      setCurrentPage(page ? Number(page) : 1);      
+      const filtersMap = [
+        { key: "listing_status", source: filters.listing_status, value: status, setter: setSelectedStatus },
+        { key: "type_id", source: filters.types, value: type, setter: setSelectedTypes },
+        { key: "city_id", source: cities, value: city, setter: setSelectedCity },
+        { key: "sorting", source: filters.sorting, value: sort, setter: setSelectedSorting, defaultValue: 1 },
+        { key: "neighborhood_id", source: communities, value: community, setter: setSelectedCommunity },
+        { key: "min_bed", source: filters.min_bed, value: bedrooms, setter: setSelectedBed },
+        { key: "min_bath", source: filters.min_bath, value: bathrooms, setter: setSelectedBath }
+      ];
+      
+      filtersMap.forEach(({ key, source, value, setter, defaultValue = "" }) => {
+        if (value !== null) {
+          const filterItem = source?.find((i) => i.title === value);
+          if (filterItem) {
+            setter({ id: filterItem.id, title: filterItem.title });
+            body.append(key, filterItem.id);
+          } else {
+            body.append(key, defaultValue);
+          }
+        }
+      });
+      
+      [
+        { key: "min_size", value: minarea, setter: setMinArea },
+        { key: "max_size", value: maxarea, setter: setMaxArea },
+        { key: "min_price", value: minprice, setter: setMinPrice },
+        { key: "max_price", value: maxprice, setter: setMaxPrice },
+        { key: "title", value: title, setter: setKeyword }
+      ].forEach(({ key, value, setter }) => {
+        if (value !== null) {
+          setter(value);
+          body.append(key, value);
+        }
+      });
+      
       if (features !== null) {
-        const featureArry = features.split(",").map((i) => (i.trim()))
-        const getfeatures = Object.keys(filters?.features || {}).flatMap((category) =>
-          filters.features[category].filter((item) => featureArry.includes(item.title))
+        const featureArray = features.split(",").map((i) => i.trim());
+        const selectedFeatures = Object.values(filters?.features || {}).flatMap((category) =>
+          category.filter((item) => featureArray.includes(item.title))
         );
-        setSelectedFeatures(getfeatures)
-        const ids = getfeatures.map((i) => i.id)
-        body.append("features_id_array", JSON.stringify(ids))
+        setSelectedFeatures(selectedFeatures);
+        body.append("features_id_array", JSON.stringify(selectedFeatures.map((i) => i.id)));
       }
-      if (title !== null) {
-        setKeyword(title)
-        body.append("title", title)
-      }
-
-
-      const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body)
+      
+      const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body);
       if (data) {
-        setProperties(data.data.data)
-        setTotalData(data.data.total)
+        setProperties(data.data.data);
+        setTotalData(data.data.total);
       }
-      setLoading(false)
     } catch (error) {
-      console.log(error)
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
-  }
-
+  };
   React.useEffect(() => {
-    getProprties()
-  }, [filters, status, type, sort, page, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
+    getProperties()
+  }, [filters, status, type,page, sort, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
 
+  // const handleSearch = (e) => {
+  //   e.preventDefault()
+
+  //   const newParams = new URLSearchParams(searchParams.toString());
+  //   if (page !== null) {
+  //     setCurrentPage(1)
+  //     newParams.delete("page")
+  //   }
+  //   if (selectedstatus.id !== 0) {
+  //     newParams.set("status", selectedstatus.title)
+  //   } else {
+  //     newParams.delete("status")
+  //   }
+  //   if (selectedTypes.id !== 0) {
+  //     newParams.set("type", selectedTypes.title)
+  //   } else {
+  //     newParams.delete("type")
+  //   }
+  //   if (selectedCity.id !== 0) {
+  //     newParams.set("city", selectedCity.title)
+  //   } else {
+  //     newParams.delete("city")
+  //   }
+  //   if (selectedCommunity.id !== 0) {
+  //     newParams.set("community", selectedCommunity.title)
+  //   } else {
+  //     newParams.delete("community")
+  //   }
+  //   if (selectedBed.id !== 0) {
+  //     newParams.set("bedrooms", selectedBed.title)
+  //   } else {
+  //     newParams.delete("bedrooms")
+  //   }
+  //   if (selectedBath.id !== 0) {
+  //     newParams.set("bathrooms", selectedBath.title)
+  //   } else {
+  //     newParams.delete("bathrooms")
+  //   }
+  //   if (minArea.length > 0) {
+  //     newParams.set("minarea", minArea)
+  //   } else {
+  //     newParams.delete("minarea")
+  //   }
+  //   if (maxArea.length > 0) {
+  //     newParams.set("maxarea", maxArea)
+  //   } else {
+  //     newParams.delete("maxarea")
+  //   }
+  //   if (minPrice.length > 0) {
+  //     newParams.set("minprice", minPrice)
+  //   } else {
+  //     newParams.delete("minprice")
+  //   }
+  //   if (maxPrice.length > 0) {
+  //     newParams.set("maxprice", maxPrice)
+  //   } else {
+  //     newParams.delete("maxprice")
+  //   }
+  //   if (selectedFeatures.length > 0) {
+  //     const feature = selectedFeatures.map((i) => i.title)
+  //     newParams.set("features", feature)
+  //   } else {
+  //     newParams.delete("features")
+  //   }
+  //   if (Keyword.length > 0) {
+  //     newParams.set("title", Keyword)
+  //   } else {
+  //     newParams.delete("title")
+  //   }
+  //   router.push(`/property?${newParams.toString()}`)
+  // }
   const handleSearch = (e) => {
-    e.preventDefault()
-
+    e.preventDefault();
+  
     const newParams = new URLSearchParams(searchParams.toString());
-    if (page !== null) {
-      setCurrentPage(1)
-      newParams.delete("page")
-    }
-    if (selectedstatus.id !== 0) {
-      newParams.set("status", selectedstatus.title)
-    } else {
-      newParams.delete("status")
-    }
-    if (selectedTypes.id !== 0) {
-      newParams.set("type", selectedTypes.title)
-    } else {
-      newParams.delete("type")
-    }
-    if (selectedCity.id !== 0) {
-      newParams.set("city", selectedCity.title)
-    } else {
-      newParams.delete("city")
-    }
-    if (selectedCommunity.id !== 0) {
-      newParams.set("community", selectedCommunity.title)
-    } else {
-      newParams.delete("community")
-    }
-    if (selectedBed.id !== 0) {
-      newParams.set("bedrooms", selectedBed.title)
-    } else {
-      newParams.delete("bedrooms")
-    }
-    if (selectedBath.id !== 0) {
-      newParams.set("bathrooms", selectedBath.title)
-    } else {
-      newParams.delete("bathrooms")
-    }
-    if (minArea.length > 0) {
-      newParams.set("minarea", minArea)
-    } else {
-      newParams.delete("minarea")
-    }
-    if (maxArea.length > 0) {
-      newParams.set("maxarea", maxArea)
-    } else {
-      newParams.delete("maxarea")
-    }
-    if (minPrice.length > 0) {
-      newParams.set("minprice", minPrice)
-    } else {
-      newParams.delete("minprice")
-    }
-    if (maxPrice.length > 0) {
-      newParams.set("maxprice", maxPrice)
-    } else {
-      newParams.delete("maxprice")
-    }
-    if (selectedFeatures.length > 0) {
-      const feature = selectedFeatures.map((i) => i.title)
-      newParams.set("features", feature)
-    } else {
-      newParams.delete("features")
-    }
-    if (Keyword.length > 0) {
-      newParams.set("title", Keyword)
-    } else {
-      newParams.delete("title")
-    }
-    router.push(`/property?${newParams.toString()}`)
-  }
-
+    setCurrentPage(1);
+    newParams.delete("page");
+  
+    const filters = [
+      { key: "status", value: selectedstatus.id !== 0 ? selectedstatus.title : "" },
+      { key: "type", value: selectedTypes.id !== 0 ? selectedTypes.title : "" },
+      { key: "city", value: selectedCity.id !== 0 ? selectedCity.title : "" },
+      { key: "community", value: selectedCommunity.id !== 0 ? selectedCommunity.title : "" },
+      { key: "bedrooms", value: selectedBed.id !== 0 ? selectedBed.title : "" },
+      { key: "bathrooms", value: selectedBath.id !== 0 ? selectedBath.title : "" },
+      { key: "minarea", value: minArea.length > 0 ? minArea : "" },
+      { key: "maxarea", value: maxArea.length > 0 ? maxArea : "" },
+      { key: "minprice", value: minPrice.length > 0 ? minPrice : "" },
+      { key: "maxprice", value: maxPrice.length > 0 ? maxPrice : "" },
+      { key: "features", value: selectedFeatures.length > 0 ? selectedFeatures.map(i => i.title).join(",") : "" },
+      { key: "title", value: Keyword.length > 0 ? Keyword : "" }
+    ];
+  
+    filters.forEach(({ key, value }) => {
+      if (value) {
+        newParams.set(key, value);
+      } else {
+        newParams.delete(key);
+      }
+    });
+  
+    router.push(`/property?${newParams.toString()}`);
+  };
+  
   const handleOpenSelect = (name) => {
     setOpenSelect((prev) => ({
       status: name === "status" ? !prev.status : false,

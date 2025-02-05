@@ -8,6 +8,8 @@ import CustomScript from "@/app/scripts";
 import Loader from "../loader/Loader";
 import { url } from "@/app/utils/urls";
 import NotFound from "../NotFound/NotFound";
+import HomeSizeCalculator from "../SizeCalculeter";
+import parse from "html-react-parser";
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -43,6 +45,21 @@ const BlogDetail = () => {
       fetchBlogData();
     }
   }, [url, slug]);
+
+  
+    const replaceShortcodes = (htmlString) => {
+      return parse(htmlString, {
+        replace: (domNode) => {
+          if (
+            domNode.type === "text" &&
+            domNode.data.includes("[cost_calculator_app]")
+          ) {
+            return <HomeSizeCalculator />;
+          }
+        },
+      });
+    };
+
 
   return (
     <>
@@ -116,11 +133,11 @@ const BlogDetail = () => {
                               </div>
                             </div> */}
                             <div
-                              dangerouslySetInnerHTML={{
-                                __html: blog?.description,
-                              }}
+                             
                               className="blog_content ck_editor_content"
-                            ></div>
+                            >
+                              {replaceShortcodes(blog?.description)}
+                            </div>
                           </div>
                         </div>
                       </div>

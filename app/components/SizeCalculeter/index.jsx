@@ -9,8 +9,8 @@ const HomeSizeCalculator = () => {
     return (
         <div className=" table-container mt-4 h-100">
             {/* Section 1: Conversion from M² to Ft² */}
-            <table className="table m-0" style={{ height: "26.6%" }} >
-                <thead className="" style={{ backgroundColor: "#121d36" }} >
+            <table className="table m-0 custom-table" style={{ height: "26.6%" }} >
+                <thead data-color="blue" className="" style={{ backgroundColor: "#121d36" }} >
                     <tr>
                         <th colSpan="2" className="text-center align-middle ">
                             <p style={{ color: "#FFF" }}  > Estimate Your New Home Size in Square Feet (Using Mexico's Meters Squared)</p>
@@ -45,8 +45,8 @@ const HomeSizeCalculator = () => {
             </table>
 
             {/* Section 2: Home Size for $110 Per Square Foot */}
-            <table className="table m-0" style={{ height: "23.5%" }} >
-                <thead className="" style={{ backgroundColor: "#172544" }} >
+            <table className="table m-0 custom-table" style={{ height: "23.5%" }} >
+                <thead data-color="dark-blue" className="" style={{ backgroundColor: "#172544" }} >
                     <tr>
                         <th colSpan="3" className="text-center align-middle ">
                             <p style={{ color: "#FFF" }} > Find Your Ideal Home Size for Just $110 Per Square Foot in Mexico (No Ocean View)</p>
@@ -81,8 +81,8 @@ const HomeSizeCalculator = () => {
             </table>
 
             {/* Section 3: Home Size for $300 Per Square Foot */}
-            <table className="table m-0" style={{ height: "23.5%" }} >
-                <thead className="" style={{ backgroundColor: "#172646" }} >
+            <table className="table m-0 custom-table" style={{ height: "23.5%" }} >
+                <thead className="" data-color="navy" style={{ backgroundColor: "#172646" }} >
                     <tr>
                         <th colSpan="3" className="text-center align-middle ">
                             <p style={{ color: "#FFF" }} >Affordable Elegance: Calculate Your Ocean View Home Size at $300 Per Square Foot</p>
@@ -117,8 +117,8 @@ const HomeSizeCalculator = () => {
             </table>
 
             {/* Section 4: Home Size for $500 Per Square Foot */}
-            <table className="table m-0" style={{ height: "23.5%" }} >
-                <thead className="" style={{ backgroundColor: "#19294d" }}>
+            <table className="table m-0 custom-table" style={{ height: "23.5%" }} >
+                <thead data-color="navy-blue" className="" style={{ backgroundColor: "#19294d" }}>
                     <tr>
                         <th colSpan="3" className="text-center align-middle ">
                             <p style={{ color: "#FFF" }} > Luxury Living: Discover Your Beach Front Home Size at $500 Per Square Foot</p>

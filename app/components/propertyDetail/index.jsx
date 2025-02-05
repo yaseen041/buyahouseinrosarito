@@ -11,6 +11,19 @@ import { useUnitContext } from "@/app/utils/UnitContext";
 import { Tooltip, Overlay } from "react-bootstrap";
 import { useParams } from "next/navigation";
 import { api } from '@/app/utils/api';
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+
 const DetailPage = () => {
   const { isSquareMeter, toggleUnit } = useUnitContext();
   const [properties, setProperties] = useState([]);
@@ -46,7 +59,7 @@ const DetailPage = () => {
   const getAgent = async () => {
     try {
       const data = await api.Get(`${url.AGENT}/${property.agent}`)
-      if (Object.keys(data).length>0) {
+      if (Object.keys(data).length > 0) {
         setAgent(data.data)
       }
       setLoading(false)
@@ -70,11 +83,11 @@ const DetailPage = () => {
           throw new Error("Failed to fetch blog data");
         }
         const data = await response.json();
-        if(data){
+        if (data) {
           setProperties(data.data);
-         
+
         }
-        
+
       } catch (err) {
         console.error(err.message);
       }
@@ -83,12 +96,12 @@ const DetailPage = () => {
     fetchProperties();
   }, [url, setProperties]);
 
-  useEffect(()=>{
-    if(properties.length>0 && Object.keys(property).length>0 ){
-      const propertyId = properties.find((i)=>i.title===property.title)
+  useEffect(() => {
+    if (properties.length > 0 && Object.keys(property).length > 0) {
+      const propertyId = properties.find((i) => i.title === property.title)
       setSelectedProperties([propertyId.id])
     }
-  },[properties,property])
+  }, [properties, property])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -240,7 +253,7 @@ const DetailPage = () => {
                               <Overlay target={targetRef.current} show={showTooltip} placement="bottom">
                                 {(props) => (
                                   <Tooltip {...props} className="show">
-                                    <p style={{color:"#FFF"}} >Copied!</p>
+                                    <p style={{ color: "#FFF" }} >Copied!</p>
                                   </Tooltip>
                                 )}
                               </Overlay>
@@ -267,7 +280,7 @@ const DetailPage = () => {
                           )}
                         </div>
                         {Object.keys(property).length > 0
-                          ? property?.gallery.slice(0,5).map((item, index) => (
+                          ? property?.gallery.slice(0, 5).map((item, index) => (
                             <a
                               href={`${item}`}
                               className={`item-${index + 1}`}
@@ -278,15 +291,15 @@ const DetailPage = () => {
                             </a>
                           ))
                           : null}
-                          {Object.keys(property).length > 0
-                           ?  property?.gallery.length > 5 && (
+                        {Object.keys(property).length > 0
+                          ? property?.gallery.length > 5 && (
                             <a href={property.gallery[5]} className="more-photos" data-fancybox="gallery">
                               <i className="flaticon-gallery" />
                               <p>{property.gallery.length} Photos</p>
                             </a>
                           )
-                         : null}
-                      
+                          : null}
+
                       </div>
                     </div>
                     <div className="col-xl-8">
@@ -310,13 +323,13 @@ const DetailPage = () => {
                               </div>
                             )}
                             <div className="price">
-                             
+
                               {Object.keys(property).length > 0
-                                ? 
+                                ?
                                 <div>
-                                   $
-                                  {property?.price.toLocaleString()} {property?.listing_type==="rent"?`/ ${property.rent_cycle}`:null}
-                                 
+                                  $
+                                  {property?.price.toLocaleString()} {property?.listing_type === "rent" ? `/ ${property.rent_cycle}` : null}
+
                                 </div>
                                 : null}
                             </div>
@@ -352,7 +365,7 @@ const DetailPage = () => {
                               {/* {!isSquareMeter
                                 ? property.size_mt + " Sq M"
                                 : property.size + " Sq ft"} */}
-                                {property.size + "sqft"} / {property.size_mt + "sqm"}
+                              {property.size + "sqft"} / {property.size_mt + "sqm"}
                             </div>
                           </div>
                           <div className="item wow fadeInUp">
@@ -512,15 +525,15 @@ const DetailPage = () => {
                               <p>{property?.parking_spaces}</p>
                             </div>
                             <div className="item wow fadeInUp">
-                              <div className="text">{property?.listing_type==="rent"?"Rent":"Price"}:</div>
+                              <div className="text">{property?.listing_type === "rent" ? "Rent" : "Price"}:</div>
                               <p>
-                               
+
                                 {Object.keys(property).length > 0
-                                  ? 
+                                  ?
                                   <div>
-                                     $
-                                    {property?.price.toLocaleString()} {property?.listing_type==="rent"?`/ ${property?.rent_cycle}`:null}
-                                  
+                                    $
+                                    {property?.price.toLocaleString()} {property?.listing_type === "rent" ? `/ ${property?.rent_cycle}` : null}
+
                                   </div>
                                   : null}
                               </p>
@@ -558,23 +571,7 @@ const DetailPage = () => {
                               <div className="text">Bedrooms:</div>
                               <p>{property?.bedrooms}</p>
                             </div>
-                            {/* <div
-                            className="item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                           
-                              <div className="col-4 d-flex align-items-center">
-                            <div className="text">Property Type:</div>
-                            </div>
-                            <div className="col-8 text-right  " style={{display: 'flex', justifyContent: 'flex-end',textWrap:"wrap",flexWrap:"wrap"}}>
-                            {Object.keys(property).length > 0
-                              ? property.types.map((item) => (
-                                  <p  key={item.id}>{item.title}</p>
-                                ))
-                              : null}
-                              </div>
-                              
-                          </div> */}
+
                             <div className="item wow fadeInUp">
                               <div className="text">Bathrooms:</div>
                               <p>{property?.bathrooms}</p>
@@ -588,50 +585,10 @@ const DetailPage = () => {
                             </div>
                           </div>
                         </div>
-                        {/* <div className="energy">
-                        <h4 className="wow fadeInUp">Energy Class</h4>
-                        <ul>
-                          <li className="wow fadeInUp">
-                            <div className="title">Energetic class:</div>
-                            <p>A+</p>
-                          </li>
-                          <li className="wow fadeInUp">
-                            <div className="title">
-                              Global Energy Performance Index:
-                            </div>
-                            <p>92.42 kWh / m²a</p>
-                          </li>
-                          <li className="wow fadeInUp">
-                            <div className="title">
-                              Renewable energy performance index:
-                            </div>
-                            <p>00.00 kWh / m²a</p>
-                          </li>
-                          <li className="wow fadeInUp">
-                            <div className="title">
-                              Energy performance of the building:
-                            </div>
-                            <p>50</p>
-                          </li>
-                          <li className="wow fadeInUp">
-                            <div className="title">EPC Current Rating:</div>
-                            <p>92</p>
-                          </li>
-                          <li className="wow fadeInUp">
-                            <div className="title">EPC Potential Rating:</div>
-                            <p>80</p>
-                          </li>
-                        </ul>
-                        <img src="/assets/images/image-box/energy.png" alt="image" />
-                      </div> */}
+
                         <div className="features">
                           <h4 className="wow fadeInUp">Facts &amp; Features</h4>
-                          {/* <p className="wow fadeInUp">
-                            Lorem ipsum dolor sit amet, homero debitis
-                            temporibus in mei, at sit voluptua antiopam
-                            hendrerit. Lorem epicuri eu per. Mediocrem torquatos
-                            deseruisse te eum commodo.
-                          </p> */}
+
                           <ul>
                             {Object.keys(property).length > 0
                               ? Object.keys(property.features).map(
@@ -669,313 +626,30 @@ const DetailPage = () => {
                           </ul>
                         </div>
 
-                        {/* Tour For */}
-                        {/* <div className="schedule" id="schedule">
-                          <h4 className="wow fadeInUp">Schedule a tour</h4>
-                          <ScheduleForm propertyId={property.id} />
-                        </div> */}
-
-                        {/* <div className="plans">
-                        <h4 className="wow fadeInUp">Floor Plans</h4>
-                        <div className="widget-tabs style-3">
-                          <ul className="widget-menu-tab wow fadeInUp">
-                            <li className="item-title active">
-                              <span className="inner">First Floor</span>
-                            </li>
-                            <li className="item-title">
-                              <span className="inner">Second Floor</span>
-                            </li>
-                            <li className="item-title">
-                              <span className="inner">Third Floor</span>
-                            </li>
-                          </ul>
-                          <div className="widget-content-tab">
-                            <div className="widget-content-inner active">
-                              <div className="icons">
-                                <div className="item wow fadeInUp">
-                                  <i className="flaticon-hotel" />
-                                  <div className="text">Bedrooms</div>
-                                  <p>4</p>
-                                </div>
-                                <div
-                                  className="item wow fadeInUp"
-                                  data-wow-delay="0.1s"
-                                >
-                                  <i className="flaticon-bath-tub" />
-                                  <div className="text">Bathrooms</div>
-                                  <p>2</p>
-                                </div>
-                                <div
-                                  className="item wow fadeInUp"
-                                  data-wow-delay="0.2s"
-                                >
-                                  <i className="flaticon-minus-front" />
-                                  <div className="text">Size</div>
-                                  <p>200 SqFt</p>
-                                </div>
-                                <div
-                                  className="item wow fadeInUp"
-                                  data-wow-delay="0.3s"
-                                >
-                                  <i className="flaticon-tag" />
-                                  <div className="text">Price</div>
-                                  <p>$12.000</p>
-                                </div>
-                              </div>
-                              <p className="wow fadeInUp">
-                                Lorem ipsum dolor sit amet, homero debitis temporibus
-                                in mei, at sit voluptua antiopam hendrerit. Lorem
-                                epicuri eu per. Mediocrem torquatos deseruisse te eum
-                                commodo.
-                              </p>
-                              <img src="/assets/images/section/blueprint-1.png" alt="image" />
-                            </div>
-                            <div className="widget-content-inner">
-                              <div className="icons">
-                                <div className="item">
-                                  <i className="flaticon-hotel" />
-                                  <div className="text">Bedrooms</div>
-                                  <p>4</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-bath-tub" />
-                                  <div className="text">Bathrooms</div>
-                                  <p>2</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-minus-front" />
-                                  <div className="text">Size</div>
-                                  <p>200 SqFt</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-tag" />
-                                  <div className="text">Price</div>
-                                  <p>$12.000</p>
-                                </div>
-                              </div>
-                              <p>
-                                Lorem ipsum dolor sit amet, homero debitis temporibus
-                                in mei, at sit voluptua antiopam hendrerit. Lorem
-                                epicuri eu per. Mediocrem torquatos deseruisse te eum
-                                commodo.
-                              </p>
-                              <img src="/assets/images/section/blueprint-1.png" alt="image" />
-                            </div>
-                            <div className="widget-content-inner">
-                              <div className="icons">
-                                <div className="item">
-                                  <i className="flaticon-hotel" />
-                                  <div className="text">Bedrooms</div>
-                                  <p>4</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-bath-tub" />
-                                  <div className="text">Bathrooms</div>
-                                  <p>2</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-minus-front" />
-                                  <div className="text">Size</div>
-                                  <p>200 SqFt</p>
-                                </div>
-                                <div className="item">
-                                  <i className="flaticon-tag" />
-                                  <div className="text">Price</div>
-                                  <p>$12.000</p>
-                                </div>
-                              </div>
-                              <p>
-                                Lorem ipsum dolor sit amet, homero debitis temporibus
-                                in mei, at sit voluptua antiopam hendrerit. Lorem
-                                epicuri eu per. Mediocrem torquatos deseruisse te eum
-                                commodo.
-                              </p>
-                              <img src="/assets/images/section/blueprint-1.png" alt="image" />
-                            </div>
-                          </div>
-                        </div>
-                      </div> */}
-                        {/* <div className="calculator">
-                        <h4 className="wow fadeInUp">Mortgage Calculator</h4>
-                        <div className="pie-chart">
-                          <div id="morris-donut-1" />
-                          <div className="wrap-note">
-                            <div className="item">
-                              <div className="text">Principal and Interes</div>
-                              <p>$37,800.00</p>
-                            </div>
-                            <div className="item">
-                              <div className="text">Property Tax</div>
-                              <p>$214,200.00</p>
-                            </div>
-                            <div className="item">
-                              <div className="text">HOA fee</div>
-                              <p>$252.00</p>
-                            </div>
-                          </div>
-                        </div>
-                        <form className="form-comment">
-                          <fieldset className="text wow fadeInUp has-top-title">
-                            <input
-                              type="text"
-                              placeholder="Total Amount"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Total Amount</label>
-                          </fieldset>
-                          <fieldset
-                            className="text wow fadeInUp has-top-title"
-                            data-wow-delay="0.1s"
-                          >
-                            <input
-                              type="text"
-                              placeholder="Down Payment"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue={15}
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Down Payment</label>
-                          </fieldset>
-                          <fieldset
-                            className="text wow fadeInUp has-top-title"
-                            data-wow-delay="0.2s"
-                          >
-                            <input
-                              type="text"
-                              placeholder="Interest Rate"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Interest Rate</label>
-                          </fieldset>
-                          <fieldset className="text wow fadeInUp has-top-title">
-                            <input
-                              type="text"
-                              placeholder="Loan Terms (Years)"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Loan Terms (Years)</label>
-                          </fieldset>
-                          <fieldset
-                            className="text wow fadeInUp has-top-title"
-                            data-wow-delay="0.1s"
-                          >
-                            <input
-                              type="text"
-                              placeholder="Property Tax"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Property Tax</label>
-                          </fieldset>
-                          <fieldset
-                            className="text wow fadeInUp has-top-title"
-                            data-wow-delay="0.2s"
-                          >
-                            <input
-                              type="text"
-                              placeholder="Home Insurance"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Home Insurance</label>
-                          </fieldset>
-                          <fieldset className="text wow fadeInUp has-top-title">
-                            <input
-                              type="text"
-                              placeholder="Monthly HOA Fees"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Monthly HOA Fees</label>
-                          </fieldset>
-                          <fieldset
-                            className="text wow fadeInUp has-top-title"
-                            data-wow-delay="0.1s"
-                          >
-                            <input
-                              type="text"
-                              placeholder="PMI"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">PMI</label>
-                          </fieldset>
-                        </form>
-                      </div> */}
                         <div className="contact-info" id="contact">
                           <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
                             <h4 className="mb-0">Contact Information</h4>
-                            {/* <Link href="#" className="tf-button-green">
-                            View Listing
-                          </Link> */}
                           </div>
-                          {Object.keys(agent).length>0 && (
-                          <div className="person wow fadeInUp">
-                            <div className="image">
-                              <img src={agent.image} alt={item.name} />
-                            </div>
-                            <div className="content">
-                              <div className="name">
-                                <Link href="#">{agent.name}</Link>
+                          {Object.keys(agent).length > 0 && (
+                            <div className="person wow fadeInUp">
+                              <div className="image">
+                                <img src={agent.image} alt={agent.name} />
                               </div>
-                              <p>{agent.designation}</p>
-                              <p>{agent.description}</p>
+                              <div className="content">
+                                <div className="name">
+                                  <Link href="#">{agent.name}</Link>
+                                </div>
+                                <p>{agent.designation}</p>
+                                <p>{agent.description}</p>
+                              </div>
                             </div>
-                          </div>
                           )}
 
                           {/* Contact Enquiry Form */}
-                         
-                         
+
+
                         </div>
-                        {/* <div className="video">
-                        <h4 className="wow fadeInUp">Video</h4>
-                        <div className="video-wrap">
-                          <img src="/assets/images/image-box/video-2.jpg" alt="image" />
-                          <Link
-                            href="https://www.youtube.com/watch?v=MLpWrANjFbI"
-                            className="popup-youtube"
-                          >
-                            <div className="icon">
-                              <i className="flaticon-play" />
-                            </div>
-                          </Link>
-                        </div>
-                      </div> */}
+
                         <div className="map">
                           <h4 className="wow fadeInUp">Map</h4>
                           <div className="wrap-map-v1">
@@ -985,394 +659,7 @@ const DetailPage = () => {
                             />
                           </div>
                         </div>
-                        {/* <div className="tour">
-                        <h4 className="wow fadeInUp">360° Virtual Tour</h4>
-                        <div className="image">
-                          <img src="/assets/images/image-box/img-virtual-1.jpg" alt="image" />
-                        </div>
-                      </div> */}
-                        {/* <div className="page-views">
-                        <h4 className="wow fadeInUp">Property Views</h4>
-                        <div className="area-chart">
-                          <div id="line-chart-5" />
-                        </div>
-                      </div> */}
-                        {/* <div className="walk-score">
-                        <h4 className="wow fadeInUp">Walk Score</h4>
-                        <div className="wrap-walk-score">
-                          <div className="walk-score-item wow fadeInUp">
-                            <div className="icon">
-                              <i className="flaticon-walk" />
-                            </div>
-                            <div>
-                              <div className="title">Walk Score®</div>
-                              <p>96 / 100</p>
-                              <p>Walker's Paradise</p>
-                            </div>
-                          </div>
-                          <div
-                            className="walk-score-item wow fadeInUp"
-                            data-wow-delay="0.1s"
-                          >
-                            <div className="icon">
-                              <i className="flaticon-bike" />
-                            </div>
-                            <div>
-                              <div className="title">Bike Score®</div>
-                              <p>96 / 100</p>
-                              <p>Bikeable</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div> */}
-                        {/* <div className="nearby">
-                        <h4 className="wow fadeInUp">What's Nearby?</h4>
-                        <div className="widget-tabs style-2 type-small">
-                          <ul className="widget-menu-tab wow fadeInUp">
-                            <li className="item-title active">
-                              <span className="inner">Schools</span>
-                            </li>
-                            <li className="item-title">
-                              <span className="inner">Food</span>
-                            </li>
-                            <li className="item-title">
-                              <span className="inner">Health &amp; Medical</span>
-                            </li>
-                          </ul>
-                          <div className="widget-content-tab">
-                            <div className="widget-content-inner active">
-                              <div className="wrap-nearby">
-                                <div className="nearby-item wow fadeInUp">
-                                  <div className="number">
-                                    <h4>
-                                      9<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">Ps 95 Eastwood</div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="nearby-item wow fadeInUp">
-                                  <div className="number">
-                                    <h4>
-                                      5<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">
-                                      Is 238 Susan B Anthony
-                                    </div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="nearby-item wow fadeInUp">
-                                  <div className="number">
-                                    <h4>
-                                      3<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">
-                                      Cambria Heights Academy
-                                    </div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="widget-content-inner">
-                              <div className="wrap-nearby">
-                                <div className="nearby-item">
-                                  <div className="number">
-                                    <h4>
-                                      9<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">Ps 95 Eastwood</div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="nearby-item">
-                                  <div className="number">
-                                    <h4>
-                                      5<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">
-                                      Is 238 Susan B Anthony
-                                    </div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="nearby-item">
-                                  <div className="number">
-                                    <h4>
-                                      3<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">
-                                      Cambria Heights Academy
-                                    </div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="widget-content-inner">
-                              <div className="wrap-nearby">
-                                <div className="nearby-item">
-                                  <div className="number">
-                                    <h4>
-                                      9<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">Ps 95 Eastwood</div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="nearby-item">
-                                  <div className="number">
-                                    <h4>
-                                      5<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">
-                                      Is 238 Susan B Anthony
-                                    </div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="nearby-item">
-                                  <div className="number">
-                                    <h4>
-                                      3<span>/10</span>
-                                    </h4>
-                                  </div>
-                                  <div>
-                                    <div className="title">
-                                      Cambria Heights Academy
-                                    </div>
-                                    <div className="flex items-center gap15">
-                                      <p>
-                                        Grades: <span>K-5</span>
-                                      </p>
-                                      <p>
-                                        Distance: <span>0.3 mi</span>
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> */}
-                        {/* <div className="reviews-wrap">
-                        <div className="flex justify-between items-center mb-40 wow fadeInUp">
-                          <h4 className="mb-0">4 Reviews</h4>
-                          <Link href="#" className="tf-button-green">
-                            Leave a Review
-                          </Link>
-                        </div>
-                        <ul>
-                          <li className="wow fadeInUp">
-                            <div className="image">
-                              <img src="/assets/images/author/author-5.png" alt="image" />
-                            </div>
-                            <div className="content">
-                              <div className="ratings">
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                              </div>
-                              <div className="name">
-                                <Link href="#">Jane Cooper</Link>
-                              </div>
-                              <div className="time">April 06, 2024 at 7:55 pm</div>
-                              <p>
-                                Beautiful home, very picturesque and close to
-                                everything in jtree! A little warm for a hot weekend,
-                                but would love to come back during the cooler seasons!
-                              </p>
-                            </div>
-                          </li>
-                          <li className="wow fadeInUp">
-                            <div className="image">
-                              <img src="/assets/images/author/author-6.png" alt="image" />
-                            </div>
-                            <div className="content">
-                              <div className="ratings">
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                                <i className="flaticon-star-1" />
-                              </div>
-                              <div className="name">
-                                <Link href="#">Jane Cooper</Link>
-                              </div>
-                              <div className="time">April 06, 2024 at 7:55 pm</div>
-                              <p>
-                                Beautiful home, very picturesque and close to
-                                everything in jtree! A little warm for a hot weekend,
-                                but would love to come back during the cooler seasons!
-                              </p>
-                            </div>
-                          </li>
-                        </ul>
-                      </div> */}
-                        {/* <div className="leave-a-review">
-                        <h4 className="wow fadeInUp">Leave A Review</h4>
-                        <p className="wow fadeInUp">
-                          Your email address will not be published. Required fields
-                          are marked *
-                        </p>
-                        <div>
-                          <p className="wow fadeInUp">Your Rating *</p>
-                          <div className="ratings wow fadeInUp">
-                            <i className="flaticon-star-1" />
-                            <i className="flaticon-star-1" />
-                            <i className="flaticon-star-1" />
-                            <i className="flaticon-star-1" />
-                            <i className="flaticon-star-1" />
-                          </div>
-                        </div>
-                        <form className="form-comment">
-                          <fieldset className="message wow fadeInUp has-top-title">
-                            <textarea
-                              name="message"
-                              rows={4}
-                              placeholder="Your Comment"
-                              className=""
-                              tabIndex={2}
-                              aria-required="true"
-                              required=""
-                              defaultValue={"Lorem Ipsum"}
-                            />
-                            <label htmlFor="">Your Comment</label>
-                          </fieldset>
-                          <div className="cols">
-                            <fieldset className="name wow fadeInUp has-top-title">
-                              <input
-                                type="text"
-                                placeholder="Name"
-                                className=""
-                                name="text"
-                                tabIndex={2}
-                                defaultValue="Ali Tufan"
-                                aria-required="true"
-                                required=""
-                              />
-                              <label htmlFor="">Name</label>
-                            </fieldset>
-                            <fieldset className="email wow fadeInUp has-top-title">
-                              <input
-                                type="email"
-                                placeholder="Email"
-                                className=""
-                                name="email"
-                                tabIndex={2}
-                                defaultValue="themesflat@gmail.com"
-                                aria-required="true"
-                                required=""
-                              />
-                              <label htmlFor="">Email</label>
-                            </fieldset>
-                          </div>
-                          <fieldset className="website wow fadeInUp has-top-title">
-                            <input
-                              type="text"
-                              placeholder="Website"
-                              className=""
-                              name="text"
-                              tabIndex={2}
-                              defaultValue=""
-                              aria-required="true"
-                              required=""
-                            />
-                            <label htmlFor="">Website</label>
-                          </fieldset>
-                          <div className="checkbox-item wow fadeInUp">
-                            <label>
-                              <p>
-                                Save my name, email, and website in this browser for
-                                the next time I comment.
-                              </p>
-                              <input type="checkbox" />
-                              <span className="btn-checkbox" />
-                            </label>
-                          </div>
-                          <div className="button-submit wow fadeInUp">
-                            <button className="tf-button-primary" type="submit">
-                              Submit Review <i className="icon-arrow-right-add" />
-                            </button>
-                          </div>
-                        </form>
-                      </div> */}
+
                         {Object.keys(property).length > 0 ? (
                           property?.related_listings?.length > 0 ? (
                             <div className="smilar-homes">
@@ -1380,104 +667,81 @@ const DetailPage = () => {
                               <div className="row">
                                 {Object.keys(property).length > 0
                                   ? property.related_listings.map((item) => (
-                                    <div className="col-md-6">
+                                    <div className="col-xl-6" key={item.id}>
                                       <div className="box-dream has-border wow fadeInUp">
                                         <div className="image">
                                           <div className="list-tags">
-                                            <Link
-                                              href="#"
-                                              className="tags-item for-sell"
-                                            >
-                                              FOR RENT
-                                            </Link>
-                                            <Link
-                                              href="#"
-                                              className="tags-item featured"
-                                            >
-                                              FEATURED
-                                            </Link>
+                                            <div className="tags-item for-sell" style={{ backgroundColor: item.listing_type === "rent" ? "#124773" : "" }}>
+                                              {item.listing_status}
+                                            </div>
+                                            {item.is_featured && (
+                                              <div className="tags-item featured">
+                                                FEATURED
+                                              </div>
+                                            )}
                                           </div>
                                           <div className="button-heart">
                                             <i className="flaticon-heart-1" />
                                           </div>
-                                          <div className="swiper-container slider-box-dream arrow-style-1 pagination-style-1">
-                                            <div className="swiper-wrapper">
-                                              <div className="swiper-slide">
-                                                <div className="w-full">
-                                                  <img
-                                                    className="w-full"
-                                                    src="/assets/images/house/home-1.jpg"
-                                                    alt={item.title}
-                                                  />
+                                          <Swiper
+                                            className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
+                                            slidesPerView={1}
+                                            modules={[Pagination, A11y, Navigation]}
+                                            navigation
+                                            pagination={{ clickable: true }}
+                                          >
+                                            {item.gallery.map((g, i) => (
+                                              <SwiperSlide key={i}>
+                                                <div className="swiper-slide">
+                                                  <div className="">
+                                                    <img className="" src={g} alt={g} />
+                                                  </div>
                                                 </div>
-                                              </div>
-                                              <div className="swiper-slide">
-                                                <div className="w-full">
-                                                  <img
-                                                    className="w-full"
-                                                    src="/assets/images/house/home-2.jpg"
-                                                    alt={item.title}
-                                                  />
-                                                </div>
-                                              </div>
-                                              <div className="swiper-slide">
-                                                <div className="w-full">
-                                                  <img
-                                                    className="w-full"
-                                                    src="/assets/images/house/home-3.jpg"
-                                                    alt={item.title}
-                                                  />
-                                                </div>
-                                              </div>
-                                              <div className="swiper-slide">
-                                                <div className="w-full">
-                                                  <img
-                                                    className="w-full"
-                                                    src="/assets/images/house/home-4.jpg"
-                                                    alt={item.title}
-                                                  />
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div className="swiper-pagination box-dream-pagination" />
-                                            <div className="box-dream-next swiper-button-next" />
-                                            <div className="box-dream-prev swiper-button-prev" />
-                                          </div>
+                                              </SwiperSlide>
+                                            ))}
+                                          </Swiper>
                                         </div>
-                                        <div className="content">
-                                          <div className="head">
-                                            <div className="title">
-                                              <Link href="/property/property-single">
-                                                Home Pitt Street
-                                              </Link>
+                                        <div className="content"  >
+                                          <div style={{ minHeight: 120 }} >
+                                            <div className="head">
+                                              <div className="title"  >
+                                                <Link href={`/property/${item.slug}`}>
+                                                  {item.title}
+                                                </Link>
+                                              </div>
+                                              <div className="price">
+                                                ${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : null}
+                                              </div>
                                             </div>
-                                            <div className="price">
-                                              $815,000
+
+                                            <div className="location">
+                                              <div className="icon">
+                                                <i className="flaticon-location" />
+                                              </div>
+                                              <p style={{ fontSize: 13 }}>{item.address}</p>
                                             </div>
-                                          </div>
-                                          <div className="location">
-                                            <div className="icon">
-                                              <i className="flaticon-location" />
-                                            </div>
-                                            <p>
-                                              148-37 88th Ave, Jamaica, NY
-                                              11435
-                                            </p>
                                           </div>
                                           <div className="icon-box">
                                             <div className="item">
                                               <i className="flaticon-hotel" />
-                                              <p>4 Beds</p>
+                                              <p style={{ fontSize: 13, gap: 5 }} className="d-flex" >{item.bedrooms} <span className="" > Beds </span></p>
                                             </div>
                                             <div className="item">
                                               <i className="flaticon-bath-tub" />
-                                              <p>3 Baths</p>
+                                              <p style={{ fontSize: 13, gap: 5 }} className="d-flex" >{item.bathrooms} <span className="" > Baths</span></p>
                                             </div>
                                             <div className="item">
                                               <i className="flaticon-minus-front" />
-                                              <p>2660 Sqft</p>
+
+                                              {/* <p style={{fontSize:13}}>
+                                        {!isSquareMeter
+                                          ? item.size_mt + " Sq M"
+                                          : item.size + " Sq ft"}
+                                      </p> */}
+                                              <p style={{ fontSize: 13, gap: 5 }} className="d-flex" >{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                             </div>
                                           </div>
+
                                         </div>
                                       </div>
                                     </div>
@@ -1492,14 +756,14 @@ const DetailPage = () => {
                     <div className="col-xl-4">
                       <div className="property-single-sidebar po-sticky">
                         <div className="sidebar-item sidebar-request">
-                        <div className="contact-info" id="contact">
-                          <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
-                            {/* <h4 className="mb-0">Contact Information</h4> */}
-                            {/* <Link href="#" className="tf-button-green">
+                          <div className="contact-info" id="contact">
+                            <div className="flex items-center justify-between gap30 flex-wrap wow fadeInUp">
+                              {/* <h4 className="mb-0">Contact Information</h4> */}
+                              {/* <Link href="#" className="tf-button-green">
                             View Listing
                           </Link> */}
-                          </div>
-                          {/* <div className="person wow fadeInUp">
+                            </div>
+                            {/* <div className="person wow fadeInUp">
                             <div className="image">
                               <img src={agent.image} alt="image" />
                             </div>
@@ -1512,160 +776,160 @@ const DetailPage = () => {
                             </div>
                           </div> */}
 
-                          {/* Contact Enquiry Form */}
-                          <div className="title wow fadeInUp">
-                            Enquire About This Property
-                          </div>
-                          <form
-                            className="form-comment"
-                            onSubmit={handleSubmit}
-                          >
-                            <div className="cols">
-                              <fieldset className="name wow fadeInUp has-top-title">
-                                <input
-                                  type="text"
-                                  placeholder="Jhon Doe"
-                                  value={name}
-                                  onChange={(e) => {
-                                    setName(e.target.value); // Update the name state
-                                    setErrors((prevErrors) => ({
-                                      ...prevErrors,
-                                      name: "", // Reset the name error when the user starts typing
-                                    }));
-                                  }}
-                                  name="text"
-                                  tabIndex={2}
-                                  aria-required="true"
-                                  required=""
-                                />
-                                <label htmlFor="">Name</label>
-                                {errors?.name && (
-                                  <span className="error text-danger">
-                                    {errors?.name}
-                                  </span>
-                                )}
-                              </fieldset>
-                              <fieldset
-                                className="phone wow fadeInUp has-top-title"
-                                data-wow-delay="0.1s"
-                              >
-                                <input
-                                  type="number"
-                                  placeholder="+1 123 456 7890"
-                                  value={phone}
-                                  onChange={(e) => {
-                                    setPhone(e.target.value); // Update the name state
-                                    setErrors((prevErrors) => ({
-                                      ...prevErrors,
-                                      phone: "", // Reset the name error when the user starts typing
-                                    }));
-                                  }}
-                                  name="phone"
-                                  tabIndex={2}
-                                  aria-required="true"
-                                  required=""
-                                />
-                                <label htmlFor="">Phone</label>
-                                {errors?.phone && (
-                                  <span className="error text-danger">
-                                    {errors?.phone}
-                                  </span>
-                                )}
-                              </fieldset>
+                            {/* Contact Enquiry Form */}
+                            <div className="title wow fadeInUp">
+                              Enquire About This Property
                             </div>
-                           
-                            <fieldset className="email wow fadeInUp has-top-title mb-5 ">
+                            <form
+                              className="form-comment"
+                              onSubmit={handleSubmit}
+                            >
+                              <div className="cols">
+                                <fieldset className="name wow fadeInUp has-top-title">
                                   <input
-                                    type="email"
-                                    placeholder="Email"
-                                    value={email}
+                                    type="text"
+                                    placeholder="Jhon Doe"
+                                    value={name}
                                     onChange={(e) => {
-                                      setEmail(e.target.value); // Update the name state
+                                      setName(e.target.value); // Update the name state
                                       setErrors((prevErrors) => ({
                                         ...prevErrors,
-                                        email: "", // Reset the name error when the user starts typing
+                                        name: "", // Reset the name error when the user starts typing
                                       }));
                                     }}
-                                    name="email"
+                                    name="text"
                                     tabIndex={2}
                                     aria-required="true"
                                     required=""
                                   />
-                                  <label htmlFor="">Email</label>
-                                  {errors?.email && (
+                                  <label htmlFor="">Name</label>
+                                  {errors?.name && (
                                     <span className="error text-danger">
-                                      {errors?.email}
+                                      {errors?.name}
                                     </span>
                                   )}
                                 </fieldset>
-                            <fieldset className="message wow fadeInUp has-top-title">
-                              <textarea
-                                name="message"
-                                rows={4}
-                                placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                                className=""
-                                tabIndex={2}
-                                aria-required="true"
-                                required=""
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                              />
-                              <label htmlFor="">Message</label>
-                            </fieldset>
-                            <div className="checkbox-item wow fadeInUp">
-                              <label>
-                                <p>
-                                  By submitting this form I agree to
-                                  <span>Terms of Use</span>
-                                </p>
-                                <input
-                                  type="checkbox"
-                                  checked={consent}
-                                  onChange={(e) => setConsent(e.target.checked)}
-                                />
-                                <span className="btn-checkbox" />
-                              </label>
-                            </div>
-                            {error && (
-                              <div
-                                className={`checkbox-item wow fadeInUp ${error ? "" : "d-none"
-                                  }`}
-                              >
-                                <div
-                                  className={`alert alert-${errorType} fade show`}
-                                  role="alert"
+                                <fieldset
+                                  className="phone wow fadeInUp has-top-title"
+                                  data-wow-delay="0.1s"
                                 >
-                                  <strong
-                                    style={{ textTransform: "capitalize" }}
-                                  >
-                                    {errorType}
-                                  </strong>{" "}
-                                  {error}
-                                </div>
+                                  <input
+                                    type="number"
+                                    placeholder="+1 123 456 7890"
+                                    value={phone}
+                                    onChange={(e) => {
+                                      setPhone(e.target.value); // Update the name state
+                                      setErrors((prevErrors) => ({
+                                        ...prevErrors,
+                                        phone: "", // Reset the name error when the user starts typing
+                                      }));
+                                    }}
+                                    name="phone"
+                                    tabIndex={2}
+                                    aria-required="true"
+                                    required=""
+                                  />
+                                  <label htmlFor="">Phone</label>
+                                  {errors?.phone && (
+                                    <span className="error text-danger">
+                                      {errors?.phone}
+                                    </span>
+                                  )}
+                                </fieldset>
                               </div>
-                            )}
-                            <div className="button-submit wow fadeInUp">
-                              <button
-                                className={`tf-button-primary w-full ${!consent ? "disabled" : ""
-                                  }`}
-                                disabled={!consent || spin}
-                                type="submit"
-                              >
-                                {spin ? (
-                                  <>
-                                    <span className="spinner"></span> Request
-                                    Submitting...
-                                  </>
-                                ) : (
-                                  <>
-                                    Request Information
-                                    <i className="icon-arrow-right-add" />
-                                  </>
+
+                              <fieldset className="email wow fadeInUp has-top-title mb-5 ">
+                                <input
+                                  type="email"
+                                  placeholder="Email"
+                                  value={email}
+                                  onChange={(e) => {
+                                    setEmail(e.target.value); // Update the name state
+                                    setErrors((prevErrors) => ({
+                                      ...prevErrors,
+                                      email: "", // Reset the name error when the user starts typing
+                                    }));
+                                  }}
+                                  name="email"
+                                  tabIndex={2}
+                                  aria-required="true"
+                                  required=""
+                                />
+                                <label htmlFor="">Email</label>
+                                {errors?.email && (
+                                  <span className="error text-danger">
+                                    {errors?.email}
+                                  </span>
                                 )}
-                              </button>
-                            </div>
-                          </form>
-                        </div>
+                              </fieldset>
+                              <fieldset className="message wow fadeInUp has-top-title">
+                                <textarea
+                                  name="message"
+                                  rows={4}
+                                  placeholder="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                  className=""
+                                  tabIndex={2}
+                                  aria-required="true"
+                                  required=""
+                                  value={message}
+                                  onChange={(e) => setMessage(e.target.value)}
+                                />
+                                <label htmlFor="">Message</label>
+                              </fieldset>
+                              <div className="checkbox-item wow fadeInUp">
+                                <label>
+                                  <p>
+                                    By submitting this form I agree to
+                                    <span>Terms of Use</span>
+                                  </p>
+                                  <input
+                                    type="checkbox"
+                                    checked={consent}
+                                    onChange={(e) => setConsent(e.target.checked)}
+                                  />
+                                  <span className="btn-checkbox" />
+                                </label>
+                              </div>
+                              {error && (
+                                <div
+                                  className={`checkbox-item wow fadeInUp ${error ? "" : "d-none"
+                                    }`}
+                                >
+                                  <div
+                                    className={`alert alert-${errorType} fade show`}
+                                    role="alert"
+                                  >
+                                    <strong
+                                      style={{ textTransform: "capitalize" }}
+                                    >
+                                      {errorType}
+                                    </strong>{" "}
+                                    {error}
+                                  </div>
+                                </div>
+                              )}
+                              <div className="button-submit wow fadeInUp">
+                                <button
+                                  className={`tf-button-primary w-full ${!consent ? "disabled" : ""
+                                    }`}
+                                  disabled={!consent || spin}
+                                  type="submit"
+                                >
+                                  {spin ? (
+                                    <>
+                                      <span className="spinner"></span> Request
+                                      Submitting...
+                                    </>
+                                  ) : (
+                                    <>
+                                      Request Information
+                                      <i className="icon-arrow-right-add" />
+                                    </>
+                                  )}
+                                </button>
+                              </div>
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
