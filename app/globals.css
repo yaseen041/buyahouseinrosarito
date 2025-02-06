@@ -14,13 +14,19 @@
   font-family: inherit !important;
   font-size: 16px !important;
   line-height: 1.6 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .ck_editor_content img,
 .ck_editor_content .image  img {
   max-width: 100% !important;
   height: auto !important;
 }
-
+.ck_editor_content .media{
+  width: 100% !important;
+}
 .ck_editor_content .image a img {
   display: block !important;
   vertical-align: middle !important;
@@ -37,11 +43,20 @@
   justify-content: center !important;
 }
 
+.ck_editor_content .calc-table-container {
+ display: flex !important;
+ justify-content: center !important;
+ width: 100% !important;
+  
+}
+
 .ck_editor_content .table-container {
   width: 100% !important;
-  max-width: 900px !important;
+  /* max-width: 900px !important; */
   margin: auto !important;
   font-family: Arial, sans-serif;
+  text-align: center !important;
+  
 }
 
 /* Table Styling */
@@ -50,7 +65,8 @@
   border-collapse: collapse !important;
   margin-bottom: 0px !important;
   width: 100% !important;
-  max-width: 900px !important;
+  /* max-width: 700px !important; */
+ 
   
 }
 

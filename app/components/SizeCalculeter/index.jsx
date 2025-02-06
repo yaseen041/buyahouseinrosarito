@@ -7,6 +7,7 @@ const HomeSizeCalculator = () => {
     const [budget500, setBudget500] = useState("");
 
     return (
+        <div className="calc-table-container h-100 " >
         <div className=" table-container mt-4 h-100">
             {/* Section 1: Conversion from M² to Ft² */}
             <table className="table m-0 custom-table" style={{ height: "26.6%" }} >
@@ -151,6 +152,7 @@ const HomeSizeCalculator = () => {
                     </tr>
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

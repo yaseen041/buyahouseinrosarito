@@ -60,9 +60,7 @@ const BlogComponent = () => {
     } catch (err) {
       //   console.error("Failed to fetch data:", err);
       setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
