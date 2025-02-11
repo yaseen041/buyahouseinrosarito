@@ -4,10 +4,12 @@
 }
 
 .ck_editor_content * {
-  all: revert-layer ; 
+  all: revert  ; 
 }
 
-
+.ck_editor_content h2{
+  all:revert !important;
+}
 
 
 .ck_editor_content {

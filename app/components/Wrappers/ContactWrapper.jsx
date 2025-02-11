@@ -1,8 +1,6 @@
-"use client";
 import React from 'react';
-import dynamic from 'next/dynamic';
+import ContactComponent from '@/app/components/contact';
 
-const ContactComponent = dynamic(()=>import("@/app/components/contact"),{ssr:false})
 const ContactWrapper = () => {
     return (
         <>

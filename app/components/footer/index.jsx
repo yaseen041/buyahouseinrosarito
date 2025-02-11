@@ -9,6 +9,7 @@ const Footer = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState("");
   const [errorType, setErrorType] = useState("");
+  const [formBusy,setFormBusy] = useState(false)
   const getCities = async () => {
     try {
       const data = await api.Get(url.MOST_CITIES)
@@ -23,6 +24,7 @@ const Footer = () => {
 
   const submitNewLetter = async (e) => {
     e.preventDefault()
+    setFormBusy(true)
     try {
       const body = new FormData()
       body.append("email", email)
@@ -36,6 +38,7 @@ const Footer = () => {
         setTimeout(() => {
           setError("");
         }, 10000);
+       
       } else {
 
         setErrorType("error");
@@ -44,9 +47,11 @@ const Footer = () => {
           setError("");
         }, 10000);
       }
-      console.log(data.data)
+      setFormBusy(false)
+     
     } catch (error) {
       console.log(error)
+      setFormBusy(false)
     }
   }
 
@@ -106,7 +111,7 @@ const Footer = () => {
                 <fieldset className="email">
                   <input
                     type="email"
-                    placeholder="Your e-mail"
+                    placeholder="Enter your email"
                     className="style-1"
                     name="email"
                     tabIndex={2}
@@ -118,7 +123,7 @@ const Footer = () => {
                 </fieldset>
                 <div className="button-submit style-absolute-right">
                   <button className="tf-button-bg" type="submit">
-                    Send <i className="icon-arrow-right-add" />
+                    {formBusy?"Please wait...":  "Submit"} <i className="icon-arrow-right-add" />
                   </button>
                 </div>
               </form>

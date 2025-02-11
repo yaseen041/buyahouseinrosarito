@@ -11,6 +11,15 @@ const nextConfig = {
         destination: '/',
         permanent: true
       },
+     
+    ]
+  },
+  async rewrites(){
+    return[
+      {
+        source: "/:slug((?!blog).*)",
+        destination: "/blog/:slug*"
+      },
     ]
   },
   webpack(config) {

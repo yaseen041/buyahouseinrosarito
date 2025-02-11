@@ -1,12 +1,11 @@
-"use client";
 import React from 'react';
-import dynamic from 'next/dynamic';
 
-const BlogDetailComponent = dynamic(()=>import("@/app/components/blogDetail"),{ssr:false})
-const BlogDetailWrapper = () => {
+import BlogDetail from '@/app/components/blogDetail';
+
+const BlogDetailWrapper = ({slug}) => {
     return (
         <>
-            <BlogDetailComponent  />
+            <BlogDetail slug={slug}  />
         </>
     );
 };

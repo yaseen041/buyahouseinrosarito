@@ -66,7 +66,7 @@ const Header3 = () => {
             style={{ border: pathname === "/" ? "0px" : "" }}
           >
             <div id="site-logo " className=" d-none d-md-block" >
-              <Link href="/" rel="home">
+              <Link href="/" rel="home" shallow={true} prefetch={true} scroll={false} >
                 <img
                   className="d-block pt-2 pb-2"
                   id="logo-header"
@@ -77,7 +77,7 @@ const Header3 = () => {
               </Link>
             </div>
             <div id="site-logo" className="d-block d-md-none" >
-              <Link href="/" rel="home">
+              <Link href="/" rel="home" shallow={true} prefetch={true} scroll={false} >
                 <img
                   className="d-block pt-2 pb-2"
                   id="logo-header"
@@ -90,23 +90,23 @@ const Header3 = () => {
             <nav className="main-menu">
               <ul className="navigation">
                 <li className={pathname === "/" ? "current" : ""}>
-                  <Link href="/">Home</Link>
+                  <Link href="/" shallow={true} prefetch={true} scroll={false}  >Home</Link>
                 </li>
                 <li className={pathname === "/property" ? "current" : ""}>
-                  <Link href="/property">Property</Link>
+                  <Link href="/property" shallow={true} prefetch={true} scroll={false} >Property</Link>
                 </li>
                 <li className={pathname === "/about" ? "current" : ""}>
-                  <Link href="/about">About</Link>
+                  <Link href="/about" shallow={true} prefetch={true} scroll={false}  >About</Link>
                 </li>
 
                 <li className={pathname === "/blog" ? "current" : ""}>
-                  <Link href="/blog">Blog</Link>
+                  <Link href="/blog" shallow={true} prefetch={true} scroll={false}  >Blog</Link>
                 </li>
                 <li className={pathname === "/faq" ? "current" : ""}>
-                  <Link href="/faq">FAQ</Link>
+                  <Link href="/faq" shallow={true} prefetch={true} scroll={false}  >FAQ</Link>
                 </li>
                 <li className={pathname === "/contact" ? "current" : ""}>
-                  <Link href="/contact">Contact</Link>
+                  <Link href="/contact" shallow={true} prefetch={true} scroll={false}  >Contact</Link>
                 </li>
               </ul>
               {/* <div className="header-btn"> 

@@ -306,7 +306,7 @@ const DetailPage = () => {
                       <div className="content-wrap">
                         <div className="head-title wow fadeInUp">
                           <div>
-                            <h3>{property?.title}</h3>
+                            <h1>{property?.title}</h1>
                             <div className="location">
                               <div className="icon">
                                 <i className="flaticon-location" />
@@ -326,11 +326,11 @@ const DetailPage = () => {
 
                               {Object.keys(property).length > 0
                                 ?
-                                <div>
+                                <h2 className="price" >
                                   $
                                   {property?.price.toLocaleString()} {property?.listing_type === "rent" ? `/ ${property.rent_cycle}` : null}
 
-                                </div>
+                                </h2>
                                 : null}
                             </div>
                           </div>

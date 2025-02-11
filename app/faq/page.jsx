@@ -1,7 +1,7 @@
 import FaqWrapper from '../components/Wrappers/FaqWrapper';
 import { fetchSEOData } from './server';
 
-export const metadata = async () => {
+export async function generateMetadata() {
   // Fetch the SEO data
   const seoData = await fetchSEOData();
 

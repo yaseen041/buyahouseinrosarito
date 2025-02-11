@@ -16,16 +16,34 @@ import "swiper/css/pagination";
 import Link from "next/link";
 import CustomPagination from "../pagination";
 import Footer from "../footer";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Loader from "../loader/Loader";
 import Header3 from "../header3";
 import { useUnitContext } from "@/app/utils/UnitContext";
 import { api } from '@/app/utils/api';
 import { url } from '@/app/utils/urls';
 const PropertyComponent = ({
+  search
 }) => {
+  
   const { isSquareMeter, toggleUnit } = useUnitContext();
-
+  const {
+    status,
+    type,
+    city,
+    sort,
+    page,
+    community,
+    bedrooms,
+    bathrooms,
+    minarea,
+    maxarea,
+    minprice,
+    maxprice,
+    features,
+    title
+  } = search
+ 
   const [openFilter, setOpenFilter] = React.useState(false);
   const [openSelect, setOpenSelect] = React.useState({
     status: false,
@@ -42,12 +60,11 @@ const PropertyComponent = ({
     maxBath: false,
   });
   const toggleFilter = () => setOpenFilter(!openFilter);
-  const prevButtonRef = React.useRef(null);
-  const nextButtonRef = React.useRef(null);
+  const prevButtonRef = React.useRef(undefined);
+  const nextButtonRef = React.useRef(undefined);
   const dropdownRefs = React.useRef({});
-  const searchParams = useSearchParams();
   const router = useRouter();
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
   const [properties, setProperties] = React.useState([])
   const [types, setTypes] = React.useState([])
   const [agents, setAgents] = React.useState([])
@@ -71,34 +88,38 @@ const PropertyComponent = ({
   const [maxPrice, setMaxPrice] = React.useState("")
   const [minPrice, setMinPrice] = React.useState("")
   const [Keyword, setKeyword] = React.useState("")
-  const status = searchParams.get("status")
-  const type = searchParams.get("type")
-  const city = searchParams.get("city")
-  const sort = searchParams.get("sort")
-  const page = searchParams.get("page")
-  const community = searchParams.get("community")
-  const bedrooms = searchParams.get("bedrooms")
-  const bathrooms = searchParams.get("bathrooms")
-  const minarea = searchParams.get("minarea")
-  const maxarea = searchParams.get("maxarea")
-  const minprice = searchParams.get("minprice")
-  const maxprice = searchParams.get("maxprice")
-  const features = searchParams.get("features")
-  const title = searchParams.get("title")
+  const [query, setQuery] = React.useState({});
+  // const status = searchParams.get("status")
+  // const type = searchParams.get("type")
+  // const city = searchParams.get("city")
+  // const sort = searchParams.get("sort")
+  // const page = searchParams.get("page")
+  // const community = searchParams.get("community")
+  // const bedrooms = searchParams.get("bedrooms")
+  // const bathrooms = searchParams.get("bathrooms")
+  // const minarea = searchParams.get("minarea")
+  // const maxarea = searchParams.get("maxarea")
+  // const minprice = searchParams.get("minprice")
+  // const maxprice = searchParams.get("maxprice")
+  // const features = searchParams.get("features")
+  // const title = searchParams.get("title")
 
 
-  const handlePageChange = (page, offset) => {
+  const handlePageChange = (page) => {
+    const newPage = page.selected + 1;
+    setCurrentPage(newPage);
 
-    setCurrentPage(page.selected + 1);
-    const newParams = new URLSearchParams(searchParams.toString());
-    if (currentPage > 0) {
-      newParams.set("page", page.selected + 1)
-      router.push(`/property?${newParams.toString()}`)
-    } else {
-      newParams.delete("page")
-    }
+    setQuery((prevQuery) => {
+        const updatedQuery = { ...prevQuery, page: newPage }; 
+        const queryString = new URLSearchParams(updatedQuery).toString();
+        router.push(`/property?${queryString}`);
 
-  };
+        return updatedQuery;
+    });
+   setLoading(true)
+};
+
+console.log(query)
 
   const handleInputChange = (e) => {
     const name = e.target.name
@@ -234,260 +255,267 @@ const PropertyComponent = ({
   }, [])
 
 
-  // const getProprties = async () => {
-  //   try {
-  //     setLoading(true)
-  //     const body = new FormData()
-  //     if (page !== null) {
-  //       setCurrentPage(Number(page))
-  //     } else {
-  //       setCurrentPage(1)
-  //     }
-  //     if (status !== null) {
-  //       const filterStatus = filters.listing_status?.find((i) => i.title === status)
-  //       setSelectedStatus({ id: filterStatus.id, title: filterStatus.title })
-  //       body.append("listing_status", status !== null ? filterStatus.id : "")
-  //     }
-  //     if (type !== null && Object.keys(filters).length > 0) {
-  //       const filterType = filters?.types.find((i) => i.title === type)
-  //       setSelectedTypes({ id: filterType.id, title: filterType.title })
-  //       body.append("type_id", type !== null ? filterType.id : "")
-  //     }
-  //     if (city !== null) {
-  //       const filterCity = cities.find((i) => i.name === city)
-  //       setSelectedCity({ id: filterCity.id, title: filterCity.name })
-  //       body.append("city_id", city !== null ? filterCity.id : "")
-  //     }
-  //     if (sort !== null) {
-  //       const filterSort = filters.sorting.find((i) => i.title === sort)
-  //       setSelectedSorting({ id: filterSort.id, title: filterSort.title })
-  //       body.append("sorting", sort !== null ? filterSort.id : 1)
-  //     }
-  //     if (community !== null) {
-  //       const filterCommunity = communities.find((i) => i.title === community)
-  //       setSelectedCommunity({ id: filterCommunity.id, title: filterCommunity.title })
-  //       body.append("neighborhood_id", community !== null ? filterCommunity.id : "")
-  //     }
-  //     if (bedrooms !== null) {
-  //       const filterBedroom = filters.min_bed.find((i) => i.title === bedrooms)
-  //       setSelectedBed({ id: filterBedroom.id, title: filterBedroom.title })
-  //       body.append("min_bed", bedrooms !== null ? filterBedroom.id : "")
-  //     }
-  //     if (bathrooms !== null) {
-  //       const filterBathroom = filters.min_bath.find((i) => i.title === bathrooms)
-  //       setSelectedBath({ id: filterBathroom.id, title: filterBathroom.title })
-  //       body.append("min_bath", bathrooms !== null ? filterBathroom.id : "")
-  //     }
-
-  //     if (minarea !== null) {
-  //       setMinArea(minarea)
-  //       body.append("min_size", minarea !== null ? minarea : "")
-  //     }
-  //     if (maxarea !== null) {
-  //       setMaxArea(maxarea)
-  //       body.append("max_size", maxarea !== null ? maxarea : "")
-  //     }
-  //     if (minprice !== null) {
-  //       setMinPrice(minprice)
-  //       body.append("min_price", minprice !== null ? minprice : "")
-  //     }
-  //     if (maxprice !== null) {
-  //       setMaxPrice(maxprice)
-  //       body.append("max_price", maxprice !== null ? maxprice : "")
-  //     }
-  //     if (features !== null) {
-  //       const featureArry = features.split(",").map((i) => (i.trim()))
-  //       const getfeatures = Object.keys(filters?.features || {}).flatMap((category) =>
-  //         filters.features[category].filter((item) => featureArry.includes(item.title))
-  //       );
-  //       setSelectedFeatures(getfeatures)
-  //       const ids = getfeatures.map((i) => i.id)
-  //       body.append("features_id_array", JSON.stringify(ids))
-  //     }
-  //     if (title !== null) {
-  //       setKeyword(title)
-  //       body.append("title", title)
-  //     }
-
-
-  //     const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body)
-  //     if (data) {
-  //       setProperties(data.data.data)
-  //       setTotalData(data.data.total)
-  //     }
-  //     setLoading(false)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
   const getProperties = async () => {
     try {
-      setLoading(true);
-      const body = new FormData();     
-      setCurrentPage(page ? Number(page) : 1);      
-      const filtersMap = [
-        { key: "listing_status", source: filters.listing_status, value: status, setter: setSelectedStatus },
-        { key: "type_id", source: filters.types, value: type, setter: setSelectedTypes },
-        { key: "city_id", source: cities, value: city, setter: setSelectedCity },
-        { key: "sorting", source: filters.sorting, value: sort, setter: setSelectedSorting, defaultValue: 1 },
-        { key: "neighborhood_id", source: communities, value: community, setter: setSelectedCommunity },
-        { key: "min_bed", source: filters.min_bed, value: bedrooms, setter: setSelectedBed },
-        { key: "min_bath", source: filters.min_bath, value: bathrooms, setter: setSelectedBath }
-      ];
-      
-      filtersMap.forEach(({ key, source, value, setter, defaultValue = "" }) => {
-        if (value !== null) {
-          const filterItem = source?.find((i) => i.title === value);
-          if (filterItem) {
-            setter({ id: filterItem.id, title: filterItem.title });
-            body.append(key, filterItem.id);
-          } else {
-            body.append(key, defaultValue);
-          }
-        }
-      });
-      
-      [
-        { key: "min_size", value: minarea, setter: setMinArea },
-        { key: "max_size", value: maxarea, setter: setMaxArea },
-        { key: "min_price", value: minprice, setter: setMinPrice },
-        { key: "max_price", value: maxprice, setter: setMaxPrice },
-        { key: "title", value: title, setter: setKeyword }
-      ].forEach(({ key, value, setter }) => {
-        if (value !== null) {
-          setter(value);
-          body.append(key, value);
-        }
-      });
-      
-      if (features !== null) {
-        const featureArray = features.split(",").map((i) => i.trim());
-        const selectedFeatures = Object.values(filters?.features || {}).flatMap((category) =>
-          category.filter((item) => featureArray.includes(item.title))
+      setLoading(true)
+      const body = new FormData()
+      if (page !== undefined) {
+        setCurrentPage(Number(page))
+        setQuery((prev)=>({...prev,page:Number(page)}))
+      } else {
+        setCurrentPage(1)
+      }
+      if (status !== undefined) {
+        const filterStatus = filters.listing_status?.find((i) => i.title === status)
+        setSelectedStatus({ id: filterStatus.id, title: filterStatus.title })
+        setQuery((prev)=>({...prev,status:filterStatus.title}))
+        body.append("listing_status", status !== undefined ? filterStatus.id : "")
+      }
+      if (type !== undefined && Object.keys(filters).length > 0) {
+        const filterType = filters?.types.find((i) => i.title === type)
+        setSelectedTypes({ id: filterType.id, title: filterType.title })
+        setQuery((prev)=>({...prev,type:filterType.title}))
+        body.append("type_id", type !== undefined ? filterType.id : "")
+      }
+      if (city !== undefined) {
+        const filterCity = cities.find((i) => i.name === city)
+        setSelectedCity({ id: filterCity.id, title: filterCity.name })
+        setQuery((prev)=>({...prev,city:filterCity.name}))
+        body.append("city_id", city !== undefined ? filterCity.id : "")
+
+      }
+      if (sort !== undefined) {
+        const filterSort = filters.sorting.find((i) => i.title === sort)
+        setSelectedSorting({ id: filterSort.id, title: filterSort.title })
+        setQuery((prev)=>({...prev,sort:filterSort.title}))
+        body.append("sorting", sort !== undefined ? filterSort.id : 1)
+      }
+      if (community !== undefined) {
+        const filterCommunity = communities.find((i) => i.title === community)
+        setSelectedCommunity({ id: filterCommunity.id, title: filterCommunity.title })
+        setQuery((prev)=>({...prev,community:filterCommunity.title}))
+        body.append("neighborhood_id", community !== undefined ? filterCommunity.id : "")
+      }
+      if (bedrooms !== undefined) {
+        const filterBedroom = filters.min_bed.find((i) => i.title === bedrooms)
+        setSelectedBed({ id: filterBedroom.id, title: filterBedroom.title })
+        setQuery((prev)=>({...prev,bedrooms:filterBedroom.title}))
+        body.append("min_bed", bedrooms !== undefined ? filterBedroom.id : "")
+      }
+      if (bathrooms !== undefined) {
+        const filterBathroom = filters.min_bath.find((i) => i.title === bathrooms)
+        setSelectedBath({ id: filterBathroom.id, title: filterBathroom.title })
+        setQuery((prev)=>({...prev,bathrooms:filterBathroom.title}))
+        body.append("min_bath", bathrooms !== undefined ? filterBathroom.id : "")
+      }
+
+      if (minarea !== undefined) {
+        setMinArea(minarea)
+        setQuery((prev)=>({...prev,minarea:minarea}))
+        body.append("min_size", minarea !== undefined ? minarea : "")
+      }
+      if (maxarea !== undefined) {
+        setMaxArea(maxarea)
+        setQuery((prev)=>({...prev,maxarea:maxarea}))
+        body.append("max_size", maxarea !== undefined ? maxarea : "")
+      }
+      if (minprice !== undefined) {
+        setMinPrice(minprice)
+        setQuery((prev)=>({...prev,minprice:minprice}))
+        body.append("min_price", minprice !== undefined ? minprice : "")
+      }
+      if (maxprice !== undefined) {
+        setMaxPrice(maxprice)
+        setQuery((prev)=>({...prev,maxprice:maxprice}))
+        body.append("max_price", maxprice !== undefined ? maxprice : "")
+      }
+      if (features !== undefined) {
+        const featureArry = features.split(",").map((i) => (i.trim()))
+        const getfeatures = Object.keys(filters?.features || {}).flatMap((category) =>
+          filters.features[category].filter((item) => featureArry.includes(item.title))
         );
-        setSelectedFeatures(selectedFeatures);
-        body.append("features_id_array", JSON.stringify(selectedFeatures.map((i) => i.id)));
+        setSelectedFeatures(getfeatures)
+        setQuery((prev)=>({...prev,features:getfeatures.map(i => i.title).join(",")}))
+        const ids = getfeatures.map((i) => i.id)
+        body.append("features_id_array", JSON.stringify(ids))
       }
-      
-      const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body);
+      if (title !== undefined) {
+        setKeyword(title)
+        body.append("title", title)
+      }
+
+
+      const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body)
       if (data) {
-        setProperties(data.data.data);
-        setTotalData(data.data.total);
+        setProperties(data.data.data)
+        setTotalData(data.data.total)
       }
+      setLoading(false)
     } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
+      console.log(error)
     }
-  };
+  }
+  // const getProperties = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const body = new FormData();
+  //     setCurrentPage(page ? Number(page) : 1);
+  //     const filtersMap = [
+  //       { key: "listing_status", source: filters.listing_status, value: status, setter: setSelectedStatus },
+  //       { key: "type_id", source: filters.types, value: type, setter: setSelectedTypes },
+  //       { key: "city_id", source: cities, value: city, setter: setSelectedCity },
+  //       { key: "sorting", source: filters.sorting, value: sort, setter: setSelectedSorting, defaultValue: 1 },
+  //       { key: "neighborhood_id", source: communities, value: community, setter: setSelectedCommunity },
+  //       { key: "min_bed", source: filters.min_bed, value: bedrooms, setter: setSelectedBed },
+  //       { key: "min_bath", source: filters.min_bath, value: bathrooms, setter: setSelectedBath }
+  //     ];
+
+  //     filtersMap.forEach(({ key, source, value, setter, defaultValue = "" }) => {
+  //       if (value !== undefined) {
+  //         const filterItem = source?.find((i) => i.title === value);
+  //         if (filterItem) {
+  //           setter({ id: filterItem.id, title: filterItem.title });
+  //           body.append(key, filterItem.id);
+  //         } else {
+  //           body.append(key, defaultValue);
+  //         }
+  //       }
+  //     });
+
+  //     [
+  //       { key: "min_size", value: minarea, setter: setMinArea },
+  //       { key: "max_size", value: maxarea, setter: setMaxArea },
+  //       { key: "min_price", value: minprice, setter: setMinPrice },
+  //       { key: "max_price", value: maxprice, setter: setMaxPrice },
+  //       { key: "title", value: title, setter: setKeyword }
+  //     ].forEach(({ key, value, setter }) => {
+  //       if (value !== undefined) {
+  //         setter(value);
+  //         body.append(key, value);
+  //       }
+  //     });
+
+  //     if (features !== undefined) {
+  //       const featureArray = features.split(",").map((i) => i.trim());
+  //       const selectedFeatures = Object.values(filters?.features || {}).flatMap((category) =>
+  //         category.filter((item) => featureArray.includes(item.title))
+  //       );
+  //       setSelectedFeatures(selectedFeatures);
+  //       body.append("features_id_array", JSON.stringify(selectedFeatures.map((i) => i.id)));
+  //     }
+
+  //     const data = await api.Post(`${url.PROPERTIES}?page=${currentPage}`, body);
+  //     if (data) {
+  //       setProperties(data.data.data);
+  //       setTotalData(data.data.total);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   React.useEffect(() => {
     getProperties()
-  }, [filters, status, type,page, sort, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title])
+  }, [filters, status, type, sort, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title,page])
 
   // const handleSearch = (e) => {
-  //   e.preventDefault()
+  //   e.preventDefault();
+  
+  //   // Create a new query object
+   
+  
+  //   if (page !== undefined) {
+  //     setCurrentPage(1);
+  //   }
+  
+  //   if (selectedstatus.id !== 0) query.status = selectedstatus.title;
+  //   if (selectedTypes.id !== 0) query.type = selectedTypes.title;
+  //   if (selectedCity.id !== 0) query.city = selectedCity.title;
+  //   if (selectedCommunity.id !== 0) query.community = selectedCommunity.title;
+  //   if (selectedBed.id !== 0) query.bedrooms = selectedBed.title;
+  //   if (selectedBath.id !== 0) query.bathrooms = selectedBath.title;
+  //   if (minArea.length > 0) query.minarea = minArea;
+  //   if (maxArea.length > 0) query.maxarea = maxArea;
+  //   if (minPrice.length > 0) query.minprice = minPrice;
+  //   if (maxPrice.length > 0) query.maxprice = maxPrice;
+  //   if (selectedFeatures.length > 0) {
+  //     query.features = selectedFeatures.map((i) => i.title).join(",");
+  //   }
+  //   if (Keyword.length > 0) query.title = Keyword;
+  
+  //   // Convert query object to a string
+  //   const queryString = new URLSearchParams(query).toString();
+  
+  //   // Push new URL without modifying searchParams.toString()
+  //   router.push(`/property?${queryString}`);
+  // };
+  
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
 
   //   const newParams = new URLSearchParams(searchParams.toString());
-  //   if (page !== null) {
-  //     setCurrentPage(1)
-  //     newParams.delete("page")
-  //   }
-  //   if (selectedstatus.id !== 0) {
-  //     newParams.set("status", selectedstatus.title)
-  //   } else {
-  //     newParams.delete("status")
-  //   }
-  //   if (selectedTypes.id !== 0) {
-  //     newParams.set("type", selectedTypes.title)
-  //   } else {
-  //     newParams.delete("type")
-  //   }
-  //   if (selectedCity.id !== 0) {
-  //     newParams.set("city", selectedCity.title)
-  //   } else {
-  //     newParams.delete("city")
-  //   }
-  //   if (selectedCommunity.id !== 0) {
-  //     newParams.set("community", selectedCommunity.title)
-  //   } else {
-  //     newParams.delete("community")
-  //   }
-  //   if (selectedBed.id !== 0) {
-  //     newParams.set("bedrooms", selectedBed.title)
-  //   } else {
-  //     newParams.delete("bedrooms")
-  //   }
-  //   if (selectedBath.id !== 0) {
-  //     newParams.set("bathrooms", selectedBath.title)
-  //   } else {
-  //     newParams.delete("bathrooms")
-  //   }
-  //   if (minArea.length > 0) {
-  //     newParams.set("minarea", minArea)
-  //   } else {
-  //     newParams.delete("minarea")
-  //   }
-  //   if (maxArea.length > 0) {
-  //     newParams.set("maxarea", maxArea)
-  //   } else {
-  //     newParams.delete("maxarea")
-  //   }
-  //   if (minPrice.length > 0) {
-  //     newParams.set("minprice", minPrice)
-  //   } else {
-  //     newParams.delete("minprice")
-  //   }
-  //   if (maxPrice.length > 0) {
-  //     newParams.set("maxprice", maxPrice)
-  //   } else {
-  //     newParams.delete("maxprice")
-  //   }
-  //   if (selectedFeatures.length > 0) {
-  //     const feature = selectedFeatures.map((i) => i.title)
-  //     newParams.set("features", feature)
-  //   } else {
-  //     newParams.delete("features")
-  //   }
-  //   if (Keyword.length > 0) {
-  //     newParams.set("title", Keyword)
-  //   } else {
-  //     newParams.delete("title")
-  //   }
-  //   router.push(`/property?${newParams.toString()}`)
-  // }
+  //   setCurrentPage(1);
+  //   newParams.delete("page");
+
+  //   const filters = [
+  //     { key: "status", value: selectedstatus.id !== 0 ? selectedstatus.title : "" },
+  //     { key: "type", value: selectedTypes.id !== 0 ? selectedTypes.title : "" },
+  //     { key: "city", value: selectedCity.id !== 0 ? selectedCity.title : "" },
+  //     { key: "community", value: selectedCommunity.id !== 0 ? selectedCommunity.title : "" },
+  //     { key: "bedrooms", value: selectedBed.id !== 0 ? selectedBed.title : "" },
+  //     { key: "bathrooms", value: selectedBath.id !== 0 ? selectedBath.title : "" },
+  //     { key: "minarea", value: minArea.length > 0 ? minArea : "" },
+  //     { key: "maxarea", value: maxArea.length > 0 ? maxArea : "" },
+  //     { key: "minprice", value: minPrice.length > 0 ? minPrice : "" },
+  //     { key: "maxprice", value: maxPrice.length > 0 ? maxPrice : "" },
+  //     { key: "features", value: selectedFeatures.length > 0 ? selectedFeatures.map(i => i.title).join(",") : "" },
+  //     { key: "title", value: Keyword.length > 0 ? Keyword : "" }
+  //   ];
+
+  //   filters.forEach(({ key, value }) => {
+  //     if (value) {
+  //       newParams.set(key, value);
+  //     } else {
+  //       newParams.delete(key);
+  //     }
+  //   });
+
+  //   router.push(`/property?${newParams.toString()}`);
+  // };
   const handleSearch = (e) => {
     e.preventDefault();
-  
-    const newParams = new URLSearchParams(searchParams.toString());
-    setCurrentPage(1);
-    newParams.delete("page");
-  
-    const filters = [
-      { key: "status", value: selectedstatus.id !== 0 ? selectedstatus.title : "" },
-      { key: "type", value: selectedTypes.id !== 0 ? selectedTypes.title : "" },
-      { key: "city", value: selectedCity.id !== 0 ? selectedCity.title : "" },
-      { key: "community", value: selectedCommunity.id !== 0 ? selectedCommunity.title : "" },
-      { key: "bedrooms", value: selectedBed.id !== 0 ? selectedBed.title : "" },
-      { key: "bathrooms", value: selectedBath.id !== 0 ? selectedBath.title : "" },
-      { key: "minarea", value: minArea.length > 0 ? minArea : "" },
-      { key: "maxarea", value: maxArea.length > 0 ? maxArea : "" },
-      { key: "minprice", value: minPrice.length > 0 ? minPrice : "" },
-      { key: "maxprice", value: maxPrice.length > 0 ? maxPrice : "" },
-      { key: "features", value: selectedFeatures.length > 0 ? selectedFeatures.map(i => i.title).join(",") : "" },
-      { key: "title", value: Keyword.length > 0 ? Keyword : "" }
-    ];
-  
-    filters.forEach(({ key, value }) => {
-      if (value) {
-        newParams.set(key, value);
-      } else {
-        newParams.delete(key);
-      }
+    setLoading(true)
+    setCurrentPage(1); // Reset to first page on search
+
+    const updatedQuery = {
+        status: selectedstatus.id !== 0 ? selectedstatus.title : undefined,
+        type: selectedTypes.id !== 0 ? selectedTypes.title : undefined,
+        city: selectedCity.id !== 0 ? selectedCity.title : undefined,
+        community: selectedCommunity.id !== 0 ? selectedCommunity.title : undefined,
+        bedrooms: selectedBed.id !== 0 ? selectedBed.title : undefined,
+        bathrooms: selectedBath.id !== 0 ? selectedBath.title : undefined,
+        minarea: minArea.length > 0 ? minArea : undefined,
+        maxarea: maxArea.length > 0 ? maxArea : undefined,
+        minprice: minPrice.length > 0 ? minPrice : undefined,
+        maxprice: maxPrice.length > 0 ? maxPrice : undefined,
+        features: selectedFeatures.length > 0 ? selectedFeatures.map(i => i.title).join(",") : undefined,
+        title: Keyword.length > 0 ? Keyword : undefined,
+        page: 1, // Reset page to 1 when searching
+    };
+
+    // Remove undefined values from query
+    Object.keys(updatedQuery).forEach((key) => {
+        if (updatedQuery[key] === undefined) {
+            delete updatedQuery[key];
+        }
     });
-  
-    router.push(`/property?${newParams.toString()}`);
-  };
-  
+
+    setQuery(updatedQuery);
+    const queryString = new URLSearchParams(updatedQuery).toString();
+    router.push(`/property?${queryString}`);
+};
+
   const handleOpenSelect = (name) => {
     setOpenSelect((prev) => ({
       status: name === "status" ? !prev.status : false,
@@ -538,7 +566,7 @@ const PropertyComponent = ({
     handleOpenSelect(name);
   };
 
-  const handleClearSearch = (e)=>{
+  const handleClearSearch = (e) => {
     e.preventDefault()
     setSelectedStatus({ id: 0, title: "All Status" });
     setSelectedTypes({ id: 0, title: "All types" });
@@ -574,9 +602,9 @@ const PropertyComponent = ({
                 <div className="row">
                   <div className="col-12">
                     <div className="content">
-                      <h2 className="wow fadeInUp">
+                      <h1 className="wow fadeInUp">
                         Real Estate &amp; Homes For Sale
-                      </h2>
+                      </h1>
                       <ul className="breadcrumbs wow fadeInUp">
                         <li>
                           <Link href="index.html">Home</Link>
@@ -782,16 +810,16 @@ const PropertyComponent = ({
                                   id="a1"
                                 >
                                   <div  >
-                                   
+
                                     <div className="d-flex justify-content-end mb-4 " >
-                                    <div className="group-form ">
-                                      <div className="button-submit">
-                                        <button className="d-flex align-items-center" onClick={handleClearSearch} style={{padding: "12px 19px"}} >
-                                        <i className="flaticon-close mx-2" />
-                                          Clear Search
-                                        </button>
+                                      <div className="group-form ">
+                                        <div className="button-submit">
+                                          <button className="d-flex align-items-center" onClick={handleClearSearch} style={{ padding: "12px 19px" }} >
+                                            <i className="flaticon-close mx-2" />
+                                            Clear Search
+                                          </button>
+                                        </div>
                                       </div>
-                                    </div>
                                     </div>
                                     <div className="grid-4-cols mb-20">
                                       <div className="">
@@ -852,7 +880,7 @@ const PropertyComponent = ({
                                                   </li>
                                                 )
                                               )
-                                              : null}
+                                              : undefined}
                                           </ul>
                                         </div>
                                       </div>
@@ -962,7 +990,7 @@ const PropertyComponent = ({
                                                   {item.title}
                                                 </li>
                                               ))
-                                              : null}
+                                              : undefined}
                                           </ul>
                                         </div>
                                       </div>
@@ -1013,7 +1041,7 @@ const PropertyComponent = ({
                                                   {item.title}
                                                 </li>
                                               ))
-                                              : null}
+                                              : undefined}
                                           </ul>
                                         </div>
                                       </div>
@@ -1166,7 +1194,7 @@ const PropertyComponent = ({
                                             </li>
                                           )
                                         )
-                                        : null}
+                                        : undefined}
                                     </ul>
                                   </div>
                                 </div>
@@ -1195,8 +1223,8 @@ const PropertyComponent = ({
                   <div className="col-lg-8">
                     <div className="top">
                       <div className="sub">
-                        <p className="wow fadeInUp">
-                          {totalData} results
+                        <p className="wow fadeInUp" style={{fontSize: 20,fontWeight: "bold",marginLeft: 10}} >
+                          {totalData} Properties Found
                         </p>
                         <div
                           className="sort-wrap wow fadeInUp"
@@ -1222,19 +1250,22 @@ const PropertyComponent = ({
                                     className="option"
                                     onClick={() => {
                                       handleSorting(sort.id, sort.title);
-                                      const newParams = new URLSearchParams(
-                                        searchParams.toString()
-                                      );
-                                      newParams.set("sort", sort.title);
-                                      router.push(
-                                        `/property?${newParams.toString()}`
-                                      );
+                                      setLoading(true)
+                                      setQuery((prev)=>{
+                                        const updateQuery = {...prev,sort:sort.title,page:1}
+                                     
+                                        const queryString = new URLSearchParams(updateQuery).toString();
+                                        router.push(
+                                          `/property?${queryString}`
+                                        );
+                                        return updateQuery
+                                      })
                                     }}
                                   >
                                     {sort.title}
                                   </li>
                                 ))
-                                : null}
+                                : undefined}
                             </ul>
                           </div>
                         </div>
@@ -1260,9 +1291,9 @@ const PropertyComponent = ({
                                       </div>
                                     )}
                                   </div>
-                                  <div className="button-heart">
+                                  {/* <div className="button-heart">
                                     <i className="flaticon-heart-1" />
-                                  </div>
+                                  </div> */}
                                   <Swiper
                                     className="swiper-container slider-box-dream arrow-style-1 pagination-style-1"
                                     slidesPerView={1}
@@ -1284,13 +1315,13 @@ const PropertyComponent = ({
                                 <div className="content"  >
                                   <div style={{ minHeight: 120 }} >
                                     <div className="head">
-                                      <div className="title"  >
+                                      <h3 className="title"  >
                                         <Link href={`/property/${item.slug}`}>
                                           {item.title}
                                         </Link>
-                                      </div>
+                                      </h3>
                                       <div className="price">
-                                        ${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : null}
+                                        ${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : undefined}
                                       </div>
                                     </div>
 
@@ -1304,11 +1335,11 @@ const PropertyComponent = ({
                                   <div className="icon-box">
                                     <div className="item">
                                       <i className="flaticon-hotel" />
-                                      <p style={{ fontSize: 13,gap:5 }} className="d-flex" >{item.bedrooms} <span className="" > Beds </span></p>
+                                      <p style={{ fontSize: 13, gap: 5 }} className="d-flex" >{item.bedrooms} <span className="" > Beds </span></p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-bath-tub" />
-                                      <p style={{ fontSize: 13,gap:5 }} className="d-flex" >{item.bathrooms} <span className="" > Baths</span></p>
+                                      <p style={{ fontSize: 13, gap: 5 }} className="d-flex" >{item.bathrooms} <span className="" > Baths</span></p>
                                     </div>
                                     <div className="item">
                                       <i className="flaticon-minus-front" />
@@ -1318,7 +1349,7 @@ const PropertyComponent = ({
                                           ? item.size_mt + " Sq M"
                                           : item.size + " Sq ft"}
                                       </p> */}
-                                      <p style={{ fontSize: 13,gap:5 }} className="d-flex" >{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
+                                      <p style={{ fontSize: 13, gap: 5 }} className="d-flex" >{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                     </div>
                                   </div>
 
@@ -1343,34 +1374,43 @@ const PropertyComponent = ({
                   <div className="col-lg-4">
                     <div className="sidebar">
                       <div className="sidebar-item sidebar-categories no-bg">
-                        <div className="sidebar-title">Property Types</div>
+                        <h2 className="sidebar-title">
+                          Property Types
+                        </h2>
                         <ul>
                           {types.map((item) => (
                             <li
                               key={item.id}
                               className={` ${selectedTypes.id === item.id ? "active" : ""
                                 } `}
-                              onClick={() => {
-                                handleTypes(item.id, item.title);
-                                const newParams = new URLSearchParams(
-                                  searchParams.toString()
-                                );
-                                if (page !== null) {
-                                  newParams.delete("page")
-                                }
-                                newParams.set("type", item.title);
-                                router.push(
-                                  `/property?${newParams.toString()}`
-                                );
-                              }}
+                             
                             >
-                              <Link href="#">{item.title} </Link>
+                              <button 
+                               onClick={() => {
+                                handleTypes(item.id, item.title);
+                                setQuery((prev)=>{
+                                  const updateQuery = {...prev,type:item.title}
+                               
+                                  const queryString = new URLSearchParams(updateQuery).toString();
+                                  router.push(
+                                    `/property?${queryString}`
+                                  );
+                                  return updateQuery
+                                })
+                               
+                               
+                               
+                               
+                              }}
+                              
+                              
+                              href="#">{item.title} </button>
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div className="sidebar-item sidebar-categories no-bg">
-                        <div className="sidebar-title">Communities</div>
+                        <h2 className="sidebar-title">Communities</h2>
                         <ul>
                           {filterdCommunity.map((item) => (
                             <li
@@ -1379,26 +1419,26 @@ const PropertyComponent = ({
                                 } `}
                               onClick={() => {
                                 handleCommunity(item.id, item.title);
-                                const newParams = new URLSearchParams(
-                                  searchParams.toString()
-                                );
-                                if (page !== null) {
-                                  newParams.delete("page")
-                                }
-                                newParams.set("community", item.title);
-                                router.push(
-                                  `/property?${newParams.toString()}`
-                                );
+                                setLoading(true)
+                                setQuery((prev)=>{
+                                  const updateQuery = {...prev,community:item.title,page:1}
+                               
+                                  const queryString = new URLSearchParams(updateQuery).toString();
+                                  router.push(
+                                    `/property?${queryString}`
+                                  );
+                                  return updateQuery
+                                })
                               }}
                             >
-                              <Link href="#">{item.title}</Link>
+                              <button href="#">{item.title}</button>
                             </li>
                           ))}
                         </ul>
                       </div>
 
                       <div className="sidebar-item sidebar-agents-1 no-bg">
-                        <div className="sidebar-title">Agents</div>
+                        <h2 className="sidebar-title">Agents</h2>
                         <ul>
                           {agents.map((item) => (
                             <li key={item.id}>
@@ -1407,7 +1447,7 @@ const PropertyComponent = ({
                               </div>
                               <div className="content">
                                 <div className="name">
-                                  <Link href="#">{item.name}</Link>
+                                  {item.name}
                                 </div>
                                 <p>{item.email}</p>
                                 <p>{item.designation}</p>

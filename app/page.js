@@ -1,23 +1,23 @@
 
-import dynamic from 'next/dynamic';
-const HomePage = dynamic(() => import("@/app/home/page"), { ssr: true })
-import { fetchSEOData } from './home/server';
 
-export const metadata = async () => {
+
+import { fetchSEOData } from './home/server';
+import HomeWrapper from './components/Wrappers/HomeWrapper';
+export async function generateMetadata() {
   // Fetch the SEO data
   const seoData = await fetchSEOData();
 
   return {
-    title: seoData.title || 'Default Title', // Use a fallback if necessary
+    title: seoData.title || 'Default Title',
     description: seoData.description || 'Default Description',
     keywords: seoData.keywords || 'Default Keywords',
     openGraph: {
       title: seoData.title || 'Default FB Title',
       description: seoData.description || 'Default FB Description',
-      url: 'https://buyhomeinrosarito.com/home', // Update if necessary
+      url: 'https://buyhomeinrosarito.com', 
       images: [
         {
-          url: seoData.image, // Use the image URL
+          url: seoData.image, 
           width: 1200,
           height: 630,
           alt: seoData.fb_title || 'Default Image Alt Text',
@@ -34,12 +34,11 @@ export const metadata = async () => {
 };
 
 
-export default function Home() {
-  return (
-    <>
-    <HomePage />
-   
+export default async function Home() {
+  
+    
+    return (    
+                <HomeWrapper   />
 
-    </>
-  );
+    );
 }

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { use, useEffect } from 'react';
 import Footer from '../footer';
 import CustomScript from '@/app/scripts';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,12 +14,19 @@ import "swiper/css/autoplay"
 import Link from 'next/link';
 import VideoComponent from '../video';
 import Header3 from '../header3';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import HomeSizeCalculator from '../SizeCalculeter';
 import Temperatures from '../temp';
 import RosaritoComparisonTable from '../comparison';
+import useSWR from "swr";
+import { api } from '@/app/utils/api';
+import { url } from '@/app/utils/urls';
 
-const HomeComponent = ({ community, types, filters, BestDeals, cities, recentForRent, recentForSale }) => {
+
+
+const HomeComponent = () => {
+
+
     const [openFilter, setOpenFilter] = React.useState(false)
     const toggleFilter = () => setOpenFilter(!openFilter)
     const [selectedFeatures, setSelectedFeatures] = React.useState([])
@@ -35,7 +42,17 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
     const [maxPrice, setMaxPrice] = React.useState("")
     const [Keyword, setKeyword] = React.useState("")
     const swiperRef = React.useRef(null);
-    const searchParams = useSearchParams();
+    const [data, setData] = React.useState({
+        types: [],
+        cities: [],
+        recentForRent: [],
+        recentForSale: [],
+        community: [],
+        filters: [],
+        BestDeals: [],
+    });
+
+    const [query, setQuery] = React.useState({});
     const router = useRouter();
     const handleInputChange = (e) => {
         const name = e.target.name
@@ -52,6 +69,48 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
             setKeyword(value)
         }
     }
+    React.useEffect(() => {
+        async function fetchHomeData() {
+            try {
+
+                const [
+                    types,
+                    cities,
+                    recentForRent,
+                    recentForSale,
+                    communities,
+                    filters,
+                    bestDeals,
+                ] = await Promise.all([
+                    api.Get(url.PROPERTY_TYPES).then((res) => res.data).catch(() => []),
+                    api.Get(url.CITIES).then((res) => res.data).catch(() => []),
+                    api.Get(url.RECENT_FOR_RENT).then((res) => res.data).catch(() => []),
+                    api.Get(url.RECENT_FOR_SALE).then((res) => res.data).catch(() => []),
+                    api.Get(url.COMMUNITY).then((res) => res.data).catch(() => []),
+                    api.Get(url.FILTERS).then((res) => res.data).catch(() => []),
+                    api.Get(url.BESTDEALS).then((res) => res.data).catch(() => []),
+                ]);
+
+                setData({
+                    types,
+                    cities,
+                    recentForRent,
+                    recentForSale,
+                    community: communities,
+                    filters,
+                    BestDeals: bestDeals,
+                });
+            } catch (error) {
+                console.error("Error fetching home data:", error);
+            } finally {
+
+            }
+        }
+
+        fetchHomeData();
+    }, []);
+
+    const { community = [], types = [], filters = [], BestDeals = [], cities = [], recentForRent = [], recentForSale = [] } = data || {}
     const handleMouseEnter = () => {
         if (swiperRef.current) {
             swiperRef.current.autoplay.stop(); // Stops instantly
@@ -97,73 +156,102 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
 
 
 
+    // const handleSearch = (e) => {
+    //     e.preventDefault()
+    //     const newParams = new URLSearchParams(searchParams.toString());
+    //     if (selectedstatus.id !== 0) {
+    //         newParams.set("status", selectedstatus.title)
+    //     } else {
+    //         newParams.delete("status")
+    //     }
+    //     if (selectedTypes.id !== 0) {
+    //         newParams.set("type", selectedTypes.title)
+    //     } else {
+    //         newParams.delete("type")
+    //     }
+    //     if (selectedCity.id !== 0) {
+    //         newParams.set("city", selectedCity.title)
+    //     } else {
+    //         newParams.delete("city")
+    //     }
+    //     if (selectedCommunity.id !== 0) {
+    //         newParams.set("community", selectedCommunity.title)
+    //     } else {
+    //         newParams.delete("community")
+    //     }
+    //     if (selectedBed.id !== 0) {
+    //         newParams.set("bedrooms", selectedBed.title)
+    //     } else {
+    //         newParams.delete("bedrooms")
+    //     }
+    //     if (selectedBath.id !== 0) {
+    //         newParams.set("bathrooms", selectedBath.title)
+    //     } else {
+    //         newParams.delete("bathrooms")
+    //     }
+    //     if (minArea.length > 0) {
+    //         newParams.set("minarea", minArea)
+    //     } else {
+    //         newParams.delete("minarea")
+    //     }
+    //     if (maxArea.length > 0) {
+    //         newParams.set("maxarea", maxArea)
+    //     } else {
+    //         newParams.delete("maxarea")
+    //     }
+    //     if (minPrice.length > 0) {
+    //         newParams.set("minprice", minPrice)
+    //     } else {
+    //         newParams.delete("minprice")
+    //     }
+    //     if (maxPrice.length > 0) {
+    //         newParams.set("maxprice", maxPrice)
+    //     } else {
+    //         newParams.delete("maxprice")
+    //     }
+    //     if (selectedFeatures.length > 0) {
+    //         const feature = selectedFeatures.map((i) => i.title)
+    //         newParams.set("features", feature)
+    //     } else {
+    //         newParams.delete("features")
+    //     }
+    //     if (Keyword.length > 0) {
+    //         newParams.set("title", Keyword)
+    //     } else {
+    //         newParams.delete("title")
+    //     }
+    //     router.push(`/property?${newParams.toString()}`)
+    // }
     const handleSearch = (e) => {
-        e.preventDefault()
-        const newParams = new URLSearchParams(searchParams.toString());
-        if (selectedstatus.id !== 0) {
-            newParams.set("status", selectedstatus.title)
-        } else {
-            newParams.delete("status")
-        }
-        if (selectedTypes.id !== 0) {
-            newParams.set("type", selectedTypes.title)
-        } else {
-            newParams.delete("type")
-        }
-        if (selectedCity.id !== 0) {
-            newParams.set("city", selectedCity.title)
-        } else {
-            newParams.delete("city")
-        }
-        if (selectedCommunity.id !== 0) {
-            newParams.set("community", selectedCommunity.title)
-        } else {
-            newParams.delete("community")
-        }
-        if (selectedBed.id !== 0) {
-            newParams.set("bedrooms", selectedBed.title)
-        } else {
-            newParams.delete("bedrooms")
-        }
-        if (selectedBath.id !== 0) {
-            newParams.set("bathrooms", selectedBath.title)
-        } else {
-            newParams.delete("bathrooms")
-        }
-        if (minArea.length > 0) {
-            newParams.set("minarea", minArea)
-        } else {
-            newParams.delete("minarea")
-        }
-        if (maxArea.length > 0) {
-            newParams.set("maxarea", maxArea)
-        } else {
-            newParams.delete("maxarea")
-        }
-        if (minPrice.length > 0) {
-            newParams.set("minprice", minPrice)
-        } else {
-            newParams.delete("minprice")
-        }
-        if (maxPrice.length > 0) {
-            newParams.set("maxprice", maxPrice)
-        } else {
-            newParams.delete("maxprice")
-        }
-        if (selectedFeatures.length > 0) {
-            const feature = selectedFeatures.map((i) => i.title)
-            newParams.set("features", feature)
-        } else {
-            newParams.delete("features")
-        }
-        if (Keyword.length > 0) {
-            newParams.set("title", Keyword)
-        } else {
-            newParams.delete("title")
-        }
-        router.push(`/property?${newParams.toString()}`)
-    }
+        e.preventDefault();
 
+        const updatedQuery = {
+            status: selectedstatus.id !== 0 ? selectedstatus.title : undefined,
+            type: selectedTypes.id !== 0 ? selectedTypes.title : undefined,
+            city: selectedCity.id !== 0 ? selectedCity.title : undefined,
+            community: selectedCommunity.id !== 0 ? selectedCommunity.title : undefined,
+            bedrooms: selectedBed.id !== 0 ? selectedBed.title : undefined,
+            bathrooms: selectedBath.id !== 0 ? selectedBath.title : undefined,
+            minarea: minArea.length > 0 ? minArea : undefined,
+            maxarea: maxArea.length > 0 ? maxArea : undefined,
+            minprice: minPrice.length > 0 ? minPrice : undefined,
+            maxprice: maxPrice.length > 0 ? maxPrice : undefined,
+            features: selectedFeatures.length > 0 ? selectedFeatures.map(i => i.title).join(",") : undefined,
+            title: Keyword.length > 0 ? Keyword : undefined,
+            page: 1,
+        };
+
+        // Remove undefined values from query
+        Object.keys(updatedQuery).forEach((key) => {
+            if (updatedQuery[key] === undefined) {
+                delete updatedQuery[key];
+            }
+        });
+
+        setQuery(updatedQuery);
+        const queryString = new URLSearchParams(updatedQuery).toString();
+        router.push(`/property?${queryString}`);
+    };
     const [openSelect, setOpenSelect] = React.useState({
         status: false,
         type: false,
@@ -242,8 +330,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
 
 
     return (
-        <div>
-
+        <main>
             < div id="wrapper">
                 <div id="page" className="">
                     <Header3 />
@@ -256,13 +343,13 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                             <div className="col-12">
                                                 <div className="slider-content">
                                                     <h1 className="wow fadeInUp">
-                                                        Your Dream Home Awaits!
+                                                        Rosarito isn't just a beach, it's a community. . .
                                                     </h1>
                                                     <div className="text wow fadeInUp">
-                                                        Affordable coastal living with all the comforts you need!
+                                                        and you're invited! -The Hansome Family
                                                     </div>
                                                     <div className="widget-tabs">
-                                                        
+
                                                         <div className="widget-content-tab">
                                                             <div className="widget-content-inner active">
                                                                 <form className="form-search-home3 wow fadeInUp">
@@ -332,7 +419,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                     </div>
                                                                     <div className="group-form">
                                                                         <div className="wg-filter">
-                                                                            <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter} >
+                                                                            <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter}  >
                                                                                 <i className="flaticon-filter" />
                                                                                 Filters
                                                                             </div>
@@ -562,11 +649,11 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                     <div className="col-12">
                                         <div className="heading-section text-center">
                                             <h2 className="wow fadeInUp">
-                                                A Message from Our CEO
+                                                Why Are More and More Americans Moving to Rosarito? The Answer May Surprise You!
                                             </h2>
-                                            <div className="text wow fadeInUp">
+                                            {/* <div className="text wow fadeInUp">
                                                 Take a decision towards better future
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -582,25 +669,49 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                 </div>
                             </div>
                         </section>
-                        <section className="tf-section flat-counter">
+                        <section className="tf-section flat-counter video-section ">
                             <div className="cl-container">
                                 <div className="row justify-center ">
                                     <div className="col-12 col-md-8">
                                         <div className="heading-section text-center">
-                                            <h2 className="wow fadeInUp">
-                                                Why Are More and More Americans Moving to Rosarito? The Answer May Surprise You!
-                                            </h2>
+
                                             <div className="text wow fadeInUp">
-                                                Rosarito, officially known as Playas de Rosarito, is quickly becoming one of the most sought-after destinations for Americans looking to escape the high cost of living in the U.S. Known for its stunning beachfront properties, year-round mild climate, and affordability, Rosarito offers an unmatched lifestyle at a fraction of the price compared to U.S. cities like Los Angeles or Honolulu.
-                                            </div>
-                                            <div className="text wow fadeInUp mt-2">
-                                                Imagine owning a luxury home with ocean views for as little as $300 per square foot, or a spacious inland property for just $110 per square foot. With average high temperatures ranging from 65°F (18°C) in January to 75°F (24°C) in August, Playas de Rosarito boasts one of the most comfortable climates in the region, perfect for those seeking to avoid extreme weather.
-                                            </div>
-                                            <div className="text wow fadeInUp mt-2">
-                                                In addition to its affordability and climate, Rosarito is just a short drive from the U.S. border, making it an ideal location for expats and retirees who want easy access to California while enjoying the relaxed pace and cost savings of life in Mexico.
-                                            </div>
-                                            <div className="text wow fadeInUp mt-2">
-                                                Whether you’re searching for a quiet retirement home or an affordable beachfront escape, Playas de Rosarito offers endless possibilities. With tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home in Rosarito today!
+                                                <p className=''>
+                                                    <Link href="https://www.sandiegored.com/en/news/229355/Playas-de-Rosarito-becomes-paradise-for-retired-Americans/?utm_source=chatgpt.com" target='_blank' >Rosarito, officially known as Playas de Rosarito</Link>
+                                                    {" "} is quickly becoming one of the most sought-after destinations for Americans looking to escape the high cost of living and {" "}
+                                                    <Link href="https://www.latimes.com/environment/story/2025-01-16/climate-change-california-fires" target='_blank' >extreme climate in many U.S. cities.</Link>
+                                                </p>
+                                                <p className='pt-3'>
+                                                    <Link href="https://www.realtor.com/international/mx/rosarito-baja-california-sur/" target='_blank' > Known for its stunning beachfront properties</Link>, year-round mild climate, and affordability, Rosarito offers an unmatched lifestyle at a fraction of the price compared to U.S. cities like Los Angeles or Honolulu.
+                                                </p>
+                                                <h5 className='pt-3'>
+                                                    With Average Cost Per Square Foot of only $110, Can You Afford To Not Live Here?
+
+                                                </h5>
+                                                <p className='pt-3'>
+                                                    Imagine owning a luxury home with ocean views for as little as $300 per square foot, or a spacious inland property for just $110 per square foot. With{" "}
+                                                    <strong>average high temperatures ranging from 65°F (18°C) in January to 75°F (24°C) in August</strong>,
+                                                    {" "} <Link href="https://en.wikipedia.org/wiki/Rosarito?utm_source=chatgpt.com" target='_blank' >Playas de Rosarito</Link>
+                                                    {" "} boasts one of the most comfortable climates in the region, perfect for those seeking to avoid extreme weather.
+                                                </p>
+                                                <p className='pt-3'>
+                                                    In addition to its affordability and climate, Rosarito is just a short drive from the{" "}
+                                                    <Link href="https://bwt.cbp.gov/details/09250401/POV" target='_blank' >U.S. San Ysidro border</Link>,
+                                                    {" "} 40 minutes from the {" "}
+                                                    <Link href="https://bwt.cbp.gov/details/09250601/POV" target='_blank' >Otay border</Link>{" "} and {" "}
+                                                    <Link href="https://maps.app.goo.gl/e9BMg6V7WAtSj3LN6" target='_blank' >only 1 hour from the Tecate border</Link>,
+                                                    making it an ideal location for expats and retirees who want easy access to California while enjoying the relaxed pace and {" "}
+                                                    <Link href="https://finance.yahoo.com/news/much-average-retiree-mexico-savings-130010760.html" target='_blank' >cost savings of life in Mexico.</Link>
+                                                </p>
+                                                <p className='pt-3'>
+                                                Whether you’re searching for a quiet retirement home or an affordable second home on the beachfront to escape, Playas de Rosarito offers endless possibilities. With our tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home and {" "}
+                                                <Link href="https://buyahouseinrosarito.com/contact" target='_blank' >Contact Aaron (English) & Adriana (Spanish) By Clicking Here Now</Link>, {" "}
+                                                for more information.
+                                                </p>
+                                                <p className='pt-3'>
+                                                Please Use this Rosarito App To Estimate <strong>Beachfront, Oceanview</strong>, or <strong>Non-Ocean View</strong> {" "}
+                                                Cost of Ownership 
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -618,6 +729,15 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                         </div>
                                     </div>
 
+                                </div>
+                                <div className='video-section text-center ' >
+                                <img className='pt-3' src='/assets/images/video-section-image.jpg' alt="A sunset over Rosarito  beach" />
+                                <p className='pt-3' >
+                                    <Link href="https://www.tripadvisor.com/LocationPhotoDirectLink-g150774-i462503810-Rosarito_Baja_California.html" target='_blank' >Sunset Over Rosarito Beach</Link>
+                                </p>
+                                <p className='pt-3' >
+                                    <Link href="https://buyahouseinrosarito.com/contact" target='_blank' >Contact Aaron (English) & Adriana (Spanish) By Clicking Here Now</Link>, for more information.
+                                </p>
                                 </div>
                             </div>
                         </section>
@@ -721,7 +841,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}}>
+                                                                    <div className="tags-item for-sell" style={{ backgroundColor: item.listing_type === "rent" ? "#124773" : "" }}>
                                                                         {item.listing_status}
                                                                     </div>
                                                                     {item.is_featured && (
@@ -792,7 +912,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                             <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null}</div>
+                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : null}</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -916,7 +1036,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}}>
+                                                                    <div className="tags-item for-sell" style={{ backgroundColor: item.listing_type === "rent" ? "#124773" : "" }}>
                                                                         {item.listing_status}
                                                                     </div>
                                                                     {item.is_featured && (
@@ -987,7 +1107,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                             <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null} </div>
+                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : null} </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1048,7 +1168,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                         <div className="box-dream style-2 type-small wow fadeInUp">
                                                             <div className="image">
                                                                 <div className="list-tags">
-                                                                    <div className="tags-item for-sell" style={{backgroundColor:item.listing_type==="rent"? "#124773":""}} >
+                                                                    <div className="tags-item for-sell" style={{ backgroundColor: item.listing_type === "rent" ? "#124773" : "" }} >
                                                                         {item.listing_status}
                                                                     </div>
                                                                     {item.is_featured && (
@@ -1119,7 +1239,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                                                             <p>{item.size + "sqft"} / {item.size_mt + "sqm"}</p>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type==="rent"?`/${item.rent_cycle}`:null}</div>
+                                                                    <div className="price">${item.price.toLocaleString()} {item.listing_type === "rent" ? `/${item.rent_cycle}` : null}</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1253,14 +1373,14 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
                                             </div>
                                             <ul>
                                                 <li className="wow fadeInUp">
-                                                    <h4>Buy or Rent Homes</h4>
+                                                    <h3>Buy or Rent Homes</h3>
                                                     <p>
                                                         We sell your home at the best <br />
                                                         market price and very quickly as well.
                                                     </p>
                                                 </li>
                                                 <li className=" wow fadeInUp" data-wow-delay="0.1s">
-                                                    <h4>Thrusted by Thousands</h4>
+                                                    <h3>Thrusted by Thousands</h3>
                                                     <p>
                                                         We offer you free consultancy to <br />
                                                         get a loan for your new home.
@@ -1625,7 +1745,7 @@ const HomeComponent = ({ community, types, filters, BestDeals, cities, recentFor
             <CustomScript src="/assets/js/main.js" />
 
 
-        </div>
+        </main>
 
     )
 }

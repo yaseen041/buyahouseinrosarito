@@ -4,7 +4,7 @@ import React from 'react';
 import { fetchSEOData } from './server';
 import AboutWrapper from '../components/Wrappers/AboutWrapper';
 
-export const metadata = async () => {
+export async function generateMetadata() {
   // Fetch the SEO data
   const seoData = await fetchSEOData();
 
@@ -35,12 +35,12 @@ export const metadata = async () => {
 };
 
 
-const About = () => {
- 
+const About = async({searchParams}) => {
+ const search = await searchParams
 
 
   return (
-   <AboutWrapper />
+   <AboutWrapper search={search} />
 
   )
 }

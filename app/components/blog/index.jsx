@@ -4,19 +4,19 @@ import Header3 from "../header3";
 import Link from "next/link";
 import Footer from "../footer";
 import CustomScript from "@/app/scripts";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Loader from "../loader/Loader";
 import { url } from "@/app/utils/urls";
 import NotFound from "../NotFound/NotFound";
 
-const BlogComponent = () => {
-  const searchParams = useSearchParams();
+const BlogComponent = ({searchParams}) => {
+  const {category,page,search } = searchParams
   const router = useRouter();
-  const categoryQuery = searchParams.get("category");
+  const categoryQuery = category;
   const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("search") || ""
+   search || ""
   );
-  const pageQuery = searchParams.get("page");
+  const pageQuery = page;
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -64,7 +64,7 @@ const BlogComponent = () => {
   };
 
   useEffect(() => {
-    const blogsUrl = `${url.BLOGS}?page=${pageQuery}${categoryQuery ? `&category=${categoryQuery}` : ""
+    const blogsUrl = `${url.BLOGS}?page=${pageQuery!==null? pageQuery:""}${categoryQuery ? `&category=${categoryQuery}` : ""
       }${searchQuery ? `&search=${searchQuery}` : ""}`;
 
     fetchBlogs(blogsUrl, setBlogs);
@@ -88,14 +88,11 @@ const BlogComponent = () => {
   };
 
   useEffect(() => {
-    // Sync the searchQuery state with the search parameter in the URL on mount
-    setSearchQuery(searchParams.get("search") || "");
+    setSearchQuery(search || "");
   }, [searchParams]);
 
   const handleSearch = (e) => {
     const newValue = e.target.value;
-
-    // If the new value is different from the current searchQuery, update the query
     if (newValue !== searchQuery) {
       setSearchQuery(newValue);
       const newQuery = { ...searchParams, search: newValue };
@@ -121,7 +118,7 @@ const BlogComponent = () => {
                 <div className="row">
                   <div className="col-12">
                     <div className="content">
-                      <h2>Blog</h2>
+                      <h1>Blog</h1>
                       <ul className="breadcrumbs" style={{ listStyle: "none" }} >
                         <li style={{ listStyle: "none" }} className='list-unstyled' >
                           <Link href="/">Home</Link>
@@ -159,14 +156,14 @@ const BlogComponent = () => {
                                 </div>
                               </div>
                               <div style={{ minHeight: 150 }} >
-                                <div className="name">
-                                  <a href={`/blog/${blog.slug}`}>{blog.title}</a>
-                                </div>
+                                <h2 className="name">
+                                  <Link href={`/${blog.post_url}`}>{blog.title}</Link>
+                                </h2>
                                 <div>
                                   <p>{truncate(blog.meta_description)}</p>
                                 </div>
                               </div>
-                              <Link href={`/blog/${blog.slug}`} className="tf-button-no-bg" >
+                              <Link href={`/${blog.post_url}`} className="tf-button-no-bg" >
                                 Read More
                                 <i className="icon-arrow-right-add"></i>
                               </Link>
@@ -188,7 +185,7 @@ const BlogComponent = () => {
                         className={`previous ${pagination.currentPage === 1 ? "disabled" : ""
                           }`}
                       >
-                        <a
+                        <Link
                           onClick={() =>
                             handlePageChange(pagination.currentPage - 1)
                           }
@@ -199,7 +196,7 @@ const BlogComponent = () => {
                           aria-disabled={pagination.currentPage === 1}
                         >
                           &lt;
-                        </a>
+                        </Link>
                       </li>
 
                       {Array.from(
@@ -211,7 +208,7 @@ const BlogComponent = () => {
                               pagination.currentPage === idx + 1 ? "active" : ""
                             }
                           >
-                            <a
+                            <Link
                               onClick={() => handlePageChange(idx + 1)}
                               aria-label={`Page ${page}${pagination.currentPage === page
                                   ? " is your current page"
@@ -231,7 +228,7 @@ const BlogComponent = () => {
                               tabIndex={0}
                             >
                               {idx + 1}
-                            </a>
+                            </Link>
                           </li>
                         )
                       )}
@@ -242,7 +239,7 @@ const BlogComponent = () => {
                             : ""
                           }`}
                       >
-                        <a
+                        <Link
                           onClick={() =>
                             handlePageChange(pagination.currentPage + 1)
                           }
@@ -256,7 +253,7 @@ const BlogComponent = () => {
                           }
                         >
                           &gt;
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   )}

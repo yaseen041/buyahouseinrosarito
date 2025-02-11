@@ -1,12 +1,10 @@
 "use client";
 import React from 'react';
-import dynamic from 'next/dynamic';
-
-const PropertyComponent = dynamic(() => import("@/app/components/property"),{ssr:false})
-const PropertiesWrapper = () => {
+import PropertyComponent from '@/app/components/property';
+const PropertiesWrapper = ({search}) => {
     return (
         <>
-            <PropertyComponent  />
+            <PropertyComponent search={search}  />
         </>
     );
 };

@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
 import Header3 from "../header3";
 import Footer from "../footer";
 import Link from "next/link";
@@ -11,8 +10,7 @@ import NotFound from "../NotFound/NotFound";
 import HomeSizeCalculator from "../SizeCalculeter";
 import parse from "html-react-parser";
 
-const BlogDetail = () => {
-  const { slug } = useParams();
+const BlogDetail = ({slug}) => {
   const [blog, setBlog] = useState(null);
   const [relatedblog, setRelatedBlog] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,9 +24,16 @@ const BlogDetail = () => {
   }
   useEffect(() => {
     if (slug) {
+
       const fetchBlogData = async () => {
         try {
-          const response = await fetch(`${url.SINGLEBLOG}${slug}`);
+          const formData = new FormData()
+          const encodeSlug = slug.join("/")
+          formData.append("post_url", encodeSlug)
+          const response = await fetch(`${url.SINGLEBLOG}`, {
+            method: "POST",
+            body: formData
+          });
           if (!response.ok) {
             throw new Error("Failed to fetch blog data");
           }
@@ -46,19 +51,19 @@ const BlogDetail = () => {
     }
   }, [url, slug]);
 
-  
-    const replaceShortcodes = (htmlString) => {
-      return parse(htmlString, {
-        replace: (domNode) => {
-          if (
-            domNode.type === "text" &&
-            domNode.data.includes("[cost_calculator_app]")
-          ) {
-            return <HomeSizeCalculator />;
-          }
-        },
-      });
-    };
+
+  const replaceShortcodes = (htmlString) => {
+    return parse(htmlString, {
+      replace: (domNode) => {
+        if (
+          domNode.type === "text" &&
+          domNode.data.includes("[cost_calculator_app]")
+        ) {
+          return <HomeSizeCalculator />;
+        }
+      },
+    });
+  };
 
 
   return (
@@ -67,12 +72,12 @@ const BlogDetail = () => {
       <div id="wrapper">
         <div id="page" className="">
           <Header3 />
-          <div className='flat-title inner-page' style={{ backgroundImage: blog !== null ? `linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(${blog.featured_image})` : "", height: 325, paddingTop: 97 }} >
+          <div className='flat-title inner-page' style={{ backgroundImage: blog !== null ? `linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url(${blog.featured_image})` : "", height: "auto", paddingTop: 97 }} >
             <div className="cl-container full">
               <div className="row">
                 <div className="col-12">
                   <div className="content">
-                    <h2>{blog?.title}</h2>
+                    <h1>{blog?.title}</h1>
                     <ul className="breadcrumbs">
                       <li>
                         <Link href="/">Home</Link>
@@ -84,15 +89,15 @@ const BlogDetail = () => {
                       <li>/</li>
                       <li>{blog?.title}</li>
                     </ul>
-                    {blog !==null &&(
-                    <div style={{fontSize:15,color:"#FFF",marginTop:15}} >
-                      {" "}
-                      {new Intl.DateTimeFormat("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      }).format(new Date(blog?.publish_date))}
-                    </div>
+                    {blog !== null && (
+                      <div style={{ fontSize: 15, color: "#FFF", marginTop: 15 }} >
+                        {" "}
+                        {new Intl.DateTimeFormat("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }).format(new Date(blog?.publish_date))}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -133,7 +138,7 @@ const BlogDetail = () => {
                               </div>
                             </div> */}
                             <div
-                             
+
                               className="blog_content ck_editor_content"
                             >
                               {replaceShortcodes(blog?.description)}
@@ -148,7 +153,7 @@ const BlogDetail = () => {
             {/* wg-related-posts */}
 
           </div>
-          {relatedblog?.length && (
+          {relatedblog?.length>0 && (
             <div className="wg-related-posts">
               <div className="cl-container">
                 <div className="row">
@@ -189,13 +194,13 @@ const BlogDetail = () => {
                           </div>
                           <div style={{ minHeight: 150 }} >
                             <div className="name">
-                              <a href={`/blog/${blog?.slug}`}>{blog?.title}</a>
+                              <Link href={`/${blog?.post_url}`}>{blog?.title}</Link>
                             </div>
                             <div>
                               <p>{truncate(blog?.meta_description)}</p>
                             </div>
                           </div>
-                          <Link href={`/blog/${blog?.slug}`} className="tf-button-no-bg" >
+                          <Link href={`/${blog?.post_url}`} className="tf-button-no-bg" >
                             Read More
                             <i className="icon-arrow-right-add"></i>
                           </Link>

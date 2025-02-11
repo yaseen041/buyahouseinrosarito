@@ -4,20 +4,20 @@ import Header3 from "../header3";
 import Link from "next/link";
 import Footer from "../footer";
 import CustomScript from "@/app/scripts";
-import { useRouter, useSearchParams,useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Loader from "../loader/Loader";
 import { url } from "@/app/utils/urls";
 import NotFound from "../NotFound/NotFound";
 
-const CategoryBlogComponent = () => {
-    const {slug} = useParams()
-  const searchParams = useSearchParams();
+const CategoryBlogComponent = ({slug,searchParams}) => {
+   const {search,page,category} = searchParams
+ 
   const router = useRouter();
-  const categoryQuery = searchParams.get("category");
+  const categoryQuery = category;
   const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("search") || ""
+   search || ""
   );
-  const pageQuery = searchParams.get("page");
+  const pageQuery = page;
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -60,7 +60,6 @@ const CategoryBlogComponent = () => {
       const data = await response.json();
       setter(data.data);
       const getCatName = data.data.find((i)=>i.slug===slug)
-console.log("cat name=====>",getCatName,categories)
 setCatName(getCatName.title)
     } catch (err) {
       //   console.error("Failed to fetch data:", err);
@@ -95,7 +94,7 @@ setCatName(getCatName.title)
 
   useEffect(() => {
     // Sync the searchQuery state with the search parameter in the URL on mount
-    setSearchQuery(searchParams.get("search") || "");
+    setSearchQuery(search || "");
   }, [searchParams]);
 
   const handleSearch = (e) => {

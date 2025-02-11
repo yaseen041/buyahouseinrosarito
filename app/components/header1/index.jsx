@@ -43,7 +43,7 @@ const Header1 = () => {
             <nav className="main-menu">
               <ul className="navigation">
                 <li className={pathname === "/" ? "current" : ""}>
-                  <Link href="/">Home</Link>
+                  <Link href="/" shallow={true} >Home</Link>
                 </li>
                 <li className={pathname === "/property" ? "current" : ""}>
                   <Link href="/property">Property</Link>
@@ -65,7 +65,7 @@ const Header1 = () => {
               </ul>
             </nav>
             <div id="site-logo">
-              <Link href="/" rel="home">
+              <Link href="/" rel="home" shallow={true} >
                 <img
                   className="d-block"
                   id="logo-header"

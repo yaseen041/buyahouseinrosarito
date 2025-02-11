@@ -37,11 +37,12 @@ export async function generateMetadata({ params }) {
     jsonLd: seoData.jsonLd || "{}",
   };
 }
-const PropertyDetailPage = ({params }) => {
+const PropertyDetailPage = async({params }) => {
+  const { slug } = await params; 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-    <PropertieDetailWrapper />
-    </Suspense>
+   
+    <PropertieDetailWrapper slug={slug} />
+  
   )
 }
 

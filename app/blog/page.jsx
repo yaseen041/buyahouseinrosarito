@@ -1,9 +1,8 @@
 
-import { Suspense } from 'react';
 import BlogWrapper from '../components/Wrappers/BlogWrapper';
 import { fetchSEOData } from './server';
 
-export const metadata = async () => {
+export async function generateMetadata() {
   // Fetch the SEO data
   const seoData = await fetchSEOData();
 
@@ -32,11 +31,12 @@ export const metadata = async () => {
     jsonLd: seoData.jsonLd || '{}', // JSON-LD data
   };
 };
-const Blog = () => {
+const Blog = async({searchParams}) => {
+  const search = await searchParams
     return (
-        <Suspense fallback={<div>Loading...</div>}> 
-     <BlogWrapper />
-     </Suspense>
+       
+     <BlogWrapper search={search} />
+     
     )
 }
 

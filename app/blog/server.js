@@ -30,8 +30,11 @@ export async function fetchSEOData() {
 
   export async function fetchBlogDetailSEOData(slug) {
     try {
-        
-        const data = await api.Get(`${url.SINGLEBLOG}${slug}`);
+      const formData = new FormData()
+      const encodeSlug = slug.join("/")
+      console.log("slug==========>",encodeSlug)
+      formData.append("post_url",encodeSlug)
+        const data = await api.Post(`${url.SINGLEBLOG}`,formData);
         if (Object.keys(data).length>0) {
             return {
                 title: data.data.meta_title || "Default Title",

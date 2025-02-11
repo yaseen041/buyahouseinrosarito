@@ -1,20 +1,11 @@
 "use client";
 import React from 'react'
 import Header3 from '../header3';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import WOW from "wow.js";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import "animate.css";
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import "swiper/css/autoplay"
 import Footer from '../footer';
 import Link from 'next/link';
-const AboutComponent = ({ testimonials = [], agents = [] }) => {
-  const prevButtonRef = React.useRef(null);
-  const nextButtonRef = React.useRef(null);
+const AboutComponent = () => {
+  
 
   return (
     <div id="wrapper">
@@ -33,7 +24,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
               <div className="row">
                 <div className="col-12">
                   <div className="content">
-                    <h2>About</h2>
+                    <h1> About</h1>
                     <ul className="breadcrumbs" style={{listStyle:"none"}} >
                       <li  style={{listStyle:"none"}} className='list-unstyled' >
                         <Link href="/">Home</Link>
@@ -51,7 +42,7 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
               <div className="row justify-center ">
                 <div className="col-12 col-md-6">
                   <div className="content">
-                    <h3  >Welcome to "Buy a House in Rosarito” Where Your Baja Dreams Meet Feet on the Ground to Help with Practical Living!</h3>
+                    <h2  >Welcome to "Buy a House in Rosarito” Where Your Baja Dreams Meet Feet on the Ground to Help with Practical Living!</h2>
                     <div className="text mt-2">👨‍👩‍👦 Our Family’s Story
                     </div>
                   </div>
@@ -79,16 +70,23 @@ const AboutComponent = ({ testimonials = [], agents = [] }) => {
                     <li><p><span>Health Insurance</span>: <Link href="https://www.coveredca.com/" target='_blank'  >Information on health insurance through Covered California.</Link> </p></li>
                     <li><p><span>Banking and Taxes</span>: If you live in the Rosarito area full-time and still earn an active income, YOU LIKELY QUALIFY FOR <Link href="https://www.irs.gov/individuals/international-taxpayers/foreign-earned-income-exclusion" target='_blank' > Foreign Earned Income Exclusion,</Link> where you won’t pay federal taxes on the first 130,000 (2025). Details on the Foreign Earned Income Exclusion for expats still earning an active income. </p></li>
                     <li><p><span>Commuting Across the Border</span>: <Link href="https://ttp.dhs.gov/" target='_blank' >Apply for SENTRI passes for expedited border crossing. </Link> Motorcycles are usually the fastest way to cross. <Link href="https://www.tripadvisor.com/ShowTopic-g150776-i761-k14745321-Special_lane_for_motorcycles_going_into_the_usa-Tijuana_Baja_California.html" target='_blank'  >You can lane-split in Baja California on a motorcycle </Link> which means you can go straight to the front of every line. </p></li>
-                    <li><p>High-Speed Internet Options: Stay connected in Rosarito with several reliable high-speed internet providers: <div className='text-center' >
+                    <li><p>High-Speed Internet Options: Stay connected in Rosarito with several reliable high-speed internet providers:</p> <br /><p className='text-center' >
                       <Link href="#" target='_blank' >Telnor: Offers fiber-optic internet services with speeds up to 300 Mbps. </Link><br />
                       <Link href="#" target='_blank' >Totalplay: Provides high-speed internet, television, and telephone services.</Link><br />
                       <Link href="https://www.starlink.com/" target='_blank' >Starlink by SpaceX: Satellite-based internet service offering high-speed connectivity, ideal for areas with limited traditional internet access.</Link>
-                    </div> </p></li>
-                    <li><p> <span>Popular Cell Phone Services with Data Plans</span>: Stay connected on the go with these major cell phone providers in Mexico: <div className='text-center' >
+                    </p> </li>
+                    <li>
+                      <p> 
+                        <span>Popular Cell Phone Services with Data Plans</span>:
+                         Stay connected on the go with these major cell phone providers in Mexico: 
+                         </p>
+                         <div className='text-center' >
+                          <p>
                       <Link href="#" target='_blank' >Telcel: The largest mobile operator in Mexico, offering extensive coverage of both Mexico & the US, and various data plans. </Link><br />
                       <Link href="#" target='_blank' >AT&T Mexico: Offers a variety of data plans with extensive coverage across Mexico.</Link><br />
                       <Link href="https://www.starlink.com/" target='_blank' >Movistar: Provides competitive data plans and nationwide coverage.</Link>
-                    </div> </p></li>
+                      </p>
+                    </div> </li>
                   </ul>
                   <h5 className="wow fadeInUp text-center mt-5 ">🚚 Trustworthy International Movers with Great Reviews</h5>
                   <p className='text-center' ><strong>1. Shepherd International Movers</strong></p>

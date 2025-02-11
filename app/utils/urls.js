@@ -1,4 +1,4 @@
-const BASE_URL = "https://explorelogicsit.net/elrealestate/portal/api"
+const BASE_URL = "https://portal.buyahouseinrosarito.com/api"
 
 
 export class url {
@@ -26,7 +26,7 @@ export class url {
 
     static BLOGS = `${BASE_URL}/blogs`
     static CATEGORIES = `${BASE_URL}/categories`
-    static SINGLEBLOG = `${BASE_URL}/blogs/fetch/`
+    static SINGLEBLOG = `${BASE_URL}/blogs/fetchblog`
     static PROPERTIESOPTIONS = `${BASE_URL}/contact/property-options`
     static SUBMITCONTACT = `${BASE_URL}/contact/submit`
     static SUBMITTOUR = `${BASE_URL}/tour/submit` 

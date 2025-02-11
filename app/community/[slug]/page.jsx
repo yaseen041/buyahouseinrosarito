@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
       openGraph: {
         title: seoData.openGraph?.title || "Default OG Title",
         description: seoData.openGraph?.description || "Default OG Description",
-        url: `https://buyhomeinrosarito.com/property/${resolvedParams.slug}`,
+        url: `https://buyhomeinrosarito.com/community/${resolvedParams.slug}`,
         images: seoData.openGraph?.images || [
           { url: "/default-og-image.jpg", width: 1200, height: 630, alt: "Default Image Alt Text" },
         ],

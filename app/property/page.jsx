@@ -3,7 +3,7 @@ import React, { Suspense } from 'react';
 import PropertiesWrapper from '../components/Wrappers/ProperitiesWrapper';
 import { fetchSEOData } from './server';
 
-export const metadata = async () => {
+export async function generateMetadata() {
   // Fetch the SEO data
   const seoData = await fetchSEOData();
 
@@ -14,7 +14,7 @@ export const metadata = async () => {
     openGraph: {
       title: seoData.title || 'Default FB Title',
       description: seoData.description || 'Default FB Description',
-      url: 'https://buyhomeinrosarito.com/home', // Update if necessary
+      url: 'https://buyhomeinrosarito.com/property', // Update if necessary
       images: [
         {
           url: seoData.image, // Use the image URL
@@ -33,11 +33,15 @@ export const metadata = async () => {
   };
 };
 
-const Property = () => {  
+const Property = async({searchParams}) => {  
+  
+  const search = await searchParams
+ 
+  
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <PropertiesWrapper />
-    </Suspense>
+   
+      <PropertiesWrapper search={search} />
+    
   )
 }
 export default Property

@@ -1,7 +1,7 @@
 import ContactWrapper from '../components/Wrappers/ContactWrapper';
 import { fetchSEOData } from './server';
 
-export const metadata = async () => {
+export async function generateMetadata(){
   
   const seoData = await fetchSEOData();
 
