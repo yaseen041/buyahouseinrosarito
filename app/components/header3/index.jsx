@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { usePathname } from "next/navigation";
-
+import { useRouter } from "next/navigation";
 // import { useUnitContext } from "@/app/utils/UnitContext";
 
 const Header3 = () => {
@@ -13,6 +13,7 @@ const Header3 = () => {
   const pathname = usePathname();
   const handleClose = () => setOpenMenu(false);
   const handleShow = () => setOpenMenu(true);
+  const router = useRouter()
 
   // const { isSquareMeter, toggleUnit } = useUnitContext();
 
@@ -89,7 +90,7 @@ const Header3 = () => {
             </div>
             <nav className="main-menu">
               <ul className="navigation">
-                <li className={pathname === "/" ? "current" : ""}>
+                <li className={pathname === "/" ? "" : ""}  >
                   <Link href="/" shallow={true} prefetch={true} scroll={false}  >Home</Link>
                 </li>
                 <li className={pathname === "/property" ? "current" : ""}>
@@ -134,7 +135,7 @@ const Header3 = () => {
                 <div className="icon">
                   <i className="flaticon-phone" />
                 </div>
-                <Link href="tel:+52 664 641 1658" className="number">+52 664 641 1658</Link>
+                <Link href="tel:+1 (619) 2589-7442" className="number">+1 (619) 2589-7442</Link>
               </div>
               {/* <div
                                 data-bs-toggle="modal"

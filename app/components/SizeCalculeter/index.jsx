@@ -2,29 +2,28 @@ import React, { useState } from "react";
 
 const HomeSizeCalculator = () => {
     const [sqm, setSqm] = useState("");
-    const [budget110, setBudget110] = useState("");
-    const [budget300, setBudget300] = useState("");
-    const [budget500, setBudget500] = useState("");
+    const [budget, setBudget] = useState("");
+    
 
     return (
         <div className="calc-table-container h-100 " >
         <div className=" table-container mt-4 h-100">
             {/* Section 1: Conversion from M² to Ft² */}
-            <table className="table m-0 custom-table" style={{ height: "26.6%" }} >
-                <thead data-color="blue" className="" style={{ backgroundColor: "#121d36" }} >
+            <table className="table m-0 custom-table"  >
+                <thead data-color="blue" className=""  >
                     <tr>
                         <th colSpan="2" className="text-center align-middle ">
-                            <p style={{ color: "#FFF" }}  > Estimate Your New Home Size in Square Feet (Using Mexico's Meters Squared)</p>
+                            <p   > Estimate Your New Home Size in Square Feet (Using Mexico's Meters Squared)</p>
                         </th>
                     </tr>
                     <tr>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }}  >Input (M²)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }}  >Square Feet (Ft²)</p></th>
+                        <th className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0}} ><p   >Input (M²)</p></th>
+                        <th className="text-center align-middle " style={{borderTopWidth:0}} ><p   >Square Feet (Ft²)</p></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}} >
+                        <td className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0,backgroundColor:"#f7f7f7"}} >
 
                             <input
                                 style={{
@@ -40,118 +39,96 @@ const HomeSizeCalculator = () => {
                             />
 
                         </td>
-                        <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}} > <p> {sqm ? (sqm * 10.764).toFixed(2) : "—"}</p></td>
+                        <td className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0,backgroundColor:"#f7f7f7"}} > <p> {sqm ? (sqm * 10.764).toFixed(2) : "—"}</p></td>
                     </tr>
                 </tbody>
             </table>
-
-            {/* Section 2: Home Size for $110 Per Square Foot */}
-            <table className="table m-0 custom-table" style={{ height: "23.5%" }} >
-                <thead data-color="dark-blue" className="" style={{ backgroundColor: "#172544" }} >
+            <table className="table m-0 custom-table" style={{ height: "10%" }} >
+                <thead data-color="blue" className=""  >
+                   
                     <tr>
-                        <th colSpan="3" className="text-center align-middle ">
-                            <p style={{ color: "#FFF" }} > Find Your Ideal Home Size for Just $110 Per Square Foot in Mexico (No Ocean View)</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th className="text-center align-middle "> <p style={{ color: "#FFF" }} >Input (Budget $)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Output (Size in Ft²)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Output (Size in M²)</p></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}}  >
-                            <input
+                        <th className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0}}  ><p   >Input (Budget $)</p></th>
+                        <th className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}} >
+                        <input
                                 style={{
                                     fontSize: "0.8rem", appearance: "textfield",
                                     WebkitAppearance: "none",
                                     MozAppearance: "textfield"
                                 }}
                                 type="number"
-                                className="form-control"
-                                value={budget110}
-                                onChange={(e) => setBudget110(e.target.value)}
+                                className="form-control no-spinner"
+                                value={budget}
+                                onChange={(e) => setBudget(e.target.value)}
                                 placeholder="Enter Budget ($)"
                             />
-                        </td>
-                        <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}} > <p> {budget110 ? (budget110 / 110).toFixed(2) : "—"}</p></td>
-                        <td className="text-center align-middle " style={{borderBottom:0,backgroundColor:"#f7f7f7"}} > <p> {budget110 ? ((budget110 / 110) / 10.764).toFixed(2) : "—"}</p></td>
+                            
+                            </th>
                     </tr>
-                </tbody>
+                </thead>
+               
             </table>
-
-            {/* Section 3: Home Size for $300 Per Square Foot */}
-            <table className="table m-0 custom-table" style={{ height: "23.5%" }} >
-                <thead className="" data-color="navy" style={{ backgroundColor: "#172646" }} >
+            <table className="table m-0 custom-table"  >
+                <thead data-color="blue" className=""  >
                     <tr>
-                        <th colSpan="3" className="text-center align-middle ">
-                            <p style={{ color: "#FFF" }} >Affordable Elegance: Calculate Your Ocean View Home Size at $300 Per Square Foot</p>
+                        <th colSpan="2" className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}}>
+                        <p  > Find Your Ideal Home Size for Just $110 Per Square Foot in Mexico (No Ocean View)</p>
                         </th>
                     </tr>
                     <tr>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Input (Budget $)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Output (Size in Ft²)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Output (Size in M²)</p></th>
+                    <th className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0}} ><p  >Output (Size in Ft²)</p></th>
+                    <th className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}} ><p  >Output (Size in M²)</p></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td className="text-center align-middle "  style={{borderBottom:0,backgroundColor:"#f7f7f7"}}>
-                            <input
-                                style={{
-                                    fontSize: "0.8rem", appearance: "textfield",
-                                    WebkitAppearance: "none",
-                                    MozAppearance: "textfield"
-                                }}
-                                type="number"
-                                className="form-control"
-                                value={budget300}
-                                onChange={(e) => setBudget300(e.target.value)}
-                                placeholder="Enter Budget ($)"
-                            />
-                        </td>
-                        <td className="text-center align-middle"  style={{borderBottom:0,backgroundColor:"#f7f7f7"}}><p>{budget300 ? (budget300 / 300).toFixed(2) : "—"}</p></td>
-                        <td className="text-center align-middle" style={{borderBottom:0,backgroundColor:"#f7f7f7"}} ><p>{budget300 ? ((budget300 / 300) / 10.764).toFixed(2) : "—"}</p></td>
+                    <td className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0,backgroundColor:"#f7f7f7"}} > <p> {budget ? (budget / 110).toFixed(2) : "—"}</p></td>
+                    <td className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0,backgroundColor:"#f7f7f7"}} > <p> {budget ? ((budget / 110) / 10.764).toFixed(2) : "—"}</p></td>
                     </tr>
                 </tbody>
             </table>
+            <table className="table m-0 custom-table"  >
+                <thead data-color="blue" className=""  >
+                    <tr>
+                        <th colSpan="2" className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}} >
+                        <p  >Affordable Elegance: Calculate Your Ocean View Home Size at $300 Per Square Foot</p>
+                        </th>
+                    </tr>
+                    <tr>
+                    <th className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0}} ><p  >Output (Size in Ft²)</p></th>
+                    <th className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}} ><p  >Output (Size in M²)</p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0,backgroundColor:"#f7f7f7"}} > <p> {budget ? (budget / 300).toFixed(2) : "—"}</p></td>
+                    <td className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0,backgroundColor:"#f7f7f7"}} > <p> {budget ? ((budget / 300) / 10.764).toFixed(2) : "—"}</p></td>
+                    </tr>
+                </tbody>
+            </table>  
+            <table className="table m-0 custom-table"  >
+                <thead data-color="blue" className=""  >
+                    <tr>
+                        <th colSpan="2" className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}} >
+                        <p  > Luxury Living: Discover Your Beach Front Home Size at $500 Per Square Foot</p>
+                        </th>
+                    </tr>
+                    <tr>
+                    <th className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0}} ><p  >Output (Size in Ft²)</p></th>
+                    <th className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0}} ><p  >Output (Size in M²)</p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td className="text-center align-middle " style={{borderRightWidth:0,borderTopWidth:0,borderBottomWidth:1,backgroundColor:"#f7f7f7"}} > <p> {budget ? (budget / 500).toFixed(2) : "—"}</p></td>
+                    <td className="text-center align-middle " style={{borderRightWidth:1,borderTopWidth:0,borderBottomWidth:1,backgroundColor:"#f7f7f7"}} > <p> {budget ? ((budget / 500) / 10.764).toFixed(2) : "—"}</p></td>
+                    </tr>
+                </tbody>
+            </table>                   
+          
+           
 
             {/* Section 4: Home Size for $500 Per Square Foot */}
-            <table className="table m-0 custom-table" style={{ height: "23.5%" }} >
-                <thead data-color="navy-blue" className="" style={{ backgroundColor: "#19294d" }}>
-                    <tr>
-                        <th colSpan="3" className="text-center align-middle ">
-                            <p style={{ color: "#FFF" }} > Luxury Living: Discover Your Beach Front Home Size at $500 Per Square Foot</p>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Input (Budget $)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Output (Size in Ft²)</p></th>
-                        <th className="text-center align-middle "><p style={{ color: "#FFF" }} >Output (Size in M²)</p></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td className="text-center align-middle " style={{backgroundColor:"#f7f7f7"}} >
-                            <input
-                                style={{
-                                    fontSize: "0.8rem", appearance: "textfield",
-                                    WebkitAppearance: "none",
-                                    MozAppearance: "textfield"
-                                }}
-                                type="number"
-                                className="form-control"
-                                value={budget500}
-                                onChange={(e) => setBudget500(e.target.value)}
-                                placeholder="Enter Budget ($)"
-                            />
-                        </td>
-                        <td className="text-center align-middle " style={{backgroundColor:"#f7f7f7"}}  ><p>{budget500 ? (budget500 / 500).toFixed(2) : "—"}</p></td>
-                        <td className="text-center align-middle " style={{backgroundColor:"#f7f7f7"}}  ><p>{budget500 ? ((budget500 / 500) / 10.764).toFixed(2) : "—"}</p></td>
-                    </tr>
-                </tbody>
-            </table>
+           
         </div>
         </div>
     );

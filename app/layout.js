@@ -102,8 +102,8 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" type="text/css" href="/assets/icon/icomoon/style.css" />
 
 
-        <link rel="shortcut icon" href="/assets/images/favicon.png" />
-        <link rel="apple-touch-icon-precomposed" href="/assets/images/favicon.png" />
+        <link rel="shortcut icon" href="./favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="./favicon.ico" />
 
 
 
@@ -124,7 +124,7 @@ export default function RootLayout({ children }) {
         />
         <Script src="/assets/js/bootstrap.min.js" strategy="afterInteractive" />
         {/* <Script src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
-        <Script src="/assets/js/bootstrap-select.min.js" strategy="afterInteractive" />
+        {/* <Script src="/assets/js/bootstrap-select.min.js" strategy="afterInteractive" /> */}
 
 
 

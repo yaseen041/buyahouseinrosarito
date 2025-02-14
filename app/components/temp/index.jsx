@@ -17,18 +17,18 @@ const Temperatures = () => {
   ];
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 custom-table">
       <table className="table text-center ">
-        <thead className="table-header" style={{ backgroundColor: "rgb(18, 29, 54)" }}>
+        <thead className="table-header" >
           <tr>
-            <th className="text-center">
-              <p style={{color:"#FFF"}} className="m-0 fw-bold">Month</p>
+            <th className="text-center" style={{borderRightWidth:0,borderTopWidth:1}} >
+              <p  className="m-0 fw-bold">Month</p>
+            </th>
+            <th className="text-center" style={{borderRightWidth:0,borderTopWidth:1}} >
+              <p  className="m-0 fw-bold">High Temperature</p>
             </th>
             <th className="text-center">
-              <p style={{color:"#FFF"}} className="m-0 fw-bold">High Temperature</p>
-            </th>
-            <th className="text-center">
-              <p style={{color:"#FFF"}} className="m-0 fw-bold">Low Temperature</p>
+              <p  className="m-0 fw-bold">Low Temperature</p>
             </th>
           </tr>
         </thead>
@@ -40,18 +40,18 @@ const Temperatures = () => {
                 backgroundColor: index % 2 === 0 ? "#f9f9f9" : "transparent",
               }}
             >
-              <td className="text-center">
+              <td className="text-center" style={{borderRightWidth:0,borderTopWidth:0}} >
                 <p className="m-0">{temp.month}</p>
               </td>
               <td
                 className="text-center high-temp"
-                style={{ backgroundColor: "#ffcdd2", color: "#b71c1c" }}
+                style={{borderRightWidth:0,borderTopWidth:0, backgroundColor: "#ffcdd2", color: "#b71c1c" }}
               >
                 <p className="m-0 fw-bold">{temp.high}</p>
               </td>
               <td
                 className="text-center low-temp"
-                style={{ backgroundColor: "#bbdefb", color: "#0d47a1" }}
+                style={{borderRightWidth:1,borderTopWidth:0, backgroundColor: "#bbdefb", color: "#0d47a1" }}
               >
                 <p className="m-0 fw-bold">{temp.low}</p>
               </td>

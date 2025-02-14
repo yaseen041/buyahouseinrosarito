@@ -1,7 +1,7 @@
 
 
 
-import { fetchSEOData } from './home/server';
+import { fetchSEOData } from './server';
 import HomeWrapper from './components/Wrappers/HomeWrapper';
 export async function generateMetadata() {
   // Fetch the SEO data
@@ -34,11 +34,14 @@ export async function generateMetadata() {
 };
 
 
-export default async function Home() {
-  
+export default async function Home({searchParams}) {
+    const search = await searchParams
     
     return (    
-                <HomeWrapper   />
+      <>
+      
+                <HomeWrapper search={search}  />
+      </>
 
     );
 }

@@ -193,7 +193,7 @@ const Footer = () => {
               <div className="ft-title">Contact Us</div>
               <ul className="navigation-menu-footer">
                 <li>
-                  <div className="text">aaron@buyahouseinrosarito.com<br /> +52 664 641 1658</div>
+                  <div className="text">aaron@buyahouseinrosarito.com<br /> +1 (619) 2589-7442</div>
                 </li>
                 <li>
                   <div className="text">

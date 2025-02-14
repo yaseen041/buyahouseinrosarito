@@ -2910,6 +2910,7 @@ ul.list-text li::before {
   border-radius: 50%;
   background-color: rgba(26, 26, 26, 0.2);
   backdrop-filter: blur(10px);
+  z-index: 99;
 }
 .video-wrap .popup-youtube .icon {
   height: 20px;
@@ -2924,7 +2925,7 @@ ul.list-text li::before {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: rgba(26, 26, 26, 0.1098039216);
+  background: rgba(26, 26, 26, 0.6);
   animation: playvideo 2s ease-in-out infinite alternate;
   z-index: -1;
 }
@@ -5949,18 +5950,22 @@ ul.grid-tags li a:hover {
   line-height: 45px !important;
   color: #ffffff !important;
   margin-bottom: 52px !important;
+  position: relative;
+  z-index: 1;
 }
 .slider.home3 .wrap-slider {
   position: relative;
-  background-image: url(/assets/images/hero-banner-2.jpg);
+ 
 }
 .slider.home3 .wrap-slider .slider-content {
-  padding-top: 286px;
+  padding-top: 249px;
   padding-bottom: 300px;
 }
 .slider.home3 .wrap-slider .slider-content h1 {
   margin-bottom: 12px;
-  color: #39c5da;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
 }
 .slider.home3 .wrap-slider .slider-content h1 span {
   color: #D51E4C;
@@ -7009,7 +7014,24 @@ ul.grid-tags li a:hover {
   right: 0;
   width: 0;
   height: 2px;
-  background-color: var(--Secondary);
+  /* background-color: var(--Secondary); */
+  background-color: #FFF;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.is-fixed .header-inner .header-inner-wrap .main-menu ul.navigation > li::after {
+  position: absolute;
+  content: "";
+  bottom: 29px;
+  left: auto;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--Secondary) !important;
+  /* background-color: #FFF; */
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -7028,7 +7050,22 @@ ul.grid-tags li a:hover {
   bottom: 29px;
   width: 100%;
   height: 2px;
-  background-color: var(--Secondary);
+  /* background-color: var(--Secondary); */
+  background-color: #FFF;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.is-fixed .header-inner .header-inner-wrap .main-menu ul.navigation > li.current::after {
+  position: absolute;
+  content: "";
+  bottom: 29px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Secondary) !important;
+  /* background-color: #FFF; */
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
@@ -7041,7 +7078,17 @@ ul.grid-tags li a:hover {
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-  color: var(--Secondary);
+  /* color: var(--Secondary); */
+  color:#FFF;
+}
+ .is-fixed .header-inner .header-inner-wrap .main-menu ul.navigation a,
+ .is-fixed .header-inner .header-inner-wrap .main-menu ul.navigation li {
+  width: max-content;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--Secondary) !important;
+  /* color:#FFF; */
 }
 #header_main .header-inner .header-inner-wrap .main-menu.style-white > ul > li > a {
   color: var(--White);
@@ -7078,14 +7125,30 @@ ul.grid-tags li a:hover {
 }
 #header_main .header-inner .header-inner-wrap .header-right .header-call .icon i {
   font-size: 20px;
-  color: var(--Secondary);
+  /* color: var(--Secondary); */
+  color:#FFF;
 }
 #header_main .header-inner .header-inner-wrap .header-right .header-call .number {
   font-size: 16px;
   font-weight: 500;
   line-height: 19px;
-  color: var(--Secondary);
+  /* color: var(--Secondary); */
+  color: #FFF;
 }
+
+.is-fixed .header-inner .header-inner-wrap .header-right .header-call .icon i {
+  font-size: 20px;
+  color: var(--Secondary) !important;
+  /* color:#FFF; */
+}
+.is-fixed .header-inner .header-inner-wrap .header-right .header-call .number {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  color: var(--Secondary) !important;
+  /* color: #FFF; */
+}
+
 #header_main .header-inner .header-inner-wrap .header-right .header-call.style-white .number {
   color: var(--White);
 }
@@ -7181,7 +7244,7 @@ ul.grid-tags li a:hover {
   top: -100%;
   left: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 1040;
   border: none;
   opacity: 1;
   -webkit-transition: all 0.5s ease;
@@ -7189,6 +7252,7 @@ ul.grid-tags li a:hover {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+
 }
 #header_main.is-fixed.is-small {
   top: 0;

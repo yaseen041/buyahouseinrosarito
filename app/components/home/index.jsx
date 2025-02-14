@@ -1,16 +1,16 @@
 'use client';
-import React, { use, useEffect } from 'react';
+import React from 'react';
 import Footer from '../footer';
-import CustomScript from '@/app/scripts';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import WOW from "wow.js";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import "animate.css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay"
+import dynamic from "next/dynamic";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import Link from 'next/link';
 import VideoComponent from '../video';
 import Header3 from '../header3';
@@ -293,9 +293,13 @@ const HomeComponent = () => {
 
 
     React.useEffect(() => {
-        new WOW().init();
-        // initSliders();
-    }, [])
+        if (typeof window !== "undefined") {
+            import("wow.js").then((module) => {
+                const WOW = module.default;
+                new WOW().init();
+            });
+        }
+    }, []);
 
     React.useEffect(() => {
         const handleClickOutside = (event) => {
@@ -334,315 +338,327 @@ const HomeComponent = () => {
             < div id="wrapper">
                 <div id="page" className="">
                     <Header3 />
-                    <div className="main-content default">
-                        <section className="slider home3 relative z-5">
-                            <div className="wrap-slider">
-                                <div className="slider-item">
-                                    <div className="cl-container">
-                                        <div className="row">
-                                            <div className="col-12">
-                                                <div className="slider-content">
-                                                    <h1 className="wow fadeInUp">
-                                                        Rosarito isn't just a beach, it's a community. . .
-                                                    </h1>
-                                                    <div className="text wow fadeInUp">
-                                                        and you're invited! -The Hansome Family
-                                                    </div>
-                                                    <div className="widget-tabs">
+                    <div className="main-content default"  >
+                        <section className="slider home3 relative z-5"   >
+                        
+                            <video autoPlay loop muted playsInline>
+                                <source src="/assets/intro.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                            </video>
+                            <div className='row g-0  '     >
+                                <div className='col-12 col-lg-12' >
+                                    <div className="wrap-slider">
+                                        <div className="slider-item">
+                                            <div className="cl-container">
+                                                <div className="row"  >
+                                                    <div className="col-12">
+                                                        <div className="slider-content">
+                                                            <h1 className="wow fadeInUp">
+                                                                Rosarito isn't just a beach, it's a community. . .
+                                                            </h1>
+                                                            <div className="text wow fadeInUp">
+                                                                and you're invited! -The Hansome Family
+                                                            </div>
+                                                            <div className="widget-tabs d-block d-lg-block ">
+                                                                <div className="widget-content-tab">
+                                                                    <div className="widget-content-inner active">
+                                                                        <form className="form-search-home3 wow fadeInUp">
+                                                                            <div className="group-form">
+                                                                                <div
+                                                                                    onClick={(e) => handleSelectClick(e, "type")}
+                                                                                    className={`nice-select border-radius-1 ${openSelect.type ? "open" : ""}`}
+                                                                                    tabIndex={0}
+                                                                                    ref={assignRef("type")}
+                                                                                >
+                                                                                    <span className="current open ">{selectedTypes.title}</span>
+                                                                                    <ul className="list style-radio">
+                                                                                        <li data-value="" className={`option ${selectedTypes.id === 0 ? "selected" : ""}`} onClick={() => handleTypes(0, " All Types")}>
+                                                                                            All types
+                                                                                        </li>
+                                                                                        {Object.keys(filters).length > 0 ? filters.types.map((item) => (
+                                                                                            <li data-value="" className={`option ${selectedTypes.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleTypes(item.id, item.title)}>
+                                                                                                {item.title} ({item.count})
+                                                                                            </li>
+                                                                                        )) : null}
 
-                                                        <div className="widget-content-tab">
-                                                            <div className="widget-content-inner active">
-                                                                <form className="form-search-home3 wow fadeInUp">
-                                                                    <div className="group-form">
-                                                                        <div
-                                                                            onClick={(e) => handleSelectClick(e, "type")}
-                                                                            className={`nice-select border-radius-1 ${openSelect.type ? "open" : ""}`}
-                                                                            tabIndex={0}
-                                                                            ref={assignRef("type")}
-                                                                        >
-                                                                            <span className="current open ">{selectedTypes.title}</span>
-                                                                            <ul className="list style-radio">
-                                                                                <li data-value="" className={`option ${selectedTypes.id === 0 ? "selected" : ""}`} onClick={() => handleTypes(0, " All Types")}>
-                                                                                    All types
-                                                                                </li>
-                                                                                {Object.keys(filters).length > 0 ? filters.types.map((item) => (
-                                                                                    <li data-value="" className={`option ${selectedTypes.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleTypes(item.id, item.title)}>
-                                                                                        {item.title} ({item.count})
-                                                                                    </li>
-                                                                                )) : null}
-
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form " style={{ width: "180px" }} >
-                                                                        <div
-                                                                            onClick={(e) => handleSelectClick(e, "city")}
-                                                                            className={`nice-select border-radius-1 ${openSelect.city ? "open" : ""}`}
-                                                                            tabIndex={0}
-                                                                            ref={assignRef("city")}
-                                                                        >
-                                                                            <span className="current open ">{selectedCity.title}</span>
-                                                                            <ul className="list style-radio">
-                                                                                <li data-value="" className={`option ${selectedCity.id === 0 ? "selected" : ""}`} onClick={() => handleCity(0, " City")}>
-                                                                                    City
-                                                                                </li>
-                                                                                {Object.keys(filters).length > 0 ? filters.cities.map((item) => (
-                                                                                    <li data-value="" className={`option ${selectedCity.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleCity(item.id, item.name)}>
-                                                                                        {item.name} ({item.count})
-                                                                                    </li>
-                                                                                )) : null}
-
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form flex-grow form-search-content relative">
-                                                                        <fieldset className="name">
-                                                                            <input
-                                                                                type="text"
-                                                                                placeholder="Enter Keywords"
-                                                                                className="show-search style-3"
-                                                                                name="keyword"
-                                                                                tabIndex={2}
-                                                                                value={Keyword}
-                                                                                onChange={handleInputChange}
-                                                                                aria-required="true"
-                                                                                required=""
-                                                                            />
-                                                                        </fieldset>
-                                                                        <div className="style-absolute-left-center">
-                                                                            <div className="style-icon-default">
-                                                                                <i className="flaticon-magnifiying-glass" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form">
-                                                                        <div className="wg-filter">
-                                                                            <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter}  >
-                                                                                <i className="flaticon-filter" />
-                                                                                Filters
-                                                                            </div>
-                                                                            <div
-                                                                                className={`open-filter filter-no-content ${openFilter ? "active" : ""}  `}
-                                                                                id="a1"
-                                                                            >
-                                                                                <div  >
-                                                                                    <div className="grid-4-cols mb-20"  >
-                                                                                        <div className='' >
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Status</div>
-                                                                                            <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
-                                                                                                <span className="current">{selectedstatus.title}</span>
-                                                                                                <ul className="list style-radio">
-                                                                                                    <li
-                                                                                                        data-value="For Sale"
-                                                                                                        className={`option ${selectedstatus.id === 0 ? "selected" : ""} `}
-
-                                                                                                        onClick={() => handleStatus(0, " All Status")}
-                                                                                                    >
-                                                                                                        All Status
-                                                                                                    </li>
-                                                                                                    {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
-                                                                                                        <li
-                                                                                                            data-value="For Sale"
-                                                                                                            className={`option ${selectedstatus.id === item.id ? "selected" : ""} `}
-                                                                                                            key={item.id}
-                                                                                                            onClick={() => handleStatus(item.id, item.title)}
-                                                                                                        >
-                                                                                                            {item.title}
-                                                                                                        </li>
-                                                                                                    )) : null}
-
-
-                                                                                                </ul>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Community</div>
-                                                                                            <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
-                                                                                                <span className="current">{selectedCommunity.title}</span>
-                                                                                                <ul className="list style-radio">
-                                                                                                    <li
-                                                                                                        data-value="For Sale"
-                                                                                                        className={`option ${selectedCommunity.id === 0 ? "selected" : ""} `}
-
-                                                                                                        onClick={() => handleCommunity(0, " All Communities")}
-                                                                                                    >
-                                                                                                        All Communities
-                                                                                                    </li>
-                                                                                                    {community.map((item) => (
-                                                                                                        <li
-                                                                                                            data-value="For Sale"
-                                                                                                            className={`option ${selectedCommunity.id === item.id ? "selected" : ""} `}
-                                                                                                            key={item.id}
-                                                                                                            onClick={() => handleCommunity(item.id, item.title)}
-                                                                                                        >
-                                                                                                            {item.title} ({item.property_count})
-                                                                                                        </li>
-                                                                                                    ))}
-
-
-                                                                                                </ul>
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bedrooms</div>
-                                                                                            <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
-                                                                                                <span className="current">{selectedBed.title}</span>
-                                                                                                <ul className="list  ">
-
-                                                                                                    {Object.keys(filters).length > 0 ? filters.min_bed.map((item) => (
-                                                                                                        <li data-value="" className={`option ${selectedBed.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleBed(item.id, item.title)} >
-                                                                                                            {item.title}
-                                                                                                        </li>
-                                                                                                    )) : null}
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div>
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bathrooms</div>
-                                                                                            <div className={`nice-select ${openSelect.minBath ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBath")} ref={assignRef("minBath")}>
-                                                                                                <span className="current">{selectedBath.title}</span>
-
-                                                                                                <ul className="list">
-
-                                                                                                    {Object.keys(filters).length > 0 ? filters.min_bath.map((item) => (
-                                                                                                        <li data-value="1 Bath" className={`option ${selectedBath.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleBath(item.id, item.title)} >
-                                                                                                            {item.title}
-                                                                                                        </li>
-                                                                                                    )) : null}
-
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        </div>
-
-
-                                                                                    </div>
-                                                                                    <div className="grid-4-cols">
-                                                                                        <fieldset className="name">
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Area</div>
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Min. Area"
-                                                                                                className=""
-                                                                                                name="minArea"
-                                                                                                tabIndex={2}
-
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                                value={minArea}
-                                                                                                onChange={handleInputChange}
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <fieldset className="name">
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Area</div>
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Max. Area"
-                                                                                                className=""
-                                                                                                name="maxArea"
-                                                                                                tabIndex={2}
-
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                                value={maxArea}
-                                                                                                onChange={handleInputChange}
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <fieldset className="name">
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Price</div>
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Min. Price"
-                                                                                                className=""
-                                                                                                name="minPrice"
-                                                                                                tabIndex={2}
-
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                                value={minPrice}
-                                                                                                onChange={handleInputChange}
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                        <fieldset className="name">
-                                                                                            <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Price</div>
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                placeholder="Max. Price"
-                                                                                                className=""
-                                                                                                name="maxPrice"
-                                                                                                tabIndex={2}
-                                                                                                aria-required="true"
-                                                                                                required=""
-                                                                                                value={maxPrice}
-                                                                                                onChange={handleInputChange}
-                                                                                            />
-                                                                                        </fieldset>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div>
-
-                                                                                    <ul className="grid-checked">
-                                                                                        {
-                                                                                            Object.keys(filters).length > 0 ?
-                                                                                                Object.keys(filters.features).map((featureKey) => (
-                                                                                                    <li key={featureKey} >
-                                                                                                        <div className="title mt-4 mb-4">
-                                                                                                            {featureKey
-                                                                                                                .replace(/_/g, ' ')
-                                                                                                                .replace(/\b\w/g, (char) => char.toUpperCase())}
-                                                                                                        </div>
-                                                                                                        <ul
-
-                                                                                                            data-wow-delay="0.1s"
-                                                                                                        >
-                                                                                                            <div className='row' >
-                                                                                                                {filters.features[featureKey].map((item) => (
-                                                                                                                    <div className='col-3 m-4' key={item.id} >
-                                                                                                                        <li className="checkbox-item"  >
-                                                                                                                            <label>
-                                                                                                                                <p>{item.title}</p>
-                                                                                                                                <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={selectedFeatures.some((feature) => feature.id === item.id)} />
-                                                                                                                                <span className="btn-checkbox" />
-                                                                                                                            </label>
-                                                                                                                        </li>
-                                                                                                                    </div>
-                                                                                                                ))}
-                                                                                                            </div>
-
-                                                                                                        </ul>
-                                                                                                    </li>
-                                                                                                )) : null}
 
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="group-form">
-                                                                        <div className="button-submit">
-                                                                            <button className="" onClick={handleSearch} >
-                                                                                Search
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
+                                                                            <div className="group-form " style={{ width: "180px" }} >
+                                                                                <div
+                                                                                    onClick={(e) => handleSelectClick(e, "city")}
+                                                                                    className={`nice-select border-radius-1 ${openSelect.city ? "open" : ""}`}
+                                                                                    tabIndex={0}
+                                                                                    ref={assignRef("city")}
+                                                                                >
+                                                                                    <span className="current open ">{selectedCity.title}</span>
+                                                                                    <ul className="list style-radio">
+                                                                                        <li data-value="" className={`option ${selectedCity.id === 0 ? "selected" : ""}`} onClick={() => handleCity(0, " City")}>
+                                                                                            City
+                                                                                        </li>
+                                                                                        {Object.keys(filters).length > 0 ? filters.cities.map((item) => (
+                                                                                            <li data-value="" className={`option ${selectedCity.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleCity(item.id, item.name)}>
+                                                                                                {item.name} ({item.count})
+                                                                                            </li>
+                                                                                        )) : null}
 
+
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="group-form flex-grow form-search-content relative">
+                                                                                <fieldset className="name">
+                                                                                    <input
+                                                                                        type="text"
+                                                                                        placeholder="Enter Keywords"
+                                                                                        className="show-search style-3"
+                                                                                        name="keyword"
+                                                                                        tabIndex={2}
+                                                                                        value={Keyword}
+                                                                                        onChange={handleInputChange}
+                                                                                        aria-required="true"
+                                                                                        required=""
+                                                                                    />
+                                                                                </fieldset>
+                                                                                <div className="style-absolute-left-center">
+                                                                                    <div className="style-icon-default">
+                                                                                        <i className="flaticon-magnifiying-glass" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="group-form">
+                                                                                <div className="wg-filter">
+                                                                                    <div className={`tf-button-filter btn-filter ${openFilter ? "active" : ""} `} onClick={toggleFilter}  >
+                                                                                        <i className="flaticon-filter" />
+                                                                                        Filters
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className={`open-filter filter-no-content ${openFilter ? "active" : ""}  `}
+                                                                                        id="a1"
+                                                                                    >
+                                                                                        <div  >
+                                                                                            <div className="grid-4-cols mb-20"  >
+                                                                                                <div className='' >
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Status</div>
+                                                                                                    <div className={`nice-select ${openSelect.status ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "status")} ref={assignRef("status")} >
+                                                                                                        <span className="current">{selectedstatus.title}</span>
+                                                                                                        <ul className="list style-radio">
+                                                                                                            <li
+                                                                                                                data-value="For Sale"
+                                                                                                                className={`option ${selectedstatus.id === 0 ? "selected" : ""} `}
+
+                                                                                                                onClick={() => handleStatus(0, " All Status")}
+                                                                                                            >
+                                                                                                                All Status
+                                                                                                            </li>
+                                                                                                            {Object.keys(filters).length > 0 ? filters.listing_status.map((item) => (
+                                                                                                                <li
+                                                                                                                    data-value="For Sale"
+                                                                                                                    className={`option ${selectedstatus.id === item.id ? "selected" : ""} `}
+                                                                                                                    key={item.id}
+                                                                                                                    onClick={() => handleStatus(item.id, item.title)}
+                                                                                                                >
+                                                                                                                    {item.title}
+                                                                                                                </li>
+                                                                                                            )) : null}
+
+
+                                                                                                        </ul>
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Community</div>
+                                                                                                    <div className={`nice-select ${openSelect.community ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "community")} ref={assignRef("community")} >
+                                                                                                        <span className="current">{selectedCommunity.title}</span>
+                                                                                                        <ul className="list style-radio">
+                                                                                                            <li
+                                                                                                                data-value="For Sale"
+                                                                                                                className={`option ${selectedCommunity.id === 0 ? "selected" : ""} `}
+
+                                                                                                                onClick={() => handleCommunity(0, " All Communities")}
+                                                                                                            >
+                                                                                                                All Communities
+                                                                                                            </li>
+                                                                                                            {community.map((item) => (
+                                                                                                                <li
+                                                                                                                    data-value="For Sale"
+                                                                                                                    className={`option ${selectedCommunity.id === item.id ? "selected" : ""} `}
+                                                                                                                    key={item.id}
+                                                                                                                    onClick={() => handleCommunity(item.id, item.title)}
+                                                                                                                >
+                                                                                                                    {item.title} ({item.property_count})
+                                                                                                                </li>
+                                                                                                            ))}
+
+
+                                                                                                        </ul>
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bedrooms</div>
+                                                                                                    <div className={`nice-select ${openSelect.minBed ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBed")} ref={assignRef("minBed")}  >
+                                                                                                        <span className="current">{selectedBed.title}</span>
+                                                                                                        <ul className="list  ">
+
+                                                                                                            {Object.keys(filters).length > 0 ? filters.min_bed.map((item) => (
+                                                                                                                <li data-value="" className={`option ${selectedBed.id === item.id ? "selected" : ""}`} key={item.id} onClick={() => handleBed(item.id, item.title)} >
+                                                                                                                    {item.title}
+                                                                                                                </li>
+                                                                                                            )) : null}
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div>
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Bathrooms</div>
+                                                                                                    <div className={`nice-select ${openSelect.minBath ? "open" : ""}`} tabIndex={0} onClick={(e) => handleSelectClick(e, "minBath")} ref={assignRef("minBath")}>
+                                                                                                        <span className="current">{selectedBath.title}</span>
+
+                                                                                                        <ul className="list">
+
+                                                                                                            {Object.keys(filters).length > 0 ? filters.min_bath.map((item) => (
+                                                                                                                <li data-value="1 Bath" className={`option ${selectedBath.id === item.id ? "selected" : ""} `} key={item.id} onClick={() => handleBath(item.id, item.title)} >
+                                                                                                                    {item.title}
+                                                                                                                </li>
+                                                                                                            )) : null}
+
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                            </div>
+                                                                                            <div className="grid-4-cols">
+                                                                                                <fieldset className="name">
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Area</div>
+                                                                                                    <input
+                                                                                                        type="text"
+                                                                                                        placeholder="Min. Area"
+                                                                                                        className=""
+                                                                                                        name="minArea"
+                                                                                                        tabIndex={2}
+
+                                                                                                        aria-required="true"
+                                                                                                        required=""
+                                                                                                        value={minArea}
+                                                                                                        onChange={handleInputChange}
+                                                                                                    />
+                                                                                                </fieldset>
+                                                                                                <fieldset className="name">
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Area</div>
+                                                                                                    <input
+                                                                                                        type="text"
+                                                                                                        placeholder="Max. Area"
+                                                                                                        className=""
+                                                                                                        name="maxArea"
+                                                                                                        tabIndex={2}
+
+                                                                                                        aria-required="true"
+                                                                                                        required=""
+                                                                                                        value={maxArea}
+                                                                                                        onChange={handleInputChange}
+                                                                                                    />
+                                                                                                </fieldset>
+                                                                                                <fieldset className="name">
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Min. Price</div>
+                                                                                                    <input
+                                                                                                        type="text"
+                                                                                                        placeholder="Min. Price"
+                                                                                                        className=""
+                                                                                                        name="minPrice"
+                                                                                                        tabIndex={2}
+
+                                                                                                        aria-required="true"
+                                                                                                        required=""
+                                                                                                        value={minPrice}
+                                                                                                        onChange={handleInputChange}
+                                                                                                    />
+                                                                                                </fieldset>
+                                                                                                <fieldset className="name">
+                                                                                                    <div className='mx-2' style={{ fontSize: 13, fontWeight: 400, color: "#969696", marginBottom: 10 }} >Max. Price</div>
+                                                                                                    <input
+                                                                                                        type="text"
+                                                                                                        placeholder="Max. Price"
+                                                                                                        className=""
+                                                                                                        name="maxPrice"
+                                                                                                        tabIndex={2}
+                                                                                                        aria-required="true"
+                                                                                                        required=""
+                                                                                                        value={maxPrice}
+                                                                                                        onChange={handleInputChange}
+                                                                                                    />
+                                                                                                </fieldset>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div>
+
+                                                                                            <ul className="grid-checked">
+                                                                                                {
+                                                                                                    Object.keys(filters).length > 0 ?
+                                                                                                        Object.keys(filters.features).map((featureKey) => (
+                                                                                                            <li key={featureKey} >
+                                                                                                                <div className="title mt-4 mb-4">
+                                                                                                                    {featureKey
+                                                                                                                        .replace(/_/g, ' ')
+                                                                                                                        .replace(/\b\w/g, (char) => char.toUpperCase())}
+                                                                                                                </div>
+                                                                                                                <ul
+
+                                                                                                                    data-wow-delay="0.1s"
+                                                                                                                >
+                                                                                                                    <div className='row' >
+                                                                                                                        {filters.features[featureKey].map((item) => (
+                                                                                                                            <div className='col-3 m-4' key={item.id} >
+                                                                                                                                <li className="checkbox-item"  >
+                                                                                                                                    <label>
+                                                                                                                                        <p>{item.title}</p>
+                                                                                                                                        <input type="checkbox" onChange={() => hanldeFeatures(item.id, item.title)} checked={selectedFeatures.some((feature) => feature.id === item.id)} />
+                                                                                                                                        <span className="btn-checkbox" />
+                                                                                                                                    </label>
+                                                                                                                                </li>
+                                                                                                                            </div>
+                                                                                                                        ))}
+                                                                                                                    </div>
+
+                                                                                                                </ul>
+                                                                                                            </li>
+                                                                                                        )) : null}
+
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="group-form">
+                                                                                <div className="button-submit">
+                                                                                    <button className="" onClick={handleSearch} >
+                                                                                        Search
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
+
+
                             </div>
                         </section>
                         {/* /slider */}
                         {/* flat-explore */}
+                        
                         <section className="tf-section flat-counter">
                             <div className="cl-container">
                                 <div className="row">
@@ -661,8 +677,8 @@ const HomeComponent = () => {
                                     <div className='row justify-center' >
 
                                         <div className='col-12 col-md-6 ' >
-                                            <VideoComponent src="/assets/video.mp4" />
-
+                                            {/* <VideoComponent src="https://www.youtube.com/embed/Yf61HtiwTlo?si=4GV-EyuIpK4TbwC6" /> */}
+                                            <iframe width="100%" height="415" src="https://www.youtube.com/embed/Yf61HtiwTlo?si=4GV-EyuIpK4TbwC6" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                                         </div>
                                     </div>
 
@@ -704,13 +720,13 @@ const HomeComponent = () => {
                                                     <Link href="https://finance.yahoo.com/news/much-average-retiree-mexico-savings-130010760.html" target='_blank' >cost savings of life in Mexico.</Link>
                                                 </p>
                                                 <p className='pt-3'>
-                                                Whether you’re searching for a quiet retirement home or an affordable second home on the beachfront to escape, Playas de Rosarito offers endless possibilities. With our tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home and {" "}
-                                                <Link href="https://buyahouseinrosarito.com/contact" target='_blank' >Contact Aaron (English) & Adriana (Spanish) By Clicking Here Now</Link>, {" "}
-                                                for more information.
+                                                    Whether you’re searching for a quiet retirement home or an affordable second home on the beachfront to escape, Playas de Rosarito offers endless possibilities. With our tools to estimate home size based on budget, you can easily find the property that fits your lifestyle and financial goals. Take the first step toward your dream home and {" "}
+                                                    <Link href="https://buyahouseinrosarito.com/contact" target='_blank' >Contact Aaron (English) & Adriana (Spanish) By Clicking Here Now</Link>, {" "}
+                                                    for more information.
                                                 </p>
                                                 <p className='pt-3'>
-                                                Please Use this Rosarito App To Estimate <strong>Beachfront, Oceanview</strong>, or <strong>Non-Ocean View</strong> {" "}
-                                                Cost of Ownership 
+                                                    Please Use this Rosarito App To Estimate <strong>Beachfront, Oceanview</strong>, or <strong>Non-Ocean View</strong> {" "}
+                                                    Cost of Ownership
                                                 </p>
                                             </div>
                                         </div>
@@ -731,13 +747,13 @@ const HomeComponent = () => {
 
                                 </div>
                                 <div className='video-section text-center ' >
-                                <img className='pt-3' src='/assets/images/video-section-image.jpg' alt="A sunset over Rosarito  beach" />
-                                <p className='pt-3' >
-                                    <Link href="https://www.tripadvisor.com/LocationPhotoDirectLink-g150774-i462503810-Rosarito_Baja_California.html" target='_blank' >Sunset Over Rosarito Beach</Link>
-                                </p>
-                                <p className='pt-3' >
-                                    <Link href="https://buyahouseinrosarito.com/contact" target='_blank' >Contact Aaron (English) & Adriana (Spanish) By Clicking Here Now</Link>, for more information.
-                                </p>
+                                    <img className='pt-3' src='/assets/images/video-section-image.jpg' alt="A sunset over Rosarito  beach" />
+                                    <p className='pt-3' >
+                                        <Link href="https://www.tripadvisor.com/LocationPhotoDirectLink-g150774-i462503810-Rosarito_Baja_California.html" target='_blank' >Sunset Over Rosarito Beach</Link>
+                                    </p>
+                                    <p className='pt-3' >
+                                        <Link href="https://buyahouseinrosarito.com/contact" target='_blank' >Contact Aaron (English) & Adriana (Spanish) By Clicking Here Now</Link>, for more information.
+                                    </p>
                                 </div>
                             </div>
                         </section>
@@ -1733,16 +1749,16 @@ const HomeComponent = () => {
                 </div>
             </div>
 
-            <CustomScript
+            {/* <CustomScript
                 src="/assets/js/jquery.min.js"
                 strategy="lazyOnload" // Load it after the page load
 
                 onError={(e) => console.error("Failed to load jQuery:", e)}
-            />
+            /> */}
             {/* <CustomScript src="/assets/js/jquery.nice-select.min.js" strategy="afterInteractive" /> */}
-            <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
+            {/* <CustomScript src="/assets/js/jquery.fancybox.js" strategy="afterInteractive" />
             <CustomScript src="/assets/js/magnific-popup.min.js" strategy="afterInteractive" />
-            <CustomScript src="/assets/js/main.js" />
+            <CustomScript src="/assets/js/main.js" /> */}
 
 
         </main>

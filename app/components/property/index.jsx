@@ -184,6 +184,7 @@ console.log(query)
     try {
       const data = await api.Get(url.COMMUNITY)
       if (data) {
+       
         setCommunities(data.data)
       }
     } catch (error) {
@@ -292,6 +293,7 @@ console.log(query)
       }
       if (community !== undefined) {
         const filterCommunity = communities.find((i) => i.title === community)
+        console.log("community=====>",filterCommunity,communities)
         setSelectedCommunity({ id: filterCommunity.id, title: filterCommunity.title })
         setQuery((prev)=>({...prev,community:filterCommunity.title}))
         body.append("neighborhood_id", community !== undefined ? filterCommunity.id : "")
@@ -355,6 +357,7 @@ console.log(query)
       console.log(error)
     }
   }
+  React.useEffect(()=>{getProperties()},[])
   // const getProperties = async () => {
   //   try {
   //     setLoading(true);
@@ -416,8 +419,10 @@ console.log(query)
   //   }
   // };
   React.useEffect(() => {
-    getProperties()
-  }, [filters, status, type, sort, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title,page])
+    if(Object.keys(query).length>0){
+      getProperties()
+ }
+  }, [filters, status, type, sort, city, community, bedrooms, bathrooms, minarea, maxarea, minprice, maxprice, features, title,page,communities,cities])
 
   // const handleSearch = (e) => {
   //   e.preventDefault();

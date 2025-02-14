@@ -4,20 +4,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   basePath:"",
- async redirects() {
-    return [
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true
-      },
-     
-    ]
-  },
+ 
   async rewrites(){
     return[
       {
-        source: "/:slug((?!blog).*)",
+        source: "/:slug((?!blog|property).*)",
         destination: "/blog/:slug*"
       },
     ]

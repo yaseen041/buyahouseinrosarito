@@ -1,24 +1,25 @@
+"use client"; // Ensures this component only runs in the browser
+
 import React, { useEffect } from "react";
-import $ from "jquery";
-import "magnific-popup";
-// import "magnific-popup/dist/magnific-popup.css";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+// Conditionally import jQuery & magnificPopup only on the client side
+const isBrowser = typeof window !== "undefined";
+const $ = isBrowser ? require("jquery") : null;
+const magnificPopup = isBrowser ? require("magnific-popup") : null;
 
 const VideoComponent = ({ src }) => {
-
   useEffect(() => {
-    if ($('div').hasClass('video-wrap')) {
-      $('.popup-youtube').magnificPopup({
-        type: 'iframe',
-        
-        
+    if (isBrowser && $(".video-wrap").length > 0) {
+      $(".popup-youtube").magnificPopup({
+        type: "iframe",
       });
     }
   }, []);
-  
-  
+
   const renderVideo = () => {
-    if (src.endsWith(".mp4")) {
+    if (src.endsWith(".mp4") || src.includes("youtube.com") || src.includes("vimeo.com")) {
       return (
         <Link href={src} className="popup-youtube">
           <div className="icon">
@@ -26,32 +27,14 @@ const VideoComponent = ({ src }) => {
           </div>
         </Link>
       );
-    } else if (src.includes("youtube.com")) {
-      return (
-        <Link href={src} className="popup-youtube">
-          <div className="icon">
-            <i className="flaticon-play" />
-          </div>
-        </Link>
-      );
-    } else if (src.includes("vimeo.com")) {
-      // If it's a Vimeo URL, return a Vimeo link
-      return (
-        <Link href={src} className="popup-youtube">
-          <div className="icon">
-            <i className="flaticon-play" />
-          </div>
-        </Link>
-      );
-    } else {
-      return null; 
     }
+    return null;
   };
 
   return (
     <div className="video h-100">
       <div className="video-wrap h-100">
-        <img src="/assets/images/image-box/video-2.jpg" alt="image" />
+        <img src="/assets/images/video-image.png" alt="Video Thumbnail" className="video-img" />
         {renderVideo()}
       </div>
     </div>

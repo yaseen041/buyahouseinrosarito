@@ -181,7 +181,7 @@ const ContactComponent = () => {
                                     </div>
                                     <div className="content">
                                         <h4>Contact Info</h4>
-                                        <Link href="tel:+52 664 641 1658" className="text-content">+52 664 641 1658</Link>
+                                        <Link href="tel:+1 (619) 2589-7442" className="text-content">+1 (619) 2589-7442</Link>
                                         <p></p>
                                     </div>
 
